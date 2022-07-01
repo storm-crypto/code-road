@@ -173,18 +173,32 @@
 //}
 
 // 1. 计算n的阶乘
-int main(){
-    int n = 0;
-    printf("请输入一个数：");
-    scanf("%d", &n);
+//int main(){
+//    int n = 0;
+//    printf("请输入一个数：");
+//    scanf("%d", &n);
+//    int i = 0;
+//    int ret = 1;
+//    for (i = 1; i <= n; i++)
+//    {
+//       ret = ret * i;
+//    }
+//    printf("%d", ret);
+//    return 0;
+//}
+
+// 2. 计算1! + 2! + 3! + …… + 10！
+int main()
+{
     int i = 0;
-    int ret = 1;
-    for (i = 1; i <= n; i++)
+    int res1 = 1; // 用来每个阶乘的答案
+    int res2 = 0; // 保存最终答案
+    for (i = 1; i <= 10; i++)
     {
-       ret = ret * i;
+        res1 = res1 * i;
+        res2 += res1;
     }
-    printf("%d", ret);
+
+    printf("%d ", res2);
     return 0;
 }
-
-// 2.
