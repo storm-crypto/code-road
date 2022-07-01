@@ -76,35 +76,46 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    int day = 0;
+//    scanf("%d", &day);
+//    switch (day)
+//    {
+//        case 1:
+//            printf("Monday\n");
+//            break;
+//        case 2:
+//            printf("Tuesday\n");
+//            break;
+//        case 3:
+//            printf("Wednesday\n");
+//            break;
+//        case 4:
+//            printf("Thursday\n");
+//            break;
+//        case 5:
+//            printf("Friday\n");
+//            break;
+//        case 6:
+//            printf("Saturday\n");
+//            break;
+//        case 7:
+//            printf("Sunday\n");
+//            break;
+//        default:
+//            printf("ÊäÈë´íÎó");
+//            break;
+//    }
+//}
+
 int main()
 {
-    int day = 0;
-    scanf("%d", &day);
-    switch (day)
+    int i = 1;
+    while (i <= 10)
     {
-        case 1:
-            printf("Monday\n");
-            break;
-        case 2:
-            printf("Tuesday\n");
-            break;
-        case 3:
-            printf("Wednesday\n");
-            break;
-        case 4:
-            printf("Thursday\n");
-            break;
-        case 5:
-            printf("Friday\n");
-            break;
-        case 6:
-            printf("Saturday\n");
-            break;
-        case 7:
-            printf("Sunday\n");
-            break;
-        default:
-            printf("ÊäÈë´íÎó");
-            break;
+        if (i == 5) continue;
+        printf("%d ", i);
+        i++;
     }
 }
