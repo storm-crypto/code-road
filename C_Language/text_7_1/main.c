@@ -188,17 +188,51 @@
 //}
 
 // 2. 计算1! + 2! + 3! + …… + 10！
+//int main()
+//{
+//    int i = 0;
+//    int res1 = 1; // 用来每个阶乘的答案
+//    int res2 = 0; // 保存最终答案
+//    for (i = 1; i <= 10; i++)
+//    {
+//        res1 = res1 * i;
+//        res2 += res1;
+//    }
+//
+//    printf("%d ", res2);
+//    return 0;
+//}
+
+// 3.在一个有序数组中查找具体的数字n(二分查找)
 int main()
 {
-    int i = 0;
-    int res1 = 1; // 用来每个阶乘的答案
-    int res2 = 0; // 保存最终答案
-    for (i = 1; i <= 10; i++)
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int k = 7;
+    int sz = sizeof(arr) / sizeof(arr[0]);  // 算出该数组右多少个元素
+    // 查找k
+    int l = 0; // 左下标
+    int r = sz - 1; // 右下标
+    while (l <= r)
     {
-        res1 = res1 * i;
-        res2 += res1;
+        int mid  = (l + r) / 2; // 中间值
+        if (arr[mid] < k)
+        {
+            l = mid + 1;
+        }
+        else if (arr[mid] > k)
+        {
+            r = mid - 1;
+        }
+        else
+        {
+            printf("找到了，下标是%d\n", mid);
+            break;
+        }
+    }
+    if (l > r)
+    {
+        printf("找不到了\n");
     }
 
-    printf("%d ", res2);
     return 0;
 }
