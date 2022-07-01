@@ -379,21 +379,47 @@
 //    }
 //}
 
+//int main()
+//{
+//    char input[20] = {0};
+//
+//    system("shutdown -s -t 60");//system是一个库函数，用来执行系统命令的
+//    while(1)
+//    {
+//        printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
+//        scanf("%s", input);
+//        // 判断
+//        if (strcmp(input, "我是猪") == 0)
+//        {
+//            system("shutdown -a");
+//            break;
+//        }
+//    }
+//
+//}
+
+// 将三个数按照从小到大的顺序输出
+
+//int main()
+//{
+//    int i = 0;
+//    for (i = 1; i <= 100; i++)
+//    {
+//        if (i % 3 == 0)
+//            printf("%d ", i);
+//    }
+//}
+
+// 求最大值
 int main()
 {
-    char input[20] = {0};
-
-    system("shutdown -s -t 60");//system是一个库函数，用来执行系统命令的
-    while(1)
+    int arr[] = {1, 5, 66, 54, 23, 4, 9, 8, 12, 11};
+    int max = 0;
+    int i = 0;
+    for (i = 0; i < 10; i++)
     {
-        printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
-        scanf("%s", input);
-        // 判断
-        if (strcmp(input, "我是猪") == 0)
-        {
-            system("shutdown -a");
-            break;
-        }
+        if (arr[i] > max)
+            max = arr[i];
     }
-
+    printf("%d", max);
 }
