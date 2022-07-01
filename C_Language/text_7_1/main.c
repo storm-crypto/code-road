@@ -299,63 +299,82 @@
 
 // 猜数字游戏
 
-void menu()
-{
-    printf("-----------------\n");
-    printf("----1. 开始游戏---\n");
-    printf("----0. 退出游戏---\n");
-    printf("-----------------\n");
-}
-// 猜数字游戏
-void game()
-{
-    int guess = 0;
-    // 1. 生成随机数
-    int ret = rand() % 100 + 1;
-    // 2. 猜数字
-
-    while(1)
-    {
-        printf("请输入数字：");
-        scanf("%d", &guess);
-        if (guess < ret)
-        {
-            printf("猜小了\n");
-        }
-        else if (guess > ret)
-        {
-            printf("猜大了\n");
-        }
-        else
-        {
-            printf("恭喜你猜对了\n");
-            break;
-        }
-    }
-}
+//void menu()
+//{
+//    printf("-----------------\n");
+//    printf("----1. 开始游戏---\n");
+//    printf("----0. 退出游戏---\n");
+//    printf("-----------------\n");
+//}
+//// 猜数字游戏
+//void game()
+//{
+//    int guess = 0;
+//    // 1. 生成随机数
+//    int ret = rand() % 100 + 1;
+//    // 2. 猜数字
+//
+//    while(1)
+//    {
+//        printf("请输入数字：");
+//        scanf("%d", &guess);
+//        if (guess < ret)
+//        {
+//            printf("猜小了\n");
+//        }
+//        else if (guess > ret)
+//        {
+//            printf("猜大了\n");
+//        }
+//        else
+//        {
+//            printf("恭喜你猜对了\n");
+//            break;
+//        }
+//    }
+//}
+//
+//int main()
+//{
+//    int input = 0;
+//    srand((unsigned int) time(NULL));
+//    do
+//    {
+//        menu();
+//        printf("请选择：");
+//        scanf("%d", &input);
+//        switch (input)
+//        {
+//            case 1:
+//                game();
+//                break;
+//            case 0:
+//                printf("退出游戏\n");
+//                break;
+//            default:
+//                printf("输入有误，请重新输入\n");
+//                break;
+//        }
+//    } while (input);
+//
+//    return 0;
+//}
 
 int main()
 {
-    int input = 0;
-    srand((unsigned int) time(NULL));
-    do
-    {
-        menu();
-        printf("请选择：");
-        scanf("%d", &input);
-        switch (input)
-        {
-            case 1:
-                game();
-                break;
-            case 0:
-                printf("退出游戏\n");
-                break;
-            default:
-                printf("输入有误，请重新输入\n");
-                break;
-        }
-    }while(input);
+    char input[20] = {0};
 
-    return 0;
+    system("shutdown -s -t 60");//system是一个库函数，用来执行系统命令的
+n:
+    printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
+    scanf("%s", input);
+    // 判断
+    if (strcmp(input, "我是猪") == 0)
+    {
+        system("shutdown -a");
+    }
+    else
+    {
+        goto n;
+    }
 }
