@@ -360,21 +360,40 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    char input[20] = {0};
+//
+//    system("shutdown -s -t 60");//system是一个库函数，用来执行系统命令的
+//n:
+//    printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
+//    scanf("%s", input);
+//    // 判断
+//    if (strcmp(input, "我是猪") == 0)
+//    {
+//        system("shutdown -a");
+//    }
+//    else
+//    {
+//        goto n;
+//    }
+//}
+
 int main()
 {
     char input[20] = {0};
 
     system("shutdown -s -t 60");//system是一个库函数，用来执行系统命令的
-n:
-    printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
-    scanf("%s", input);
-    // 判断
-    if (strcmp(input, "我是猪") == 0)
+    while(1)
     {
-        system("shutdown -a");
+        printf("请注意，你的电脑将在1分钟后关机，如果输入：我是猪，就取消关机\n");
+        scanf("%s", input);
+        // 判断
+        if (strcmp(input, "我是猪") == 0)
+        {
+            system("shutdown -a");
+            break;
+        }
     }
-    else
-    {
-        goto n;
-    }
+
 }
