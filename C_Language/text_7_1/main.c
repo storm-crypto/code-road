@@ -399,36 +399,36 @@
 //}
 
 // 将三个数按照从小到大的顺序输出
-int main()
-{
-    int a = 2;
-    int b = 3;
-    int c = 1;
-
-    scanf("%d%d%d", &a, &b, &c);
-
-    if (a < b)
-    {
-        int tmp = a;
-        a = b;
-        b = tmp;
-    }
-    if (a < c)
-    {
-        int tmp = a;
-        a = c;
-        c = tmp;
-    }
-    if (b < c)
-    {
-        int tmp = b;
-        b = c;
-        c = tmp;
-    }
-    printf("%d %d %d", a, b, c);
-
-    return 0;
-}
+//int main()
+//{
+//    int a = 2;
+//    int b = 3;
+//    int c = 1;
+//
+//    scanf("%d%d%d", &a, &b, &c);
+//
+//    if (a < b)
+//    {
+//        int tmp = a;
+//        a = b;
+//        b = tmp;
+//    }
+//    if (a < c)
+//    {
+//        int tmp = a;
+//        a = c;
+//        c = tmp;
+//    }
+//    if (b < c)
+//    {
+//        int tmp = b;
+//        b = c;
+//        c = tmp;
+//    }
+//    printf("%d %d %d", a, b, c);
+//
+//    return 0;
+//}
 
 
 // 输出1~100中3的倍数
@@ -499,4 +499,66 @@ int main()
 //    printf("最终结果：%lf", sum);
 //    return 0;
 //}
+
+// 猜数游戏
+
+void menu()
+{
+    printf("---------------\n");
+    printf("----1. 开始游戏-\n");
+    printf("----0. 离开游戏-\n");
+    printf("---------------\n");
+}
+
+void game()
+{
+    int guess = 0;
+
+    // 1.生成随机数
+    int ret = rand() % 100 + 1;
+
+    while (1){
+        printf("请输入数字:");
+        scanf("%d", &guess);
+        if (guess < ret)
+        {
+            printf("太小了\n");
+        }
+        else if (guess > ret)
+        {
+            printf("太大了\n");
+        }
+        else
+        {
+            printf("猜对了\n");
+            break;
+        }
+    }
+
+}
+
+int main()
+{
+    srand((unsigned int) time(NULL));
+    int input = 0;
+    do
+    {
+        menu();
+        printf("请输入你的选择:");
+        scanf("%d", &input);
+        switch(input)
+        {
+            case 1:
+                game();
+                break;
+            case 0:
+                printf("离开游戏\n");
+                break;
+            default:
+                printf("请输入正确的数字\n");
+                break;
+        }
+    } while (input);
+    return 0;
+}
 
