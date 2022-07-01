@@ -109,13 +109,30 @@
 //    }
 //}
 
-int main()
-{
-    int i = 1;
-    while (i <= 10)
-    {
-        if (i == 5) continue;
-        printf("%d ", i);
-        i++;
-    }
+//int main()
+//{
+//    int i = 1;
+//    while (i <= 10)
+//    {
+//        if (i == 5) continue;
+//        printf("%d ", i);
+//        i++;
+//    }
+//}
+
+int main(){
+    char password[20] = {0};
+    printf("请输入密码：");
+
+    scanf("%s", password);
+    int tmp = 0;
+    // 这一步筛掉那些输入密码后的回车字符(\n)和输入密码带的那些空格
+    while ((tmp = getchar()) != '\n');
+
+    printf("请确认密码（Y/N）");
+    int ch = getchar();
+    if ('Y' == ch)
+        printf("确认成功");
+    else
+        printf("确认失败");
 }
