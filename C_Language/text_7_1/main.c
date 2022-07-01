@@ -147,15 +147,27 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    int i = 0;
+//    int j = 0;
+//    for (; i < 10; i++)
+//    {
+//        for (; j < 10; j++)
+//        {
+//            printf("hehe\n");
+//        }
+//    }
+//}
+
 int main()
 {
-    int i = 0;
-    int j = 0;
-    for (; i < 10; i++)
+    int i = 1;
+    do
     {
-        for (; j < 10; j++)
-        {
-            printf("hehe\n");
-        }
-    }
+        if (i == 5) continue;
+        printf("%d ", i);
+        i++;
+    } while (i <= 10);
+    return 0;
 }
