@@ -424,17 +424,27 @@
 //    printf("%d", max);
 //}
 
+//int main()
+//{
+//    int i = 0;
+//    int j = 0;
+//    for (i = 100; i <= 200; i++)
+//    {
+//        for (j = 2; j < i; j++)
+//        {
+//            if (i % j == 0) break;
+//        }
+//        if (j == i)
+//            printf("%d ", i);
+//    }
+//}
+
 int main()
 {
     int i = 0;
-    int j = 0;
-    for (i = 100; i <= 200; i++)
+    for (i = 1000; i <= 2000; i++)
     {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0) break;
-        }
-        if (j == i)
+        if (i % 4 == 0 || i % 400 == 0)
             printf("%d ", i);
     }
 }
