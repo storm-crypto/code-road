@@ -411,15 +411,30 @@
 //}
 
 // 求最大值
+//int main()
+//{
+//    int arr[] = {1, 5, 66, 54, 23, 4, 9, 8, 12, 11};
+//    int max = 0;
+//    int i = 0;
+//    for (i = 0; i < 10; i++)
+//    {
+//        if (arr[i] > max)
+//            max = arr[i];
+//    }
+//    printf("%d", max);
+//}
+
 int main()
 {
-    int arr[] = {1, 5, 66, 54, 23, 4, 9, 8, 12, 11};
-    int max = 0;
     int i = 0;
-    for (i = 0; i < 10; i++)
+    int j = 0;
+    for (i = 100; i <= 200; i++)
     {
-        if (arr[i] > max)
-            max = arr[i];
+        for (j = 2; j < i; j++)
+        {
+            if (i % j == 0) break;
+        }
+        if (j == i)
+            printf("%d ", i);
     }
-    printf("%d", max);
 }
