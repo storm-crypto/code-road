@@ -120,19 +120,42 @@
 //    }
 //}
 
-int main(){
-    char password[20] = {0};
-    printf("请输入密码：");
+//int main(){
+//    char password[20] = {0};
+//    printf("请输入密码：");
+//
+//    scanf("%s", password);
+//    int tmp = 0;
+//    // 这一步筛掉那些输入密码后的回车字符(\n)和输入密码带的那些空格
+//    while ((tmp = getchar()) != '\n');
+//
+//    printf("请确认密码（Y/N）");
+//    int ch = getchar();
+//    if ('Y' == ch)
+//        printf("确认成功");
+//    else
+//        printf("确认失败");
+//}
 
-    scanf("%s", password);
-    int tmp = 0;
-    // 这一步筛掉那些输入密码后的回车字符(\n)和输入密码带的那些空格
-    while ((tmp = getchar()) != '\n');
+//int main(){
+//    int i = 0;
+//    for (i = 1; i <= 10; i++)
+//    {
+//        if (5 == i) continue;
+//        printf("%d ", i);
+//    }
+//    return 0;
+//}
 
-    printf("请确认密码（Y/N）");
-    int ch = getchar();
-    if ('Y' == ch)
-        printf("确认成功");
-    else
-        printf("确认失败");
+int main()
+{
+    int i = 0;
+    int j = 0;
+    for (; i < 10; i++)
+    {
+        for (; j < 10; j++)
+        {
+            printf("hehe\n");
+        }
+    }
 }
