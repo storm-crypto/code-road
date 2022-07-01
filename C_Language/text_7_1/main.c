@@ -399,7 +399,39 @@
 //}
 
 // 将三个数按照从小到大的顺序输出
+int main()
+{
+    int a = 2;
+    int b = 3;
+    int c = 1;
 
+    scanf("%d%d%d", &a, &b, &c);
+
+    if (a < b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    if (a < c)
+    {
+        int tmp = a;
+        a = c;
+        c = tmp;
+    }
+    if (b < c)
+    {
+        int tmp = b;
+        b = c;
+        c = tmp;
+    }
+    printf("%d %d %d", a, b, c);
+
+    return 0;
+}
+
+
+// 输出1~100中3的倍数
 //int main()
 //{
 //    int i = 0;
@@ -454,17 +486,17 @@
 
 // 作业12：计算题目
 // 第一次做遇到的麻烦：不知道怎么用flag，正变成负，负变成正
-int main()
-{
-    double sum = 0.0;
-    int i = 0;
-    int flag = 1;
-    for (i = 1; i <= 100; i++)
-    {
-        sum += flag * 1.0 / i;
-        flag = -flag;
-    }
-    printf("最终结果：%lf", sum);
-    return 0;
-}
+//int main()
+//{
+//    double sum = 0.0;
+//    int i = 0;
+//    int flag = 1;
+//    for (i = 1; i <= 100; i++)
+//    {
+//        sum += flag * 1.0 / i;
+//        flag = -flag;
+//    }
+//    printf("最终结果：%lf", sum);
+//    return 0;
+//}
 
