@@ -1,4 +1,6 @@
+
 #include <stdio.h>
+#include <string.h>
 
 //int main()
 //{
@@ -204,35 +206,91 @@
 //}
 
 // 3.在一个有序数组中查找具体的数字n(二分查找)
+//int main()
+//{
+//    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//    int k = 7;
+//    int sz = sizeof(arr) / sizeof(arr[0]);  // 算出该数组右多少个元素
+//    // 查找k
+//    int l = 0; // 左下标
+//    int r = sz - 1; // 右下标
+//    while (l <= r)
+//    {
+//        int mid  = (l + r) / 2; // 中间值
+//        if (arr[mid] < k)
+//        {
+//            l = mid + 1;
+//        }
+//        else if (arr[mid] > k)
+//        {
+//            r = mid - 1;
+//        }
+//        else
+//        {
+//            printf("找到了，下标是%d\n", mid);
+//            break;
+//        }
+//    }
+//    if (l > r)
+//    {
+//        printf("找不到了\n");
+//    }
+//
+//    return 0;
+//}
+//#include <stdlib.h>
+//#include <windows.h>
+//#include <string.h>
+//// 4. 编写代码，演示多个字符从两端移动，向中间汇聚
+//int main()
+//{
+//    char arr1[] = "welcome to bit!!!!!";
+//    char arr2[] = "###################";
+//
+//    int left = 0;
+//    // int right = sizeof(arr1) / sizeof(arr1[0]) - 2; 因为字符串的结尾处是'\0'
+//    int right = strlen(arr1) - 1;
+//
+//    while (left <= right)
+//    {
+//        arr2[left] = arr1[left];
+//        arr2[right] = arr1[right];
+//        printf("%s\n", arr2);
+//        Sleep(1000); // 单位是毫秒
+//        //system("cls");
+//        left++;
+//        right--;
+//    }
+//
+//
+//    return 0;
+//
+//}
+
+// 5.编写代码实现，模拟用户登录情景，
+// 并且只能登录3次（只允许输入三次密码，如果密码正确则提示登录成功，如果三次均输入错误，则退出程序）
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int k = 7;
-    int sz = sizeof(arr) / sizeof(arr[0]);  // 算出该数组右多少个元素
-    // 查找k
-    int l = 0; // 左下标
-    int r = sz - 1; // 右下标
-    while (l <= r)
+    int i = 0;
+    char password[20] = {0};
+    // 假设正确密码是123456
+    for (i = 0; i < 3; i++)
     {
-        int mid  = (l + r) / 2; // 中间值
-        if (arr[mid] < k)
+        printf("请输入密码：");
+        scanf("%s", password);
+        if (strcmp(password, "123456") == 0)
         {
-            l = mid + 1;
-        }
-        else if (arr[mid] > k)
-        {
-            r = mid - 1;
+            printf("密码正确，登录成功\n");
+            break;
         }
         else
         {
-            printf("找到了，下标是%d\n", mid);
-            break;
+            printf("密码错误，请重新输入\n");
         }
     }
-    if (l > r)
+    if (3 == i)
     {
-        printf("找不到了\n");
+        printf("密码输入三次都错误\n");
     }
 
-    return 0;
 }
