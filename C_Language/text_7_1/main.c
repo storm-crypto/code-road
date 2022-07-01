@@ -160,14 +160,31 @@
 //    }
 //}
 
-int main()
-{
-    int i = 1;
-    do
+//int main()
+//{
+//    int i = 1;
+//    do
+//    {
+//        if (i == 5) continue;
+//        printf("%d ", i);
+//        i++;
+//    } while (i <= 10);
+//    return 0;
+//}
+
+// 1. 计算n的阶乘
+int main(){
+    int n = 0;
+    printf("请输入一个数：");
+    scanf("%d", &n);
+    int i = 0;
+    int ret = 1;
+    for (i = 1; i <= n; i++)
     {
-        if (i == 5) continue;
-        printf("%d ", i);
-        i++;
-    } while (i <= 10);
+       ret = ret * i;
+    }
+    printf("%d", ret);
     return 0;
 }
+
+// 2.
