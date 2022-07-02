@@ -49,17 +49,33 @@
 //}
 
 // 练习：输入5个人的身高，输出平均身高
+//int main()
+//{
+//    float high = 0.0;
+//    int i = 0;
+//    float sum = 0.0;
+//    for (i = 0; i < 5; i++)
+//    {
+//        scanf("%f", &high);
+//        sum += high;
+//    }
+//    printf("%.2f\n", sum / 5);
+//
+//    return 0;
+//}
+
+// 练习：根据输入的数字打印出星星的个数
 int main()
 {
-    float high = 0.0;
-    int i = 0;
-    float sum = 0.0;
-    for (i = 0; i < 5; i++)
+    int n = 0;
+    while (scanf("%d", &n) == 1)
     {
-        scanf("%f", &high);
-        sum += high;
+        int i = 0;
+        for (i = 0; i < n; i++)
+        {
+            printf("*");
+        }
+        printf("\n");
     }
-    printf("%.2f\n", sum / 5);
-
     return 0;
 }
