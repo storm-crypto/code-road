@@ -65,17 +65,35 @@
 //}
 
 // 练习：根据输入的数字打印出星星的个数
+//int main()
+//{
+//    int n = 0;
+//    while (scanf("%d", &n) == 1)
+//    {
+//        int i = 0;
+//        for (i = 0; i < n; i++)
+//        {
+//            printf("*");
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+// 找最大公约数
 int main()
 {
-    int n = 0;
-    while (scanf("%d", &n) == 1)
+    int a = 0;
+    int b = 0;
+    scanf("%d%d", &a, &b);
+    int m = (a < b) ? a : b;
+    while (1)
     {
-        int i = 0;
-        for (i = 0; i < n; i++)
+        if (a % m == 0 && b % m == 0)
         {
-            printf("*");
+            break;
         }
-        printf("\n");
+        m--;
     }
-    return 0;
+    printf("%d", m);
 }
