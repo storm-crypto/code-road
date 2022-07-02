@@ -633,17 +633,34 @@
 
 // 编写程序数一下 1到 100 的所有整数中出现多少个数字9
 
+//int main()
+//{
+//    int i = 0;
+//    int count = 0;
+//
+//    for (i = 1; i <= 100; i++)
+//    {
+//        if (i % 10 == 9)
+//            count++;
+//        if (i / 10 == 9)
+//            count++;
+//    }
+//    printf("%d ", count);
+//}
+
+// 打印9*9乘法表
 int main()
 {
     int i = 0;
-    int count = 0;
+    int j = 0;
 
-    for (i = 1; i <= 100; i++)
+    for (i = 1; i <= 9; i++)
     {
-        if (i % 10 == 9)
-            count++;
-        if (i / 10 == 9)
-            count++;
+        for (j = 1; j <= i; j++)
+        {
+            printf("%d * %d = %2d     ", i, j, i*j);
+        }
+        printf("\n");
     }
-    printf("%d ", count);
+    return 0;
 }
