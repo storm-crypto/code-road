@@ -7,6 +7,12 @@
 #IncludeRegexTransform: 
 
 D:/05code/2022/code-road/C_Language/text_7_1/main.c
+activdbg.h
+-
 stdio.h
+-
+string.h
+-
+time.h
 -
 
