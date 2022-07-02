@@ -617,16 +617,33 @@
 
 此时b中的内容即为两个数中的最大公约数。
 */
+//int main()
+//{
+//    int a = 20;
+//    int b = 40;
+//    int c = 0;
+//    while (c = a % b)
+//    {
+//        a = b;
+//        b = c;
+//    }
+//    printf("%d ", b);
+//    return 0;
+//}
+
+// 编写程序数一下 1到 100 的所有整数中出现多少个数字9
+
 int main()
 {
-    int a = 20;
-    int b = 40;
-    int c = 0;
-    while (c = a % b)
+    int i = 0;
+    int count = 0;
+
+    for (i = 1; i <= 100; i++)
     {
-        a = b;
-        b = c;
+        if (i % 10 == 9)
+            count++;
+        if (i / 10 == 9)
+            count++;
     }
-    printf("%d ", b);
-    return 0;
+    printf("%d ", count);
 }
