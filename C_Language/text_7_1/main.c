@@ -563,35 +563,70 @@
 //}
 
 // 二分查找
+//int main()
+//{
+//    int arr[] = {1, 2, 3 , 4, 5, 6, 7, 8, 9, 10};
+//
+//    int k = 7;
+//
+//    int l = 0;
+//    int r = sizeof (arr) / sizeof (arr[0]) - 1;
+//
+//    while (l <= r)
+//    {
+//        int mid = (l + r) / 2;
+//        if (k > arr[mid])
+//        {
+//            l = mid + 1;
+//        }
+//        else if (k < arr[mid])
+//        {
+//            r = mid - 1;
+//        }
+//        else
+//        {
+//            printf("7对应的下标是:%d", mid);
+//            break;
+//        }
+//
+//    }
+//    if (l > r)
+//    {
+//        printf("找不到\n");
+//    }
+//}
+
+
+// 给定两个数，求这两个数的最大公约数
+//例如：
+//输入：20 40
+//输出：20
+
+/*
+最大公约数：即两个数据中公共约数的最大者。
+求解的方式比较多，暴力穷举、辗转相除法、更相减损法、Stein算法算法
+此处主要介绍：辗转相除法
+思路：
+例子：18和24的最大公约数
+第一次：a = 18  b = 24  c = a%b = 18%24 = 18
+      循环中：a = 24   b=18
+第二次：a = 24   b = 18  c = a%b = 24%18 = 6
+      循环中：a = 18   b = 6
+第三次：a = 18   b = 6   c=a%b = 18%6 = 0
+  循环结束
+
+此时b中的内容即为两个数中的最大公约数。
+*/
 int main()
 {
-    int arr[] = {1, 2, 3 , 4, 5, 6, 7, 8, 9, 10};
-
-    int k = 7;
-
-    int l = 0;
-    int r = sizeof (arr) / sizeof (arr[0]) - 1;
-
-    while (l <= r)
+    int a = 20;
+    int b = 40;
+    int c = 0;
+    while (c = a % b)
     {
-        int mid = (l + r) / 2;
-        if (k > arr[mid])
-        {
-            l = mid + 1;
-        }
-        else if (k < arr[mid])
-        {
-            r = mid - 1;
-        }
-        else
-        {
-            printf("7对应的下标是:%d", mid);
-            break;
-        }
-
+        a = b;
+        b = c;
     }
-    if (l > r)
-    {
-        printf("找不到\n");
-    }
+    printf("%d ", b);
+    return 0;
 }
