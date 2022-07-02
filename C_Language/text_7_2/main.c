@@ -27,23 +27,39 @@
 //}
 
 // 输入一个班级5个学生的5科成绩，输入5个学生的各科成绩和总分
+//int main()
+//{
+//    float score[5] = {0.0};
+//    int i = 0;
+//    for (i = 0; i < 5; i++)
+//    {
+//        int j = 0;
+//        float sum = 0.0;
+//        for (j = 0; j < 5; j++) // 输入每个人的各科成绩
+//        {
+//            scanf("%f", &score[j]);
+//            sum += score[j];
+//        }
+//        for (j = 0; j < 5; j++)
+//        {
+//            printf("%.1f ", score[j]);
+//        }
+//        printf("%.1f\n", sum);
+//    }
+//}
+
+// 练习：输入5个人的身高，输出平均身高
 int main()
 {
-    float score[5] = {0.0};
+    float high = 0.0;
     int i = 0;
+    float sum = 0.0;
     for (i = 0; i < 5; i++)
     {
-        int j = 0;
-        float sum = 0.0;
-        for (j = 0; j < 5; j++) // 输入每个人的各科成绩
-        {
-            scanf("%f", &score[j]);
-            sum += score[j];
-        }
-        for (j = 0; j < 5; j++)
-        {
-            printf("%.1f ", score[j]);
-        }
-        printf("%.1f\n", sum);
+        scanf("%f", &high);
+        sum += high;
     }
+    printf("%.2f\n", sum / 5);
+
+    return 0;
 }
