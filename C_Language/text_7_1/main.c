@@ -502,63 +502,96 @@
 
 // 猜数游戏
 
-void menu()
+//void menu()
+//{
+//    printf("---------------\n");
+//    printf("----1. 开始游戏-\n");
+//    printf("----0. 离开游戏-\n");
+//    printf("---------------\n");
+//}
+//
+//void game()
+//{
+//    int guess = 0;
+//
+//    // 1.生成随机数
+//    int ret = rand() % 100 + 1;
+//
+//    while (1){
+//        printf("请输入数字:");
+//        scanf("%d", &guess);
+//        if (guess < ret)
+//        {
+//            printf("太小了\n");
+//        }
+//        else if (guess > ret)
+//        {
+//            printf("太大了\n");
+//        }
+//        else
+//        {
+//            printf("猜对了\n");
+//            break;
+//        }
+//    }
+//
+//}
+//
+//int main()
+//{
+//    srand((unsigned int) time(NULL));
+//    int input = 0;
+//    do
+//    {
+//        menu();
+//        printf("请输入你的选择:");
+//        scanf("%d", &input);
+//        switch(input)
+//        {
+//            case 1:
+//                game();
+//                break;
+//            case 0:
+//                printf("离开游戏\n");
+//                break;
+//            default:
+//                printf("请输入正确的数字\n");
+//                break;
+//        }
+//    } while (input);
+//    return 0;
+//}
+
+// 二分查找
+int main()
 {
-    printf("---------------\n");
-    printf("----1. 开始游戏-\n");
-    printf("----0. 离开游戏-\n");
-    printf("---------------\n");
-}
+    int arr[] = {1, 2, 3 , 4, 5, 6, 7, 8, 9, 10};
 
-void game()
-{
-    int guess = 0;
+    int k = 7;
 
-    // 1.生成随机数
-    int ret = rand() % 100 + 1;
+    int l = 0;
+    int r = sizeof (arr) / sizeof (arr[0]) - 1;
 
-    while (1){
-        printf("请输入数字:");
-        scanf("%d", &guess);
-        if (guess < ret)
+    while (l <= r)
+    {
+        int mid = (l + r) / 2;
+        if (k > arr[mid])
         {
-            printf("太小了\n");
+            l = mid + 1;
         }
-        else if (guess > ret)
+        else if (k < arr[mid])
         {
-            printf("太大了\n");
+            r = mid - 1;
         }
         else
         {
-            printf("猜对了\n");
+            printf("7对应的下标是:%d", mid);
             break;
         }
+
     }
-
-}
-
-int main()
-{
-    srand((unsigned int) time(NULL));
-    int input = 0;
-    do
+    if (l > r)
     {
-        menu();
-        printf("请输入你的选择:");
-        scanf("%d", &input);
-        switch(input)
-        {
-            case 1:
-                game();
-                break;
-            case 0:
-                printf("离开游戏\n");
-                break;
-            default:
-                printf("请输入正确的数字\n");
-                break;
-        }
-    } while (input);
-    return 0;
+        printf("找不到\n");
+    }
 }
-
