@@ -35,5 +35,6 @@ int main()
     scanf("%d%d", &a, &b);
 
     int m = get_max(a, b);
+    printf("%d", m);
     return 0;
 }
