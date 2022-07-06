@@ -1,3 +1,0 @@
-"D:\Program Files\JetBrains\CLion 2020.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\text_7_2.dir/objects.a
-"D:\Program Files\JetBrains\mingw64\bin\ar.exe" cr CMakeFiles\text_7_2.dir/objects.a @CMakeFiles\text_7_2.dir\objects1.rsp
-"D:\Program Files\JetBrains\mingw64\bin\gcc.exe" -g   -Wl,--whole-archive CMakeFiles\text_7_2.dir/objects.a -Wl,--no-whole-archive  -o text_7_2.exe -Wl,--out-implib,libtext_7_2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\text_7_2.dir\linklibs.rsp
