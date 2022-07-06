@@ -11,12 +11,29 @@
 //}
 
 // 将前面的几个字符设置成x，用memset
+//int main()
+//{
+//    char arr[] = "hello bit";
+//    memset(arr, 'X', 5);
+//
+//    printf("%s\n", arr);
+//
+//    return 0;
+//}
+
+// 写一个函数可以找出两个整数的最大值
+
+int get_max(int x, int y)
+{
+    return x > y ? x : y;
+}
+
 int main()
 {
-    char arr[] = "hello bit";
-    memset(arr, 'X', 5);
+    int a = 0;
+    int b = 0;
+    scanf("%d%d", &a, &b);
 
-    printf("%s\n", arr);
-
+    int m = get_max(a, b);
     return 0;
 }
