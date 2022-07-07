@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/05code/2022/code-road/C_Language/test_07_07/add.c">
+			<Option target="test_07_07"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C_Language/test_07_07/add.h">
+			<Option target="test_07_07"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C_Language/test_07_07/main.c">
 			<Option target="test_07_07"/>
 		</Unit>

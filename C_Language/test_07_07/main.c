@@ -110,9 +110,23 @@
 //}
 
 // ¡¥ Ω∑√Œ 
+//int main()
+//{
+//    // printf("len = %d",  strlen("absd"));
+//
+//    printf("%d", printf("%d", printf("%d", 43)));
+//}
+
+
+#include "add.h"
+
 int main()
 {
-    // printf("len = %d",  strlen("absd"));
-
-    printf("%d", printf("%d", printf("%d", 43)));
+    int a = 10;
+    int b = 20;
+    int sum = Add(a, b);
+    printf("%d\n", sum);
+    return 0;
 }
+
+

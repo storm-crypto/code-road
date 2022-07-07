@@ -142,6 +142,33 @@ test_07_07/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_07_07.dir\build.make CMakeFiles/test_07_07.dir/build
 .PHONY : test_07_07/fast
 
+add.obj: add.c.obj
+
+.PHONY : add.obj
+
+# target to build an object file
+add.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_07_07.dir\build.make CMakeFiles/test_07_07.dir/add.c.obj
+.PHONY : add.c.obj
+
+add.i: add.c.i
+
+.PHONY : add.i
+
+# target to preprocess a source file
+add.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_07_07.dir\build.make CMakeFiles/test_07_07.dir/add.c.i
+.PHONY : add.c.i
+
+add.s: add.c.s
+
+.PHONY : add.s
+
+# target to generate assembly for a file
+add.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_07_07.dir\build.make CMakeFiles/test_07_07.dir/add.c.s
+.PHONY : add.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... test_07_07
+	@echo ... add.obj
+	@echo ... add.i
+	@echo ... add.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
