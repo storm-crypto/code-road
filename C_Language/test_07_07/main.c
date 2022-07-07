@@ -1,3 +1,4 @@
+#include <accctrl.h>
 #include <stdio.h>
 
 // 练习：写一个函数判断一个数是不是素数
@@ -95,15 +96,23 @@
 
 // 练习：写一个函数，每调用一次这个函数，就会将num的值+1
 
-void test(int *p)
-{
-    *p = *p + 1;
-}
+//void test(int *p)
+//{
+//    *p = *p + 1;
+//}
+//
+//int main()
+//{
+//    int num = 0;
+//    test(&num);
+//    printf("%d\n",num);
+//    return 0;
+//}
 
+// 链式访问
 int main()
 {
-    int num = 0;
-    test(&num);
-    printf("%d\n",num);
-    return 0;
+    // printf("len = %d",  strlen("absd"));
+
+    printf("%d", printf("%d", printf("%d", 43)));
 }
