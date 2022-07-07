@@ -118,15 +118,31 @@
 //}
 
 
-#include "add.h"
+//#include "add.h"
+//
+//int main()
+//{
+//    int a = 10;
+//    int b = 20;
+//    int sum = Add(a, b);
+//    printf("%d\n", sum);
+//    return 0;
+//}
 
+// 递归练习：接受一个整型值(unsigned)，按照顺序打印它的每一位。
+void print(int n)
+{
+    if (n > 9)
+    {
+        print(n / 10);
+    }
+    printf("%d ", n % 10);
+}
 int main()
 {
-    int a = 10;
-    int b = 20;
-    int sum = Add(a, b);
-    printf("%d\n", sum);
-    return 0;
+    unsigned int num = 0;
+    scanf("%d", &num);
+    print(num); // print函数可以把num的每一位按照顺序打印出来
 }
 
 
