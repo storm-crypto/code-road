@@ -1,7 +1,7 @@
 #include <accctrl.h>
 #include <stdio.h>
 
-// å­—ç¬¦ä¸²æ‹·è´ï¼Œåº“å‡½æ•°strcpy
+// ×Ö·û´®¿½±´£¬¿âº¯Êýstrcpy
 //int main() {
 //    char arr1[] = "abcdef";
 //    char arr2[20] = "xxxxxxxxxxx";
@@ -10,7 +10,7 @@
 //    return 0;
 //}
 
-// å°†å‰é¢çš„å‡ ä¸ªå­—ç¬¦è®¾ç½®æˆxï¼Œç”¨memset
+// ½«Ç°ÃæµÄ¼¸¸ö×Ö·ûÉèÖÃ³Éx£¬ÓÃmemset
 //int main()
 //{
 //    char arr[] = "hello bit";
@@ -21,11 +21,31 @@
 //    return 0;
 //}
 
-// å†™ä¸€ä¸ªå‡½æ•°å¯ä»¥æ‰¾å‡ºä¸¤ä¸ªæ•´æ•°çš„æœ€å¤§å€¼
+// Ð´Ò»¸öº¯Êý¿ÉÒÔÕÒ³öÁ½¸öÕûÊýµÄ×î´óÖµ
 
-int get_max(int x, int y)
+//int get_max(int x, int y)
+//{
+//    return x > y ? x : y;
+//}
+//
+//int main()
+//{
+//    int a = 0;
+//    int b = 0;
+//    scanf("%d%d", &a, &b);
+//
+//    int m = get_max(a, b);
+//    printf("%d", m);
+//    return 0;
+//}
+
+// Ð´Ò»¸öº¯Êý¿ÉÒÔ½»»»Á½¸öÕûÐÍ±äÁ¿µÄÄÚÈÝ
+
+void swap(int* a, int* b)
 {
-    return x > y ? x : y;
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
 int main()
@@ -34,7 +54,8 @@ int main()
     int b = 0;
     scanf("%d%d", &a, &b);
 
-    int m = get_max(a, b);
-    printf("%d", m);
+    printf("½»»»Ç°£ºa = %d b = %d\n", a, b);
+    swap(&a, &b);
+    printf("½»»»ºó£ºa = %d b = %d", a, b);
     return 0;
 }
