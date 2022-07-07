@@ -157,21 +157,38 @@
 //    return count;
 //}
 // 递归，没有用到临时变量
-int my_strlen(char *str)
-{
-    if (*str != '\0')
-    {
-         return 1 + my_strlen(str+1);
-    }
-    else
-        return 0;
-}
+//int my_strlen(char *str)
+//{
+//    if (*str != '\0')
+//    {
+//         return 1 + my_strlen(str+1);
+//    }
+//    else
+//        return 0;
+//}
+//
+//int main()
+//{
+//    char arr[] = "abcdef";
+//    int len = my_strlen(arr);
+//
+//    printf("%d\n", len);
+//    return 0;
+//}
 
+// 求n的阶乘（递归写法）
+int fac1(int n)
+{
+    if (n <= 1)
+        return 1;
+    else
+        return n * fac1(n - 1);
+}
 int main()
 {
-    char arr[] = "abcdef";
-    int len = my_strlen(arr);
-
-    printf("%d\n", len);
+    int n =0;
+    scanf("%d", &n);
+    int ret = fac1(n);
+    printf("%d\n", ret);
     return 0;
 }
