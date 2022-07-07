@@ -55,40 +55,55 @@
 // 练习：写一个函数，实现一个整型有序数组的二分查找
 // 找不到返回-1
 // 找到返回对应的位置
-int binary_search(int arr[], int k, int sz)
-{
-    int left = 0;
-    int right = sz - 1;
+//int binary_search(int arr[], int k, int sz)
+//{
+//    int left = 0;
+//    int right = sz - 1;
+//
+//    while (left <= right)
+//    {
+//        int mid = left + (right - left) / 2;
+//        if (arr[mid] < k)
+//        {
+//            left = mid + 1;
+//        }
+//        else if (arr[mid] > k)
+//        {
+//            right = mid - 1;
+//        }
+//        else
+//        {
+//            return left;
+//        }
+//    }
+//    return -1;
+//}
+//int main()
+//{
+//    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//    int sz = 0;
+//    sz = sizeof(arr) / sizeof (arr[0]);
+//    int ret = binary_search(arr, 7, sz);
+//    if (-1 == ret)
+//    {
+//        printf("找不到\n");
+//    }
+//    else
+//        printf("找到了，位置是:%d", ret);
+//    return 0;
+//}
 
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] < k)
-        {
-            left = mid + 1;
-        }
-        else if (arr[mid] > k)
-        {
-            right = mid - 1;
-        }
-        else
-        {
-            return left;
-        }
-    }
-    return -1;
+// 练习：写一个函数，每调用一次这个函数，就会将num的值+1
+
+void test(int *p)
+{
+    *p = *p + 1;
 }
+
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int sz = 0;
-    sz = sizeof(arr) / sizeof (arr[0]);
-    int ret = binary_search(arr, 7, sz);
-    if (-1 == ret)
-    {
-        printf("找不到\n");
-    }
-    else
-        printf("找到了，位置是:%d", ret);
+    int num = 0;
+    test(&num);
+    printf("%d\n",num);
     return 0;
 }
