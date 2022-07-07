@@ -146,16 +146,27 @@
 //}
 
 // 编写函数不允许创建临时变量，求字符串长度
+//int my_strlen(char *str)
+//{
+//    int count = 0; // 统计字符个数
+//    while (*str != '\0')
+//    {
+//        count++;
+//        str++;
+//    }
+//    return count;
+//}
+// 递归，没有用到临时变量
 int my_strlen(char *str)
 {
-    int count = 0; // 统计字符个数
-    while (*str != '\0')
+    if (*str != '\0')
     {
-        count++;
-        str++;
+         return 1 + my_strlen(str+1);
     }
-    return count;
+    else
+        return 0;
 }
+
 int main()
 {
     char arr[] = "abcdef";
