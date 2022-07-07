@@ -130,19 +130,37 @@
 //}
 
 // 递归练习：接受一个整型值(unsigned)，按照顺序打印它的每一位。
-void print(int n)
+//void print(int n)
+//{
+//    if (n > 9)
+//    {
+//        print(n / 10);
+//    }
+//    printf("%d ", n % 10);
+//}
+//int main()
+//{
+//    unsigned int num = 0;
+//    scanf("%d", &num);
+//    print(num); // print函数可以把num的每一位按照顺序打印出来
+//}
+
+// 编写函数不允许创建临时变量，求字符串长度
+int my_strlen(char *str)
 {
-    if (n > 9)
+    int count = 0; // 统计字符个数
+    while (*str != '\0')
     {
-        print(n / 10);
+        count++;
+        str++;
     }
-    printf("%d ", n % 10);
+    return count;
 }
 int main()
 {
-    unsigned int num = 0;
-    scanf("%d", &num);
-    print(num); // print函数可以把num的每一位按照顺序打印出来
+    char arr[] = "abcdef";
+    int len = my_strlen(arr);
+
+    printf("%d\n", len);
+    return 0;
 }
-
-
