@@ -184,21 +184,56 @@
 //    else
 //        return n * fac1(n - 1);
 //}
-int fac(int n)
+//int fac(int n)
+//{
+//    int i = 0;
+//    int ret = 1;
+//    for (i = 0; i < n; i++)
+//    {
+//        ret = ret * i;
+//    }
+//    return ret;
+//}
+//int main()
+//{
+//    int n =0;
+//    scanf("%d", &n);
+//    int ret = fac(n);
+//    printf("%d\n", ret);
+//    return 0;
+//}
+
+// 练习：求第n个斐波那契数
+// 递归实现
+//int fib(int n)
+//{
+//    if (n <= 2)
+//        return 1;
+//    else
+//        return fib(n - 1) + fib(n - 2);
+//}
+// 迭代的方式
+int fib(int n)
 {
-    int i = 0;
-    int ret = 1;
-    for (i = 0; i < n; i++)
+    int a = 1;
+    int b = 1;
+    int c = 1;
+
+    while (n > 2)
     {
-        ret = ret * i;
+        c = a + b;
+        a  = b;
+        b  = c;
+        n--;
     }
-    return ret;
+    return c;
 }
+
 int main()
 {
-    int n =0;
+    int n = 0;
     scanf("%d", &n);
-    int ret = fac(n);
+    int ret = fib(n);
     printf("%d\n", ret);
     return 0;
 }
