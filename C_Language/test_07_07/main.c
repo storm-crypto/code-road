@@ -177,18 +177,28 @@
 //}
 
 // ÇónµÄ½×³Ë£¨µÝ¹éÐ´·¨£©
-int fac1(int n)
+//int fac1(int n)
+//{
+//    if (n <= 1)
+//        return 1;
+//    else
+//        return n * fac1(n - 1);
+//}
+int fac(int n)
 {
-    if (n <= 1)
-        return 1;
-    else
-        return n * fac1(n - 1);
+    int i = 0;
+    int ret = 1;
+    for (i = 0; i < n; i++)
+    {
+        ret = ret * i;
+    }
+    return ret;
 }
 int main()
 {
     int n =0;
     scanf("%d", &n);
-    int ret = fac1(n);
+    int ret = fac(n);
     printf("%d\n", ret);
     return 0;
 }
