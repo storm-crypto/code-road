@@ -56,15 +56,22 @@ void bubble_sort(int arr[], int sz)
     int i = 0;
     for (i = 0; i < sz - 1; i++)
     {
+        int flag = 1; // 假设已经有序
         int j = 0;
         for (j = 0; j < sz - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
+                flag = 0; // 进到这里就说明假设不成立
                 int tmp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = tmp;
             }
+        }
+        // 一趟过后，如果flag还是1(假设有序的情况)，就跳出循环
+        if (1 == flag)
+        {
+            break;
         }
     }
 }
