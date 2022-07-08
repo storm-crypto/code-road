@@ -12,4 +12,6 @@
 void InitBoard(char board[ROW][COL], int row, int col);
 // ¥Ú”°∆Â≈Ã
 void DisplayBoard(char board[ROW][COL], int row, int col);
+// ÕÊº“œ¬∆Â
+void play_move(char board[ROW][COL], int row, int col);
 #endif//GAME_GAME_H

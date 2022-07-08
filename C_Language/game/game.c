@@ -70,3 +70,36 @@ void DisplayBoard(char board[ROW][COL], int row, int col) {
         }
     }
 }
+
+// 玩家下棋
+void play_move(char board[ROW][COL], int row, int col)
+{
+    int x = 0;
+    int y = 0;
+    printf("玩家下棋\n");
+    while (1)
+    {
+        printf("请输入下标：>");
+        scanf("%d %d", &x, &y);
+        // 判断下标的取值
+        if (x >= 1 && x <= row && y >= 1 && y <= col)
+        {
+            // 下棋
+            // 判断这个下标有没有被占用过
+            if (board[x - 1][y - 1] == ' ')
+            {
+                board[x - 1][y - 1] = '*';
+                break;
+            }
+            else
+            {
+                printf("该坐标被占用，请重新输入\n");
+            }
+        }
+        else
+        {
+            printf("坐标非法，请重新输入\n");
+        }
+    }
+
+}
