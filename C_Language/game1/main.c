@@ -4,7 +4,7 @@
 
 // 测试三子棋的逻辑
 #include <stdio.h>
-
+#include "game.h"
 void menu()
 {
     printf("*****************************\n");
@@ -13,14 +13,13 @@ void menu()
     printf("*****************************\n");
 }
 
-void
 
 void game()
 {
      // 存放下棋的数据
-     char board[3][3] = {0};
+     char board[ROW][COL] = {0};
      // 初始化棋盘为全空格
-     InitBoard(board, 3, 3); // 初始化数组
+     InitBoard(board, ROW, COL); // 初始化数组
 }
 
 void test()
