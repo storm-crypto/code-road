@@ -13,6 +13,16 @@ void menu()
     printf("*****************************\n");
 }
 
+void
+
+void game()
+{
+     // 存放下棋的数据
+     char board[3][3] = {0};
+     // 初始化棋盘为全空格
+     InitBoard(board, 3, 3); // 初始化数组
+}
+
 void test()
 {
     int input = 0;
@@ -23,7 +33,7 @@ void test()
         scanf("%d", &input);
         switch (input) {
             case 1:
-                printf("三子棋\n");
+                game(); // 游戏的逻辑
                 break;
             case 0:
                 printf("退出游戏\n");
