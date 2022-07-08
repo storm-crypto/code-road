@@ -213,27 +213,145 @@
 //        return fib(n - 1) + fib(n - 2);
 //}
 // 迭代的方式
-int fib(int n)
-{
-    int a = 1;
-    int b = 1;
-    int c = 1;
+//int fib(int n)
+//{
+//    int a = 1;
+//    int b = 1;
+//    int c = 1;
+//
+//    while (n > 2)
+//    {
+//        c = a + b;
+//        a  = b;
+//        b  = c;
+//        n--;
+//    }
+//    return c;
+//}
+//
+//int main()
+//{
+//    int n = 0;
+//    scanf("%d", &n);
+//    int ret = fib(n);
+//    printf("%d\n", ret);
+//    return 0;
+//}
 
-    while (n > 2)
-    {
-        c = a + b;
-        a  = b;
-        b  = c;
-        n--;
-    }
-    return c;
-}
+//  作业：函数判断素数
+//int is_prime(int n)
+//{
+//    int j = 1;
+//    for (j = 2; j < n; j++)
+//    {
+//        if (n % j == 0)
+//        {
+//           return 0;
+//        }
+//    }
+//    return 1;
+//}
+//
+//int main()
+//{
+//    int i = 0;
+//    for (i = 100; i <= 200; i++)
+//    {
+//        if (is_prime(i) == 1)
+//        {
+//            printf("%d ", i);
+//        }
+//    }
+//    return 0;
+//}
 
-int main()
-{
-    int n = 0;
-    scanf("%d", &n);
-    int ret = fib(n);
-    printf("%d\n", ret);
-    return 0;
-}
+// 判断闰年
+//int is_leap_year(int n)
+//{
+//    if ((n % 4 == 0 && n % 100 != 0)||(n % 400 == 0))
+//        return 1;
+//    return 0;
+//}
+//
+//int main()
+//{
+//    int n = 0;
+//    scanf("%d", &n);
+//    if (is_leap_year(n) == 1)
+//        printf("%d是润年", n);
+//    else
+//        printf("%d不是闰年",n);
+//    return 0;
+//}
+
+// 交换两个整数
+
+//void swap(int *a, int *b)
+//{
+//    int tmp = *a;
+//    *a = *b;
+//    *b = tmp;
+//}
+//
+//int main()
+//{
+//    int a = 10;
+//    int b = 20;
+//    printf("交换前：a = %d, b = %d\n", a, b);
+//    swap(&a, &b);
+//    printf("交换后：a = %d, b = %d", a, b);
+//}
+
+// 打印乘法口诀
+//void test(int n)
+//{
+//    int i = 0;
+//    for (i = 1; i <= n; i++)
+//    {
+//        int j = 0;
+//        for (j = 1; j <= i; j++)
+//        {
+//            printf("%d * %d = %2d   ", i, j, i * j);
+//        }
+//        printf("\n");
+//    }
+//}
+//
+//int main()
+//{
+//    int n = 0;
+//    scanf("%d", &n);
+//    test(n);
+//}
+
+//int Fun(int n)
+//{
+//    if(n==5)
+//        return 2;
+//    else
+//        return 2*Fun(n+1);
+//}
+//
+//int main()
+//{
+//    int ret = Fun(2);
+//    printf("%d\n", ret);
+//}
+
+// 打印数的每一位数
+
+//void print(int n )
+//{
+//    if (n > 9)
+//    {
+//        print(n / 10);
+//    }
+//    printf("%d ", n % 10);
+//}
+//int main()
+//{
+//    int n = 0;
+//    scanf("%d", &n);
+//    print(n);
+//    return 0;
+//}

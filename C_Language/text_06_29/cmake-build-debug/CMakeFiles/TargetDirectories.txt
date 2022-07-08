@@ -1,3 +1,0 @@
-D:/05code/2022/code-road/C_Language/text_6_29/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/05code/2022/code-road/C_Language/text_6_29/cmake-build-debug/CMakeFiles/text_6_29.dir
-D:/05code/2022/code-road/C_Language/text_6_29/cmake-build-debug/CMakeFiles/edit_cache.dir
