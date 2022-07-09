@@ -1,11 +1,13 @@
 //
-// Created by æ—­å“¥ on 2022-07-09.
+// Created by Ğñ¸ç on 2022-07-09.
 //
 
 #ifndef TEST_07_09_GAME_H
 #define TEST_07_09_GAME_H
 
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 #define ROW 9
 #define COL 9
@@ -13,9 +15,17 @@
 #define ROWS ROW + 2
 #define COLS COL + 2
 
-// åˆå§‹åŒ–æ£‹ç›˜
+#define EASY_COUNT 10
+
+// ³õÊ¼»¯ÆåÅÌ
 void init_board(char arr[ROWS][COLS], int rows, int cols, char set);
 
-// æ‰“å°æ£‹ç›˜
+// ´òÓ¡ÆåÅÌ
 void show_board(char arr[ROWS][COLS], int row, int col);
+
+// ²¼ÖÃÀ×
+void set_mine(char mine[ROWS][COLS], int row, int col);
+
+// ÅÅ²éÀ×
+void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);
 #endif//TEST_07_09_GAME_H

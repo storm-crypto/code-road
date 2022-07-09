@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
-D:/05code/2022/code-road/C_Language/test_07_09/game.c
-game.h
-D:/05code/2022/code-road/C_Language/test_07_09/game.h
-
 D:/05code/2022/code-road/C_Language/test_07_09/game.h
 stdio.h
 -
+time.h
+-
+stdlib.h
+-
+
+D:/05code/2022/code-road/C_Language/test_07_09/main.c
+game.h
+D:/05code/2022/code-road/C_Language/test_07_09/game.h
 

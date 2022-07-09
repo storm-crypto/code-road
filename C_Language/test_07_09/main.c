@@ -11,18 +11,27 @@ void menu()
 void game()
 {
     // 扫雷游戏的实现
+    // mine数组用来存放布置好的雷的信息
     char mine[ROWS][COLS] = {0}; // '0'
+    // show数组用来存放排查出的雷的信息
     char show[ROWS][COLS] = {0}; // '*'
     // 初始化棋盘
     init_board(mine, ROWS, COLS, '0'); // 雷为1，非雷为0
     init_board(show, ROWS, COLS, '*'); // 保存每个位置周围有多少个雷
     // 打印棋盘
-    show_board(mine, ROW, COL);
+    //show_board(mine, ROW, COL);
+    // 布置雷
+    set_mine(mine, ROW, COL);
     show_board(show, ROW, COL);
+    // 排查雷
+    fine_mine(mine, show, ROW, COL);
+
+
 }
 
 int main() {
     int input = 0;
+    srand((unsigned int)time(NULL));
     do
     {
         menu();
