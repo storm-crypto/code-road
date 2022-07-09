@@ -57,8 +57,53 @@ void set_mine(char mine[ROWS][COLS], int row, int col)
     }
 }
 
+int get_mine_count(char mine[ROWS][COLS], int x, int y)
+{
+    return mine[x - 1][y] +
+        mine[x - 1][y - 1] +
+        mine[x][y - 1] +
+        mine[x + 1][y - 1] +
+        mine[x + 1][y + 1] +
+        mine[x + 1][y + 1] +
+        mine[x][y + 1] +
+        mine[x - 1][y + 1] - 8 * '0';
+}
+
 // 排查雷
 void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 {
-
+    int x = 0;
+    int y = 0;
+    int win = 0;
+    while (win < row * col - EASY_COUNT)
+    {
+        printf("请输入要排查的坐标:>");
+        scanf("%d %d", &x, &y);
+        // 坐标的合法性的判断
+        if (x >= 1 && x <= row && y >= 1 && y <= col)
+        {
+            if (mine[x][y] == '1')
+            {
+                printf("很遗憾，被炸死了\n");
+                show_board(mine, ROW, COL);
+                break;
+            }
+            else
+            {
+                int count = get_mine_count(mine, x, y); // 统计这个坐标周围有多少个雷
+                show[x][y] = count + '0';
+                show_board(show, ROW, COL);
+                win++;
+            }
+        }
+        else
+        {
+            printf("坐标非法，重新输入\n");
+        }
+    }
+    if (win == row * col - EASY_COUNT)
+    {
+        printf("恭喜你，排雷成功\n");
+        show_board(mine, ROW, COL);
+    }
 }
