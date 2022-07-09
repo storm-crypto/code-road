@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "game.h"
 
 void menu()
@@ -15,10 +14,11 @@ void game()
     char mine[ROWS][COLS] = {0}; // '0'
     char show[ROWS][COLS] = {0}; // '*'
     // 初始化棋盘
-    init_board(mine, ROWS, COLS, '0');
-    init_board(show, ROWS, COLS, '*');
-
-
+    init_board(mine, ROWS, COLS, '0'); // 雷为1，非雷为0
+    init_board(show, ROWS, COLS, '*'); // 保存每个位置周围有多少个雷
+    // 打印棋盘
+    show_board(mine, ROW, COL);
+    show_board(show, ROW, COL);
 }
 
 int main() {
@@ -30,7 +30,7 @@ int main() {
         scanf("%d", &input);
         switch (input) {
             case 1:
-                printf("三子棋游戏\n");
+                game();
                 break;
             case 0:
                 printf("退出游戏\n");

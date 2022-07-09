@@ -3,6 +3,7 @@
 //
 
 #include "game.h"
+
 void init_board(char arr[ROWS][COLS], int rows, int cols, char set)
 {
     int i = 0;
@@ -13,5 +14,19 @@ void init_board(char arr[ROWS][COLS], int rows, int cols, char set)
         {
             arr[i][j] = set;
         }
+    }
+}
+
+void show_board(char arr[ROWS][COLS], int row, int col)
+{
+    int i = 0;
+    int j = 0;
+    for (i = 1; i <= row; i++)
+    {
+        for (j = 1; j <= col; j++)
+        {
+            printf("%c ", arr[i][j]);
+        }
+        printf("\n");
     }
 }
