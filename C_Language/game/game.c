@@ -103,3 +103,23 @@ void play_move(char board[ROW][COL], int row, int col)
     }
 
 }
+
+// 电脑下棋
+void computer_move(char board[ROW][COL], int row, int col)
+{
+    int x = 0;
+    int y = 0;
+    printf("电脑下棋：>\n");
+    while (1)
+    {
+        x = rand() % row; // 0 ~2
+        y = rand() % col;
+
+        if (board[x][y] == ' ')
+        {
+            board[x][y] = '#';
+            break;
+        }
+    }
+
+}
