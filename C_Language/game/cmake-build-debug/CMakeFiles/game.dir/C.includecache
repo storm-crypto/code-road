@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/05code/2022/code-road/C_Language/game/game.c
+game.h
+D:/05code/2022/code-road/C_Language/game/game.h
+
+D:/05code/2022/code-road/C_Language/game/game.h
+stdio.h
+-
+time.h
+-
+stdlib.h
+-
+
+D:/05code/2022/code-road/C_Language/game/main.c
+stdio.h
+-
+game.h
+D:/05code/2022/code-road/C_Language/game/game.h
+

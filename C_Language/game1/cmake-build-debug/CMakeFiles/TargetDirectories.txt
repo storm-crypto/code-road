@@ -1,0 +1,3 @@
+D:/05code/2022/code-road/C_Language/game1/cmake-build-debug/CMakeFiles/game1.dir
+D:/05code/2022/code-road/C_Language/game1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/05code/2022/code-road/C_Language/game1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
