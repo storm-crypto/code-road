@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "game.h"
 
 void menu()
 {
@@ -11,6 +12,13 @@ void menu()
 void game()
 {
     // 扫雷游戏的实现
+    char mine[ROWS][COLS] = {0}; // '0'
+    char show[ROWS][COLS] = {0}; // '*'
+    // 初始化棋盘
+    init_board(mine, ROWS, COLS, '0');
+    init_board(show, ROWS, COLS, '*');
+
+
 }
 
 int main() {
