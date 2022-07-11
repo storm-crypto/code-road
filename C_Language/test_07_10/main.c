@@ -79,23 +79,30 @@
 
 // 递归实现n的k次方
 
-double Power(int n, int k)
-{
-    if (k < 0)
-    {
-        return n * Power(n, k - 1);
-    }
-    else if (k == 0)
-        return 1;
-    else
-        return 1.0 / Power(n, -k);
-}
+//double Power(int n, int k)
+//{
+//    if (k < 0)
+//    {
+//        return n * Power(n, k - 1);
+//    }
+//    else if (k == 0)
+//        return 1;
+//    else
+//        return 1.0 / Power(n, -k);
+//}
+//int main()
+//{
+//    int n = 0;
+//    int k = 0;
+//    scanf("%d %d", &n, &k);
+//    double ret = Power(n, k);
+//    printf("%lf\n", ret);
+//    return 0;
+//}
+
 int main()
 {
-    int n = 0;
-    int k = 0;
-    scanf("%d %d", &n, &k);
-    double ret = Power(n, k);
-    printf("%lf\n", ret);
+    float a = 3 / 2;
+    printf("%f\n", a);
     return 0;
 }
