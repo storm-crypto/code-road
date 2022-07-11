@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include <string.h>
 
 //int main()
 //{
 //    int a = 3;
 //    int b = -5;
-//    //int c = a & b; // æŒ‰ä½ä¸
-//    //int c = a | b;   // æŒ‰ä½æˆ–
-//    int c = a ^ b;   // æŒ‰ä½å¼‚æˆ–
+//    //int c = a & b; // °´Î»Óë
+//    //int c = a | b;   // °´Î»»ò
+//    int c = a ^ b;   // °´Î»Òì»ò
 //    printf("%d\n", c);
 //
 //    return 0;
 //}
 
-// ç»ƒä¹ ï¼šä¸èƒ½åˆ›å»ºä¸´æ—¶å˜é‡ï¼Œå®ç°ä¸¤ä¸ªæ•°çš„äº¤æ¢
+// Á·Ï°£º²»ÄÜ´´½¨ÁÙÊ±±äÁ¿£¬ÊµÏÖÁ½¸öÊıµÄ½»»»
 //int main()
 //{
 //    int a = 3;
@@ -28,20 +29,48 @@
 //    return 0;
 //}
 
-// ç»ƒä¹ ï¼šæ±‚ä¸€ä¸ªæ•´æ•°å­˜å‚¨åœ¨å†…å­˜ä¸­çš„äºŒè¿›åˆ¶ä¸­1çš„ä¸ªæ•°
+// Á·Ï°£ºÇóÒ»¸öÕûÊı´æ´¢ÔÚÄÚ´æÖĞµÄ¶ş½øÖÆÖĞ1µÄ¸öÊı
+//int main()
+//{
+//    int num = 0;
+//    scanf("%d", &num);
+//    int i = 0;
+//    int count = 0;
+//    for (i = 0; i < 32; i++)
+//    {
+//        if ((num>>i) & 1)
+//        {
+//            count++;
+//        }
+//    }
+//    printf("%d\n", count);
+//    return 0;
+//}
+
+struct Stu
+{
+    char name[20];
+    int age;
+    float score;
+};
+// ½á¹¹Ìå ²Ù×÷·û£º.
+void print1(struct Stu ss)
+{
+    printf("%s %d %f\n", ss.name, ss.age, ss.score);
+}
+
+// ½á¹¹ÌåÖ¸Õë ²Ù×÷·û£º->
+void print2(struct Stu* ps)
+{
+    printf("%s %d %f\n", ps->name, ps->age, ps->score);
+}
+
 int main()
 {
-    int num = 0;
-    scanf("%d", &num);
-    int i = 0;
-    int count = 0;
-    for (i = 0; i < 32; i++)
-    {
-        if ((num>>i) & 1)
-        {
-            count++;
-        }
-    }
-    printf("%d\n", count);
+    struct Stu s = {"ÕÅÈı", 20, 90.5f};
+    // ĞŞ¸Ä½á¹¹ÌåµÄµÚÒ»¸öÔªËØ£¬Ò²¾ÍÊÇÃû×ÖµÄ·½·¨
+    strcpy(s.name, "ÕÅÈı·á");
+    print1(s);
+    print2(&s);
     return 0;
 }
