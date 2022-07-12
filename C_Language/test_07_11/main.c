@@ -60,17 +60,19 @@ void print1(struct Stu ss)
 }
 
 // 结构体指针 操作符：->
-void print2(struct Stu* ps)
-{
-    printf("%s %d %f\n", ps->name, ps->age, ps->score);
-}
+//void print2(struct Stu* ps)
+//{
+//    printf("%s %d %f\n", ps->name, ps->age, ps->score);
+//}
+//
+//int main()
+//{
+//    struct Stu s = {"张三", 20, 90.5f};
+//    // 修改结构体的第一个元素，也就是名字的方法
+//    strcpy(s.name, "张三丰");
+//    print1(s);
+//    print2(&s);
+//    return 0;
+//}
 
-int main()
-{
-    struct Stu s = {"张三", 20, 90.5f};
-    // 修改结构体的第一个元素，也就是名字的方法
-    strcpy(s.name, "张三丰");
-    print1(s);
-    print2(&s);
-    return 0;
-}
+// 指针
