@@ -62,11 +62,20 @@
 //    *dest = *src;
 //}
 
+//void my_strcpy(char* dest, char* src)
+//{
+//    while (*src != '\0')
+//    {
+//        *dest++ = *src++;
+//    }
+//    *dest = *src;
+//}
+
 void my_strcpy(char* dest, char* src)
 {
-    while (*src != '\0')
+    while (*dest++ = *src++)
     {
-        *dest++ = *src++;
+        ;
     }
     *dest = *src;
 }
