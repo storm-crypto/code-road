@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 
 //int main()
@@ -71,8 +72,20 @@
 //    *dest = *src;
 //}
 
+// 大师级代码
+//void my_strcpy(char* dest, char* src)
+//{
+//    while (*dest++ = *src++)
+//    {
+//        ;
+//    }
+//    *dest = *src;
+//}
+
 void my_strcpy(char* dest, char* src)
 {
+    assert(dest != NULL); // 断言
+    assert(src != NULL);
     while (*dest++ = *src++)
     {
         ;
