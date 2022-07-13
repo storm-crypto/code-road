@@ -51,13 +51,22 @@
 
 // 模拟实现库函数：strcpy
 
+//void my_strcpy(char* dest, char* src)
+//{
+//    while (*src != '\0')
+//    {
+//        *dest = *src;
+//        dest++;
+//        src++;
+//    }
+//    *dest = *src;
+//}
+
 void my_strcpy(char* dest, char* src)
 {
     while (*src != '\0')
     {
-        *dest = *src;
-        dest++;
-        src++;
+        *dest++ = *src++;
     }
     *dest = *src;
 }
