@@ -63,22 +63,82 @@
 
 // 指针数组
 
-int main()
-{
-    int data1[] = {1, 2, 3, 4, 5};
-    int data2[] = {2, 3, 4, 5, 6};
-    int data3[] = {3, 4, 5, 6, 7};
+//int main()
+//{
+//    int data1[] = {1, 2, 3, 4, 5};
+//    int data2[] = {2, 3, 4, 5, 6};
+//    int data3[] = {3, 4, 5, 6, 7};
+//
+//    int* arr[3] = {data1, data2, data3};
+//    int i = 0;
+//    for (i = 0; i < 3; i++)
+//    {
+//        int j = 0;
+//        for (j = 0; j < 5; j++)
+//        {
+//            printf("%d ", *(arr[i] + j));
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
 
-    int* arr[3] = {data1, data2, data3};
-    int i = 0;
-    for (i = 0; i < 3; i++)
-    {
-        int j = 0;
-        for (j = 0; j < 5; j++)
-        {
-            printf("%d ", *(arr[i] + j));
-        }
-        printf("\n");
-    }
-    return 0;
-}
+// 结构体类型的声明
+//struct Stu
+//{
+//    char name[20];
+//    int age;
+//    char sex[8];
+//    float score;
+//}s1, s2, s3;
+//
+//int main()
+//{
+//
+//
+//    return 0;
+//}
+
+//struct Point
+//{
+//    int x;
+//    int y;
+//}p1;
+//
+//struct Point p2;
+//
+//初始化：定义变量的同时赋初值
+//struct Point p3 = {1, 2};
+//
+// 结构体嵌套初始化
+//struct Node
+//{
+//    int data;
+//    struct Point p;
+//    struct Node* next;
+//}n1 = {10, {4, 5}, NULL};
+//
+//struct Node n2 = {20, {5, 6}, NULL};
+
+//void test2()
+//{
+//    printf("hehe\n");
+//}
+//
+//void test1 ()
+//{
+//    test2();
+//}
+//
+//void test()
+//{
+//    test1();
+//}
+//
+//int main()
+//{
+//    test();
+//    return 0;
+//}
+
+
