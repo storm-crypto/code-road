@@ -79,7 +79,6 @@
 //    {
 //        ;
 //    }
-//    *dest = *src;
 //}
 
 //void my_strcpy(char* dest, char* src)
@@ -91,31 +90,55 @@
 //    {
 //        ;
 //    }
-//    *dest = *src;
 //}
 
 
 //
 
-void my_strcpy(char* dest, const char* src)
-{
+//char* my_strcpy(char* dest, const char* src)
+//{
 //    assert(dest != NULL); // 断言:括号里面条件为假，就会断言
 //    assert(src != NULL);
-    assert(dest && src);
-    while (*dest++ = *src++)
+//    assert(dest && src);
+//    while (*dest++ = *src++)
+//    {
+//        ;
+//    }
+//
+//    return dest;
+//}
+//
+//int main()
+//{
+//    char arr1[] = "hello bit";
+//    char arr2[] = {0};
+//    my_strcpy(arr2, arr1);
+//
+//    printf("%s\n", arr2);
+//
+//    return 0;
+//}
+
+int my_strlen(const char* p)
+{
+    assert(p != NULL);
+
+    int ret = 0;
+
+    while (*p != '\0')
     {
-        ;
+        p++;
+        ret++;
     }
-    *dest = *src;
+
+    return ret;
 }
 
 int main()
 {
-    char arr1[] = "hello bit";
-    char arr2[] = {0};
-    my_strcpy(arr2, arr1);
+    int len = my_strlen("abcdef");
 
-    printf("%s\n", arr2);
+    printf("%d\n", len);
 
     return 0;
 }
