@@ -82,10 +82,26 @@
 //    *dest = *src;
 //}
 
-void my_strcpy(char* dest, char* src)
+//void my_strcpy(char* dest, char* src)
+//{
+//    assert(dest != NULL); // 断言:括号里面条件为假，就会断言
+//    assert(src != NULL);
+//    assert(dest && src);
+//    while (*dest++ = *src++)
+//    {
+//        ;
+//    }
+//    *dest = *src;
+//}
+
+
+//
+
+void my_strcpy(char* dest, const char* src)
 {
-    assert(dest != NULL); // 断言
-    assert(src != NULL);
+//    assert(dest != NULL); // 断言:括号里面条件为假，就会断言
+//    assert(src != NULL);
+    assert(dest && src);
     while (*dest++ = *src++)
     {
         ;
