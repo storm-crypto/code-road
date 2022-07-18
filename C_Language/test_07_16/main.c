@@ -15,11 +15,18 @@
 //}
 
 // 字符指针的常见使用方法
+//int main()
+//{
+//    char a = 'w';
+//    char* ch = &a;
+//    *ch = 'a';
+//
+//    printf("%c\n", ch);
+//}
+
 int main()
 {
-    char a = 'w';
-    char* ch = &a;
-    *ch = 'a';
-
-    printf("%c\n", ch);
+    const char* p = "abcdef";
+    *p = 'w';
+    return 0;
 }
