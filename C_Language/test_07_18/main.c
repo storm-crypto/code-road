@@ -31,17 +31,36 @@
 //}
 
 // 打印整数二进制的奇数位和偶数位
-void Printbit(int num)
+//void Printbit(int num)
+//{
+//    int i = 0;
+//
+//    for (i = 31; i >= 1; i -= 2)
+//    {
+//        printf("%d ", (num >> i) & 1);
+//    }
+//
+//    for (i = 30; i >= 0; i -= 2)
+//    {
+//        printf("%d ", (num >> i) & 1);
+//    }
+//}
+
+// 统计二进制中1的个数
+
+// 方法一
+
+int cout_one_bit(int num)
 {
-    int i = 0;
+    int count = 0;
 
-    for (i = 31; i >= 1; i -= 2)
+    while (num)
     {
-        printf("%d ", (num >> i) & 1);
+        if (num % 2 == 1)
+            count ++;
+        num /= 2;
     }
 
-    for (i = 30; i >= 0; i -= 2)
-    {
-        printf("%d ", (num >> i) & 1);
-    }
+    return count;
 }
+
