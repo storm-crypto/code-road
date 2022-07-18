@@ -66,15 +66,33 @@
 
 // 方法3 ：有多少个1就按位与多少次（相邻的数字进行按位与）
 
-int cout_one_bit(int n)
+//int cout_one_bit(int n)
+//{
+//    int count = 0;
+//
+//    while (n)
+//    {
+//        n = n &(n - 1);
+//        count++;
+//    }
+//
+//    return count;
+//}
+
+// 交换两个变量（不创建临时变量）
+
+int main()
 {
-    int count = 0;
+    int a = 0;
+    int b = 0;
 
-    while (n)
-    {
-        n = n &(n - 1);
-        count++;
-    }
+    scanf("%d%d", &a, &b);
 
-    return count;
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+
+    printf("交换后：a = %d, b = %d", a, b);
+
+    return 0;
 }
