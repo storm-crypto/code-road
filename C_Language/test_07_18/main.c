@@ -12,22 +12,36 @@
 //}
 
 // 求两个数二进制中不同位的个数
+//int main()
+//{
+//    int a = 0;
+//    int b = 0;
+//    scanf("%d %d", &a, &b);
+//
+//    int i = 0;
+//    int count = 0;
+//    for (i = 0; i < 32; i++)
+//    {
+//        if (((a>>i) & 1) != ((b >> i) & 1))
+//        {
+//            count++;
+//        }
+//    }
+//    printf("%d", count);
+//
+//    return 0;
+//}
+
+// 使用指针打印数组的内容
+
 int main()
 {
-    int a = 0;
-    int b = 0;
-    scanf("%d %d", &a, &b);
-
+    int arr[] = {1, 2, 3, 4, 5};
     int i = 0;
-    int count = 0;
-    for (i = 0; i < 32; i++)
+    int* p = arr;
+    for (i = 0; i < 5; i++)
     {
-        if (((a>>i) & 1) != ((b >> i) & 1))
-        {
-            count++;
-        }
+        printf("%d ", *(p + i));
     }
-    printf("%d", count);
-
     return 0;
 }
