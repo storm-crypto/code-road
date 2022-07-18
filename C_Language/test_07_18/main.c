@@ -50,17 +50,31 @@
 
 // 方法一
 
-int cout_one_bit(int num)
+//int cout_one_bit(int num)
+//{
+//    int count = 0;
+//
+//    while (num)
+//    {
+//        if (num % 2 == 1)
+//            count ++;
+//        num /= 2;
+//    }
+//
+//    return count;
+//}
+
+// 方法3 ：有多少个1就按位与多少次（相邻的数字进行按位与）
+
+int cout_one_bit(int n)
 {
     int count = 0;
 
-    while (num)
+    while (n)
     {
-        if (num % 2 == 1)
-            count ++;
-        num /= 2;
+        n = n &(n - 1);
+        count++;
     }
 
     return count;
 }
-
