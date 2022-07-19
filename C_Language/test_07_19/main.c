@@ -107,21 +107,45 @@
 // 指针的概念，练习题目
 
 // 练习：使用指针打印数组内容
-void print1(int* arr, int sz)
-{
-    int i = 0;
-    for (i = 0; i < sz; i++)
-    {
-        printf("%d ", *(arr + i));
-    }
-}
+//void print1(int* arr, int sz)
+//{
+//    int i = 0;
+//    for (i = 0; i < sz; i++)
+//    {
+//        printf("%d ", *(arr + i));
+//    }
+//}
+//
+//int main()
+//{
+//    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//    int sz = sizeof (arr) / sizeof (arr[0]);
+//
+//    print1(arr, sz);
+//}
+
+// 练习：字符串逆序
+
+// 练习：计算求和
 
 int main()
 {
-    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int sz = sizeof (arr) / sizeof (arr[0]);
+    int i = 0;
+    int sum = 0;
+    int tmp = 0;
+    int a = 0;
+    int n = 0;
 
-    print1(arr, sz);
+    scanf("%d%d", &a, &n);
+
+    for (i = 0; i < n; i++)
+    {
+        tmp = tmp * 10 + a;
+        sum += tmp;
+    }
+
+    printf("%d\n", sum);
+    return 0;
 }
 
 
