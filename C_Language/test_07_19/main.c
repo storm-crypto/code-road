@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 
 //int main() {
@@ -128,23 +129,62 @@
 
 // 练习：计算求和
 
+//int main()
+//{
+//    int i = 0;
+//    int sum = 0;
+//    int tmp = 0;
+//    int a = 0;
+//    int n = 0;
+//
+//    scanf("%d%d", &a, &n);
+//
+//    for (i = 0; i < n; i++)
+//    {
+//        tmp = tmp * 10 + a;
+//        sum += tmp;
+//    }
+//
+//    printf("%d\n", sum);
+//    return 0;
+//}
+
+// 练习：打印水仙花数
+
+// 1. 确定数的位数
+// 2. 获取每位上的数字
+// 3. 进行判断是不是水仙花数
+
 int main()
 {
     int i = 0;
-    int sum = 0;
-    int tmp = 0;
-    int a = 0;
-    int n = 0;
-
-    scanf("%d%d", &a, &n);
-
-    for (i = 0; i < n; i++)
+    for (i = 0; i < 100000; i++)
     {
-        tmp = tmp * 10 + a;
-        sum += tmp;
-    }
+        int count = 1;
+        int tmp = i;
+        int sum = 0;
 
-    printf("%d\n", sum);
+        // 1.
+        while (tmp / 10)
+        {
+            count++;
+            tmp /= 10;
+        }
+
+        // 2. 获取每一位数
+        tmp = i;
+        while (tmp)
+        {
+            sum += pow(tmp % 10, count);
+            tmp /= 10;
+        }
+
+        // 3.判断
+        if (sum == i)
+        {
+            printf("%d ", i);
+        }
+    }
     return 0;
 }
 
