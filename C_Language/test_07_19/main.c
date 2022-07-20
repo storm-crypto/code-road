@@ -155,37 +155,79 @@
 // 2. 获取每位上的数字
 // 3. 进行判断是不是水仙花数
 
+//int main()
+//{
+//    int i = 0;
+//    for (i = 0; i < 100000; i++)
+//    {
+//        int count = 1;
+//        int tmp = i;
+//        int sum = 0;
+//
+//        // 1.
+//        while (tmp / 10)
+//        {
+//            count++;
+//            tmp /= 10;
+//        }
+//
+//        // 2. 获取每一位数
+//        tmp = i;
+//        while (tmp)
+//        {
+//            sum += pow(tmp % 10, count);
+//            tmp /= 10;
+//        }
+//
+//        // 3.判断
+//        if (sum == i)
+//        {
+//            printf("%d ", i);
+//        }
+//    }
+//    return 0;
+//}
+
+// 练习：打印菱形
 int main()
 {
     int i = 0;
-    for (i = 0; i < 100000; i++)
+    int line = 0;
+    scanf("%d", &line);
+
+    // 打印上半部分
+    for (i = 0; i < line; i++)
     {
-        int count = 1;
-        int tmp = i;
-        int sum = 0;
-
-        // 1.
-        while (tmp / 10)
+        // 打印空格
+        int j = 0;
+        for (j = 0; j < line - 1 - i; j++)
         {
-            count++;
-            tmp /= 10;
+            printf(" ");
         }
-
-        // 2. 获取每一位数
-        tmp = i;
-        while (tmp)
+        // 打印*
+        for (j = 0; j < 2 * i + 1; j++)
         {
-            sum += pow(tmp % 10, count);
-            tmp /= 10;
+            printf("*");
         }
+        printf("\n");
+    }
 
-        // 3.判断
-        if (sum == i)
+    // 打印下半部分
+    for (i = 0; i < line - 1; i++)
+    {
+        // 打印空格
+        int j = 0;
+        for (j = 0; j <= i; j++)
         {
-            printf("%d ", i);
+            printf(" ");
+        }
+        // 打印*
+        for (j = 0; j < 2 * (line - i - 1) - 1; j++)
+        {
+            printf("*");
         }
     }
+    printf("\n");
+
     return 0;
 }
-
-
