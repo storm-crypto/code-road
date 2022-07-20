@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 
 // 各种码的练习
@@ -60,23 +61,45 @@
 
 // 喝汽水问题
 
-int main()
+//int main()
+//{
+//    int total = 0;
+//    int money = 0;
+//    int empty = 0;
+//    // 输入总金额
+//    scanf("%d", &money);
+//    total = money;
+//    empty = money;
+//    while (empty > 1)
+//    {
+//        total += empty / 2;
+//        empty = empty / 2 + empty % 2;
+//    }
+//
+//    printf("最终获得的汽水数：%d", total);
+//
+//    return 0;
+//}
+
+// strlen的实现
+int my_strlen(const char* p)
 {
-    int total = 0;
-    int money = 0;
-    int empty = 0;
-    // 输入总金额
-    scanf("%d", &money);
-    total = money;
-    empty = money;
-    while (empty > 1)
+    assert(p);
+
+    int ret = 0;
+    while (*p != '\0')
     {
-        total += empty / 2;
-        empty = empty / 2 + empty % 2;
+        ret++;
+        p++;
     }
 
-    printf("最终获得的汽水数：%d", total);
-
-    return 0;
+    return ret;
 }
 
+int main()
+{
+    char arr[] = "hello world";
+    int ret = my_strlen(arr);
+    printf("%d ", ret);
+    return 0;
+}
