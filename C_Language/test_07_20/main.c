@@ -37,16 +37,46 @@
 //}
 
 // 猜凶手
+//int main()
+//{
+//    int killer = 0;
+//
+//    for (killer = 'a'; killer <= 'd'; killer++)
+//    {
+//        if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer != 'd') == 3)
+//        {
+//            printf("凶手是:%c", killer);
+//        }
+//    }
+//    return 0;
+//}
+
+// 猜名次
+
+
+
+
+// 结构体的练习题
+
+// 喝汽水问题
+
 int main()
 {
-    int killer = 0;
-
-    for (killer = 'a'; killer <= 'd'; killer++)
+    int total = 0;
+    int money = 0;
+    int empty = 0;
+    // 输入总金额
+    scanf("%d", &money);
+    total = money;
+    empty = money;
+    while (empty > 1)
     {
-        if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer != 'd') == 3)
-        {
-            printf("凶手是:%c", killer);
-        }
+        total += empty / 2;
+        empty = empty / 2 + empty % 2;
     }
+
+    printf("最终获得的汽水数：%d", total);
+
     return 0;
 }
+
