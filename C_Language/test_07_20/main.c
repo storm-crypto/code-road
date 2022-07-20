@@ -82,24 +82,82 @@
 //}
 
 // strlen的实现
-int my_strlen(const char* p)
+//int my_strlen(const char* p)
+//{
+//    assert(p);
+//
+//    int ret = 0;
+//    while (*p != '\0')
+//    {
+//        ret++;
+//        p++;
+//    }
+//
+//    return ret;
+//}
+//
+//int main()
+//{
+//    char arr[] = "hello world";
+//    int ret = my_strlen(arr);
+//    printf("%d ", ret);
+//    return 0;
+//}
+
+// strcpy实现
+//
+//void my_strcpy(char* dest, const char* src)
+//{
+//    assert(dest && src);
+//
+//    while (*dest++ = *src++);
+//}
+//
+//int main()
+//{
+//    char src[] = "hello hi";
+//    char dest[] = {0};
+//    my_strcpy(dest, src);
+//    printf("%s", dest);
+//
+//    return 0;
+//}
+
+// 调整奇数偶数顺序
+
+void swap_arr(int arr[], int sz)
 {
-    assert(p);
+    int left = 0;
+    int right = sz - 1;
 
-    int ret = 0;
-    while (*p != '\0')
+    while (left < right)
     {
-        ret++;
-        p++;
-    }
+        while ((left < right) && (arr[left] %2 == 1))
+        {
+            left++;
+        }
 
-    return ret;
+        while ((left < right) && (arr[right] % 2 == 0))
+        {
+            right --;
+        }
+        if (left < right)
+        {
+            int tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
+        }
+    }
 }
 
 int main()
 {
-    char arr[] = "hello world";
-    int ret = my_strlen(arr);
-    printf("%d ", ret);
+    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    swap_arr(arr, 10);
+    int i = 0;
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d ", arr[i]);
+    }
     return 0;
 }
