@@ -1,7 +1,8 @@
+#include <accctrl.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-// ÂáΩÊï∞ÊåáÈíà
+// ∫Ø ˝÷∏’Î
 
 //int Add(int x, int y)
 //{
@@ -36,27 +37,27 @@
 //    int y = 0;
 //    int ret = 0;
 //
-//    // ÂáΩÊï∞ÊåáÈíàÊï∞ÁªÑ
+//    // ∫Ø ˝÷∏’Î ˝◊È
 //    int (*pfArr[]) (int, int) = {0, Add, Sub, Mul, Div};
 //    do
 //    {
 //        menu();
-//        printf("ËØ∑ÈÄâÊã©Ôºö>\n");
+//        printf("«Î—°‘Ò£∫>\n");
 //        scanf("%d", &input);
 //        if (input == 0)
 //        {
-//            printf("ÈÄÄÂá∫ËÆ°ÁÆóÂô®\n");
+//            printf("ÕÀ≥ˆº∆À„∆˜\n");
 //        }
 //        else if (input >= 1 && input <= 4)
 //        {
-//            printf("ËØ∑ËæìÂÖ•2‰∏™Êìç‰ΩúÊï∞:>\n");
+//            printf("«Î ‰»Î2∏ˆ≤Ÿ◊˜ ˝:>\n");
 //            scanf("%d%d", &x, &y);
 //            ret = pfArr[input](x, y);
 //            printf("ret = %d\n", ret);
 //        }
 //        else
 //        {
-//            printf("ÈÄâÊã©ÈîôËØØ\n");
+//            printf("—°‘Ò¥ÌŒÛ\n");
 //        }
 //    }
 //    while (input);
@@ -65,18 +66,18 @@
 
 //int main()
 //{
-//    // Êï∞ÁªÑÊåáÈíà
+//    //  ˝◊È÷∏’Î
 //    int* arr2[5];
 //    int* (*p2)[5] = &arr2;
 //
-//    // ÂáΩÊï∞ÊåáÈíàÊï∞ÁªÑ
+//    // ∫Ø ˝÷∏’Î ˝◊È
 //    int (* pfarr[4])(int, int);
 //    int (* (*p3)[4])(int, int) = &pfarr;
 //
 //    return 0;
 //}
 
-//// ÂõûË∞ÉÂáΩÊï∞
+//// ªÿµ˜∫Ø ˝
 //void test()
 //{
 //    printf("hehe\n");
@@ -95,7 +96,7 @@
 //    return 0;
 //}
 
-// ÂõûË∞ÉÂáΩÊï∞
+// ªÿµ˜∫Ø ˝
 
 //int Add(int x, int y)
 //{
@@ -128,7 +129,7 @@
 //    int x = 0;
 //    int y = 0;
 //    int ret = 0;
-//    printf("ËØ∑ËæìÂÖ•‰∏§‰∏™Êìç‰ΩúÊï∞:>");
+//    printf("«Î ‰»Î¡Ω∏ˆ≤Ÿ◊˜ ˝:>");
 //    scanf("%d%d", &x, &y);
 //    ret = p(x, y);
 //    printf("ret = %d\n", ret);
@@ -141,7 +142,7 @@
 //    do
 //    {
 //        menu();
-//        printf("ËØ∑ÈÄâÊã©Ôºö>\n");
+//        printf("«Î—°‘Ò£∫>\n");
 //        scanf("%d", &input);
 //        switch (input)
 //        {
@@ -160,7 +161,7 @@
 //            case 0:
 //                break;
 //            default:
-//                printf("ËæìÂÖ•ÊúâËØØÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•\n");
+//                printf(" ‰»Î”–ŒÛ£¨«Î÷ÿ–¬ ‰»Î\n");
 //                break;
 //        }
 //    }
@@ -168,7 +169,7 @@
 //    return 0;
 //}
 
-// ‰ΩøÁî®qsortÂáΩÊï∞
+//  π”√qsort∫Ø ˝
 
 int cmp_int(const void* e1, const void* e2)
 {
@@ -188,14 +189,41 @@ void print_arr(int arr[], int sz)
 void test2()
 {
     int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-    // ÊéíÂ∫è‰∏∫ÂçáÂ∫è
+    // ≈≈–ÚŒ™…˝–Ú
     int sz = sizeof (arr) / sizeof (arr[0]);
     qsort(arr, sz, sizeof(arr[0]), cmp_int);
     print_arr(arr, sz);
 }
 
+struct Stu
+{
+    char name[20];
+    int age;
+    double score;
+};
+
+int cmp_stu_by_age(const void* e1, const void* e2)
+{
+    return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age;
+}
+
+int cmp_stu_by_name(const void* e1, const void* e2)
+{
+    return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->age);
+}
+
+//  π”√qsort≈≈–ÚΩ·ππÃÂ
+void test3()
+{
+    struct Stu arr[3] = {{"zhangsan", 20, 55.5}, {"lisi", 20, 28.0}, {"wangwu", 50, 90.0}};
+    int sz = sizeof (arr) / sizeof (arr[0]);
+    qsort(arr, sz, sizeof (arr[0]), cmp_stu_by_age);
+}
+
+
 int main()
 {
-    test2();
+    //test2();
+    test3();
     return 0;
 }
