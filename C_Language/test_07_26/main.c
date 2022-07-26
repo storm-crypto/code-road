@@ -25,23 +25,45 @@
 //}
 
 // 练习：字符串左旋
+//void left_move(char arr[], int k)
+//{
+//    int len = strlen(arr);
+//    int j = 0;
+//    for (j = 0; j < k % len; j++)
+//    {
+//        char tmp = arr[0];
+//        int i = 0;
+//        for (i = 0; i < len - 1; i++)
+//        {
+//            arr[i] = arr[i + 1]; // 后面所有的元素往前挪
+//        }
+//        arr[len - 1] = tmp;
+//    }
+//
+//}
+
+void reverse(char* left, char* right)
+{
+    while (left < right)
+    {
+        char tmp = *left;
+        *left = *right;
+        *right = tmp;
+        left++;
+        right--;
+    }
+}
+
+// 三次逆序
 void left_move(char arr[], int k)
 {
     int len = strlen(arr);
-    int j = 0;
-    for (j = 0; j < k; j++)
-    {
-        char tmp = arr[0];
-        int i = 0;
-        for (i = 0; i < len - 1; i++)
-        {
-            arr[i] = arr[i + 1]; // 后面所有的元素往前挪
-        }
-        arr[len - 1] = tmp;
-    }
+
+    reverse(arr, arr + k - 1);
+    reverse(arr + k, arr + len - 1);
+    reverse(arr, arr + len - 1);
 
 }
-
 int main()
 {
     // 左旋转字符的代码
