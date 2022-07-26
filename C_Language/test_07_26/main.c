@@ -177,10 +177,12 @@
 //}
 
 // 实现strstr函数
-char* my_strstr(char* str1, char* str2)
+char* my_strstr(const char* str1, const char* str2)
 {
-    char* s1 = str1;
-    char* s2 = str2;
+    assert(str1 && str2);
+
+    const char* s1 = str1;
+    const char* s2 = str2;
 
     char* cur = str1;
     while (*cur)
@@ -194,7 +196,7 @@ char* my_strstr(char* str1, char* str2)
         }
         if (*s2 == '\0')
         {
-            return cur;
+            return (char*)cur;
         }
         cur++;
     }
@@ -206,5 +208,12 @@ int main()
     char a1[] = "abcdeqabcdef";
     char a2[] = "cdef";
     char* ret = my_strstr(a1, a2);
-
+    if (NULL == ret)
+    {
+        printf("找不到字串\n");
+    }
+    else
+    {
+        printf("%s\n", ret);
+    }
 }
