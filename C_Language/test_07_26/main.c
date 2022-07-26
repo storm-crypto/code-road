@@ -148,30 +148,63 @@
 
 // 实现strcmp
 
-int my_strcmp(const char* s1, const char* s2)
+//int my_strcmp(const char* s1, const char* s2)
+//{
+//    assert(s1 && s2);
+//    while (*s1 == * s2)
+//    {
+//        if (*s1 == '\0')
+//        {
+//            return 0;
+//        }
+//        s1++;
+//        s2++;
+//    }
+//    if (*s1 > *s2)
+//        return 1;
+//    else
+//        return -1;
+//}
+//
+//int main()
+//{
+//    char a1[] = "abc";
+//    char a2[] = "abc";
+//    int ret = my_strcmp(a1, a2);
+//    printf("%d\n", ret);
+//
+//    return 0;
+//}
+
+// 实现strstr函数
+char* my_strstr(char* str1, char* str2)
 {
-    assert(s1 && s2);
-    while (*s1 == * s2)
+    char* s1 = str1;
+    char* s2 = str2;
+
+    char* cur = str1;
+    while (*cur)
     {
-        if (*s1 == '\0')
+        s1 = cur;
+        s2 = str2;
+        while ((*s1 == *s2) && *s1 && *s2)
         {
-            return 0;
+            s1++;
+            s2++;
         }
-        s1++;
-        s2++;
+        if (*s2 == '\0')
+        {
+            return cur;
+        }
+        cur++;
     }
-    if (*s1 > *s2)
-        return 1;
-    else
-        return -1;
+    return NULL;
 }
 
 int main()
 {
-    char a1[] = "abc";
-    char a2[] = "abc";
-    int ret = my_strcmp(a1, a2);
-    printf("%d\n", ret);
+    char a1[] = "abcdeqabcdef";
+    char a2[] = "cdef";
+    char* ret = my_strstr(a1, a2);
 
-    return 0;
 }
