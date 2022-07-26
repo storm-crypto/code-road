@@ -1,4 +1,5 @@
 #include <accctrl.h>
+#include <assert.h>
 #include <math.h>
 #include <stdio.h>
 
@@ -81,38 +82,66 @@
 // 方法：跟右上角的元素进行比较
 // 如果比右上角的元素大，就去掉一行
 // 如果比右上角的元素小，就去掉一列
-void find_k(int arr[3][3], int k, int r, int c)
+//void find_k(int arr[3][3], int k, int r, int c)
+//{
+//    int x = 0;
+//    int y = c - 1;
+//    int flag = 0;
+//    while (x < r && y >= 0)
+//    {
+//        if (arr[x][y] < k)
+//        {
+//            x++;
+//        }
+//        else if (arr[x][y] > k)
+//        {
+//            y--;
+//        }
+//        else
+//        {
+//            printf("找到了，下标是:%d %d\n", x, y);
+//            flag = 1;
+//            break;
+//        }
+//    }
+//    if (flag == 0)
+//        printf("找不到\n");
+//
+//}
+
+
+//int main()
+//{
+//    int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//    int k = 7;
+//    find_k(arr, k, 3, 3);
+//    return 0;
+//}
+
+char* my_strcat(char* dest, const char* src)
 {
-    int x = 0;
-    int y = c - 1;
-    int flag = 0;
-    while (x < r && y >= 0)
+    assert(dest && src);
+    char* ret = dest;
+    // 1. 找dest中的'\0'
+    while (*dest)
     {
-        if (arr[x][y] < k)
-        {
-            x++;
-        }
-        else if (arr[x][y] > k)
-        {
-            y--;
-        }
-        else
-        {
-            printf("找到了，下标是:%d %d\n", x, y);
-            flag = 1;
-            break;
-        }
+        dest++;
     }
-    if (flag == 0)
-        printf("找不到\n");
 
+    // 2. 拷贝
+    while (*dest ++ = *src++)
+    {
+        ;
+    }
+
+    return ret;
 }
-
 
 int main()
 {
-    int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int k = 7;
-    find_k(arr, k, 3, 3);
-    return 0;
+    char arr1[20] = "hello";
+    char arr2[] = " bit";
+    my_strcat(arr1, arr2);
+
+    printf("%s\n", arr1);
 }
