@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Contact.dir/contact.c.obj"
   "CMakeFiles/Contact.dir/main.c.obj"
   "Contact.exe"
   "Contact.exe.manifest"

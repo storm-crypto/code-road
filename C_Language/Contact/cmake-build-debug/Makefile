@@ -142,6 +142,33 @@ Contact/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Contact.dir\build.make CMakeFiles/Contact.dir/build
 .PHONY : Contact/fast
 
+contact.obj: contact.c.obj
+
+.PHONY : contact.obj
+
+# target to build an object file
+contact.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Contact.dir\build.make CMakeFiles/Contact.dir/contact.c.obj
+.PHONY : contact.c.obj
+
+contact.i: contact.c.i
+
+.PHONY : contact.i
+
+# target to preprocess a source file
+contact.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Contact.dir\build.make CMakeFiles/Contact.dir/contact.c.i
+.PHONY : contact.c.i
+
+contact.s: contact.c.s
+
+.PHONY : contact.s
+
+# target to generate assembly for a file
+contact.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Contact.dir\build.make CMakeFiles/Contact.dir/contact.c.s
+.PHONY : contact.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Contact
+	@echo ... contact.obj
+	@echo ... contact.i
+	@echo ... contact.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

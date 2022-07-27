@@ -3,4 +3,4 @@ project(Contact C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Contact main.c)
+add_executable(Contact main.c contact.c contact.h)
