@@ -177,43 +177,44 @@
 //}
 
 // 实现strstr函数
-char* my_strstr(const char* str1, const char* str2)
-{
-    assert(str1 && str2);
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//    assert(str1 && str2);
+//
+//    const char* s1 = str1;
+//    const char* s2 = str2;
+//
+//    char* cur = str1;
+//    while (*cur)
+//    {
+//        s1 = cur;
+//        s2 = str2;
+//        while ((*s1 == *s2) && *s1 && *s2)
+//        {
+//            s1++;
+//            s2++;
+//        }
+//        if (*s2 == '\0')
+//        {
+//            return (char*)cur;
+//        }
+//        cur++;
+//    }
+//    return NULL;
+//}
+//
+//int main()
+//{
+//    char a1[] = "abcdeqabcdef";
+//    char a2[] = "cdef";
+//    char* ret = my_strstr(a1, a2);
+//    if (NULL == ret)
+//    {
+//        printf("找不到字串\n");
+//    }
+//    else
+//    {
+//        printf("%s\n", ret);
+//    }
+//}
 
-    const char* s1 = str1;
-    const char* s2 = str2;
-
-    char* cur = str1;
-    while (*cur)
-    {
-        s1 = cur;
-        s2 = str2;
-        while ((*s1 == *s2) && *s1 && *s2)
-        {
-            s1++;
-            s2++;
-        }
-        if (*s2 == '\0')
-        {
-            return (char*)cur;
-        }
-        cur++;
-    }
-    return NULL;
-}
-
-int main()
-{
-    char a1[] = "abcdeqabcdef";
-    char a2[] = "cdef";
-    char* ret = my_strstr(a1, a2);
-    if (NULL == ret)
-    {
-        printf("找不到字串\n");
-    }
-    else
-    {
-        printf("%s\n", ret);
-    }
-}
