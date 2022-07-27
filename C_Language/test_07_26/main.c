@@ -136,7 +136,7 @@
 //
 //    return ret;
 //}
-//
+
 //int main()
 //{
 //    char arr1[20] = "hello";
@@ -165,7 +165,7 @@
 //    else
 //        return -1;
 //}
-//
+
 //int main()
 //{
 //    char a1[] = "abc";
