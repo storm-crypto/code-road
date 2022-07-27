@@ -42,45 +42,99 @@
 //}
 
 // memmove函数的实现
-void* my_memmove(void* dest, const void* src, size_t count)
+//void* my_memmove(void* dest, const void* src, size_t count)
+//{
+//    assert(dest && src);
+//    void* ret = dest;
+//    if (dest < src)
+//    {
+//        // src从前往后拷贝
+//        while (count--)
+//        {
+//            *(char*)dest = *(char*)src;
+//            dest = (char*)dest + 1;
+//            src = (char*)src + 1;
+//        }
+//
+//    }
+//    else
+//    {
+//        // src从后往前拷贝
+//        while (count--)
+//        {
+//            *((char*)dest + count) = *((char*)src + count);
+//
+//        }
+//    }
+//
+//    return ret;
+//}
+//
+//int main()
+//{
+//    int arr1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//
+//    my_memmove(arr1, arr1 + 2, 20);
+//
+//    int i = 0;
+//    int sz = sizeof (arr1) / sizeof (arr1[0]);
+//
+//    for (i = 0; i < sz; i++)
+//    {
+//        printf("%d ", arr1[i]);
+//    }
+//}
+
+//int main()
+//{
+//    int arr1[] = {1, 2, 3, 4, 5};
+//
+//    memset(arr1, 0, 20);
+//
+//    int sz = sizeof (arr1) / sizeof(arr1[0]);
+//
+//    int i = 0;
+//    for (i = 0; i < sz; i++)
+//    {
+//        printf("%d ", arr1[i]);
+//    }
+//}
+
+//enum Sex
+//{
+//    MALE,
+//    FEMALE,
+//    SECRET
+//};
+//
+//int main()
+//{
+//    enum Sex s = MALE;
+//    enum Sex s1 = FEMALE;
+//    return 0;
+//}
+
+// 练习：判断大小端存储
+int check_sys()
 {
-    assert(dest && src);
-    void* ret = dest;
-    if (dest < src)
+    union Un
     {
-        // src从前往后拷贝
-        while (count--)
-        {
-            *(char*)dest = *(char*)src;
-            dest = (char*)dest + 1;
-            src = (char*)src + 1;
-        }
-
-    }
-    else
-    {
-        // src从后往前拷贝
-        while (count--)
-        {
-            *((char*)dest + count) = *((char*)src + count);
-
-        }
-    }
-
-    return ret;
+        char c;
+        int i;
+    }u;
+    u.i = 1;
+    return u.c;
 }
 
 int main()
 {
-    int arr1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-    my_memmove(arr1, arr1 + 2, 20);
-
-    int i = 0;
-    int sz = sizeof (arr1) / sizeof (arr1[0]);
-
-    for (i = 0; i < sz; i++)
+    if (1 == check_sys())
     {
-        printf("%d ", arr1[i]);
+        printf("小端\n");
     }
+    else
+    {
+        printf("大端\n");
+    }
+    return 0;
 }
