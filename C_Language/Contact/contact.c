@@ -120,3 +120,59 @@ void SearchContact(const Contact* pc)
     printf("%-20s %-5d %-5s %-12s %-30s\n", pc->data[pos].name, pc->data[pos].age, pc->data[pos].sex, pc->data[pos].tele, pc->data[pos].addr);
 
 }
+
+// 修改指定联系人的信息
+void ModifyContact(Contact* pc)
+{
+    assert(pc);
+
+    if (pc->sz == 0)
+    {
+        printf("通讯录已空, 无法修改信息\n");
+        return;
+    }
+
+    // 修改
+    char name[NAME_MAX] = {0};
+    printf("请输入要查找人的名字:>");
+    scanf("%s", name);
+
+    // 先查找信息
+    int pos = FindByName(pc, name);
+    if (pos == -1)
+    {
+        printf("要修改的条目不存在\n");
+        return;
+    }
+    // 询问要修改什么
+    printf("请输入要修改什么信息(1-姓名 2-年龄 3-性别 4-电话 5-住址:>)");
+    int msg;
+    scanf("%d", &msg);
+    switch (msg)
+    {
+        case 1:
+            printf("请输入新的姓名:>");
+            scanf("%s", pc->data[pos].name);
+            break;
+        case 2:
+            printf("请输入新的年龄:>");
+            scanf("%d", &pc->data[pos].age);
+            break;
+        case 3:
+            printf("请输入新的性别:>");
+            scanf("%s", pc->data[pos].sex);
+            break;
+        case 4:
+            printf("请输入新的电话:>");
+            scanf("%s", pc->data[pos].tele);
+            break;
+        case 5:
+            printf("请输入新的住址:>");
+            scanf("%s", pc->data[pos].addr);
+            break;
+        default:
+            printf("输入信息有误,修改失败\n");
+            break;
+    }
+    printf("修改成功\n");
+}

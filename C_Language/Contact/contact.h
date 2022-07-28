@@ -59,5 +59,10 @@ void DelContact(Contact* pc);
 // 查找指定联系人
 void SearchContact(const Contact* pc);
 
+// 修改指定联系人的信息
+void ModifyContact(Contact* pc);
+
+
+
 
 #endif//CONTACT_CONTACT_H

@@ -36,6 +36,7 @@ void test()
                 SearchContact(&con);
                 break;
             case MODIFY:
+                ModifyContact(&con);
                 break;
             case SORT:
                 break;
