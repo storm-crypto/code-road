@@ -33,6 +33,7 @@ void test()
                 DelContact(&con);
                 break;
             case SEARCH:
+                SearchContact(&con);
                 break;
             case MODIFY:
                 break;

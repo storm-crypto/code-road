@@ -4,5 +4,6 @@
 CMakeFiles/Contact.dir/contact.c.obj: ../contact.c
 CMakeFiles/Contact.dir/contact.c.obj: ../contact.h
 
+CMakeFiles/Contact.dir/main.c.obj: ../contact.h
 CMakeFiles/Contact.dir/main.c.obj: ../main.c
 

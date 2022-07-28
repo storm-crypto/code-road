@@ -56,5 +56,8 @@ void PrintContact(const Contact* pc);
 // 删除指定联系人
 void DelContact(Contact* pc);
 
+// 查找指定联系人
+void SearchContact(const Contact* pc);
+
 
 #endif//CONTACT_CONTACT_H

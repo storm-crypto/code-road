@@ -101,3 +101,22 @@ void DelContact(Contact* pc)
     pc->sz--;
     printf("删除成功\n");
 }
+
+// 查找指定联系人
+void SearchContact(const Contact* pc)
+{
+    char name[NAME_MAX] = {0};
+    printf("请输入要查找人的名字:>");
+    scanf("%s", name);
+
+    // 2. 找到名字然后再删除
+    int pos = FindByName(pc, name);
+    if (pos == -1)
+    {
+        printf("要查找的人不存在\n");
+    }
+
+    printf("%-20s %-5s %-5s %-12s %-30s\n", "姓名", "年龄", "性别", "电话", "地址");
+    printf("%-20s %-5d %-5s %-12s %-30s\n", pc->data[pos].name, pc->data[pos].age, pc->data[pos].sex, pc->data[pos].tele, pc->data[pos].addr);
+
+}
