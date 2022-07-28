@@ -1,11 +1,15 @@
 #include <stdio.h>
+#include "contact.h"
+
+
 
 void menu()
 {
     printf("*****************************\n");
     printf("**** 1.add      2.del    ****\n");
     printf("**** 3. search  4.modify ****\n");
-    printf("**** 5.sort     0.exit   ****\n");
+    printf("**** 5.sort     6.print  ****\n");
+    printf("**** 0.exit              ****\n");
     printf("*****************************\n");
 }
 
@@ -13,6 +17,9 @@ void menu()
 void test()
 {
     int input = 0;
+    // 创建通讯录
+    Contact con; // 通讯录
+
     do
     {
         menu();
@@ -20,17 +27,20 @@ void test()
         scanf("%d", &input);
         switch (input)
         {
-            case 1:
+            case ADD:
+
                 break;
-            case 2:
+            case DEL:
                 break;
-            case 3:
+            case SEARCH:
                 break;
-            case 4:
+            case MODIFY:
                 break;
-            case 5:
+            case SORT:
                 break;
-            case 0:
+            case PRINT:
+                break;
+            case EXIT:
                 printf("退出通讯录\n");
                 break;
             default:
