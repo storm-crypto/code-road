@@ -6,21 +6,56 @@
 
 
 // 初始化通讯录
+// 静态版本
+//void InitContact(Contact* pc)
+//{
+//    assert(pc);
+//    pc->sz = 0;
+//    memset(pc->data, 0, sizeof (pc->data));
+//}
+
+// 动态版本
 void InitContact(Contact* pc)
 {
     assert(pc);
     pc->sz = 0;
-    memset(pc->data, 0, sizeof (pc->data));
+    pc->capacity = DEFAULT_SZ;
+    pc->data = (PeoInfo*)malloc(pc->capacity * sizeof (PeoInfo));
+    if (pc->data == NULL)
+    {
+        perror("InitContact::malloc");
+        return;
+    }
+    memset(pc->data, 0, pc->capacity * sizeof (PeoInfo));
+}
+
+void CheckCapacity(Contact* pc)
+{
+    // 动态版本增容的代码
+    if (pc->sz == pc->capacity)
+    {
+        // realloc成功后才将tmp赋值给pc->data
+        PeoInfo* tmp = (PeoInfo*)realloc(pc->data, (pc->capacity + 2) * sizeof (PeoInfo));
+        if (tmp != NULL)
+        {
+            pc->data = tmp;
+        }
+        pc->capacity += 2;
+        printf("增容成功\n");
+    }
 }
 
 void AddContact(Contact* pc)
 {
     assert(pc);
-    if (pc->sz == MAX)
-    {
-        printf("通讯录已满，无法添加\n");
-        return;
-    }
+    // 静态版本
+//    if (pc->sz == MAX)
+//    {
+//        printf("通讯录已满，无法添加\n");
+//        return;
+//    }
+
+    CheckCapacity(pc);
 
     // 录入信息
     printf("请输入名字:>");
@@ -36,6 +71,16 @@ void AddContact(Contact* pc)
 
     pc->sz++;
     printf("添加成功\n");
+}
+
+// 销毁通讯录
+void DestoryContact(Contact* pc)
+{
+    free(pc->data);
+    pc->data = NULL;
+    pc->capacity = 0;
+    pc->sz = 0;
+    printf("销毁成功\n");
 }
 
 // 打印通讯录信息

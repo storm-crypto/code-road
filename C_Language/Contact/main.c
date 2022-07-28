@@ -48,6 +48,7 @@ void test()
                 printf("退出通讯录\n");
                 break;
             default:
+                DestoryContact(&con);
                 printf("选择错误\n");
                 break;
         }
