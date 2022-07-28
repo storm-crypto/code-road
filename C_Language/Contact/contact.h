@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 // 类型的声明
 #define MAX 100
@@ -49,7 +50,8 @@ void InitContact(Contact* pc);
 // 添加联系人
 void AddContact(Contact* pc);
 
-//
+// 打印通讯录中的信息
+void PrintContact(const Contact* pc);
 
 
 #endif//CONTACT_CONTACT_H

@@ -4,7 +4,7 @@ void menu()
 {
     printf("*****************************\n");
     printf("**** 1.add      2.del    ****\n");
-    printf("**** 3. search  4.modify ****\n");
+    printf("**** 3.search  4.modify ****\n");
     printf("**** 5.sort     6.print  ****\n");
     printf("**** 0.exit              ****\n");
     printf("*****************************\n");
@@ -38,6 +38,7 @@ void test()
             case SORT:
                 break;
             case PRINT:
+                PrintContact(&con);
                 break;
             case EXIT:
                 printf("�˳�ͨѶ¼\n");
