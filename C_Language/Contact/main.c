@@ -39,6 +39,7 @@ void test()
                 ModifyContact(&con);
                 break;
             case SORT:
+                SortContact(&con);
                 break;
             case PRINT:
                 PrintContact(&con);

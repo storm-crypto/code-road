@@ -176,3 +176,25 @@ void ModifyContact(Contact* pc)
     }
     printf("修改成功\n");
 }
+
+// 按照名字排序
+void SortContact(Contact* pc)
+{
+    int i = 0;
+    int j = 0;
+    PeoInfo tmp;
+
+    for(i = 0; i < pc->sz - 1; i++)
+    {
+        for (j = 0; j < pc->sz - i - 1; j++)
+        {
+            if (0 < strcmp(pc->data[j].name, pc->data[j + 1].name))
+            {
+                tmp = pc->data[j];
+                pc->data[j] = pc->data[j + 1];
+                pc->data[j + 1] = tmp;
+
+            }
+        }
+    }
+}

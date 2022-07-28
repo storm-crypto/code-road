@@ -62,6 +62,8 @@ void SearchContact(const Contact* pc);
 // 修改指定联系人的信息
 void ModifyContact(Contact* pc);
 
+// 按照名字排序
+void SortContact(Contact* pc);
 
 
 
