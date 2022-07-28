@@ -5,6 +5,9 @@
 #ifndef CONTACT_CONTACT_H
 #define CONTACT_CONTACT_H
 
+#include <stdio.h>
+#include <string.h>
+
 // 类型的声明
 #define MAX 100
 #define NAME_MAX 20
@@ -39,5 +42,14 @@ typedef struct Contact
 }Contact;
 
 // 函数的声明
+
+// 初始化通讯录
+void InitContact(Contact* pc);
+
+// 添加联系人
+void AddContact(Contact* pc);
+
+//
+
 
 #endif//CONTACT_CONTACT_H

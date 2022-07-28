@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include "contact.h"
-
-
 
 void menu()
 {
@@ -19,6 +16,8 @@ void test()
     int input = 0;
     // 创建通讯录
     Contact con; // 通讯录
+    // 初始化通讯录
+    InitContact(&con);
 
     do
     {
@@ -28,7 +27,7 @@ void test()
         switch (input)
         {
             case ADD:
-
+                AddContact(&con);
                 break;
             case DEL:
                 break;
