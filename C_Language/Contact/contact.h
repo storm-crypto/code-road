@@ -53,5 +53,8 @@ void AddContact(Contact* pc);
 // 打印通讯录中的信息
 void PrintContact(const Contact* pc);
 
+// 删除指定联系人
+void DelContact(Contact* pc);
+
 
 #endif//CONTACT_CONTACT_H

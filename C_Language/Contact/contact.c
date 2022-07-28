@@ -50,3 +50,54 @@ void PrintContact(const Contact* pc)
 
     }
 }
+
+// 找到返回下标
+// 找不到返回-1
+int FindByName(const Contact* pc, char name[])
+{
+    assert(pc);
+    int i = 0;
+    for (i = 0; i < pc->sz; i++)
+    {
+        if (0 == strcmp(pc->data[i].name, name))
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+// 删除指定联系人
+void DelContact(Contact* pc)
+{
+    assert(pc);
+
+    if (pc->sz == 0)
+    {
+        printf("通讯录已空, 无法删除\n");
+        return;
+    }
+
+    // 删除
+    // 1.找到
+    char name[NAME_MAX] = {0};
+    printf("请输入要删除人的名字:>");
+    scanf("%s", name);
+
+    // 2. 找到名字然后再删除
+    int pos = FindByName(pc, name);
+    if (pos == -1)
+    {
+        printf("要删除的人不存在\n");
+    }
+
+    int j = 0;
+    for (j = pos; j < pc->sz-1; j++)
+    {
+        pc->data[j] = pc->data[j + 1];
+    }
+
+    pc->sz--;
+    printf("删除成功\n");
+}
