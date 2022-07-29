@@ -15,19 +15,19 @@
 //}
 
 // 动态版本
-void InitContact(Contact* pc)
-{
-    assert(pc);
-    pc->sz = 0;
-    pc->capacity = DEFAULT_SZ;
-    pc->data = (PeoInfo*)malloc(pc->capacity * sizeof (PeoInfo));
-    if (pc->data == NULL)
-    {
-        perror("InitContact::malloc");
-        return;
-    }
-    memset(pc->data, 0, pc->capacity * sizeof (PeoInfo));
-}
+//void InitContact(Contact* pc)
+//{
+//    assert(pc);
+//    pc->sz = 0;
+//    pc->capacity = DEFAULT_SZ;
+//    pc->data = (PeoInfo*)malloc(pc->capacity * sizeof (PeoInfo));
+//    if (pc->data == NULL)
+//    {
+//        perror("InitContact::malloc");
+//        return;
+//    }
+//    memset(pc->data, 0, pc->capacity * sizeof (PeoInfo));
+//}
 
 void CheckCapacity(Contact* pc)
 {
@@ -44,6 +44,49 @@ void CheckCapacity(Contact* pc)
         printf("增容成功\n");
     }
 }
+
+// 加载文件
+void LoadContact(Contact* pc)
+{
+    // 打开文件
+    FILE* pf = fopen("contact.dat", "rb");
+    if (pf == NULL)
+    {
+        perror("LoadContact::fopen");
+    }
+    // 读文件
+    PeoInfo  tmp = {0};
+    while (fread(&tmp, sizeof (PeoInfo), 1, pf))
+    {
+        CheckCapacity(pc);
+        pc->data[pc->sz] = tmp;
+        pc->sz++;
+    }
+    // 关闭文件
+    fclose(pf);
+    pf = NULL;
+}
+
+// 初始化通讯录文件版本
+void InitContact(Contact* pc)
+{
+    assert(pc);
+    pc->sz = 0;
+    pc->capacity = DEFAULT_SZ;
+    pc->data = (PeoInfo*)malloc(pc->capacity * sizeof (PeoInfo));
+    if (pc->data == NULL)
+    {
+        perror("InitContact::malloc");
+        return;
+    }
+    memset(pc->data, 0, pc->capacity * sizeof (PeoInfo));
+
+    // 加载文件信息到通讯录
+    LoadContact(pc);
+}
+
+
+
 
 void AddContact(Contact* pc)
 {
