@@ -71,11 +71,45 @@
 //}
 
 // fgets函数
+//int main()
+//{
+//    char arr[256] = {0};
+//    // 打开文件
+//    FILE* pf = fopen("test.txt", "r");
+//    if (pf == NULL)
+//    {
+//        perror("fopen");
+//        return 1;
+//    }
+//
+//    // 写文件
+//    while (fgets(arr, 256, pf) != NULL)
+//    {
+//        printf("%s", arr);
+//    }
+//    // 关闭文件
+//    fclose(pf);
+//    pf = NULL;
+//
+//    return 0;
+//}
+
+// fprintf函数
+
+// 结构体类型的数据
+
+struct S
+{
+    char name[20];
+    int age;
+    double d;
+};
+
 int main()
 {
-    char arr[256] = {0};
+    struct S s = {"张三", 20, 95.5};
     // 打开文件
-    FILE* pf = fopen("test.txt", "r");
+    FILE* pf = fopen("test2.txt", "w");
     if (pf == NULL)
     {
         perror("fopen");
@@ -83,10 +117,8 @@ int main()
     }
 
     // 写文件
-    while (fgets(arr, 256, pf) != NULL)
-    {
-        printf("%s", arr);
-    }
+    fprintf(pf, "%s %d %lf", s.name, s.age, s.d);
+
     // 关闭文件
     fclose(pf);
     pf = NULL;
