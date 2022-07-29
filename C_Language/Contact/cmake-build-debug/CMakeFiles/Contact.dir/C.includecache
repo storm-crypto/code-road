@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/05code/2022/code-road/C_Language/Contact/contact.c
+contact.h
+D:/05code/2022/code-road/C_Language/Contact/contact.h
+
+D:/05code/2022/code-road/C_Language/Contact/contact.h
+stdio.h
+-
+string.h
+-
+assert.h
+-
+
+D:/05code/2022/code-road/C_Language/Contact/main.c
+contact.h
+D:/05code/2022/code-road/C_Language/Contact/contact.h
+
