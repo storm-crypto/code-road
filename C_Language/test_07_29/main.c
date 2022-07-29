@@ -49,20 +49,44 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    // 打开文件
+//    FILE* pf = fopen("test.txt", "w");
+//    if (pf == NULL)
+//    {
+//        perror("fopen");
+//        return 1;
+//    }
+//
+//    // 写文件  写一行
+//    fputs("skajflsajdfl", pf);
+//    fputs("xxxxxxxxxxxx", pf);
+//
+//    // 关闭文件
+//    fclose(pf);
+//    pf = NULL;
+//
+//    return 0;
+//}
+
+// fgets函数
 int main()
 {
+    char arr[256] = {0};
     // 打开文件
-    FILE* pf = fopen("test.txt", "w");
+    FILE* pf = fopen("test.txt", "r");
     if (pf == NULL)
     {
         perror("fopen");
         return 1;
     }
 
-    // 写文件  写一行
-    fputs("skajflsajdfl", pf);
-    fputs("xxxxxxxxxxxx", pf);
-
+    // 写文件
+    while (fgets(arr, 256, pf) != NULL)
+    {
+        printf("%s", arr);
+    }
     // 关闭文件
     fclose(pf);
     pf = NULL;
