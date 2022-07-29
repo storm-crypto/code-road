@@ -81,6 +81,9 @@ void ModifyContact(Contact* pc);
 // 按照名字排序
 void SortContact(Contact* pc);
 
+// 将信息保存到文件中
+void SaveContact(const Contact* pc);
+
 
 
 #endif//CONTACT_CONTACT_H

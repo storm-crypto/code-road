@@ -243,3 +243,26 @@ void SortContact(Contact* pc)
         }
     }
 }
+
+// 将信息保存到文件中
+void SaveContact(const Contact* pc)
+{
+    // 打开文件
+    FILE* pf = fopen("contact.dat", "wb");
+    if (pf == NULL)
+    {
+        perror("SaveContact::fopen");
+        return;
+    }
+
+    // 写文件
+    int i = 0;
+    for (i = 0; i < pc->sz; i++)
+    {
+        fwrite(pc->data+i, sizeof(PeoInfo), 1, pf);
+    }
+
+    // 关闭文件
+    fclose(pf);
+    pf = NULL;
+}

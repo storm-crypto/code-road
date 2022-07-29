@@ -45,6 +45,8 @@ void test()
                 PrintContact(&con);
                 break;
             case EXIT:
+                SaveContact(&con);
+                DestoryContact(&con);
                 printf("�˳�ͨѶ¼\n");
                 break;
             default:
