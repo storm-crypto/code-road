@@ -91,14 +91,32 @@
 //    return 0;
 //}
 
-// 用宏实现二进制的奇数位和偶数位进行交换
-#define SWAP(num) (num = (((num & 0x55555555) << 1) + ((num & 0xaaaaaaaa) >> 1)))
+// 练习：用宏实现二进制的奇数位和偶数位进行交换
+//#define SWAP(num) (num = (((num & 0x55555555) << 1) + ((num & 0xaaaaaaaa) >> 1)))
+//
+//int main()
+//{
+//    int num = 10;
+//    SWAP(num);
+//    printf("%d\n", num);
+//
+//    return 0;
+//}
+
+// offset宏的实现
+// 写一个宏，计算结构体中某变量相对于首地址的偏移
+
+struct S
+{
+    int a;
+    char c;
+    double d;
+};
+
+#define OFFSETOF(st_type, mem) (size_t)&(((st_type*)0) -> mem)
 
 int main()
 {
-    int num = 10;
-    SWAP(num);
-    printf("%d\n", num);
-
+    printf("%d\n", OFFSETOF(struct S, a));
     return 0;
 }
