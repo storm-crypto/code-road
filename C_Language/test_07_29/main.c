@@ -126,28 +126,46 @@
 //    return 0;
 //}
 
-struct S
-{
-    char name[20];
-    int age;
-    double d;
-};
+//struct S
+//{
+//    char name[20];
+//    int age;
+//    double d;
+//};
+//
+//int main()
+//{
+//    struct S s = {"张三", 20, 95.5};
+//    // 打开文件
+//    FILE* pf = fopen("test2.txt", "r");
+//    if (pf == NULL)
+//    {
+//        perror("fopen");
+//        return 1;
+//    }
+//
+//    // 写文件
+//    fscanf(pf, "%s %d %lf", s.name, &s.age, &s.d);
+//
+//    printf("%s %d %lf", s.name, s.age, s.d);
+//
+//    // 关闭文件
+//    fclose(pf);
+//    pf = NULL;
+//
+//    return 0;
+//}
 
 int main()
 {
-    struct S s = {"张三", 20, 95.5};
     // 打开文件
-    FILE* pf = fopen("test2.txt", "r");
+    FILE* pf = fopen("test.txt", "r");
     if (pf == NULL)
     {
         perror("fopen");
         return 1;
     }
-
-    // 写文件
-    fscanf(pf, "%s %d %lf", s.name, &s.age, &s.d);
-
-    printf("%s %d %lf", s.name, s.age, s.d);
+    // 随机读
 
     // 关闭文件
     fclose(pf);
