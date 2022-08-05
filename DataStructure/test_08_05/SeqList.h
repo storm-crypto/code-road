@@ -1,11 +1,11 @@
 //
-// Created by æ—­å“¥ on 2022-08-05.
+// Created by Ğñ¸ç on 2022-08-05.
 //
 
 #ifndef TEST_08_05_SEQLIST_H
 #define TEST_08_05_SEQLIST_H
 
-// é™æ€çš„é¡ºåºè¡¨
+// ¾²Ì¬µÄË³Ğò±í
 //#define N 100
 //struct SeqList
 //{
@@ -13,15 +13,30 @@
 //    int size;
 //};
 
-// åŠ¨æ€é¡ºåºè¡¨
+// ¶¯Ì¬Ë³Ğò±í
 typedef int SeqDataType;
 
-struct SeqList
+typedef struct SeqList
 {
     SeqDataType* a;
-    int capacity; // å®¹é‡ç©ºé—´
-    int size;     // æœ‰æ•ˆæ•°æ®çš„ä¸ªæ•°
-};
+    int capacity; // ÈİÁ¿¿Õ¼ä
+    int size;     // ÓĞĞ§Êı¾İµÄ¸öÊı
+}SeqList, SEQ;
+
+// ÄÚ´æÖĞ¹ÜÀíÊı¾İµÄ½á¹¹ÔöÉ¾²é¸ÄµÄ½Ó¿Ú
+
+// Î²²å
+void SeqListPushBack(SeqList seq, SeqDataType x);
+
+// Í·²å
+void SeqListPushFront(SeqList seq, SeqDataType x);
+
+// Î²É¾
+void SeqListPopBack(SeqList seq);
+
+// Í·É¾
+void SeqListPopFront(SeqList seq);
+
 
 
 
