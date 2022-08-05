@@ -6,8 +6,16 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/DataStructure/test_08_05/SeqList.c
+SeqList.h
+D:/05code/2022/code-road/DataStructure/test_08_05/SeqList.h
+
 D:/05code/2022/code-road/DataStructure/test_08_05/SeqList.h
 stdio.h
+-
+stdlib.h
+-
+assert.h
 -
 
 D:/05code/2022/code-road/DataStructure/test_08_05/main.c

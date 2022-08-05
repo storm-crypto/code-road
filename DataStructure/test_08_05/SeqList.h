@@ -47,6 +47,9 @@ void SeqListPopBack(SeqList* pq);
 // Õ∑…æ
 void SeqListPopFront(SeqList* pq);
 
+// ¥Ú”°
+void SeqListPrint(SeqList* pq);
+
 
 
 
