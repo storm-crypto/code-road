@@ -33,10 +33,9 @@ void SeqListPrint(SeqList* pq)
     printf("\n");
 }
 
-void SeqListPushBack(SeqList* pq, SeqDataType x)
+// 检查是否需要扩容
+void SeqCheckCapacity(SeqList* pq)
 {
-    assert(pq);
-
     // 如果满了,需要增容
     if (pq->size == pq->capacity)
     {
@@ -50,10 +49,32 @@ void SeqListPushBack(SeqList* pq, SeqDataType x)
         pq->a = newA;
         pq->capacity = newcapacity;
     }
+}
+
+void SeqListPushBack(SeqList* pq, SeqDataType x)
+{
+    assert(pq);
+
+    // 如果满了,需要增容
+    SeqCheckCapacity(pq);
     pq->a[pq->size] = x;
     pq->size++;
 }
 void SeqListPushFront(SeqList* pq, SeqDataType x)
 {
     assert(pq);
+
+    SeqCheckCapacity(pq);
+
+    int end = pq->size - 1;
+
+    while (end >= 0)
+    {
+        pq->a[end + 1] = pq->a[end];
+        end--;
+    }
+
+    pq->a[0] = x;
+    pq->size++;
+
 }
