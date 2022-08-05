@@ -1,6 +1,19 @@
-#include <stdio.h>
+#include "SeqList.h"
 
-int main() {
-    printf("Hello, World!\n");
+void TestSeqList1()
+{
+    SeqList s;
+    SeqListInit(&s);
+
+
+
+    SeqListDestory(&s);
+}
+
+int main()
+{
+    TestSeqList1();
+
+
     return 0;
 }

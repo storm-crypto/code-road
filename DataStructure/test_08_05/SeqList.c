@@ -3,3 +3,21 @@
 //
 
 #include "SeqList.h"
+
+
+void SeqListInit(SeqList* pq)
+{
+    assert(pq);
+
+    pq->a = NULL;
+    pq->size = pq->capacity = 0;
+}
+
+void SeqListDestory(SeqList* pq)
+{
+    assert(pq);
+
+    free(pq->a);
+    pq->a = NULL;
+    pq->size = pq->capacity = 0;
+}

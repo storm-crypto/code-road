@@ -5,6 +5,10 @@
 #ifndef TEST_08_05_SEQLIST_H
 #define TEST_08_05_SEQLIST_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
 // 静态的顺序表
 //#define N 100
 //struct SeqList
@@ -25,17 +29,23 @@ typedef struct SeqList
 
 // 内存中管理数据的结构增删查改的接口
 
+// 初始化
+void SeqListInit(SeqList* pq);
+
+// 销毁
+void SeqListDestory(SeqList* pq);
+
 // 尾插
-void SeqListPushBack(SeqList seq, SeqDataType x);
+void SeqListPushBack(SeqList* pq, SeqDataType x);
 
 // 头插
-void SeqListPushFront(SeqList seq, SeqDataType x);
+void SeqListPushFront(SeqList* pq, SeqDataType x);
 
 // 尾删
-void SeqListPopBack(SeqList seq);
+void SeqListPopBack(SeqList* pq);
 
 // 头删
-void SeqListPopFront(SeqList seq);
+void SeqListPopFront(SeqList* pq);
 
 
 
