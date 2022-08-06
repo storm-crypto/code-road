@@ -53,16 +53,17 @@ void SeqCheckCapacity(SeqList* pq)
 
 void SeqListPushBack(SeqList* pq, SeqDataType x)
 {
-    assert(pq);
+    /*assert(pq);
 
     // 如果满了,需要增容
     SeqCheckCapacity(pq);
     pq->a[pq->size] = x;
-    pq->size++;
+    pq->size++;*/
+    SeqListInsert(pq, pq->size, x);
 }
 void SeqListPushFront(SeqList* pq, SeqDataType x)
 {
-    assert(pq);
+    /*assert(pq);
 
     SeqCheckCapacity(pq);
 
@@ -75,7 +76,9 @@ void SeqListPushFront(SeqList* pq, SeqDataType x)
     }
 
     pq->a[0] = x;
-    pq->size++;
+    pq->size++;*/
+
+    SeqListInsert(pq, 0, x);
 
 }
 
@@ -119,7 +122,7 @@ int SeqListFind(SeqList* pq, SeqDataType x)
 void SeqListInsert(SeqList* pq, int pos, SeqDataType x)
 {
     assert(pq);
-    assert(pos >= 0 && pos < pq->size);
+    assert(pos >= 0 && pos <= pq->size);
 
     SeqCheckCapacity(pq);
 
