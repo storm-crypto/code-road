@@ -14,3 +14,33 @@ void SListPrint(SLTNode* plist)
     }
     printf("\n");
 }
+
+// 创建一个结点
+SLTNode* BuySLTNode(SLTDataType x)
+{
+    SLTNode* node = (SLTNode*)malloc(sizeof(SLTNode));
+    node->data = x;
+    node->next = NULL;
+    return node;
+}
+
+void SListPushBack(SLTNode* plist, SLTDataType x)
+{
+    SLTNode * newNode = BuySLTNode(x);
+    // 要加这一步判断一下，如果不加这一步就会导致空指针异常
+    if (plist == NULL)
+    {
+        plist->next = newNode;
+    }
+    else
+    {
+        SLTNode* tail = plist;
+        // 找最后一个结点的地址，用这个条件刚好让tail指向最后一个结点的地址
+        while (tail->next != NULL)
+        {
+            tail = tail->next;
+        }
+        tail->next = newNode;
+    }
+
+}
