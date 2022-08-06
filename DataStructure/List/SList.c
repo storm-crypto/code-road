@@ -9,10 +9,10 @@ void SListPrint(SLTNode* plist)
     SLTNode* cur = plist;
     while (cur != NULL)
     {
-        printf("%d ", cur->data);
+        printf("%d->", cur->data);
         cur = cur->next;
     }
-    printf("\n");
+    printf("NULL\n");
 }
 
 // 创建一个结点

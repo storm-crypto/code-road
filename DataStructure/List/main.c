@@ -8,7 +8,15 @@ void TestSList1()
     SListPushBack(&plist, 3);
     SListPushBack(&plist, 4);
 
-    SListPushFront(&plist, 5);
+    SListPrint(plist);
+
+    SListPushFront(&plist, 0);
+    SListPrint(plist);
+
+    SListPopBack(&plist);
+    SListPopBack(&plist);
+    SListPopBack(&plist);
+    SListPopBack(&plist);
 
     SListPrint(plist);
 
