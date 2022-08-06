@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 typedef int SLTDataType;
 
@@ -26,5 +27,11 @@ void SListPopFront(SLTNode** pplist);
 
 // 单链表的查找
 SLTNode* SListFind(SLTNode* plist, SLTDataType x);
+
+// 单链表在pos位置后面插入x
+void SListInsertAfter(SLTNode* pos, SLTDataType x);
+
+// 单链表在pos位置之前插入x
+void SListInsertBefore(SLTNode** pplist, SLTNode* pos, SLTDataType x);
 
 #endif//LIST_SLIST_H

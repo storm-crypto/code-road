@@ -114,3 +114,44 @@ SLTNode* SListFind(SLTNode* plist, SLTDataType x)
 
     return NULL;
 }
+
+// 单链表在pos位置后面插入x
+void SListInsertAfter(SLTNode* pos, SLTDataType x)
+{
+    assert(pos);
+
+    SLTNode* newNode = BuySLTNode(x);
+    newNode->next = pos->next;
+    pos->next = newNode;
+}
+
+// 单链表在pos位置之前插入x(很麻烦，不适合单链表)
+// 需要找到pos之前的位置，所以需要plist
+// 可能需要改变plist的地址，所以参数要是二级指针
+void SListInsertBefore(SLTNode** pplist, SLTNode* pos, SLTDataType x)
+{
+    assert(pos);
+
+    SLTNode* newNode = BuySLTNode(x);
+
+    // 特殊情况
+    if (pos == *pplist) // 头插
+    {
+        newNode->next = pos;
+        *pplist = newNode;
+    }
+    else
+    {
+        SLTNode* prev = NULL;
+        SLTNode* cur = *pplist;
+        while (cur != pos)
+        {
+            prev = cur;
+            cur = cur->next;
+        }
+
+        prev->next = newNode;
+        newNode->next = pos;
+    }
+
+}
