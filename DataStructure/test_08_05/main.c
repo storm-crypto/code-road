@@ -10,7 +10,22 @@ void TestSeqList1()
     SeqListPushBack(&s, 3);
     SeqListPushBack(&s, 4);
     SeqListPushBack(&s, 5);
+    SeqListPushFront(&s, 0);
+    SeqListPushFront(&s, 0);
+    SeqListPushFront(&s, 0);
+    SeqListPushFront(&s, 0);
+    SeqListPrint(&s);
 
+    SeqListPopBack(&s);
+    SeqListPrint(&s);
+
+    SeqListPopBack(&s);
+    SeqListPrint(&s);
+
+    SeqListPopFront(&s);
+    SeqListPrint(&s);
+
+    SeqListPopFront(&s);
     SeqListPrint(&s);
 
     SeqListDestory(&s);

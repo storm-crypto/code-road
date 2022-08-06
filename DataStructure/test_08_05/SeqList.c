@@ -78,3 +78,26 @@ void SeqListPushFront(SeqList* pq, SeqDataType x)
     pq->size++;
 
 }
+
+void SeqListPopBack(SeqList* pq)
+{
+    assert(pq);
+    assert(pq->size > 0);
+
+    pq->size--;
+}
+
+void SeqListPopFront(SeqList* pq)
+{
+    assert(pq);
+    assert(pq->size > 0);
+
+    int begin = 0;
+    while (begin < pq->size - 1)
+    {
+        pq->a[begin] = pq->a[begin + 1];
+        begin++;
+    }
+
+    pq->size--;
+}
