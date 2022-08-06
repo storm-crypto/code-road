@@ -84,15 +84,16 @@ void SeqListPushFront(SeqList* pq, SeqDataType x)
 
 void SeqListPopBack(SeqList* pq)
 {
-    assert(pq);
-    assert(pq->size > 0);
-
-    pq->size--;
+//    assert(pq);
+//    assert(pq->size > 0);
+//
+//    pq->size--;
+    SeqListErase(pq, pq->size - 1);
 }
 
 void SeqListPopFront(SeqList* pq)
 {
-    assert(pq);
+    /*assert(pq);
     assert(pq->size > 0);
 
     int begin = 0;
@@ -102,7 +103,9 @@ void SeqListPopFront(SeqList* pq)
         begin++;
     }
 
-    pq->size--;
+    pq->size--;*/
+
+    SeqListErase(pq, 0);
 }
 
 int SeqListFind(SeqList* pq, SeqDataType x)
