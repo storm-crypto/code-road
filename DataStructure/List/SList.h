@@ -21,7 +21,7 @@ void SListPrint(SLTNode* plist);
 void SListPushBack(SLTNode** pplist, SLTDataType x);
 void SListPushFront(SLTNode** pplist, SLTDataType x);
 
-void SListPopBack(SLTNode* plist);
-void SListPopFront(SLTNode* plist);
+void SListPopBack(SLTNode** pplist);
+void SListPopFront(SLTNode** pplist);
 
 #endif//LIST_SLIST_H

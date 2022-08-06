@@ -51,3 +51,35 @@ void SListPushFront(SLTNode** pplist, SLTDataType x)
     newNode->next = *pplist;
     *pplist = newNode;
 }
+
+void SListPopBack(SLTNode** pplist)
+{
+    // 1. 没有节点
+    // 2. 一个节点
+    // 3. 多个节点
+    if (*pplist == NULL)
+    {
+        return;
+    }
+    else if ((*pplist)->next == NULL)
+    {
+        free(*pplist);
+        *pplist = NULL;
+    }
+    else
+    {
+        SLTNode* pre = NULL;
+        SLTNode* tail = *pplist;
+        while (tail->next != NULL)
+        {
+            pre = tail;
+            tail = tail->next;
+        }
+
+        free(tail);
+        tail = NULL;
+
+        pre->next = NULL;
+    }
+
+}
