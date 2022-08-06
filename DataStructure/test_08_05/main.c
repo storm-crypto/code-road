@@ -46,6 +46,10 @@ void TestSeqList2()
     SeqListInsert(&s, 2, 30);
     SeqListPrint(&s);
 
+    SeqListErase(&s, 2);
+    SeqListErase(&s, 0);
+    SeqListPrint(&s);
+
     SeqListDestory(&s);
 }
 

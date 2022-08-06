@@ -139,5 +139,15 @@ void SeqListInsert(SeqList* pq, int pos, SeqDataType x)
 
 void SeqListErase(SeqList* pq, int pos)
 {
+    assert(pq);
+    assert(pos >= 0 && pos < pq->size);
 
+    int begin = pos;
+    while (begin <= pq->size - 1)
+    {
+        pq->a[begin] = pq->a[begin + 1];
+        ++begin;
+    }
+
+    pq->size--;
 }
