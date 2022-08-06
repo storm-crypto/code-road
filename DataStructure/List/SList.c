@@ -24,17 +24,17 @@ SLTNode* BuySLTNode(SLTDataType x)
     return node;
 }
 
-void SListPushBack(SLTNode* plist, SLTDataType x)
+void SListPushBack(SLTNode** pplist, SLTDataType x)
 {
     SLTNode * newNode = BuySLTNode(x);
     // 要加这一步判断一下，如果不加这一步就会导致空指针异常
-    if (plist == NULL)
+    if (*pplist == NULL)
     {
-        plist->next = newNode;
+        *pplist = newNode;
     }
     else
     {
-        SLTNode* tail = plist;
+        SLTNode* tail = *pplist;
         // 找最后一个结点的地址，用这个条件刚好让tail指向最后一个结点的地址
         while (tail->next != NULL)
         {

@@ -18,7 +18,7 @@ typedef struct SListNode
 
 // 单向+不带头+不循环
 void SListPrint(SLTNode* plist);
-void SListPushBack(SLTNode* plist, SLTDataType x);
+void SListPushBack(SLTNode** pplist, SLTDataType x);
 void SListPushFront(SLTNode* plist, SLTDataType x);
 
 void SListPopBack(SLTNode* plist);
