@@ -83,3 +83,18 @@ void SListPopBack(SLTNode** pplist)
     }
 
 }
+
+void SListPopFront(SLTNode** pplist)
+{
+    if (*pplist == NULL)
+    {
+        return;
+    }
+    else
+    {
+        SLTNode* next = (*pplist)->next;
+        free(*pplist);
+
+        *pplist = next;
+    }
+}
