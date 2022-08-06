@@ -50,7 +50,8 @@ void SeqListPopFront(SeqList* pq);
 // 打印
 void SeqListPrint(SeqList* pq);
 
-
+// 查找,找到返回下标，没找到返回-1
+int SeqListFind(SeqList* pq, SeqDataType x);
 
 
 #endif//TEST_08_05_SEQLIST_H

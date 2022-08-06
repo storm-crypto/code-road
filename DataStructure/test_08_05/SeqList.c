@@ -101,3 +101,17 @@ void SeqListPopFront(SeqList* pq)
 
     pq->size--;
 }
+
+int SeqListFind(SeqList* pq, SeqDataType x)
+{
+    assert(pq);
+    for (int i = 0; i < pq->size; i++)
+    {
+        if (pq->a[i] == x)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
