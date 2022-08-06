@@ -3,3 +3,14 @@
 //
 
 #include "SList.h"
+
+void SListPrint(SLTNode* plist)
+{
+    SLTNode* cur = plist;
+    while (cur != NULL)
+    {
+        printf("%d ", cur->data);
+        cur = cur->next;
+    }
+    printf("\n");
+}

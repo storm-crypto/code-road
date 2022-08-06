@@ -5,10 +5,23 @@
 #ifndef LIST_SLIST_H
 #define LIST_SLIST_H
 
-struct SListNode
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef int SLTDataType;
+
+typedef struct SListNode
 {
-    int data;
+    SLTDataType data;
     struct SListNode* next;
-};
+}SLTNode;
+
+// 单向+不带头+不循环
+void SListPrint(SLTNode* plist);
+void SListPushBack(SLTNode* plist, SLTDataType);
+void SListPushFront(SLTNode* plist, SLTDataType);
+
+void SListPopBack(SLTNode* plist);
+void SListPopFront(SLTNode* plist);
 
 #endif//LIST_SLIST_H
