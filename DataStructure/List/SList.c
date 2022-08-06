@@ -98,3 +98,19 @@ void SListPopFront(SLTNode** pplist)
         *pplist = next;
     }
 }
+
+// Á´±í²éÕÒ
+SLTNode* SListFind(SLTNode* plist, SLTDataType x)
+{
+    SLTNode* cur = plist;
+    while (cur != NULL)
+    {
+        if (cur->data == x)
+        {
+            return cur;
+        }
+        cur = cur->next;
+    }
+
+    return NULL;
+}

@@ -24,4 +24,7 @@ void SListPushFront(SLTNode** pplist, SLTDataType x);
 void SListPopBack(SLTNode** pplist);
 void SListPopFront(SLTNode** pplist);
 
+// 单链表的查找
+SLTNode* SListFind(SLTNode* plist, SLTDataType x);
+
 #endif//LIST_SLIST_H
