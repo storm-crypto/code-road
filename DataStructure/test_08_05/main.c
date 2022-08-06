@@ -31,10 +31,29 @@ void TestSeqList1()
     SeqListDestory(&s);
 }
 
+void TestSeqList2()
+{
+    SeqList s;
+    SeqListInit(&s);
+
+    SeqListPushBack(&s, 1);
+    SeqListPushBack(&s, 2);
+    SeqListPushBack(&s, 3);
+    SeqListPushBack(&s, 4);
+    SeqListPushBack(&s, 5);
+    SeqListPrint(&s);
+
+    SeqListInsert(&s, 2, 30);
+    SeqListPrint(&s);
+
+    SeqListDestory(&s);
+}
+
+
 int main()
 {
-    TestSeqList1();
-
+    //TestSeqList1();
+    TestSeqList2();
 
     return 0;
 }

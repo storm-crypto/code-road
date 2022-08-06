@@ -53,5 +53,11 @@ void SeqListPrint(SeqList* pq);
 // 查找,找到返回下标，没找到返回-1
 int SeqListFind(SeqList* pq, SeqDataType x);
 
+// 在中间某个位置插入数据
+void SeqListInsert(SeqList* pq, int pos, SeqDataType x);
+
+// 将pos位置的数据删掉
+void SeqListErase(SeqList* pq, int pos);
+
 
 #endif//TEST_08_05_SEQLIST_H

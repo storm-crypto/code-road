@@ -115,3 +115,26 @@ int SeqListFind(SeqList* pq, SeqDataType x)
 
     return -1;
 }
+
+void SeqListInsert(SeqList* pq, int pos, SeqDataType x)
+{
+    assert(pq);
+    assert(pos >= 0 && pos < pq->size);
+
+    SeqCheckCapacity(pq);
+
+    int end = pq->size - 1;
+    while (end >= pos)
+    {
+        pq->a[end + 1] = pq->a[end];
+        end--;
+    }
+
+    pq->a[pos] = x;
+    pq->size++;
+}
+
+void SeqListErase(SeqList* pq, int pos)
+{
+
+}
