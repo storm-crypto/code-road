@@ -154,3 +154,11 @@ void SeqListErase(SeqList* pq, int pos)
 
     pq->size--;
 }
+
+void SeqListModify(SeqList* pq, int pos, SeqDataType x)
+{
+    assert(pq);
+    assert(pos >=0 && pos < pq->size);
+
+    pq->a[pos] = x;
+}

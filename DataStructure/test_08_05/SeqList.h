@@ -59,5 +59,8 @@ void SeqListInsert(SeqList* pq, int pos, SeqDataType x);
 // 将pos位置的数据删掉
 void SeqListErase(SeqList* pq, int pos);
 
+// 修改
+void SeqListModify(SeqList* pq, int pos, SeqDataType x);
+
 
 #endif//TEST_08_05_SEQLIST_H
