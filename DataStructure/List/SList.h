@@ -34,4 +34,9 @@ void SListInsertAfter(SLTNode* pos, SLTDataType x);
 // 单链表在pos位置之前插入x
 void SListInsertBefore(SLTNode** pplist, SLTNode* pos, SLTDataType x);
 
+void SListEraseAfter(SLTNode* pos);
+
+void SListEraseCur(SLTNode** pplist, SLTNode* pos);
+
+
 #endif//LIST_SLIST_H

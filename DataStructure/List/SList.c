@@ -155,3 +155,47 @@ void SListInsertBefore(SLTNode** pplist, SLTNode* pos, SLTDataType x)
     }
 
 }
+
+void SListEraseAfter(SLTNode* pos)
+{
+    assert(pos);
+    if (pos->next == NULL)
+    {
+        return;
+    }
+    else
+    {
+        SLTNode* next = pos->next;
+        pos->next = next->next;
+        free(next);
+        next = NULL;
+
+    }
+}
+
+void SListEraseCur(SLTNode** pplist, SLTNode* pos)
+{
+    assert(pos);
+
+    // 自己就是第一个，相当于是头删
+    if (*pplist == pos)
+    {
+        SListPopFront(pplist);
+    }
+
+    // 常规情况，需要找到pos位置的前一个位置
+    else
+    {
+        SLTNode* prev = NULL;
+        SLTNode* cur = *pplist;
+        while (cur != pos)
+        {
+            prev = cur;
+            cur = cur->next;
+        }
+        prev->next = cur->next;
+        free(cur);
+        cur = NULL;
+    }
+
+}
