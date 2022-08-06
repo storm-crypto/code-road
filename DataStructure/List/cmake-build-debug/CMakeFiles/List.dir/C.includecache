@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/05code/2022/code-road/DataStructure/List/SList.c
+SList.h
+D:/05code/2022/code-road/DataStructure/List/SList.h
+
+D:/05code/2022/code-road/DataStructure/List/SList.h
+stdlib.h
+-
+stdio.h
+-
+
+D:/05code/2022/code-road/DataStructure/List/main.c
+SList.h
+D:/05code/2022/code-road/DataStructure/List/SList.h
+

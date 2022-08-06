@@ -44,3 +44,10 @@ void SListPushBack(SLTNode** pplist, SLTDataType x)
     }
 
 }
+
+void SListPushFront(SLTNode** pplist, SLTDataType x)
+{
+    SLTNode* newNode = BuySLTNode(x);
+    newNode->next = *pplist;
+    *pplist = newNode;
+}
