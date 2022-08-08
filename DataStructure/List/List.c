@@ -4,6 +4,17 @@
 
 #include "List.h"
 
+// Á´±í´òÓ¡
+void ListPrint(ListNode* phead)
+{
+    ListNode* cur = phead->next;
+    while(cur != phead)
+    {
+        printf("%d->", cur->data);
+        cur = cur->next;
+    }
+    printf("NULL\n");
+}
 
 struct ListNode* BuyListNode(LTDataType x)
 {
@@ -33,5 +44,5 @@ void ListPushBack(ListNode* phead, LTDataType x)
     tail->next = newnode;
     newnode->prev = tail;
     newnode->next = phead;
-    phead->next = newnode;
+    phead->prev = newnode;
 }

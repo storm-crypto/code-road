@@ -83,7 +83,8 @@ void TestList1()
     ListPushBack(plist, 2);
     ListPushBack(plist, 3);
     ListPushBack(plist, 4);
-    ListPushBack(plist, 5);
+
+    ListPrint(plist);
 
 }
 
@@ -92,7 +93,8 @@ int main()
     //TestSList1();
     //TestSList2();
     //TestSList3();
-    TestSList4();
+    //TestSList4();
+    TestList1();
 
     return 0;
 }

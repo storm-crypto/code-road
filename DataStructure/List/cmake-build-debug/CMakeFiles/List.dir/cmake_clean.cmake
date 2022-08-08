@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/List.dir/DList.c.obj"
+  "CMakeFiles/List.dir/List.c.obj"
   "CMakeFiles/List.dir/SList.c.obj"
   "CMakeFiles/List.dir/main.c.obj"
   "List.exe"

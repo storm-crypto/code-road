@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
-D:/05code/2022/code-road/DataStructure/List/SList.c
-SList.h
-D:/05code/2022/code-road/DataStructure/List/SList.h
+D:/05code/2022/code-road/DataStructure/List/List.c
+List.h
+D:/05code/2022/code-road/DataStructure/List/List.h
+
+D:/05code/2022/code-road/DataStructure/List/List.h
+stdlib.h
+-
+stdio.h
+-
+assert.h
+-
 
 D:/05code/2022/code-road/DataStructure/List/SList.h
 stdlib.h
@@ -21,4 +29,6 @@ assert.h
 D:/05code/2022/code-road/DataStructure/List/main.c
 SList.h
 D:/05code/2022/code-road/DataStructure/List/SList.h
+List.h
+D:/05code/2022/code-road/DataStructure/List/List.h
 

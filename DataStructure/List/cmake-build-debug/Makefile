@@ -142,32 +142,32 @@ List/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/build
 .PHONY : List/fast
 
-DList.obj: DList.c.obj
+List.obj: List.c.obj
 
-.PHONY : DList.obj
+.PHONY : List.obj
 
 # target to build an object file
-DList.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.obj
-.PHONY : DList.c.obj
+List.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/List.c.obj
+.PHONY : List.c.obj
 
-DList.i: DList.c.i
+List.i: List.c.i
 
-.PHONY : DList.i
+.PHONY : List.i
 
 # target to preprocess a source file
-DList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.i
-.PHONY : DList.c.i
+List.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/List.c.i
+.PHONY : List.c.i
 
-DList.s: DList.c.s
+List.s: List.c.s
 
-.PHONY : DList.s
+.PHONY : List.s
 
 # target to generate assembly for a file
-DList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.s
-.PHONY : DList.c.s
+List.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/List.c.s
+.PHONY : List.c.s
 
 SList.obj: SList.c.obj
 
@@ -232,9 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... List
-	@echo ... DList.obj
-	@echo ... DList.i
-	@echo ... DList.s
+	@echo ... List.obj
+	@echo ... List.i
+	@echo ... List.s
 	@echo ... SList.obj
 	@echo ... SList.i
 	@echo ... SList.s

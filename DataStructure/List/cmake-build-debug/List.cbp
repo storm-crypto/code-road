@@ -74,10 +74,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/05code/2022/code-road/DataStructure/List/DList.c">
+		<Unit filename="D:/05code/2022/code-road/DataStructure/List/List.c">
 			<Option target="List"/>
 		</Unit>
-		<Unit filename="D:/05code/2022/code-road/DataStructure/List/DList.h">
+		<Unit filename="D:/05code/2022/code-road/DataStructure/List/List.h">
 			<Option target="List"/>
 		</Unit>
 		<Unit filename="D:/05code/2022/code-road/DataStructure/List/SList.c">

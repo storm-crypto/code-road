@@ -18,6 +18,8 @@ typedef struct ListNode
     LTDataType data;
 }ListNode;
 
+void ListPrint(ListNode* phead);
+struct ListNode* BuyListNode(LTDataType x);
 // 初始化
 ListNode* ListInit();
 // 因为头节点是不动的，所以不需要传二级指针
