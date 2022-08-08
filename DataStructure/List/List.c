@@ -10,6 +10,7 @@ struct ListNode* BuyListNode(LTDataType x)
     ListNode* node = (ListNode*)malloc(sizeof (ListNode));
     node->next = NULL;
     node->prev = NULL;
+    node->data = x;
     return node;
 }
 
@@ -20,4 +21,17 @@ ListNode* ListInit()
     phead->prev = phead;
 
     return phead;
+}
+
+void ListPushBack(ListNode* phead, LTDataType x)
+{
+    assert(phead);
+
+    ListNode* tail = phead->prev;
+    ListNode* newnode = BuyListNode(x);
+
+    tail->next = newnode;
+    newnode->prev = tail;
+    newnode->next = phead;
+    phead->next = newnode;
 }
