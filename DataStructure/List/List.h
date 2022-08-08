@@ -24,5 +24,10 @@ struct ListNode* BuyListNode(LTDataType x);
 ListNode* ListInit();
 // 因为头节点是不动的，所以不需要传二级指针
 void ListPushBack(ListNode* phead, LTDataType x);
+void ListPushFront(ListNode* phead, LTDataType x);
+
+void ListPopBack(ListNode* phead);
+void ListPopFront(ListNode* phead);
+
 
 #endif//LIST_LIST_H

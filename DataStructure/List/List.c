@@ -46,3 +46,18 @@ void ListPushBack(ListNode* phead, LTDataType x)
     newnode->next = phead;
     phead->prev = newnode;
 }
+
+void ListPushFront(ListNode* phead, LTDataType x)
+{
+    assert(phead);
+    ListNode* first = phead->next;
+    ListNode* newnode = BuyListNode(x);
+
+    phead->next = newnode;
+    newnode->prev = newnode;
+    newnode->next = first;
+    first->prev = newnode;
+}
+
+void ListPopBack(ListNode* phead);
+void ListPopFront(ListNode* phead);
