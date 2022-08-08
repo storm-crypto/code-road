@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "D:/05code/2022/code-road/DataStructure/List/DList.c" "D:/05code/2022/code-road/DataStructure/List/cmake-build-debug/CMakeFiles/List.dir/DList.c.obj"
   "D:/05code/2022/code-road/DataStructure/List/SList.c" "D:/05code/2022/code-road/DataStructure/List/cmake-build-debug/CMakeFiles/List.dir/SList.c.obj"
   "D:/05code/2022/code-road/DataStructure/List/main.c" "D:/05code/2022/code-road/DataStructure/List/cmake-build-debug/CMakeFiles/List.dir/main.c.obj"
   )

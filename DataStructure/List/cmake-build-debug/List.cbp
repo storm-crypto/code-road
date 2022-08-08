@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/List/DList.c">
+			<Option target="List"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/List/DList.h">
+			<Option target="List"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/DataStructure/List/SList.c">
 			<Option target="List"/>
 		</Unit>

@@ -142,6 +142,33 @@ List/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/build
 .PHONY : List/fast
 
+DList.obj: DList.c.obj
+
+.PHONY : DList.obj
+
+# target to build an object file
+DList.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.obj
+.PHONY : DList.c.obj
+
+DList.i: DList.c.i
+
+.PHONY : DList.i
+
+# target to preprocess a source file
+DList.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.i
+.PHONY : DList.c.i
+
+DList.s: DList.c.s
+
+.PHONY : DList.s
+
+# target to generate assembly for a file
+DList.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DList.c.s
+.PHONY : DList.c.s
+
 SList.obj: SList.c.obj
 
 .PHONY : SList.obj
@@ -205,6 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... List
+	@echo ... DList.obj
+	@echo ... DList.i
+	@echo ... DList.s
 	@echo ... SList.obj
 	@echo ... SList.i
 	@echo ... SList.s
