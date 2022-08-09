@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2020.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\StackQueue.dir/objects.a
+"D:\Program Files\JetBrains\mingw64\bin\ar.exe" cr CMakeFiles\StackQueue.dir/objects.a @CMakeFiles\StackQueue.dir\objects1.rsp
+"D:\Program Files\JetBrains\mingw64\bin\gcc.exe" -g   -Wl,--whole-archive CMakeFiles\StackQueue.dir/objects.a -Wl,--no-whole-archive  -o StackQueue.exe -Wl,--out-implib,libStackQueue.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\StackQueue.dir\linklibs.rsp
