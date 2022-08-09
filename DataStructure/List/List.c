@@ -72,4 +72,16 @@ void ListPopBack(ListNode* phead)
     phead->prev = tailPrev;
 
 }
-void ListPopFront(ListNode* phead);
+void ListPopFront(ListNode* phead)
+{
+    assert(phead);
+    assert(phead->next == phead);
+
+    ListNode* first = phead->next;
+    ListNode* second = first->next;
+    free(first);
+
+    phead->next = second;
+    second->prev = phead;
+
+}
