@@ -104,9 +104,27 @@ void TestList1()
 
     ListPrint(plist);
 
+}
 
+void TestList2()
+{
+    ListNode* plist = ListInit();
+    ListPushBack(plist, 1);
+    ListPushBack(plist, 2);
+    ListPushBack(plist, 3);
+    ListPushBack(plist, 4);
+    ListPushBack(plist, 5);
+    ListPushBack(plist, 6);
 
+    ListPrint(plist);
 
+    ListNode* pos = ListFind(plist, 4);
+    if (pos)
+    {
+        ListInsert(pos, 40);
+    }
+
+    ListPrint(plist);
 
 }
 
@@ -116,7 +134,7 @@ int main()
     //TestSList2();
     //TestSList3();
     //TestSList4();
-    TestList1();
+    TestList2();
 
     return 0;
 }

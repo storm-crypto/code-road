@@ -102,3 +102,15 @@ ListNode* ListFind(ListNode* phead, LTDataType x)
     return NULL;
 }
 
+void ListInsert(ListNode* pos, LTDataType x)
+{
+    assert(pos);
+
+    ListNode* prev = pos->prev;
+    ListNode* newnode = BuyListNode(x);
+    prev->next = newnode;
+    newnode->prev = prev;
+    newnode->next = pos;
+    pos->prev = newnode;
+}
+
