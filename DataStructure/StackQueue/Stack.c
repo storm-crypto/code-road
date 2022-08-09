@@ -67,5 +67,15 @@ STDataType StackTop(Stack* pst)
 // ¿Õ·µ»Ø1£¬·Ç¿Õ·µ»Ø0
 //int StackEmpty(Stack* pst);
 
-bool StackEmpty(Stack* pst);
-int StackSize(Stack* pst);
+bool StackEmpty(Stack* pst)
+{
+    assert(pst);
+
+    return pst->top == 0;
+}
+int StackSize(Stack* pst)
+{
+    assert(pst);
+
+    return pst->top;
+}
