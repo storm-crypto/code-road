@@ -29,5 +29,9 @@ void ListPushFront(ListNode* phead, LTDataType x);
 void ListPopBack(ListNode* phead);
 void ListPopFront(ListNode* phead);
 
+ListNode* ListFind(ListNode* phead, LTDataType x);
+void ListInsert(ListNode* pos, LTDataType x);
+void ListErase(ListNode* pos);
+
 
 #endif//LIST_LIST_H

@@ -85,3 +85,20 @@ void ListPopFront(ListNode* phead)
     second->prev = phead;
 
 }
+
+ListNode* ListFind(ListNode* phead, LTDataType x)
+{
+    assert(phead);
+
+    ListNode* cur = phead->next;
+
+    while (cur != phead)
+    {
+        if (cur->data == x)
+            return cur;
+        cur = cur->next;
+    }
+
+    return NULL;
+}
+
