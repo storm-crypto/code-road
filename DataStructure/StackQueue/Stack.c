@@ -46,10 +46,23 @@ void StackPush(Stack* pst, STDataType x)
     pst->top++;
 
 }
-void StackPop(Stack* pst);
+void StackPop(Stack* pst)
+{
+    assert(pst);
+    assert(!StackEmpty(pst)); // 保证是非空的
+
+    pst->top--;
+}
 
 // 取栈顶数据
-STDataType StackTop(Stack* pst);
+STDataType StackTop(Stack* pst)
+{
+    assert(pst);
+    assert(!StackEmpty(pst));
+
+    return pst->a[pst->top - 1];
+
+}
 
 // 空返回1，非空返回0
 //int StackEmpty(Stack* pst);
