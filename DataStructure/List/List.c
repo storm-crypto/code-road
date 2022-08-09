@@ -118,3 +118,14 @@ void ListInsert(ListNode* pos, LTDataType x)
     pos->prev = newnode;
 }
 
+void ListErase(ListNode* pos)
+{
+    assert(pos);
+
+    ListNode* prev = pos->prev;
+    ListNode* next = pos->next;
+
+    prev->next = next;
+    next->prev = prev;
+    free(pos);
+}
