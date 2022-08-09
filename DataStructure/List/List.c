@@ -133,3 +133,37 @@ void ListErase(ListNode* pos)
     next->prev = prev;
     free(pos);
 }
+
+int ListEmpty(ListNode* phead)
+{
+    assert(phead);
+    return phead->next == phead? 1 : 0;
+}
+
+int ListSize(ListNode* phead)
+{
+    assert(phead);
+    int size = 0;
+    ListNode* cur = phead->next;
+    while (cur != phead)
+    {
+        size++;
+        cur = cur->next;
+    }
+    return size;
+}
+
+void ListDestory(ListNode* phead)
+{
+    assert(phead);
+    ListNode* cur = phead->next;
+    while (cur != phead)
+    {
+        ListNode* next = phead->next;
+        free(cur);
+        cur = next;
+    }
+
+    free(phead);
+    phead = NULL;
+}

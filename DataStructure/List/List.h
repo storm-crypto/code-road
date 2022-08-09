@@ -33,5 +33,10 @@ ListNode* ListFind(ListNode* phead, LTDataType x);
 void ListInsert(ListNode* pos, LTDataType x);
 void ListErase(ListNode* pos);
 
+// ¿Õ·µ»Ø1£¬·Ç¿Õ·µ»Ø0
+int ListEmpty(ListNode* phead);
+int ListSize(ListNode* phead);
+void ListDestory(ListNode* phead);
+
 
 #endif//LIST_LIST_H
