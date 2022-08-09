@@ -36,27 +36,31 @@ ListNode* ListInit()
 
 void ListPushBack(ListNode* phead, LTDataType x)
 {
-    assert(phead);
-
-    ListNode* tail = phead->prev;
-    ListNode* newnode = BuyListNode(x);
-
-    tail->next = newnode;
-    newnode->prev = tail;
-    newnode->next = phead;
-    phead->prev = newnode;
+//    assert(phead);
+//
+//    ListNode* tail = phead->prev;
+//    ListNode* newnode = BuyListNode(x);
+//
+//    tail->next = newnode;
+//    newnode->prev = tail;
+//    newnode->next = phead;
+//    phead->prev = newnode;
+    // 在phead前面插入一个元素就相当于尾插
+    ListInsert(phead, x);
 }
 
 void ListPushFront(ListNode* phead, LTDataType x)
 {
-    assert(phead);
-    ListNode* first = phead->next;
-    ListNode* newnode = BuyListNode(x);
-
-    phead->next = newnode;
-    newnode->prev = newnode;
-    newnode->next = first;
-    first->prev = newnode;
+//    assert(phead);
+//    ListNode* first = phead->next;
+//    ListNode* newnode = BuyListNode(x);
+//
+//    phead->next = newnode;
+//    newnode->prev = newnode;
+//    newnode->next = first;
+//    first->prev = newnode;
+    // 在phead->next前面插入就相当于头插
+    ListInsert(phead->next, x);
 }
 
 void ListPopBack(ListNode* phead)
