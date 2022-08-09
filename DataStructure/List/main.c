@@ -86,6 +86,28 @@ void TestList1()
 
     ListPrint(plist);
 
+    ListPushFront(plist, 1);
+    ListPushFront(plist, 2);
+    ListPushFront(plist, 3);
+    ListPushFront(plist, 4);
+
+    ListPrint(plist);
+
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+    ListPopBack(plist);
+
+    ListPrint(plist);
+
+
+
+
+
 }
 
 int main()

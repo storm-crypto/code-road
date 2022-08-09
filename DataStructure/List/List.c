@@ -59,5 +59,17 @@ void ListPushFront(ListNode* phead, LTDataType x)
     first->prev = newnode;
 }
 
-void ListPopBack(ListNode* phead);
+void ListPopBack(ListNode* phead)
+{
+    assert(phead);
+    assert(phead->next != phead);
+
+    ListNode* tail = phead->prev;
+    ListNode* tailPrev = tail->prev;
+    free(tail);
+
+    tailPrev->next = phead;
+    phead->prev = tailPrev;
+
+}
 void ListPopFront(ListNode* phead);
