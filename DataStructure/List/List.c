@@ -65,28 +65,32 @@ void ListPushFront(ListNode* phead, LTDataType x)
 
 void ListPopBack(ListNode* phead)
 {
-    assert(phead);
-    assert(phead->next != phead);
-
-    ListNode* tail = phead->prev;
-    ListNode* tailPrev = tail->prev;
-    free(tail);
-
-    tailPrev->next = phead;
-    phead->prev = tailPrev;
-
+//    assert(phead);
+//    assert(phead->next != phead);
+//
+//    ListNode* tail = phead->prev;
+//    ListNode* tailPrev = tail->prev;
+//    free(tail);
+//
+//    tailPrev->next = phead;
+//    phead->prev = tailPrev;
+    // 用ListErase改造
+    ListErase(phead->prev);
 }
 void ListPopFront(ListNode* phead)
 {
-    assert(phead);
-    assert(phead->next == phead);
+//    assert(phead);
+//    assert(phead->next == phead);
+//
+//    ListNode* first = phead->next;
+//    ListNode* second = first->next;
+//    free(first);
+//
+//    phead->next = second;
+//    second->prev = phead;
 
-    ListNode* first = phead->next;
-    ListNode* second = first->next;
-    free(first);
-
-    phead->next = second;
-    second->prev = phead;
+    // // 用ListErase改造
+    ListErase(phead->next);
 
 }
 
