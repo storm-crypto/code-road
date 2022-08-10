@@ -35,6 +35,27 @@ void AdjustDown(int* a, int n, int parent)
     }
 }
 
+// 大根堆
+void AdjustUp(int* a, int child)
+{
+    int parent = (child - 1) / 2;
+
+    while (child > 0)
+    {
+        if (a[parent] < a[child])
+        {
+            Swap(&a[parent], &a[child]);
+            child = parent;
+            parent = (parent - 1) / 2;
+        }
+        else
+        {
+            break;
+
+        }
+    }
+}
+
 
 void HeapInit(HP* php ,HPDataType* a, int n)
 {
@@ -57,6 +78,7 @@ void HeapInit(HP* php ,HPDataType* a, int n)
         AdjustDown(php->a, php->size, i);
     }
 }
+
 void HeapDestroy(HP* php)
 {
     assert(php);
@@ -65,9 +87,37 @@ void HeapDestroy(HP* php)
     php->size = php->capacity = 0;
 }
 // 插入一个元素
-void HeapPush(HP* php, HPDataType x);
+void HeapPush(HP* php, HPDataType x)
+{
+    // 增容
+    if (php->size == php->capacity)
+    {
+        HPDataType* tmp = (HPDataType*)realloc(php->a, php->capacity*2* sizeof(HPDataType));
+        if (tmp == NULL)
+        {
+            printf("realloc failed\n");
+            exit(-1);
+        }
+
+        php->a = tmp;
+        php->capacity *= 2;
+    }
+    php->a[php->size-1] = x;
+
+    // 向上调整
+    AdjustUp(php->a, php->size-1);
+}
 // 删除堆顶元素
 void HeadPop(HP* php);
 HPDataType HeapTop(HP* php);
 int HeapSize(HP* php);
 bool HeapEmpty(HP* php);
+
+void HeapPrint(HP* php)
+{
+    for (int i = 0; i < php->size; i++)
+    {
+        printf("%d ", php->a[i]);
+    }
+    printf("\n");
+}

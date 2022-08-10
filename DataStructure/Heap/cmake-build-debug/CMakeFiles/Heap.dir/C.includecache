@@ -6,7 +6,19 @@
 
 #IncludeRegexTransform: 
 
-D:/05code/2022/code-road/DataStructure/Heap/main.c
+D:/05code/2022/code-road/DataStructure/Heap/Heap.h
 stdio.h
 -
+stdlib.h
+-
+stdbool.h
+-
+assert.h
+-
+string.h
+-
+
+D:/05code/2022/code-road/DataStructure/Heap/main.c
+Heap.h
+D:/05code/2022/code-road/DataStructure/Heap/Heap.h
 

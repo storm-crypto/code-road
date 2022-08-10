@@ -20,6 +20,7 @@ typedef struct Heap
 
 void Swap(int* p1, int* p2);
 void AdjustDown(int* a, int n, int parent);
+void AdjustUp(int* a, int child);
 
 // HP* HeapInit(HPDataType* a, int n);
 void HeapInit(HP* php ,HPDataType* a, int n);
@@ -31,5 +32,6 @@ void HeadPop(HP* php);
 HPDataType HeapTop(HP* php);
 int HeapSize(HP* php);
 bool HeapEmpty(HP* php);
+void HeapPrint(HP* php);
 
 #endif//HEAP_HEAP_H
