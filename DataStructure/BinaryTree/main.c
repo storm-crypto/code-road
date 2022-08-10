@@ -24,8 +24,30 @@ void PrevOrder(BTNode* root)
     }
 
 }
-void InOrder(BTNode* root);
-void PostOrder(BTNode* root);
+
+void InOrder(BTNode* root)
+{
+    if (root == NULL)
+    {
+        printf("NULL ");
+        return;
+    }
+    InOrder(root->left);
+    printf("%c ", root->data);
+    InOrder(root->right);
+}
+void PostOrder(BTNode* root)
+{
+    if (root == NULL)
+    {
+        printf("NULL ");
+        return;
+    }
+    PostOrder(root->left);
+    PostOrder(root->right);
+    printf("%c ", root->data);
+
+}
 
 BTNode* CreateTreeNode(BTDataType x)
 {
@@ -53,6 +75,12 @@ int main()
     C->right = F;
 
     PrevOrder(A);
+    printf("\n");
+
+    InOrder(A);
+    printf("\n");
+
+    PostOrder(A);
     printf("\n");
 
 }
