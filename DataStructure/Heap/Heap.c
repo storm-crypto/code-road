@@ -108,7 +108,18 @@ void HeapPush(HP* php, HPDataType x)
     AdjustUp(php->a, php->size-1);
 }
 // 删除堆顶元素
-void HeadPop(HP* php);
+void HeadPop(HP* php)
+{
+    assert(php);
+    assert(php->size > 0);
+
+    Swap(&php->a[php->size-1], &php->a[0]);
+    // 删掉最后一个这个原堆的数据
+    php->size--;
+
+    AdjustDown(php->a, php->size, 0);
+}
+
 HPDataType HeapTop(HP* php);
 int HeapSize(HP* php);
 bool HeapEmpty(HP* php);
