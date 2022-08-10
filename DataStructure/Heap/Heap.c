@@ -120,9 +120,26 @@ void HeadPop(HP* php)
     AdjustDown(php->a, php->size, 0);
 }
 
-HPDataType HeapTop(HP* php);
-int HeapSize(HP* php);
-bool HeapEmpty(HP* php);
+HPDataType HeapTop(HP* php)
+{
+    assert(php);
+    assert(php->size > 0);
+
+    return php->a[0];
+}
+
+int HeapSize(HP* php)
+{
+    assert(php);
+    return php->size;
+}
+
+bool HeapEmpty(HP* php)
+{
+    assert(php);
+
+    return php->size == 0;
+}
 
 void HeapPrint(HP* php)
 {
