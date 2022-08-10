@@ -57,7 +57,13 @@ void HeapInit(HP* php ,HPDataType* a, int n)
         AdjustDown(php->a, php->size, i);
     }
 }
-void HeapDestroy(HP* php);
+void HeapDestroy(HP* php)
+{
+    assert(php);
+    free(php->a);
+    php->a = NULL;
+    php->size = php->capacity = 0;
+}
 // 插入一个元素
 void HeapPush(HP* php, HPDataType x);
 // 删除堆顶元素
