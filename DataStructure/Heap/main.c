@@ -13,7 +13,7 @@ void AdjustDown(int* a, int n, int parent)
     while (child < n)
     {
         // 选出左右孩子中小的那个
-        if (child + 1 < n && a[child + 1] < a[child])
+        if (child + 1 < n && a[child + 1] > a[child])
         {
             ++child;
         }
@@ -28,6 +28,24 @@ void AdjustDown(int* a, int n, int parent)
         {
             break;
         }
+    }
+}
+
+// 排升序，建大堆
+void HeapSort(int* a, int n)
+{
+    for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+    {
+        AdjustDown(a, n, i);
+    }
+
+    int end = n - 1;
+    while (end > 0)
+    {
+        Swap(&a[0], &a[end]);
+        // 选出次大的
+        AdjustDown(a, end - 1, 0);
+        --end;
     }
 }
 
