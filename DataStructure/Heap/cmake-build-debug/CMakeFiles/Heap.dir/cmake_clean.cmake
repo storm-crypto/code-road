@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Heap.dir/Heap.c.obj"
   "CMakeFiles/Heap.dir/main.c.obj"
   "Heap.exe"
   "Heap.exe.manifest"

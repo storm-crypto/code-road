@@ -142,6 +142,33 @@ Heap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/build
 .PHONY : Heap/fast
 
+Heap.obj: Heap.c.obj
+
+.PHONY : Heap.obj
+
+# target to build an object file
+Heap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/Heap.c.obj
+.PHONY : Heap.c.obj
+
+Heap.i: Heap.c.i
+
+.PHONY : Heap.i
+
+# target to preprocess a source file
+Heap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/Heap.c.i
+.PHONY : Heap.c.i
+
+Heap.s: Heap.c.s
+
+.PHONY : Heap.s
+
+# target to generate assembly for a file
+Heap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/Heap.c.s
+.PHONY : Heap.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Heap
+	@echo ... Heap.obj
+	@echo ... Heap.i
+	@echo ... Heap.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

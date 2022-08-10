@@ -93,12 +93,12 @@ clean: CMakeFiles/Heap.dir/clean
 CMakeFiles/Heap.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Heap.dir\build.make CMakeFiles/Heap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\05code\2022\code-road\DataStructure\Heap\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Heap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\05code\2022\code-road\DataStructure\Heap\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target Heap"
 .PHONY : CMakeFiles/Heap.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Heap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\05code\2022\code-road\DataStructure\Heap\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\05code\2022\code-road\DataStructure\Heap\cmake-build-debug\CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Heap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\05code\2022\code-road\DataStructure\Heap\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Heap.dir/rule

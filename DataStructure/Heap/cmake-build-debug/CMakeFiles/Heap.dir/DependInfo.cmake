@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "D:/05code/2022/code-road/DataStructure/Heap/Heap.c" "D:/05code/2022/code-road/DataStructure/Heap/cmake-build-debug/CMakeFiles/Heap.dir/Heap.c.obj"
   "D:/05code/2022/code-road/DataStructure/Heap/main.c" "D:/05code/2022/code-road/DataStructure/Heap/cmake-build-debug/CMakeFiles/Heap.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
