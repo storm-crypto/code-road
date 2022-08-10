@@ -78,7 +78,18 @@ int TreeSize(BTNode* root)
     return root == NULL? 0 : TreeSize(root->left) + TreeSize(root->right) + 1;
 }
 
+// 用分治的思想
+int TreeLeafSize(BTNode* root)
+{
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+    {
+        return 1;
+    }
 
+    return TreeSize(root->left) + TreeSize(root->right);
+}
 
 int main()
 {
@@ -109,4 +120,5 @@ int main()
 //    printf("%d", size);
 
     printf("TreeNode：%d\n", TreeSize(A));
+    printf("TreeLeafNode：%d\n", TreeLeafSize(A));
 }
