@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "D:/05code/2022/code-road/DataStructure/StackQueue/Queue.c" "D:/05code/2022/code-road/DataStructure/StackQueue/cmake-build-debug/CMakeFiles/StackQueue.dir/Queue.c.obj"
   "D:/05code/2022/code-road/DataStructure/StackQueue/Stack.c" "D:/05code/2022/code-road/DataStructure/StackQueue/cmake-build-debug/CMakeFiles/StackQueue.dir/Stack.c.obj"
   "D:/05code/2022/code-road/DataStructure/StackQueue/main.c" "D:/05code/2022/code-road/DataStructure/StackQueue/cmake-build-debug/CMakeFiles/StackQueue.dir/main.c.obj"
   )

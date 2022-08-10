@@ -142,6 +142,33 @@ StackQueue/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\StackQueue.dir\build.make CMakeFiles/StackQueue.dir/build
 .PHONY : StackQueue/fast
 
+Queue.obj: Queue.c.obj
+
+.PHONY : Queue.obj
+
+# target to build an object file
+Queue.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StackQueue.dir\build.make CMakeFiles/StackQueue.dir/Queue.c.obj
+.PHONY : Queue.c.obj
+
+Queue.i: Queue.c.i
+
+.PHONY : Queue.i
+
+# target to preprocess a source file
+Queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StackQueue.dir\build.make CMakeFiles/StackQueue.dir/Queue.c.i
+.PHONY : Queue.c.i
+
+Queue.s: Queue.c.s
+
+.PHONY : Queue.s
+
+# target to generate assembly for a file
+Queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StackQueue.dir\build.make CMakeFiles/StackQueue.dir/Queue.c.s
+.PHONY : Queue.c.s
+
 Stack.obj: Stack.c.obj
 
 .PHONY : Stack.obj
@@ -205,6 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... StackQueue
+	@echo ... Queue.obj
+	@echo ... Queue.i
+	@echo ... Queue.s
 	@echo ... Stack.obj
 	@echo ... Stack.i
 	@echo ... Stack.s

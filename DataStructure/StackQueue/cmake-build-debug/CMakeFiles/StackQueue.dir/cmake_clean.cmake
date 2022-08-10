@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/StackQueue.dir/Queue.c.obj"
   "CMakeFiles/StackQueue.dir/Stack.c.obj"
   "CMakeFiles/StackQueue.dir/main.c.obj"
   "StackQueue.exe"
