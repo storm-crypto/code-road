@@ -11,6 +11,17 @@ typedef struct BinaryTreeNode
 
 void PrevOrder(BTNode* root)
 {
+    if (root == NULL)
+    {
+        printf("NULL ");
+        return;
+    }
+    else
+    {
+        printf("%c ", root->data);
+        PrevOrder(root->left);
+        PrevOrder(root->right);
+    }
 
 }
 void InOrder(BTNode* root);
@@ -42,5 +53,6 @@ int main()
     C->right = F;
 
     PrevOrder(A);
+    printf("\n");
 
 }
