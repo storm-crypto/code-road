@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
+#include <string.h>
 
 typedef int HPDataType;
 typedef struct Heap
@@ -15,6 +17,9 @@ typedef struct Heap
     int size;
     int capacity;
 }HP;
+
+void Swap(int* p1, int* p2);
+void AdjustDown(int* a, int n, int parent);
 
 // HP* HeapInit(HPDataType* a, int n);
 void HeapInit(HP* php ,HPDataType* a, int n);
@@ -26,6 +31,5 @@ void HeadPop(HP* php);
 HPDataType HeapTop(HP* php);
 int HeapSize(HP* php);
 bool HeapEmpty(HP* php);
-
 
 #endif//HEAP_HEAP_H
