@@ -60,17 +60,25 @@ BTNode* CreateTreeNode(BTDataType x)
     return node;
 }
 
-// 鎬濊矾涓�锛氶亶鍘嗚鏁扮殑鏂瑰紡
-void TreeSize(BTNode* root, int* psize)
+// 思路一：遍历计数的方式
+//void TreeSize(BTNode* root, int* psize)
+//{
+//    if (root == NULL)
+//    {
+//        return;
+//    }
+//    ++(*psize);
+//    TreeSize(root->right, psize);
+//    TreeSize(root->left, psize);
+//}
+
+// 思路二
+int TreeSize(BTNode* root)
 {
-    if (root == NULL)
-    {
-        return;
-    }
-    ++(*psize);
-    TreeSize(root->right, psize);
-    TreeSize(root->left, psize);
+    return root == NULL? 0 : TreeSize(root->left) + TreeSize(root->right) + 1;
 }
+
+
 
 int main()
 {
@@ -95,8 +103,10 @@ int main()
 //
 //    PostOrder(A);
 //    printf("\n");
-    int size = 0;
-    TreeSize(A, &size);
+//    int size = 0;
+//    TreeSize(A, &size);
+//
+//    printf("%d", size);
 
-    printf("%d", size);
+    printf("TreeNode：%d\n", TreeSize(A));
 }
