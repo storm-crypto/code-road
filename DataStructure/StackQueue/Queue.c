@@ -49,6 +49,8 @@ void QueuePop(Queue* pq)
 {
 
     assert(pq);
+    assert(!QueueEmpty(pq));
+
     if (pq->head->next == NULL)
     {
         free(pq->head);
@@ -63,7 +65,33 @@ void QueuePop(Queue* pq)
 
 }
 // 取队头数据
-QDataType QueueFront(Queue* pq);
-QDataType QueueBack(Queue* pq);
-bool QueueEmpty(Queue* pq);
-int QueueSize(Queue* pq);
+QDataType QueueFront(Queue* pq)
+{
+    assert(pq);
+    assert(!QueueEmpty(pq));
+
+    return pq->head->data;
+}
+QDataType QueueBack(Queue* pq)
+{
+    assert(pq);
+    assert(!QueueEmpty(pq));
+
+    return pq->tail->data;
+}
+bool QueueEmpty(Queue* pq)
+{
+    assert(pq);
+
+    return pq->head == NULL;
+}
+int QueueSize(Queue* pq)
+{
+    int size = 0;
+    QueueNode* cur = pq->head;
+    while (cur)
+    {
+        ++size;
+        cur = cur->next;
+    }
+}
