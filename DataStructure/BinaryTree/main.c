@@ -36,6 +36,7 @@ void InOrder(BTNode* root)
     printf("%c ", root->data);
     InOrder(root->right);
 }
+
 void PostOrder(BTNode* root)
 {
     if (root == NULL)
@@ -59,6 +60,18 @@ BTNode* CreateTreeNode(BTDataType x)
     return node;
 }
 
+// 思路一：遍历计数的方式
+void TreeSize(BTNode* root, int* psize)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    ++(*psize);
+    TreeSize(root->right, psize);
+    TreeSize(root->left, psize);
+}
+
 int main()
 {
     BTNode* A = CreateTreeNode('A');
@@ -74,13 +87,16 @@ int main()
     C->left = E;
     C->right = F;
 
-    PrevOrder(A);
-    printf("\n");
+//    PrevOrder(A);
+//    printf("\n");
+//
+//    InOrder(A);
+//    printf("\n");
+//
+//    PostOrder(A);
+//    printf("\n");
+    int size = 0;
+    TreeSize(A, &size);
 
-    InOrder(A);
-    printf("\n");
-
-    PostOrder(A);
-    printf("\n");
-
+    printf("%d", size);
 }
