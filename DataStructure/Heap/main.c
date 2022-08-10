@@ -12,13 +12,13 @@ void AdjustDown(int* a, int n, int parent)
     int child = parent * 2 + 1;
     while (child < n)
     {
-        // 选出左右孩子中小的那个
+        // 选出左右孩子中大的那个
         if (child + 1 < n && a[child + 1] > a[child])
         {
             ++child;
         }
 
-        if (a[child] < a[parent])
+        if (a[child] > a[parent])
         {
             Swap(&a[parent], &a[child]);
             parent = child;
@@ -54,10 +54,11 @@ int main()
     int a[] = {27,15,19,18,28,34,65,49,25,37};
     int n = sizeof (a) / sizeof (a[0]);
     //AdjustDown(a, n, 0);
-    for (int i = (n - 1 -1 ) / 2; i >= 0; --i)
-    {
-        AdjustDown(a, n, i);
-    }
+//    for (int i = (n - 1 -1 ) / 2; i >= 0; --i)
+//    {
+//        AdjustDown(a, n, i);
+//    }
+    HeapSort(a, n);
 
     return 0;
 }
