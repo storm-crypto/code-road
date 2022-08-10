@@ -20,19 +20,3 @@ assert.h
 stdlib.h
 -
 
-D:/05code/2022/code-road/DataStructure/StackQueue/Stack.h
-stdio.h
--
-stdbool.h
--
-assert.h
--
-stdlib.h
--
-
-D:/05code/2022/code-road/DataStructure/StackQueue/main.c
-Stack.h
-D:/05code/2022/code-road/DataStructure/StackQueue/Stack.h
-Queue.h
-D:/05code/2022/code-road/DataStructure/StackQueue/Queue.h
-

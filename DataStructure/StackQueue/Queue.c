@@ -14,7 +14,7 @@ void QueueDestroy(Queue* pq)
 {
     assert(pq);
 
-    QueueNode* cur = pq;
+    QueueNode* cur = pq->head;
     while (cur)
     {
         QueueNode* next = cur->next;
@@ -94,4 +94,6 @@ int QueueSize(Queue* pq)
         ++size;
         cur = cur->next;
     }
+
+    return size;
 }
