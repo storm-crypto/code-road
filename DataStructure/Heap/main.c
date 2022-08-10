@@ -35,6 +35,11 @@ int main()
 {
     int a[] = {27,15,19,18,28,34,65,49,25,37};
     int n = sizeof (a) / sizeof (a[0]);
-    AdjustDown(a, n, 0);
+    //AdjustDown(a, n, 0);
+    for (int i = (n - 1 -1 ) / 2; i >= 0; --i)
+    {
+        AdjustDown(a, n, i);
+    }
+
     return 0;
 }
