@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "Heap.h"
 
 void Swap(int* p1, int* p2)
 {
