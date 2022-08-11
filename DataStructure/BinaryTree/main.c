@@ -91,6 +91,20 @@ int TreeLeafSize(BTNode* root)
     return TreeSize(root->left) + TreeSize(root->right);
 }
 
+// k > 0
+//计算第k层结点的个数
+int TreeKLevelSize(BTNode* root, int k)
+{
+    if (root == NULL)
+        return 0;
+    if (k == 1)
+        return 1;
+    return TreeKLevelSize(root->left, k - 1) + TreeKLevelSize(root->right, k - 1);
+}
+
+// 查找树里面值为x的结点
+BTNode* TreeFind(BTNode* root, BTDataType x);
+
 int main()
 {
     BTNode* A = CreateTreeNode('A');
