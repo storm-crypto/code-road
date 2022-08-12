@@ -1,0 +1,3 @@
+D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/Sort.dir
+D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
