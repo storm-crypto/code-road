@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Queue.h"
 
 typedef char BTDataType;
 typedef struct BinaryTreeNode
@@ -133,6 +134,15 @@ void BinaryTreeDestroy(BTNode* root)
     BinaryTreeDestroy(root->left);
     BinaryTreeDestroy(root->right);
     free(root);
+}
+
+// ≤„–Ú±È¿˙
+void TreeLevelOrder(BTNode* root)
+{
+    Queue q;
+    QueueInit(&q);
+
+    QueueDestroy(&q);
 }
 
 int main()
