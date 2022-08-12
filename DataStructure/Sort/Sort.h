@@ -15,4 +15,7 @@ void InsertSort(int* a, int n);
 // œ£∂˚≈≈–Ú
 void ShellSort(int* a, int n);
 
+// ÷±Ω”—°‘Ò≈≈–Ú
+void SelectSort(int* a, int n);
+
 #endif//SORT_SORT_H

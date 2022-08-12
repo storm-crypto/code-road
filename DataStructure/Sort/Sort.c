@@ -70,6 +70,40 @@ void ShellSort(int* a, int n)
             a[end + gap] = tmp;
         }
     }
+}
 
+void Swap(int* p, int* q)
+{
+    int tmp = *p;
+    *p = *q;
+    *q = tmp;
+}
 
+// 直接选择排序
+void SelectSort(int* a, int n)
+{
+    int left = 0, right = n - 1;
+
+    while (left < right)
+    {
+        // 选出最小的和最大的
+        int minIndex = left, maxIndex = left;
+
+        for (int i = left; i <= right; i++)
+        {
+            if (a[i] < a[minIndex])
+                minIndex = i;
+            if (a[i] > a[maxIndex])
+                maxIndex = i;
+        }
+
+        // 交换：将大的放右边，小的放左边
+        Swap(&a[left], &a[minIndex]);
+        // 特殊情况：
+        if (left == maxIndex)
+            maxIndex = minIndex;
+        Swap(&a[right], &a[maxIndex]);
+        left++;
+        right--;
+    }
 }
