@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "Queue.h"
 
 typedef char BTDataType;
@@ -157,8 +158,46 @@ void TreeLevelOrder(BTNode* root)
         if (front->right)
             QueuePush(&q, front->right);
     }
+    printf("\n");
 
     QueueDestroy(&q);
+}
+
+// 判断一棵树是不是完全二叉树
+bool BinaryTreeComplete(BTNode* root)
+{
+    Queue q;
+    QueueInit(&q);
+
+    if (root)
+    {
+        QueuePush(&q, root);
+    }
+
+    while (!QueueEmpty(&q))
+    {
+        BTNode* front = QueueFront(&q);
+        QueuePop(&q);
+        if (front == NULL)
+        {
+            break;
+        }
+
+        QueuePush(&q, front->left);
+        QueuePush(&q, front->right);
+    }
+
+    // break出来以后，继续遍历，如果有一个非空就return false
+    while (!QueueEmpty(&q))
+    {
+        BTNode* front = QueueFront(&q);
+        QueuePop(&q);
+        if (front)
+            return false;
+    }
+
+    QueueDestroy(&q);
+    return true;
 }
 
 int main()
@@ -193,4 +232,7 @@ int main()
     printf("TreeLeafNode:%d\n", TreeLeafSize(A));
 
     TreeLevelOrder(A);
+
+    int ret = BinaryTreeComplete(A);
+    printf("BinaryTreeComplete:%d", ret);
 }
