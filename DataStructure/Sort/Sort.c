@@ -45,19 +45,24 @@ void InsertSort(int* a, int n)
 void ShellSort(int* a, int n)
 {
     int gap;
-    int end;
-    int tmp = a[end + gap];
-    while (end >= 0)
+    // 对数组中的所有元素进行一次预排序
+    for (int i = 0; i < n - gap; ++i)
     {
-        if (tmp < a[end])
+        int end = i;
+        int tmp = a[end + gap];
+        while (end >= 0)
         {
-            a[end + gap] = a[end];
-            end -= gap;
+            if (tmp < a[end])
+            {
+                a[end + gap] = a[end];
+                end -= gap;
+            }
+            else
+            {
+                break;
+            }
         }
-        else
-        {
-            break;
-        }
+        a[end + gap] = tmp;
     }
-    a[end + gap] = tmp;
+
 }
