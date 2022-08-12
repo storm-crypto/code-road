@@ -103,7 +103,26 @@ int TreeKLevelSize(BTNode* root, int k)
 }
 
 // 查找树里面值为x的结点
-BTNode* TreeFind(BTNode* root, BTDataType x);
+BTNode* TreeFind(BTNode* root, BTDataType x)
+{
+    if (root == NULL)
+        return NULL;
+    if (root->data == x)
+    {
+        return root;
+    }
+
+    // 光标走到这里说明root没有找到x，那么分别到左子树右子树中找
+    BTNode* lret = TreeFind(root->left, x);
+    if (lret)
+        return lret;
+    BTNode* rret = TreeFind(root->right, x);
+    if (rret)
+        return rret;
+
+    // 到这里说明没找到，返回NULL
+    return NULL;
+}
 
 int main()
 {
