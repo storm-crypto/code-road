@@ -142,6 +142,33 @@ BinaryTree/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\BinaryTree.dir\build.make CMakeFiles/BinaryTree.dir/build
 .PHONY : BinaryTree/fast
 
+Queue.obj: Queue.c.obj
+
+.PHONY : Queue.obj
+
+# target to build an object file
+Queue.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BinaryTree.dir\build.make CMakeFiles/BinaryTree.dir/Queue.c.obj
+.PHONY : Queue.c.obj
+
+Queue.i: Queue.c.i
+
+.PHONY : Queue.i
+
+# target to preprocess a source file
+Queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BinaryTree.dir\build.make CMakeFiles/BinaryTree.dir/Queue.c.i
+.PHONY : Queue.c.i
+
+Queue.s: Queue.c.s
+
+.PHONY : Queue.s
+
+# target to generate assembly for a file
+Queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\BinaryTree.dir\build.make CMakeFiles/BinaryTree.dir/Queue.c.s
+.PHONY : Queue.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... BinaryTree
+	@echo ... Queue.obj
+	@echo ... Queue.i
+	@echo ... Queue.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

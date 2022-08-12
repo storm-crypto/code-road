@@ -151,9 +151,7 @@ void TreeLevelOrder(BTNode* root)
     {
         BTNode* front = QueueFront(&q);
         QueuePop(&q);
-
-
-        printf("%d ", front->data);
+        printf("%c ", front->data);
         if (front->left)
             QueuePush(&q, front->left);
         if (front->right)
@@ -191,6 +189,8 @@ int main()
 //
 //    printf("%d", size);
 
-    printf("TreeNode£º%d\n", TreeSize(A));
-    printf("TreeLeafNode£º%d\n", TreeLeafSize(A));
+    printf("TreeNode:%d\n", TreeSize(A));
+    printf("TreeLeafNode:%d\n", TreeLeafSize(A));
+
+    TreeLevelOrder(A);
 }

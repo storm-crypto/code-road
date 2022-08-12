@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/BinaryTree/Queue.c">
+			<Option target="BinaryTree"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/BinaryTree/Queue.h">
+			<Option target="BinaryTree"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/DataStructure/BinaryTree/main.c">
 			<Option target="BinaryTree"/>
 		</Unit>

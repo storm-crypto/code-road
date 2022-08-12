@@ -1,5 +1,5 @@
 //
-// Created by ??? on 2022-08-10.
+// Created by 旭哥 on 2022-08-10.
 //
 
 #ifndef STACKQUEUE_QUEUE_H
@@ -23,8 +23,8 @@ typedef struct QueueNode
 
 typedef struct Queue
 {
-    QueueNode* head; // ????
-    QueueNode* tail; // β???
+    QueueNode* head; // 头指针
+    QueueNode* tail; // 尾指针
 }Queue;
 
 void QueueInit(Queue* pq);
@@ -32,7 +32,7 @@ void QueueDestroy(Queue* pq);
 
 void QueuePush(Queue* pq, QDataType x);
 void QueuePop(Queue* pq);
-// ????????
+// 取队头数据
 QDataType QueueFront(Queue* pq);
 QDataType QueueBack(Queue* pq);
 bool QueueEmpty(Queue* pq);
