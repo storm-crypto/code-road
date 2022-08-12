@@ -44,25 +44,32 @@ void InsertSort(int* a, int n)
 // 希尔排序
 void ShellSort(int* a, int n)
 {
-    int gap;
-    // 对数组中的所有元素进行一次预排序
-    for (int i = 0; i < n - gap; ++i)
+    // gap > 1的时候，预排序
+    // gap == 1的时候，是直接插入排序
+    int gap = n;
+    while (gap > 1)
     {
-        int end = i;
-        int tmp = a[end + gap];
-        while (end >= 0)
+        gap = gap / 3 + 1;
+        // 对数组中的所有元素进行一次预排序
+        for (int i = 0; i < n - gap; ++i)
         {
-            if (tmp < a[end])
+            int end = i;
+            int tmp = a[end + gap];
+            while (end >= 0)
             {
-                a[end + gap] = a[end];
-                end -= gap;
+                if (tmp < a[end])
+                {
+                    a[end + gap] = a[end];
+                    end -= gap;
+                }
+                else
+                {
+                    break;
+                }
             }
-            else
-            {
-                break;
-            }
+            a[end + gap] = tmp;
         }
-        a[end + gap] = tmp;
     }
+
 
 }

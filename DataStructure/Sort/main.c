@@ -8,5 +8,8 @@ int main()
     InsertSort(arr, size);
     Print(arr, size);
 
+    ShellSort(arr, size);
+    Print(arr, size);
+
     return 0;
 }
