@@ -142,6 +142,24 @@ void TreeLevelOrder(BTNode* root)
     Queue q;
     QueueInit(&q);
 
+    if (root)
+    {
+        QueuePush(&q, root);
+    }
+
+    while (!QueueEmpty(&q))
+    {
+        BTNode* front = QueueFront(&q);
+        QueuePop(&q);
+
+
+        printf("%d ", front->data);
+        if (front->left)
+            QueuePush(&q, front->left);
+        if (front->right)
+            QueuePush(&q, front->right);
+    }
+
     QueueDestroy(&q);
 }
 
