@@ -124,6 +124,17 @@ BTNode* TreeFind(BTNode* root, BTDataType x)
     return NULL;
 }
 
+// ¶þ²æÊ÷µÄÏú»Ù
+void BinaryTreeDestroy(BTNode* root)
+{
+    if (root == NULL)
+        return;
+
+    BinaryTreeDestroy(root->left);
+    BinaryTreeDestroy(root->right);
+    free(root);
+}
+
 int main()
 {
     BTNode* A = CreateTreeNode('A');
