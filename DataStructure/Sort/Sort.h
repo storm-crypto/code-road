@@ -38,4 +38,9 @@ void QuickSort(int* a, int begin, int end);
 // 快速排序 非递归实现
 void QuickSortNonR(int* a, int left, int right);
 
+// 归并排序递归实现
+void MergeSort(int* a, int n);
+// 归并排序非递归实现
+void MergeSortNonR(int* a, int n);
+
 #endif//SORT_SORT_H
