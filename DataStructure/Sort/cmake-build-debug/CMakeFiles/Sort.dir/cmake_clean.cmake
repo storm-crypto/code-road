@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Sort.dir/Sort.c.obj"
+  "CMakeFiles/Sort.dir/Stack.c.obj"
   "CMakeFiles/Sort.dir/main.c.obj"
   "Sort.exe"
   "Sort.exe.manifest"

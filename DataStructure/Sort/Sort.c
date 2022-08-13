@@ -331,3 +331,44 @@ void QuickSort(int* a, int begin, int end)
     }
 
 }
+
+// 快速排序 非递归实现
+// 递归 现代编译器优化的很好，性能已经不是大问题了
+// 最大的问题：递归太深，程序本身没有问题，但是栈空间不够，导致栈溢出
+// 只能改成非递归，改成非递归有两种形式：
+// 1、直接改成循环-》斐波那契数列求解
+// 2、树非递归和快排非递归等等，只能用Stack存储数据模拟递归过程
+void QuickSortNonR(int* a, int begin, int end)
+{
+    Stack st;
+    StackInit(&st);
+    StackPush(&st, begin);
+    StackPush(&st, end);
+
+    while (!StackEmpty(&st))
+    {
+        int left, right;
+        right = StackTop(&st);
+        StackPop(&st);
+
+        left = StackTop(&st);
+        StackPop(&st);
+
+        // 进行一次排序
+        int keyi = PartSort1(a, left, right);
+        // 左子区间
+        if (left < keyi - 1)
+        {
+            StackPush(&st, left);
+            StackPush(&st, keyi - 1);
+        }
+        // 右子区间
+        if (keyi + 1 < right)
+        {
+            StackPush(&st, keyi + 1);
+            StackPush(&st, right);
+        }
+    }
+
+    StackDestory(&st);
+}

@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Sort.c" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Sort.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Stack.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Stack.h" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main.c" charset="GBK" />
   </component>
 </project>

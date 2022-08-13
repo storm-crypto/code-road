@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "D:/05code/2022/code-road/DataStructure/Sort/Sort.c" "D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/Sort.dir/Sort.c.obj"
+  "D:/05code/2022/code-road/DataStructure/Sort/Stack.c" "D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/Sort.dir/Stack.c.obj"
   "D:/05code/2022/code-road/DataStructure/Sort/main.c" "D:/05code/2022/code-road/DataStructure/Sort/cmake-build-debug/CMakeFiles/Sort.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

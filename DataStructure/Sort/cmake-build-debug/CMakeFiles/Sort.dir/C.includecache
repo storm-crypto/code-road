@@ -15,4 +15,24 @@ stdio.h
 -
 stdlib.h
 -
+stack.h
+D:/05code/2022/code-road/DataStructure/Sort/Stack.h
+
+D:/05code/2022/code-road/DataStructure/Sort/Stack.c
+Stack.h
+D:/05code/2022/code-road/DataStructure/Sort/Stack.h
+
+D:/05code/2022/code-road/DataStructure/Sort/Stack.h
+stdio.h
+-
+stdbool.h
+-
+assert.h
+-
+stdlib.h
+-
+
+D:/05code/2022/code-road/DataStructure/Sort/main.c
+Sort.h
+D:/05code/2022/code-road/DataStructure/Sort/Sort.h
 

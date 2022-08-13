@@ -80,6 +80,12 @@
 		<Unit filename="D:/05code/2022/code-road/DataStructure/Sort/Sort.h">
 			<Option target="Sort"/>
 		</Unit>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/Sort/Stack.c">
+			<Option target="Sort"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/DataStructure/Sort/Stack.h">
+			<Option target="Sort"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/DataStructure/Sort/main.c">
 			<Option target="Sort"/>
 		</Unit>

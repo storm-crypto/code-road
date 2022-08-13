@@ -169,6 +169,33 @@ Sort.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Sort.dir\build.make CMakeFiles/Sort.dir/Sort.c.s
 .PHONY : Sort.c.s
 
+Stack.obj: Stack.c.obj
+
+.PHONY : Stack.obj
+
+# target to build an object file
+Stack.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Sort.dir\build.make CMakeFiles/Sort.dir/Stack.c.obj
+.PHONY : Stack.c.obj
+
+Stack.i: Stack.c.i
+
+.PHONY : Stack.i
+
+# target to preprocess a source file
+Stack.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Sort.dir\build.make CMakeFiles/Sort.dir/Stack.c.i
+.PHONY : Stack.c.i
+
+Stack.s: Stack.c.s
+
+.PHONY : Stack.s
+
+# target to generate assembly for a file
+Stack.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Sort.dir\build.make CMakeFiles/Sort.dir/Stack.c.s
+.PHONY : Stack.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -208,6 +235,9 @@ help:
 	@echo ... Sort.obj
 	@echo ... Sort.i
 	@echo ... Sort.s
+	@echo ... Stack.obj
+	@echo ... Stack.i
+	@echo ... Stack.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

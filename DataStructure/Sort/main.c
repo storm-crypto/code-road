@@ -44,7 +44,7 @@ void TestQuickSort()
 {
     int arr[] = {1, 2, 4, 3, 1, 9, 5};
     int size = sizeof(arr) / sizeof(arr[0]);
-    QuickSort(arr, 0, size - 1);
+    QuickSortNonR(arr, 0, size - 1);
     Print(arr, size);
 }
 
