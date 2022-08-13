@@ -24,7 +24,7 @@ void TestSelectSort()
     Print(arr, size);
 }
 
-void TestHeaptSort()
+void TestHeapSort()
 {
     int arr[] = {1, 2, 4, 3, 1, 9, 5};
     int size = sizeof(arr) / sizeof(arr[0]);
@@ -32,10 +32,19 @@ void TestHeaptSort()
     Print(arr, size);
 }
 
+void TestBubbleSort()
+{
+    int arr[] = {1, 2, 4, 3, 1, 9, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    BubbleSort(arr, size);
+    Print(arr, size);
+}
+
 int main()
 {
     TestShellSort();
     TestSelectSort();
-    TestHeaptSort();
+    TestHeapSort();
+    TestBubbleSort();
     return 0;
 }
