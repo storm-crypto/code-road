@@ -154,29 +154,36 @@ void HeapSort(int* a, int n)
 // 冒泡排序
 void BubbleSort(int* a, int n)
 {
-    // 方式一
-    for (int j = 0; j < n; ++j)
-    {
-        for (int i = 1; i < n - j; i++)
-        {
-            if (a[i] < a[i - 1])
-            {
-                Swap(&a[i], &a[i - 1]);
-            }
-        }
-    }
+//    // 方式一
+//    for (int j = 0; j < n; ++j)
+//    {
+//        for (int i = 1; i < n - j; i++)
+//        {
+//            if (a[i] < a[i - 1])
+//            {
+//                Swap(&a[i], &a[i - 1]);
+//            }
+//        }
+//    }
 
     // 方式二：
     // 可以从end的位置开始来考虑循环的次数
     for (int end = n; end > 0; end--)
     {
         // 单趟
+        int exchang = 0;
         for (int i = 1; i < end; i++)
         {
             if (a[i] < a[i - 1])
             {
                 Swap(&a[i], &a[i - 1]);
+                exchang = 1;
             }
+        }
+        // 如果经过一次排序之后，没有发生交换，说明排好序了
+        if (exchang == 0)
+        {
+            break;
         }
     }
 
