@@ -282,6 +282,11 @@ int PartSort2(int* a, int left, int right)
 // 快速排序前后指针法
 int PartSort3(int* a, int left, int right)
 {
+    // 进行优化：加上三数取中
+    int midIndex = GetMidIndex(a, left, right);
+    // 始终拿左去做key，所以每次都将key放到left的位置
+    Swap(&a[left], &a[midIndex]);
+
     int keyi = left;
     int prev = left;
     int cur = left + 1;
