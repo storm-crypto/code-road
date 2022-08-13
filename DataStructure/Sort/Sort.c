@@ -316,9 +316,18 @@ void QuickSort(int* a, int begin, int end)
     if (begin >= end)
         return;
 
-    int meeti = PartSort3(a, begin, end);
-    // [begin, meeti - 1] meeti [meeti + 1, end]
-    QuickSort(a, begin, meeti - 1);
-    QuickSort(a, meeti + 1, end);
+    // 1.如果这个子区间的数据较多，继续选key单趟，分割子区间分支递归
+    // 2.如果这个子区间的数据较少，再去分支递归不太划算，此时我们选择插入排序
+    if (end - begin > 10)
+    {
+        int meeti = PartSort3(a, begin, end);
+        // [begin, meeti - 1] meeti [meeti + 1, end]
+        QuickSort(a, begin, meeti - 1);
+        QuickSort(a, meeti + 1, end);
+    }
+    else
+    {
+        InsertSort(a + begin, end - begin + 1);
+    }
 
 }
