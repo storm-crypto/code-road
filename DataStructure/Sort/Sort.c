@@ -189,9 +189,13 @@ void BubbleSort(int* a, int n)
 }
 
 // 快排
-void QuickSort(int* a, int n)
+void QuickSort(int* a, int begin, int end)
 {
-    int left = 0, right = n - 1;
+    // 递归终止条件
+    if (begin >= end)
+        return;
+
+    int left = begin, right = end;
     int keyi = left;
     while (left < right)
     {
@@ -210,5 +214,9 @@ void QuickSort(int* a, int n)
     // 因为如果是key = a[left]，key是局部变量，是改变不了数组a的
     int meeti = left;
     Swap(&a[keyi], &a[meeti]);
+
+    // [begin, meeti - 1] meeti [meeti + 1, end]
+    QuickSort(a, begin, meeti - 1);
+    QuickSort(a, meeti + 1, end);
 
 }
