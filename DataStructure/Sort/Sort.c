@@ -150,3 +150,34 @@ void HeapSort(int* a, int n)
         AdjustDwon(a, end, 0);
     }
 }
+
+// 冒泡排序
+void BubbleSort(int* a, int n)
+{
+    // 方式一
+    for (int j = 0; j < n; ++j)
+    {
+        for (int i = 1; i < n - j; i++)
+        {
+            if (a[i] < a[i - 1])
+            {
+                Swap(&a[i], &a[i - 1]);
+            }
+        }
+    }
+
+    // 方式二：
+    // 可以从end的位置开始来考虑循环的次数
+    for (int end = n; end > 0; end--)
+    {
+        // 单趟
+        for (int i = 1; i < end; i++)
+        {
+            if (a[i] < a[i - 1])
+            {
+                Swap(&a[i], &a[i - 1]);
+            }
+        }
+    }
+
+}
