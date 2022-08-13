@@ -188,13 +188,9 @@ void BubbleSort(int* a, int n)
     }
 }
 
-// 快排
-void QuickSort(int* a, int begin, int end)
+// 快速排序hoare版本 左右指针法
+int PartSort1(int* a, int begin, int end)
 {
-    // 递归终止条件
-    if (begin >= end)
-        return;
-
     int left = begin, right = end;
     int keyi = left;
     while (left < right)
@@ -215,6 +211,17 @@ void QuickSort(int* a, int begin, int end)
     int meeti = left;
     Swap(&a[keyi], &a[meeti]);
 
+    return meeti;
+}
+
+// 快排
+void QuickSort(int* a, int begin, int end)
+{
+    // 递归终止条件
+    if (begin >= end)
+        return;
+
+    int meeti = PartSort1(a, begin, end);
     // [begin, meeti - 1] meeti [meeti + 1, end]
     QuickSort(a, begin, meeti - 1);
     QuickSort(a, meeti + 1, end);
