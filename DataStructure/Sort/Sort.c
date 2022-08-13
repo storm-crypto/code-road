@@ -188,10 +188,45 @@ void BubbleSort(int* a, int n)
     }
 }
 
-// 快速排序hoare版本 左右指针法
-int PartSort1(int* a, int begin, int end)
+// 找出a数组中，a[left]、a[right]、a[mid]中大小为middle的值
+int GetMidIndex(int* a, int left, int right)
 {
-    int left = begin, right = end;
+    int mid = (left + right) >> 1;
+    // a[left] a[mid] a[right]
+    if (a[left] < a[mid])
+    {
+        if (a[right] > a[mid])
+        {
+            return mid;
+        }
+        else if (a[left] < a[right])
+        {
+            return left;
+        }
+        else
+            return right;
+    }
+    else // a[left] > a[mid]
+    {
+        if (a[right] > a[left])
+        {
+            return left;
+        }
+        else if(a[mid] > a[right])
+        {
+            return mid;
+        }
+        else
+            return right;
+    }
+}
+
+// 快速排序hoare版本 左右指针法
+int PartSort1(int* a, int left, int right)
+{
+    int midIndex = GetMidIndex(a, left, right);
+    // 始终拿左去做key，所以每次都将key放到left的位置
+    Swap(&a[left], &a[midIndex]);
     int keyi = left;
     while (left < right)
     {
@@ -251,7 +286,7 @@ void QuickSort(int* a, int begin, int end)
     if (begin >= end)
         return;
 
-    int meeti = PartSort2(a, begin, end);
+    int meeti = PartSort1(a, begin, end);
     // [begin, meeti - 1] meeti [meeti + 1, end]
     QuickSort(a, begin, meeti - 1);
     QuickSort(a, meeti + 1, end);
