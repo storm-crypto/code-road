@@ -205,10 +205,10 @@ void QuickSort(int* a, int n)
         {
             left++;
         }
-
         Swap(&a[left], &a[right]);
     }
     // 因为如果是key = a[left]，key是局部变量，是改变不了数组a的
-    Swap(&a[left], &a[keyi]);
+    int meeti = left;
+    Swap(&a[keyi], &a[meeti]);
 
 }
