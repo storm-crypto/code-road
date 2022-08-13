@@ -406,6 +406,7 @@ void _MergeSort(int* a, int left, int right, int* tmp)
         a[j] = tmp[j];
 }
 
+
 // 归并排序递归实现
 void MergeSort(int* a, int n)
 {
@@ -417,6 +418,59 @@ void MergeSort(int* a, int n)
         exit(-1);
     }
     _MergeSort(a, 0, n - 1, tmp);
+
+    free(tmp);
+}
+
+
+// 封装一下归并的过程
+void _Merge(int* a, int* tmp, int begin1, int end1, int begin2, int end2)
+{
+    // j变量用来后面将tmp的值拷贝到a数组里面时会用到
+    // 因为双指针的时候会改变i的值，所以要用j来存一下begin1的位置
+    int j = begin1;
+    int i = begin1; // 将数组存入tmp数组
+    while (begin1 <= end1 && begin2 <= end2)
+    {
+        if (a[begin1] < a[begin2])
+            tmp[i++] = a[begin1++];
+        else
+            tmp[i++] = a[begin2++];
+    }
+    // 进行扫尾
+    while (begin1 <= end1)
+        tmp[i++] = a[begin1++];
+
+    while (begin2 <= end2)
+        tmp[i++] = a[begin2++];
+
+    // 将tmp里面的值复制到a数组里面取
+    for (; j <= end2; j++)
+        a[j] = tmp[j];
+}
+
+// 归并排序非递归实现
+void MergeSortNonR(int* a, int n)
+{
+    // 需要一个临时数组来进行归并
+    // 给临时数组开辟空间
+    int* tmp = (int*)malloc(sizeof(int) * n);
+    if (tmp == NULL)
+    {
+        printf("malloc fail\n");
+        exit(-1);
+    }
+
+    // 归并排序的过程
+    int gap = 1;
+    while (gap < n)
+    {
+        for (int i = 0; i < n; i += 2 * gap)
+        {
+            _Merge(a, tmp, i, i + gap - 1, i + gap, i + 2 * gap - 1);
+        }
+        gap *= 2;
+    }
 
     free(tmp);
 }
