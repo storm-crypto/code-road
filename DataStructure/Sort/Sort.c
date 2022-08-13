@@ -187,3 +187,28 @@ void BubbleSort(int* a, int n)
         }
     }
 }
+
+// 快排
+void QuickSort(int* a, int n)
+{
+    int left = 0, right = n - 1;
+    int keyi = left;
+    while (left < right)
+    {
+        // right找小，因为选左边的值为key，所以要right先走
+        while (left < right && a[right] >= a[keyi])
+        {
+            right--;
+        }
+        // left找大
+        while (left < right && a[left] <= a[keyi])
+        {
+            left++;
+        }
+
+        Swap(&a[left], &a[right]);
+    }
+    // 因为如果是key = a[left]，key是局部变量，是改变不了数组a的
+    Swap(&a[left], &a[keyi]);
+
+}
