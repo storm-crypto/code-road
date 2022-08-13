@@ -24,9 +24,18 @@ void TestSelectSort()
     Print(arr, size);
 }
 
+void TestHeaptSort()
+{
+    int arr[] = {1, 2, 4, 3, 1, 9, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    HeapSort(arr, size);
+    Print(arr, size);
+}
+
 int main()
 {
     TestShellSort();
     TestSelectSort();
+    TestHeaptSort();
     return 0;
 }

@@ -18,4 +18,8 @@ void ShellSort(int* a, int n);
 // ÷±Ω”—°‘Ò≈≈–Ú
 void SelectSort(int* a, int n);
 
+// ∂—≈≈–Ú
+void AdjustDwon(int* a, int n, int root);
+void HeapSort(int* a, int n);
+
 #endif//SORT_SORT_H

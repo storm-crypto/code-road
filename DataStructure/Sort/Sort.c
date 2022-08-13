@@ -100,10 +100,53 @@ void SelectSort(int* a, int n)
         // 交换：将大的放右边，小的放左边
         Swap(&a[left], &a[minIndex]);
         // 特殊情况：
+        // 如果max和left位置重叠，max被换走了，要修正一下max的位置
         if (left == maxIndex)
             maxIndex = minIndex;
         Swap(&a[right], &a[maxIndex]);
         left++;
         right--;
+    }
+}
+
+// 堆排序
+void AdjustDwon(int* a, int n, int root)
+{
+    int parent = root;
+    int child = parent * 2 + 1;
+    while (child < n)
+    {
+        // 这里注意判断一下越界那些
+        if (child + 1 < n && a[child] < a[child + 1])
+        {
+            child++;
+        }
+        if (a[child] > a[parent])
+        {
+            Swap(&a[child], &a[parent]);
+            parent = child;
+            child = parent * 2 + 1;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+}
+void HeapSort(int* a, int n)
+{
+    // 升序 建大堆
+    for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+    {
+        AdjustDwon(a, n, i);
+    }
+
+    int end = n - 1;
+    while (end >= 0)
+    {
+        Swap(&a[end], &a[0]);
+        end--;
+        AdjustDwon(a, end, 0);
     }
 }
