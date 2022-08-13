@@ -214,6 +214,36 @@ int PartSort1(int* a, int begin, int end)
     return meeti;
 }
 
+// 快速排序挖坑法
+int PartSort2(int* a, int left, int right)
+{
+    // 将最左边的元素拿出来，相当于左边有一个坑了
+    int key = a[left];
+    while (left < right)
+    {
+        // right先走
+        while (left < right && a[right] >= key)
+        {
+            right--;
+        }
+        // 将右边的元素放到左边的坑里面，右边就出现了一个坑
+        a[left] = a[right];
+
+        // left走
+        while (left < right && a[left] <= key)
+        {
+            left++;
+        }
+        // 将左边的元素放到右边的坑里面，左边就出现了一个坑
+        a[right] = a[left];
+    }
+
+    // 最后将key放入坑里面
+    a[left] = key;
+    // 返回key排好的合适的位置
+    return left;
+}
+
 // 快排
 void QuickSort(int* a, int begin, int end)
 {
@@ -221,7 +251,7 @@ void QuickSort(int* a, int begin, int end)
     if (begin >= end)
         return;
 
-    int meeti = PartSort1(a, begin, end);
+    int meeti = PartSort2(a, begin, end);
     // [begin, meeti - 1] meeti [meeti + 1, end]
     QuickSort(a, begin, meeti - 1);
     QuickSort(a, meeti + 1, end);
