@@ -467,7 +467,18 @@ void MergeSortNonR(int* a, int n)
     {
         for (int i = 0; i < n; i += 2 * gap)
         {
-            _Merge(a, tmp, i, i + gap - 1, i + gap, i + 2 * gap - 1);
+            // [i, i + gap - 1] [i + gap, i + 2 * gap - 1]归并
+            int begin1 = i, end1 = i + gap - 1, begin2 = i + gap, end2 = i + 2 * gap - 1;
+
+            // 如果第二个小区间不存在就不需要归并了，结束本次循环
+            if (begin2 >= n)
+                break;
+
+            // 如果第二个小区间存在，但是第二个小区间不够gap个，结束位置越界了，需要修正一下
+            if (end2 >= n)
+                end2 = n - 1;
+
+            _Merge(a, tmp, begin1, end1, begin2, end2);
         }
         gap *= 2;
     }
