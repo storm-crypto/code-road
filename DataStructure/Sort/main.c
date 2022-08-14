@@ -56,6 +56,14 @@ void TestMergeSort()
     Print(arr, size);
 }
 
+void TestCountSort()
+{
+    int arr[] = {1, 2, 4, 3, 1, 9, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    CountSort(arr, size);
+    Print(arr, size);
+}
+
 int main()
 {
     TestShellSort();
@@ -64,5 +72,6 @@ int main()
     TestBubbleSort();
     TestQuickSort();
     TestMergeSort();
+    TestCountSort();
     return 0;
 }

@@ -485,3 +485,40 @@ void MergeSortNonR(int* a, int n)
 
     free(tmp);
 }
+
+// 计数排序
+void CountSort(int* a, int n)
+{
+    // 找出数组a中最大的值跟最小的值，确定开多大的空间
+    int max = a[0], min = a[0];
+
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] > max)
+            max = a[i];
+        if (a[i] < min)
+            min = a[i];
+    }
+
+    // 确定数组的大小
+    int range = max - min + 1;
+    int* count = (int *) malloc(sizeof(int) * n);
+    // 将数组初始化为0
+    memset(count, 0, sizeof(int)*range);
+    // 统计次数
+    for (int i = 0; i < n; i++)
+    {
+        count[a[i] - min]++;
+    }
+
+    // 将数据填入a数组中
+    int i = 0;
+    for (int j = 0; j < range; ++j)
+    {
+        while (count[j]--)
+        {
+            a[i++] = j + min;
+        }
+    }
+
+}
