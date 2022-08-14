@@ -502,7 +502,7 @@ void CountSort(int* a, int n)
 
     // 确定数组的大小
     int range = max - min + 1;
-    int* count = (int *) malloc(sizeof(int) * n);
+    int* count = (int *) malloc(sizeof(int) * range);
     // 将数组初始化为0
     memset(count, 0, sizeof(int)*range);
     // 统计次数
@@ -521,4 +521,5 @@ void CountSort(int* a, int n)
         }
     }
 
+    free(count);
 }
