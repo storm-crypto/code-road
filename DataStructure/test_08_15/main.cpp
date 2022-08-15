@@ -121,21 +121,31 @@ using namespace std;
 //    StackInit(&st1);
 //
 //}
-// 函数重载
-int Add(int left, int right)
-{
-    return left + right;
-}
+//// 函数重载
+//int Add(int left, int right)
+//{
+//    return left + right;
+//}
+//
+//double Add(double left, double right)
+//{
+//    return left + right;
+//}
+//
+//int main()
+//{
+//    cout << Add(1, 3) << endl;
+//    cout << Add(1.1, 3.2) << endl;
+//
+//    return 0;
+//}
 
-double Add(double left, double right)
-{
-    return left + right;
-}
-
+// 引用
 int main()
 {
-    cout << Add(1, 3) << endl;
-    cout << Add(1.1, 3.2) << endl;
+    int a = 10;
 
-    return 0;
+    // b是a的别名(b是a的引用)
+    int& b = a;
+    b = 30;
 }
