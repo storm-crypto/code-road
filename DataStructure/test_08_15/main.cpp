@@ -5,6 +5,17 @@ namespace bit
 {
     int scanf = 10;
     int strlen = 20;
+
+    // 嵌套定义命名空间
+    namespace N3
+    {
+        int c;
+        int d;
+        int Sub(int left, int right)
+        {
+            return left - right;
+        }
+    }
 }
 
 int main()
@@ -17,6 +28,9 @@ int main()
     // 指定访问bit这个命名空间里面的scanf和strlen
     printf("%x\n", bit::scanf);
     printf("%x\n", bit::strlen);
+
+    // 嵌套定义的命名空间的使用
+    bit::N3::Sub(10, 3);
 
     return 0;
 }
