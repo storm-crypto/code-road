@@ -96,28 +96,46 @@ using namespace std;
 //}
 
 // 缺省参数的作用：
-struct Stack
+//struct Stack
+//{
+//    int* a;
+//    int size;
+//    int capacity;
+//};
+//
+//void StackInit(struct Stack* ps, int InitCapacity = 4)
+//{
+//    ps->a = (int*)malloc(sizeof(int) * InitCapacity);
+//    ps->size = 0;
+//    ps->capacity = InitCapacity;
+//}
+//
+//int main()
+//{
+//    struct Stack st1;
+//
+//    // 假设直到栈里面要存100个数据
+//    StackInit(&st1, 100);
+//
+//    // 假设不知道栈里面要存多少个数据，可以直接缺省
+//    StackInit(&st1);
+//
+//}
+// 函数重载
+int Add(int left, int right)
 {
-    int* a;
-    int size;
-    int capacity;
-};
+    return left + right;
+}
 
-void StackInit(struct Stack* ps, int InitCapacity = 4)
+double Add(double left, double right)
 {
-    ps->a = (int*)malloc(sizeof(int) * InitCapacity);
-    ps->size = 0;
-    ps->capacity = InitCapacity;
+    return left + right;
 }
 
 int main()
 {
-    struct Stack st1;
+    cout << Add(1, 3) << endl;
+    cout << Add(1.1, 3.2) << endl;
 
-    // 假设直到栈里面要存100个数据
-    StackInit(&st1, 100);
-
-    // 假设不知道栈里面要存多少个数据，可以直接缺省
-    StackInit(&st1);
-
+    return 0;
 }
