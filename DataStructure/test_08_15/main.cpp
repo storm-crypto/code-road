@@ -141,11 +141,42 @@ using namespace std;
 //}
 
 // 引用
+//int main()
+//{
+//    int a = 10;
+//
+//    // b是a的别名(b是a的引用)
+//    int& b = a;
+//    b = 30;
+//}
+
+// 引用的作用
+// 之前写的swap函数
+void swap(int* p1, int* p2)
+{
+    int tmp = *p1;
+    *p1 = *p2;
+    *p2 = tmp;
+}
+
+// 这个函数用了引用跟上面那个函数的作用是一样的
+// r1、r2分别是a和b的别名
+// 别名指向的是同一块内存空间，所以能够达到交换的作用
+void swap(int& r1, int& r2)
+{
+    int tmp = r1;
+    r1 = r2;
+    r2 = tmp;
+}
+
 int main()
 {
-    int a = 10;
+    int a = 1;
+    int b = 2;
 
-    // b是a的别名(b是a的引用)
-    int& b = a;
-    b = 30;
+    //swap(&a, &b);
+
+    swap(a, b);
+
+    return 0;
 }
