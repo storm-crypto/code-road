@@ -1,6 +1,6 @@
 #include "Sort.h"
 
-void TestInserSort()
+void TestInsertSort()
 {
     int arr[] = {1, 2, 4, 3, 1, 9, 5};
     int size = sizeof(arr) / sizeof(arr[0]);
@@ -66,12 +66,13 @@ void TestCountSort()
 
 int main()
 {
+    TestInsertSort();
     TestShellSort();
     TestSelectSort();
     TestHeapSort();
-    TestBubbleSort();
-    TestQuickSort();
-    TestMergeSort();
-    TestCountSort();
+//    TestBubbleSort();
+//    TestQuickSort();
+//    TestMergeSort();
+//    TestCountSort();
     return 0;
 }

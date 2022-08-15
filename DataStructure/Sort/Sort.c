@@ -62,7 +62,7 @@ void ShellSort(int* a, int n)
                     a[end + gap] = a[end];
                     end -= gap;
                 }
-                else
+                 else
                 {
                     break;
                 }
@@ -82,27 +82,28 @@ void Swap(int* p, int* q)
 // 直接选择排序
 void SelectSort(int* a, int n)
 {
-    int left = 0, right = n - 1;
+    int left = 0;
+    int right = n - 1;
 
     while (left < right)
     {
-        // 选出最小的和最大的
-        int minIndex = left, maxIndex = left;
+        int maxIndex = left, minIndex = left;
 
+        // 分别选出最大的和最小的
         for (int i = left; i <= right; i++)
         {
-            if (a[i] < a[minIndex])
-                minIndex = i;
             if (a[i] > a[maxIndex])
                 maxIndex = i;
-        }
 
-        // 交换：将大的放右边，小的放左边
+            if (a[i] < a[minIndex])
+                minIndex = i;
+        }
+        // 最小的放到左边
         Swap(&a[left], &a[minIndex]);
-        // 特殊情况：
-        // 如果max和left位置重叠，max被换走了，要修正一下max的位置
+        // 特殊情况：如果left就是max的情况
         if (left == maxIndex)
             maxIndex = minIndex;
+        // 最大的放到右边
         Swap(&a[right], &a[maxIndex]);
         left++;
         right--;
@@ -116,14 +117,11 @@ void AdjustDwon(int* a, int n, int root)
     int child = parent * 2 + 1;
     while (child < n)
     {
-        // 这里注意判断一下越界那些
-        if (child + 1 < n && a[child] < a[child + 1])
-        {
+        if (child + 1 < n && a[child + 1] > a[child])
             child++;
-        }
-        if (a[child] > a[parent])
+        if (a[parent] < a[child])
         {
-            Swap(&a[child], &a[parent]);
+            Swap(&a[parent], &a[child]);
             parent = child;
             child = parent * 2 + 1;
         }
