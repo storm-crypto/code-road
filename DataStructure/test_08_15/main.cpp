@@ -38,17 +38,31 @@
 
 #include <iostream>
 
+using namespace std;
+
+//int main()
+//{
+//    std::cout << "helloworld" << std::endl;
+//
+//    // 控制台使用cin输入的时候，空格表示换行
+//    char str[10];
+//    int a = 10;
+//    std::cin >> a;
+//    std::cin >> str;
+//
+//    std::cout << a << str << std::endl;
+//
+//    return 0;
+//}
+
+// 缺省参数
+void TestFunc(int a = 0)
+{
+    cout << a << endl;
+}
+
 int main()
 {
-    std::cout << "helloworld" << std::endl;
-
-    // 控制台使用cin输入的时候，空格表示换行
-    char str[10];
-    int a = 10;
-    std::cin >> a;
-    std::cin >> str;
-
-    std::cout << a << str << std::endl;
-
-    return 0;
+    TestFunc();
+    TestFunc(10);
 }
