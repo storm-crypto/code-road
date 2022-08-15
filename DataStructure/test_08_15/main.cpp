@@ -1,36 +1,54 @@
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
+//
+//namespace bit
+//{
+//    int scanf = 10;
+//    int strlen = 20;
+//
+//    // 嵌套定义命名空间
+//    namespace N3
+//    {
+//        int c;
+//        int d;
+//        int Sub(int left, int right)
+//        {
+//            return left - right;
+//        }
+//    }
+//}
 
-namespace bit
-{
-    int scanf = 10;
-    int strlen = 20;
+//int main()
+//{
+//    // 打印库函数中的scanf和strlen的地址
+//    // 没有指定默认访问局部或者全局的
+//    printf("%x\n", scanf);
+//    printf("%x\n", strlen);
+//
+//    // 指定访问bit这个命名空间里面的scanf和strlen
+//    printf("%x\n", bit::scanf);
+//    printf("%x\n", bit::strlen);
+//
+//    // 嵌套定义的命名空间的使用
+//    bit::N3::Sub(10, 3);
+//
+//    return 0;
+//}
 
-    // 嵌套定义命名空间
-    namespace N3
-    {
-        int c;
-        int d;
-        int Sub(int left, int right)
-        {
-            return left - right;
-        }
-    }
-}
+
+#include <iostream>
 
 int main()
 {
-    // 打印库函数中的scanf和strlen的地址
-    // 没有指定默认访问局部或者全局的
-    printf("%x\n", scanf);
-    printf("%x\n", strlen);
+    std::cout << "helloworld" << std::endl;
 
-    // 指定访问bit这个命名空间里面的scanf和strlen
-    printf("%x\n", bit::scanf);
-    printf("%x\n", bit::strlen);
+    // 控制台使用cin输入的时候，空格表示换行
+    char str[10];
+    int a = 10;
+    std::cin >> a;
+    std::cin >> str;
 
-    // 嵌套定义的命名空间的使用
-    bit::N3::Sub(10, 3);
+    std::cout << a << str << std::endl;
 
     return 0;
 }

@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 D:/05code/2022/code-road/DataStructure/test_08_15/main.cpp
-stdio.h
--
-string.h
+iostream
 -
 
