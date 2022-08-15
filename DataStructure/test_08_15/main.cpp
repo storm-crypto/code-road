@@ -82,15 +82,42 @@ using namespace std;
 //    TestFunc(1);
 //}
 // 半缺省
-void TestFunc1(int a, int b = 20, int c = 30)
+//void TestFunc1(int a, int b = 20, int c = 30)
+//{
+//    cout<<"a = "<<a<<endl;
+//    cout<<"b = "<<b<<endl;
+//    cout<<"c = "<<c<<endl << endl;
+//}
+//
+//int main()
+//{
+//    TestFunc1(1, 2, 3);
+//    TestFunc1(1);
+//}
+
+// 缺省参数的作用：
+struct Stack
 {
-    cout<<"a = "<<a<<endl;
-    cout<<"b = "<<b<<endl;
-    cout<<"c = "<<c<<endl << endl;
+    int* a;
+    int size;
+    int capacity;
+};
+
+void StackInit(struct Stack* ps, int InitCapacity = 4)
+{
+    ps->a = (int*)malloc(sizeof(int) * InitCapacity);
+    ps->size = 0;
+    ps->capacity = InitCapacity;
 }
 
 int main()
 {
-    TestFunc1(1, 2, 3);
-    TestFunc1(1);
+    struct Stack st1;
+
+    // 假设直到栈里面要存100个数据
+    StackInit(&st1, 100);
+
+    // 假设不知道栈里面要存多少个数据，可以直接缺省
+    StackInit(&st1);
+
 }
