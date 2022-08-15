@@ -152,31 +152,50 @@ using namespace std;
 
 // 引用的作用
 // 之前写的swap函数
-void swap(int* p1, int* p2)
-{
-    int tmp = *p1;
-    *p1 = *p2;
-    *p2 = tmp;
-}
+//void swap(int* p1, int* p2)
+//{
+//    int tmp = *p1;
+//    *p1 = *p2;
+//    *p2 = tmp;
+//}
+//
+//// 这个函数用了引用跟上面那个函数的作用是一样的
+//// r1、r2分别是a和b的别名
+//// 别名指向的是同一块内存空间，所以能够达到交换的作用
+//void swap(int& r1, int& r2)
+//{
+//    int tmp = r1;
+//    r1 = r2;
+//    r2 = tmp;
+//}
+//
+//int main()
+//{
+//    int a = 1;
+//    int b = 2;
+//
+//    //swap(&a, &b);
+//
+//    swap(a, b);
+//
+//    return 0;
+//}
 
-// 这个函数用了引用跟上面那个函数的作用是一样的
-// r1、r2分别是a和b的别名
-// 别名指向的是同一块内存空间，所以能够达到交换的作用
-void swap(int& r1, int& r2)
-{
-    int tmp = r1;
-    r1 = r2;
-    r2 = tmp;
-}
 
 int main()
 {
-    int a = 1;
-    int b = 2;
+    // 一个变量可以有多个引用
+    int a = 0;
+    int& b = a;
+    int& c = a;
+    int&d = b;
 
-    //swap(&a, &b);
+    // 引用必须初始化
+    int& r = a;
 
-    swap(a, b);
+    // 引用一旦引用一个实体，就不能引用其他实体
+    int x = 10;
+    // 不是让r变成x的别名，而是把x的值赋值给r
+    r = x;
 
-    return 0;
 }
