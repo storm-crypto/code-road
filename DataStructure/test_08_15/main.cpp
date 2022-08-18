@@ -182,20 +182,72 @@ using namespace std;
 //}
 
 
+//int main()
+//{
+//    // 一个变量可以有多个引用
+//    int a = 0;
+//    int& b = a;
+//    int& c = a;
+//    int&d = b;
+//
+//    // 引用必须初始化
+//    int& r = a;
+//
+//    // 引用一旦引用一个实体，就不能引用其他实体
+//    int x = 10;
+//    // 不是让r变成x的别名，而是把x的值赋值给r
+//    r = x;
+//
+//}
+
+//int main()
+//{
+//    const int a = 10;
+//    // 下面这个ra属于权限放大，所以不行
+//    // int& ra = a;
+//
+//    const int& ra = a;
+//
+//
+//    // 权限缩小,可以
+//    int b = 10;
+//    int& rb = b;
+//    const int& crb = b;
+//
+//    int c = 0;
+//    // double& rc = c; // 会报错
+//    const double& rc = c; // rc是给c的临时变量取别名
+//
+//    return 0;
+//}
+
+// 传引用返回
+//int& Add(int a, int b)
+//{
+//    int c = a + b;
+//    return c;
+//}
+//
+//int main()
+//{
+//    int& ret = Add(2, 3);
+//    Add(5, 7);
+//
+//    cout << ret << endl;
+//
+//    return 0;
+//}
+
+// 范围的for循环(C++11新语法遍历)
 int main()
 {
-    // 一个变量可以有多个引用
-    int a = 0;
-    int& b = a;
-    int& c = a;
-    int&d = b;
+    int array[] = {1, 2, 3, 4, 5};
 
-    // 引用必须初始化
-    int& r = a;
-
-    // 引用一旦引用一个实体，就不能引用其他实体
-    int x = 10;
-    // 不是让r变成x的别名，而是把x的值赋值给r
-    r = x;
-
+    // 自动遍历，依次取出array中的元素，赋值给e，直到结束
+    for (auto e : array)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+    return 0;
 }
