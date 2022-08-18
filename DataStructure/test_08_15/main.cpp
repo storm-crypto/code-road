@@ -249,5 +249,18 @@ int main()
         cout << e << " ";
     }
     cout << endl;
+
+    // 将array数组里面的每个数都*2
+    for (auto& e : array)
+    {
+        e *= 2;
+    }
+    for (auto e : array)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+
     return 0;
 }
