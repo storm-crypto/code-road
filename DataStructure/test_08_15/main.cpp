@@ -239,28 +239,65 @@ using namespace std;
 //}
 
 // 范围的for循环(C++11新语法遍历)
+//int main()
+//{
+//    int array[] = {1, 2, 3, 4, 5};
+//
+//    // 自动遍历，依次取出array中的元素，赋值给e，直到结束
+//    for (auto e : array)
+//    {
+//        cout << e << " ";
+//    }
+//    cout << endl;
+//
+//    // 将array数组里面的每个数都*2
+//    for (auto& e : array)
+//    {
+//        e *= 2;
+//    }
+//    for (auto e : array)
+//    {
+//        cout << e << " ";
+//    }
+//    cout << endl;
+//
+//
+//    return 0;
+//}
+
+// C++定义一个类
+// 类由两部分构成：1. 成员变量(属性) 2. 成员函数(做的行为)
+// C++中的struct兼容C的所有用法，同时C++中把struct升级成类
+
+typedef int DataType;
+struct Stack
+{
+    void Init(int initSize = 4)
+    {
+        a = (DataType*)malloc(sizeof(DataType) * initSize);
+        size = 0;
+        capacity = initSize;
+    }
+
+    void Push(DataType x)
+    {
+        a[size] = x;
+        size++;
+    }
+
+    DataType* a;
+    int size;
+    int capacity;
+};
+
 int main()
 {
-    int array[] = {1, 2, 3, 4, 5};
-
-    // 自动遍历，依次取出array中的元素，赋值给e，直到结束
-    for (auto e : array)
-    {
-        cout << e << " ";
-    }
-    cout << endl;
-
-    // 将array数组里面的每个数都*2
-    for (auto& e : array)
-    {
-        e *= 2;
-    }
-    for (auto e : array)
-    {
-        cout << e << " ";
-    }
-    cout << endl;
-
+    struct Stack st;
+    //Stack st;
+    st.Init();
+    st.Push(1);
+    st.Push(2);
+    st.Push(3);
 
     return 0;
 }
