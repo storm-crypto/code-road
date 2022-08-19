@@ -269,26 +269,66 @@ using namespace std;
 // 类由两部分构成：1. 成员变量(属性) 2. 成员函数(做的行为)
 // C++中的struct兼容C的所有用法，同时C++中把struct升级成类
 
-typedef int DataType;
-struct Stack
-{
-    void Init(int initSize = 4)
-    {
-        a = (DataType*)malloc(sizeof(DataType) * initSize);
-        size = 0;
-        capacity = initSize;
-    }
+//typedef int DataType;
+//struct Stack
+//{
+//    void Init(int initSize = 4)
+//    {
+//        a = (DataType*)malloc(sizeof(DataType) * initSize);
+//        size = 0;
+//        capacity = initSize;
+//    }
+//
+//    void Push(DataType x)
+//    {
+//        a[size] = x;
+//        size++;
+//    }
+//
+//    DataType* a;
+//    int size;
+//    int capacity;
+//};
+//
+//int main()
+//{
+//    struct Stack st;
+//    //Stack st;
+//    st.Init();
+//    st.Push(1);
+//    st.Push(2);
+//    st.Push(3);
+//
+//    return 0;
+//}
 
-    void Push(DataType x)
-    {
-        a[size] = x;
-        size++;
-    }
+typedef int DataType;
+// 一般放到xxx.h里面
+// 这里面放的全是声明
+class Stack
+{
+public:
+    void Init(int initSize = 4);
+    void Push(DataType x);
 
     DataType* a;
     int size;
     int capacity;
 };
+
+// xx.cpp
+void Stack::Init(int initSize)
+{
+    a = (DataType*)malloc(sizeof(DataType) * initSize);
+    size = 0;
+    capacity = initSize;
+}
+
+void Stack::Push(DataType x)
+{
+    a[size] = x;
+    size++;
+}
 
 int main()
 {
