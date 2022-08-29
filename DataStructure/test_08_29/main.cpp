@@ -111,47 +111,135 @@ using namespace std;
 //
 //}
 
-class A
-{
-public:
-    A(int a = 0)
-    {
-        cout << "A(int a = 0)构造函数" << endl;
-        _a = a;
-    }
+//class A
+//{
+//public:
+//    A(int a = 0)
+//    {
+//        cout << "A(int a = 0)构造函数" << endl;
+//        _a = a;
+//    }
+//
+//    void Print()
+//    {
+//        cout << _a << endl;
+//    }
+//private:
+//    int _a;
+//};
+//
+//class Date
+//{
+//public:
+//    // 我们不写，编译器会默认会生成一个构造函数，我们写了编译器就不会生成了
+//    void Print()
+//    {
+//        cout << _year << "-" << _month << "-" << _day << endl;
+//        _aa.Print();
+//    }
+//
+//private:
+//    // 内置类型
+//    int _year;
+//    int _month;
+//    int _day;
+//
+//    // 自定义类型
+//    A _aa;
+//};
 
-    void Print()
-    {
-        cout << _a << endl;
-    }
-private:
-    int _a;
-};
+// 默认构造函数
+
+//class A
+//{
+//public:
+//    A(int a = 0)
+//    {
+//        cout << "A(int a = 0)构造函数" << endl;
+//        _a = a;
+//    }
+//
+//    void Print()
+//    {
+//        cout << _a << endl;
+//    }
+//private:
+//    int _a;
+//};
+//
+//class Date
+//{
+//public:
+//    // 我们不写，编译器会默认会生成一个构造函数，我们写了编译器就不会生成了
+//
+//    Date(int year = 0, int month = 1, int day = 1)
+//    {
+//        _year = year;
+//        _month = month;
+//        _day = day;
+//    }
+//
+//    void Print()
+//    {
+//        cout << _year << "-" << _month << "-" << _day << endl;
+//        _aa.Print();
+//    }
+//
+//private:
+//    // 内置类型
+//    int _year;
+//    int _month;
+//    int _day;
+//
+//    // 自定义类型
+//    A _aa;
+//};
+
+// 默认构造函数的误区：很多同学认为我们不写，编译器默认生成的那个是默认构造函数
+
+//int main()
+//{
+//    Date d2;
+//    d2.Print();
+//
+//    return 0;
+//}
+
+// 析构函数
 
 class Date
 {
 public:
-    // 我们不写，编译器会默认会生成一个构造函数，我们写了编译器就不会生成了
-    void Print()
+    Date(int year = 0, int month = 1, int day = 1)
     {
-        cout << _year << "-" << _month << "-" << _day << endl;
-        _aa.Print();
+        _year = year;
+        _month = month;
+        _day = day;
+    }
+
+    // d1.Equel(d2)
+    bool Equel(Date d)
+    {
+        return _year == d._year
+        && _month == d._month
+        && _day == d._day;
     }
 
 private:
-    // 内置类型
     int _year;
     int _month;
     int _day;
-
-    // 自定义类型
-    A _aa;
 };
 
 int main()
 {
-    Date d2;
-    d2.Print();
+    Date d1(2021, 1, 1);
+    Date d2(2021, 1, 2);
+
+    // 内置类型，语言层面就支持运算符
+    // 自定义类型，默认不支持。C++可以用运算符重载来让类对象支持用某个运算符
+
+    cout << d1.Equel(d2) << endl;
 
     return 0;
 }
