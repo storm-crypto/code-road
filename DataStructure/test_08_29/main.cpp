@@ -224,7 +224,7 @@ public:
         && _month == d._month
         && _day == d._day;
     }
-
+    // 重载==
     bool operator==(Date x)
     {
         return _year == x._year
@@ -243,11 +243,14 @@ private:
 int main()
 {
     Date d1(2021, 1, 1);
-    Date d2(2021, 1, 2);
+    Date d2(2021, 1, 1);
 
     // 内置类型，语言层面就支持运算符
     // 自定义类型，默认不支持。C++可以用运算符重载来让类对象支持用某个运算符
-    d1.operator==(d2);
+
+    // 重载==后的使用方法，下面这两种都是可以的
+    cout << d1.operator==(d2) << endl;
+    cout << (d1 == d2) << endl;
 
     cout << d1.Equel(d2) << endl;
 
