@@ -367,6 +367,11 @@
 
 int main()
 {
+    Date d1(2021, 5, 25);
+    d1.Print();
+
+    Date d2(2021, 0, 0);
+    d2.Print();
 
     return 0;
 }

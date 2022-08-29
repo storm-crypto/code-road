@@ -6,6 +6,7 @@
 #define TEST_08_29_DATE_H
 
 #include <iostream>
+#include <assert.h>
 
 using std::cout;
 using std::cin;
