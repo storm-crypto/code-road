@@ -225,11 +225,18 @@ public:
         && _day == d._day;
     }
 
-private:
+
     int _year;
     int _month;
     int _day;
 };
+
+bool operator==(Date x1, Date x2)
+{
+    return x1._year == x2._year
+    && x1._month == x2._month
+    && x1._day == x2._day;
+}
 
 int main()
 {
@@ -238,6 +245,7 @@ int main()
 
     // 内置类型，语言层面就支持运算符
     // 自定义类型，默认不支持。C++可以用运算符重载来让类对象支持用某个运算符
+    d1 == d2;
 
     cout << d1.Equel(d2) << endl;
 
