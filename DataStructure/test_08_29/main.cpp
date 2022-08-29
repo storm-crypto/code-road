@@ -60,53 +60,98 @@ using namespace std;
 // 类里面成员函数，我们什么都不写的时候，编译器会自动生成6个函数，这6个函数叫默认成员函数
 
 // 1. 构造函数：对对象的初始化
-class Date
-{
-public:
-    // 可能我们会忘记调用它
-    // C++为了解决这个问题，引入构造函数,来初始化
-//    void Init(int year, int month, int day)
+//class Date
+//{
+//public:
+//    // 可能我们会忘记调用它
+//    // C++为了解决这个问题，引入构造函数,来初始化
+////    void Init(int year, int month, int day)
+////    {
+////        _year = year;
+////        _month = month;
+////        _day = day;
+////    }
+//
+//    // 构造函数->实例话对象的时候自动调用
+//    // 全缺省参数的构造函数，不再使用重载这么麻烦了
+//    Date(int year = 0, int month = 1, int day = 1)
 //    {
 //        _year = year;
 //        _month = month;
 //        _day = day;
 //    }
-
-    // 构造函数->实例话对象的时候自动调用
-    // 全缺省参数的构造函数，不再使用重载这么麻烦了
-    Date(int year = 0, int month = 1, int day = 1)
-    {
-        _year = year;
-        _month = month;
-        _day = day;
-    }
-
-    // 重载
-//    Date()
+//
+//    // 重载
+////    Date()
+////    {
+////        _year = 0;
+////        _month = 1;
+////        _day = 1;
+////    }
+//
+//    void Print()
 //    {
-//        _year = 0;
-//        _month = 1;
-//        _day = 1;
+//        cout << _year << "-" << _month << "-" << _day << endl;
 //    }
+//
+//private:
+//    int _year;
+//    int _month;
+//    int _day;
+//};
+//
+//int main()
+//{
+//    // 对象实例化时自动调用构造函数，参数也要一致的哦
+//    Date d1(2021, 5, 24);
+//    d1.Print();
+//
+//    Date d2;
+//    d2.Print();
+//
+//}
+
+class A
+{
+public:
+    A(int a = 0)
+    {
+        cout << "A(int a = 0)构造函数" << endl;
+        _a = a;
+    }
 
     void Print()
     {
+        cout << _a << endl;
+    }
+private:
+    int _a;
+};
+
+class Date
+{
+public:
+    // 我们不写，编译器会默认会生成一个构造函数，我们写了编译器就不会生成了
+    void Print()
+    {
         cout << _year << "-" << _month << "-" << _day << endl;
+        _aa.Print();
     }
 
 private:
+    // 内置类型
     int _year;
     int _month;
     int _day;
+
+    // 自定义类型
+    A _aa;
 };
 
 int main()
 {
-    // 对象实例化时自动调用构造函数，参数也要一致的哦
-    Date d1(2021, 5, 24);
-    d1.Print();
-
     Date d2;
     d2.Print();
 
+    return 0;
 }
