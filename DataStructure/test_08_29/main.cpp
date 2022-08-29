@@ -65,15 +65,16 @@ class Date
 public:
     // 可能我们会忘记调用它
     // C++为了解决这个问题，引入构造函数,来初始化
-    void Init(int year, int month, int day)
-    {
-        _year = year;
-        _month = month;
-        _day = day;
-    }
+//    void Init(int year, int month, int day)
+//    {
+//        _year = year;
+//        _month = month;
+//        _day = day;
+//    }
 
     // 构造函数->实例话对象的时候自动调用
-    Date(int year, int month, int day)
+    // 全缺省参数的构造函数，不再使用重载这么麻烦了
+    Date(int year = 0, int month = 1, int day = 1)
     {
         _year = year;
         _month = month;
@@ -81,12 +82,12 @@ public:
     }
 
     // 重载
-    Date()
-    {
-        _year = 0;
-        _month = 1;
-        _day = 1;
-    }
+//    Date()
+//    {
+//        _year = 0;
+//        _month = 1;
+//        _day = 1;
+//    }
 
     void Print()
     {
@@ -106,5 +107,6 @@ int main()
     d1.Print();
 
     Date d2;
+    d2.Print();
 
 }
