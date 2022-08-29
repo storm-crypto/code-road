@@ -283,7 +283,8 @@ public:
     // d1 = d2
     // 赋值运算符的重载
     // 改进：支持连续赋值，i = j = k
-    Date operator=(const Date& d)
+    // 为了不使用拷贝构造，返回值传引用
+    Date& operator=(const Date& d)
     {
         _year = d._year;
         _month = d._month;
@@ -348,6 +349,8 @@ int main()
     d1.Print();
     d2.Print();
 
+    // 连续赋值
+    d1= d2 = d3;
 
    return 0;
 }
