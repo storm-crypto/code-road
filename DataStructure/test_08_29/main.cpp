@@ -35,24 +35,76 @@ using namespace std;
 //}
 
 // 关于this指针的分析题
-class A
+//class A
+//{
+//public:
+//    void PrintA()
+//    {
+//        cout<<_a<<endl;
+//    }
+//    void Show()
+//    {
+//        cout<<"Show()"<<endl;
+//    }
+//private:
+//    int _a;
+//};
+//
+//int main()
+//{
+//    A* p = nullptr;
+//    p->PrintA(); // 错误：空指针访问
+//    //p->Show();   // 正常运行
+//}
+
+// 类里面成员函数，我们什么都不写的时候，编译器会自动生成6个函数，这6个函数叫默认成员函数
+
+// 1. 构造函数：对对象的初始化
+class Date
 {
 public:
-    void PrintA()
+    // 可能我们会忘记调用它
+    // C++为了解决这个问题，引入构造函数,来初始化
+    void Init(int year, int month, int day)
     {
-        cout<<_a<<endl;
+        _year = year;
+        _month = month;
+        _day = day;
     }
-    void Show()
+
+    // 构造函数->实例话对象的时候自动调用
+    Date(int year, int month, int day)
     {
-        cout<<"Show()"<<endl;
+        _year = year;
+        _month = month;
+        _day = day;
     }
+
+    // 重载
+    Date()
+    {
+        _year = 0;
+        _month = 1;
+        _day = 1;
+    }
+
+    void Print()
+    {
+        cout << _year << "-" << _month << "-" << _day << endl;
+    }
+
 private:
-    int _a;
+    int _year;
+    int _month;
+    int _day;
 };
 
 int main()
 {
-    A* p = nullptr;
-    p->PrintA(); // 错误：空指针访问
-    //p->Show();   // 正常运行
+    // 对象实例化时自动调用构造函数，参数也要一致的哦
+    Date d1(2021, 5, 24);
+    d1.Print();
+
+    Date d2;
+
 }
