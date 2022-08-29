@@ -3,4 +3,4 @@ project(test_08_29)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(test_08_29 main.cpp)
+add_executable(test_08_29 main.cpp Date.cpp Date.h)

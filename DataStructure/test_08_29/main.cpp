@@ -1,6 +1,6 @@
-#include <iostream>
-
-using namespace std;
+//#include <iostream>
+//
+//using namespace std;
 
 //class Date
 //{
@@ -261,104 +261,112 @@ using namespace std;
 // 不过很多时候我们都要自己写
 // 因为生成的不一定好用
 
-class Date
-{
-public:
-    Date(int year = 0, int month = 1, int day = 1)
-    {
-        _year = year;
-        _month = month;
-        _day = day;
-    }
-    // 析构函数不需要写，编译默认生成就够用，对象没有内存清理
-    // 默认生成的析构函数也是基本不做什么事情，release一下就没了
+//class Date
+//{
+//public:
+//    Date(int year = 0, int month = 1, int day = 1)
+//    {
+//        _year = year;
+//        _month = month;
+//        _day = day;
+//    }
+//    // 析构函数不需要写，编译默认生成就够用，对象没有内存清理
+//    // 默认生成的析构函数也是基本不做什么事情，release一下就没了
+//
+//    Date(const Date& d)
+//    {
+//        _year = d._year;
+//        _month = d._month;
+//        _day = d._day;
+//    }
+//
+//    // d1 = d2
+//    // 赋值运算符的重载
+//    // 改进：支持连续赋值，i = j = k
+//    // 为了不使用拷贝构造，返回值传引用
+//    // 防止自己给自己赋值d1 = d1
+//    Date& operator=(const Date& d)
+//    {
+//        if (this != &d) // 检查如果不是自己给自己赋值，才需要拷贝
+//        {
+//            _year = d._year;
+//            _month = d._month;
+//            _day = d._day;
+//        }
+//
+//        return *this;
+//    }
+//
+//    void Print()
+//    {
+//        cout << _year << "-" << _month << "-" << _day << endl;
+//    }
+//
+//private:
+//    int _year;
+//    int _month;
+//    int _day;
+//};
+//
+//class Stack
+//{
+//public:
+//    Stack(int capacity = 4)
+//    {
+//        if (capacity <= 0)
+//        {
+//            _a = nullptr;
+//            _size = _capacity = 0;
+//        }
+//        else
+//        {
+//            _a = (int*)malloc(sizeof(int) * capacity);
+//            _capacity = capacity;
+//            _size = 0;
+//        }
+//    }
+//
+//    // 析构函数
+//    ~Stack()
+//    {
+//        free(_a);
+//        _size = _capacity = 0;
+//        _a = nullptr;
+//    }
+//
+//private:
+//    int* _a;
+//    int _size;
+//    int _capacity;
+//};
+//
+//int main()
+//{
+//    Date d1(2020, 5, 25);
+//    Date d2;
+//    Date d3(2020, 1, 1);
+//    d1.Print();
+//    d2.Print();
+//
+//    // 对=运算符进行重载
+//    d1 = d2;
+//    d1.Print();
+//    d2.Print();
+//
+//    // 连续赋值
+//    d1 = d2 = d3;
+//
+//    Date d5(d1); // 拷贝构造：拿一个已经存在的对象去构造初始化另一个要创建的对象
+//    d1 = d2;     // 赋值重载：两个已经存在的对象->拷贝
+//    Date d6 = d1; // 拷贝构造
+//
+//   return 0;
+//}
 
-    Date(const Date& d)
-    {
-        _year = d._year;
-        _month = d._month;
-        _day = d._day;
-    }
-
-    // d1 = d2
-    // 赋值运算符的重载
-    // 改进：支持连续赋值，i = j = k
-    // 为了不使用拷贝构造，返回值传引用
-    // 防止自己给自己赋值d1 = d1
-    Date& operator=(const Date& d)
-    {
-        if (this != &d) // 检查如果不是自己给自己赋值，才需要拷贝
-        {
-            _year = d._year;
-            _month = d._month;
-            _day = d._day;
-        }
-
-        return *this;
-    }
-
-    void Print()
-    {
-        cout << _year << "-" << _month << "-" << _day << endl;
-    }
-
-private:
-    int _year;
-    int _month;
-    int _day;
-};
-
-class Stack
-{
-public:
-    Stack(int capacity = 4)
-    {
-        if (capacity <= 0)
-        {
-            _a = nullptr;
-            _size = _capacity = 0;
-        }
-        else
-        {
-            _a = (int*)malloc(sizeof(int) * capacity);
-            _capacity = capacity;
-            _size = 0;
-        }
-    }
-
-    // 析构函数
-    ~Stack()
-    {
-        free(_a);
-        _size = _capacity = 0;
-        _a = nullptr;
-    }
-
-private:
-    int* _a;
-    int _size;
-    int _capacity;
-};
+#include "Date.h"
 
 int main()
 {
-    Date d1(2020, 5, 25);
-    Date d2;
-    Date d3(2020, 1, 1);
-    d1.Print();
-    d2.Print();
 
-    // 对=运算符进行重载
-    d1 = d2;
-    d1.Print();
-    d2.Print();
-
-    // 连续赋值
-    d1 = d2 = d3;
-
-    Date d5(d1); // 拷贝构造：拿一个已经存在的对象去构造初始化另一个要创建的对象
-    d1 = d2;     // 赋值重载：两个已经存在的对象->拷贝
-    Date d6 = d1; // 拷贝构造
-
-   return 0;
+    return 0;
 }

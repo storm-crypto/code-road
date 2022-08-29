@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test_08_29.dir/Date.cpp.obj"
   "CMakeFiles/test_08_29.dir/main.cpp.obj"
   "libtest_08_29.dll.a"
   "test_08_29.exe"
