@@ -280,6 +280,18 @@ public:
         _day = d._day;
     }
 
+    // d1 = d2
+    // 赋值运算符的重载
+    // 改进：支持连续赋值，i = j = k
+    Date operator=(const Date& d)
+    {
+        _year = d._year;
+        _month = d._month;
+        _day = d._day;
+
+        return *this;
+    }
+
     void Print()
     {
         cout << _year << "-" << _month << "-" << _day << endl;
@@ -326,11 +338,16 @@ private:
 int main()
 {
     Date d1(2020, 5, 25);
-
-    Date d4(d1); // 拷贝构造函数，目的是让d4跟d1的值是一样的
-
+    Date d2;
+    Date d3(2020, 1, 1);
     d1.Print();
-    d4.Print();
+    d2.Print();
 
-    return 0;
+    // 对=运算符进行重载
+    d1 = d2;
+    d1.Print();
+    d2.Print();
+
+
+   return 0;
 }
