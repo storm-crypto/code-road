@@ -284,11 +284,15 @@ public:
     // 赋值运算符的重载
     // 改进：支持连续赋值，i = j = k
     // 为了不使用拷贝构造，返回值传引用
+    // 防止自己给自己赋值d1 = d1
     Date& operator=(const Date& d)
     {
-        _year = d._year;
-        _month = d._month;
-        _day = d._day;
+        if (this != &d) // 检查如果不是自己给自己赋值，才需要拷贝
+        {
+            _year = d._year;
+            _month = d._month;
+            _day = d._day;
+        }
 
         return *this;
     }
