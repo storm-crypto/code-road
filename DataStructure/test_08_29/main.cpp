@@ -207,6 +207,60 @@ using namespace std;
 
 // 析构函数
 
+//class Date
+//{
+//public:
+//    Date(int year = 0, int month = 1, int day = 1)
+//    {
+//        _year = year;
+//        _month = month;
+//        _day = day;
+//    }
+//
+//    // d1.Equel(d2)
+//    bool Equel(Date d)
+//    {
+//        return _year == d._year
+//        && _month == d._month
+//        && _day == d._day;
+//    }
+//    // 重载==
+//    bool operator==(Date x)
+//    {
+//        return _year == x._year
+//               && _month == x._month
+//               && _day == x._day;
+//    }
+//
+//private:
+//    int _year;
+//    int _month;
+//    int _day;
+//};
+//
+//
+//
+//int main()
+//{
+//    Date d1(2021, 1, 1);
+//    Date d2(2021, 1, 1);
+//
+//    // 内置类型，语言层面就支持运算符
+//    // 自定义类型，默认不支持。C++可以用运算符重载来让类对象支持用某个运算符
+//
+//    // 重载==后的使用方法，下面这两种都是可以的
+//    cout << d1.operator==(d2) << endl;
+//    cout << (d1 == d2) << endl;
+//
+//    cout << d1.Equel(d2) << endl;
+//
+//    return 0;
+//}
+
+// 6个默认成员函数  我们不写编译器会默认生成
+// 不过很多时候我们都要自己写
+// 因为生成的不一定好用
+
 class Date
 {
 public:
@@ -216,20 +270,19 @@ public:
         _month = month;
         _day = day;
     }
+    // 析构函数不需要写，编译默认生成就够用，对象没有内存清理
+    // 默认生成的析构函数也是基本不做什么事情，release一下就没了
 
-    // d1.Equel(d2)
-    bool Equel(Date d)
+    Date(const Date& d)
     {
-        return _year == d._year
-        && _month == d._month
-        && _day == d._day;
+        _year = d._year;
+        _month = d._month;
+        _day = d._day;
     }
-    // 重载==
-    bool operator==(Date x)
+
+    void Print()
     {
-        return _year == x._year
-               && _month == x._month
-               && _day == x._day;
+        cout << _year << "-" << _month << "-" << _day << endl;
     }
 
 private:
@@ -238,21 +291,46 @@ private:
     int _day;
 };
 
+class Stack
+{
+public:
+    Stack(int capacity = 4)
+    {
+        if (capacity <= 0)
+        {
+            _a = nullptr;
+            _size = _capacity = 0;
+        }
+        else
+        {
+            _a = (int*)malloc(sizeof(int) * capacity);
+            _capacity = capacity;
+            _size = 0;
+        }
+    }
 
+    // 析构函数
+    ~Stack()
+    {
+        free(_a);
+        _size = _capacity = 0;
+        _a = nullptr;
+    }
+
+private:
+    int* _a;
+    int _size;
+    int _capacity;
+};
 
 int main()
 {
-    Date d1(2021, 1, 1);
-    Date d2(2021, 1, 1);
+    Date d1(2020, 5, 25);
 
-    // 内置类型，语言层面就支持运算符
-    // 自定义类型，默认不支持。C++可以用运算符重载来让类对象支持用某个运算符
+    Date d4(d1); // 拷贝构造函数，目的是让d4跟d1的值是一样的
 
-    // 重载==后的使用方法，下面这两种都是可以的
-    cout << d1.operator==(d2) << endl;
-    cout << (d1 == d2) << endl;
-
-    cout << d1.Equel(d2) << endl;
+    d1.Print();
+    d4.Print();
 
     return 0;
 }
