@@ -5,7 +5,7 @@
 #include "Date.h"
 
 // 妙
-int GetMonthDay(int year, int month)
+inline int GetMonthDay(int year, int month)
 {
     // 数组存储平年每个月的天数
     static int dayArray[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
