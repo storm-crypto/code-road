@@ -100,18 +100,20 @@ Date& Date::operator-=(int day)
 {
     if (day < 0)
     {
-        _day += -day;
-        // 天数不合法，不断进位，让他合法
-        while (_day > GetMonthDay(_year, _month))
-        {
-            _day -= GetMonthDay(_year, _month);
-            _month++;
-            if (_month > 12)
-            {
-                ++_year;
-                _month = 1;
-            }
-        }
+//        _day += -day;
+//        // 天数不合法，不断进位，让他合法
+//        while (_day > GetMonthDay(_year, _month))
+//        {
+//            _day -= GetMonthDay(_year, _month);
+//            _month++;
+//            if (_month > 12)
+//            {
+//                ++_year;
+//                _month = 1;
+//            }
+//        }
+        // 优化：复用一下+=
+        *this += -day;
     }
     else
     {
