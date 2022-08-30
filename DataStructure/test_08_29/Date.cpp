@@ -8,9 +8,9 @@
 int GetMonthDay(int year, int month)
 {
     // 数组存储平年每个月的天数
-    int dayArray[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static int dayArray[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int day = dayArray[month];
-    if (((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && month == 2 )
+    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))  )
     {
         day = 29;
     }
