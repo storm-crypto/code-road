@@ -365,13 +365,31 @@
 
 #include "Date.h"
 
-int main()
+void Test1()
 {
     Date d1(2021, 5, 25);
     d1.Print();
 
     Date d2(2021, 0, 0);
     d2.Print();
+
+    Date d3(2021, 2, 29);
+    d3.Print();
+}
+
+void Test2()
+{
+    Date d1(2021, 5, 25);
+    d1.Print();
+
+    d1 += 3;
+    d1.Print();
+}
+
+int main()
+{
+   // Test1();
+   Test2();
 
     return 0;
 }

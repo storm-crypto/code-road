@@ -24,6 +24,7 @@ public:
     // Stack才需要自己写这三个
 
     // d + 100
+    Date& operator+=(int day);
     Date operator+(int day);
     // d - 100
     Date operator-(int day);
