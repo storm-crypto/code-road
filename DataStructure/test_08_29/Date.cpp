@@ -63,9 +63,25 @@ Date& Date::operator+=(int day)
     return *this;
 }
 
+// d1 + 100;
 Date Date::operator+(int day)
 {
+    Date ret(*this);
+    ret._day += day;
 
+    // 天数不合法，不断进位，让他合法
+    while (ret._day > GetMonthDay(ret._year, ret._month))
+    {
+        ret._day -= GetMonthDay(ret._year, ret._month);
+        ret._month++;
+        if (ret._month > 12)
+        {
+            ++ret._year;
+            ret._month = 1;
+        }
+    }
+
+    return ret;
 }
 
 //Date Date::operator-(int day);
