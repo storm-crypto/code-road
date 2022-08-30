@@ -94,4 +94,28 @@ Date Date::operator+(int day)
     return ret;
 }
 
+// d -= 100
+Date& Date::operator-=(int day)
+{
+    _day -= day;
+    while (_day <= 0)
+    {
+        --_month;
+        if (_month == 0)
+        {
+            --_year;
+            _month = 12;
+        }
+
+        _day += GetMonthDay(_year, _month);
+    }
+
+    return *this;
+}
+
+Date Date::operator-(int day)
+{
+
+}
+
 //Date Date::operator-(int day);

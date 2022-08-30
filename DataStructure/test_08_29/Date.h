@@ -23,9 +23,15 @@ public:
     // 析构、拷贝构造、赋值重载，可以不写，默认生成的就够用了
     // Stack才需要自己写这三个
 
-    // d + 100
+    // d += 100
     Date& operator+=(int day);
+
+    // d + 100
     Date operator+(int day);
+
+    // d -= 100
+    Date& operator-=(int day);
+
     // d - 100
     Date operator-(int day);
 

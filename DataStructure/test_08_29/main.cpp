@@ -386,10 +386,28 @@ void Test2()
     d1.Print();
 }
 
+void Test3()
+{
+    Date d1(2021, 5, 25);
+    d1.Print();
+
+    Date d2 = d1 + 3;
+    d2.Print();
+}
+
+void Test4()
+{
+    Date d1(2021, 5, 25);
+    d1 -= 120;
+    d1.Print();
+}
+
 int main()
 {
    // Test1();
-   Test2();
+   // Test2();
+   // Test3();
+   Test4();
 
     return 0;
 }
