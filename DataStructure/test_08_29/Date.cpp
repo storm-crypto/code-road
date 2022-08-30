@@ -95,19 +95,38 @@ Date Date::operator+(int day)
 }
 
 // d -= 100
+// day是负数，怎么处理？
 Date& Date::operator-=(int day)
 {
-    _day -= day;
-    while (_day <= 0)
+    if (day < 0)
     {
-        --_month;
-        if (_month == 0)
+        _day += -day;
+        // 天数不合法，不断进位，让他合法
+        while (_day > GetMonthDay(_year, _month))
         {
-            --_year;
-            _month = 12;
+            _day -= GetMonthDay(_year, _month);
+            _month++;
+            if (_month > 12)
+            {
+                ++_year;
+                _month = 1;
+            }
         }
+    }
+    else
+    {
+        _day -= day;
+        while (_day <= 0)
+        {
+            --_month;
+            if (_month == 0)
+            {
+                --_year;
+                _month = 12;
+            }
 
-        _day += GetMonthDay(_year, _month);
+            _day += GetMonthDay(_year, _month);
+        }
     }
 
     return *this;
@@ -115,7 +134,11 @@ Date& Date::operator-=(int day)
 
 Date Date::operator-(int day)
 {
+    Date tmp = *this;
+    // Date tmp(*this);
+    tmp -= day;
 
+    return tmp;
 }
 
 //Date Date::operator-(int day);

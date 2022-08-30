@@ -400,6 +400,10 @@ void Test4()
     Date d1(2021, 5, 25);
     d1 -= 120;
     d1.Print();
+
+    Date d2(2021, 5, 27);
+    d2 -= -100;
+    d2.Print();
 }
 
 int main()
