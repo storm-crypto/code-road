@@ -47,18 +47,26 @@ void Date::Print()
 // d += 100
 Date& Date::operator+=(int day)
 {
-    _day += day;
-    // 天数不合法，不断进位，让他合法
-    while (_day > GetMonthDay(_year, _month))
+    if (day < 0)
     {
-        _day -= GetMonthDay(_year, _month);
-        _month++;
-        if (_month > 12)
+        *this -= -day;
+    }
+    else
+    {
+        _day += day;
+        // 天数不合法，不断进位，让他合法
+        while (_day > GetMonthDay(_year, _month))
         {
-            ++_year;
-            _month = 1;
+            _day -= GetMonthDay(_year, _month);
+            _month++;
+            if (_month > 12)
+            {
+                ++_year;
+                _month = 1;
+            }
         }
     }
+
 
     return *this;
 }
