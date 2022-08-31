@@ -1,4 +1,4 @@
-# Install script for directory: D:/05code/2022/code-road/DataStructure/test_08_29
+# Install script for directory: D:/05code/2022/code-road/C++/test_08_29
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/05code/2022/code-road/DataStructure/test_08_29/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/05code/2022/code-road/C++/test_08_29/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
