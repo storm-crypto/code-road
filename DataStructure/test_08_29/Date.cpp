@@ -151,4 +151,17 @@ Date Date::operator-(int day)
     return tmp;
 }
 
-//Date Date::operator-(int day);
+// ++d
+Date& Date::operator++()
+{
+    *this += 1;
+    return *this;
+}
+
+// d++
+Date Date::operator++(int)
+{
+    Date tmp(*this);
+    *this += 1;
+    return tmp;
+}

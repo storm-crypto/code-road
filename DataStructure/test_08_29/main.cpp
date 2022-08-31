@@ -406,12 +406,29 @@ void Test4()
     d2.Print();
 }
 
+void Test5()
+{
+    Date d1(2021, 5, 27);
+
+    // 前置++和后置++都完成了++，不同的地方在于返回值不一样
+    // 因为他们的运算符是一样的，函数名就是一样的
+    // 为了区分，对后置++做了特殊处理，加了一个参数，形成用函数重载
+    Date ret1 = d1++;
+    ret1.Print();
+    d1.Print();
+
+    Date ret2 = ++d1;
+    ret2.Print();
+    d1.Print();
+}
+
 int main()
 {
    // Test1();
    // Test2();
    // Test3();
-   Test4();
+   // Test4();
+   Test5();
 
     return 0;
 }

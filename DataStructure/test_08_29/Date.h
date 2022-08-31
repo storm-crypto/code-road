@@ -35,6 +35,14 @@ public:
     // d - 100
     Date operator-(int day);
 
+    // ++d
+    Date& operator++();
+
+    // int参数不需要给实参
+    // 因为没用，他的作用是为了跟前置++构成函数重载
+    // d++
+    Date operator++(int);
+
 private:
     int _year;
     int _month;
