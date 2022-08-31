@@ -79,47 +79,69 @@ using namespace std;
 //    return 0;
 //}
 
-class Date
+//class Date
+//{
+//    // 友元函数的声明
+//    friend ostream& operator<<(ostream& out, const Date& d);
+//    friend istream& operator>>(istream& in, Date& d);
+//
+//public:
+//    Date(int year = 0, int month = 1, int day = 1)
+//    {
+//        _year = year;
+//        _month = month;
+//        _day = day;
+//    }
+//
+//
+//private:
+//    int _year;
+//    int _month;
+//    int _day;
+//};
+//
+//// cout << d1;
+//ostream& operator<<(ostream& out, const Date& d)
+//{
+//    out << d._year << "-" << d._month << "-" << d._day << endl;
+//    return out;
+//}
+//
+//// cin >> d1
+//istream& operator>>(istream& in,  Date& d)
+//{
+//    in >> d._year >> d._month >> d._day;
+//    return in;
+//}
+//
+//
+//int main()
+//{
+//    Date d1;
+//    //cin >> d1;
+//    cout << d1;
+//
+//    return 0;
+//}
+
+class A
 {
-    // 友元函数的声明
-    friend ostream& operator<<(ostream& out, const Date& d);
-    friend istream& operator>>(istream& in, Date& d);
-
 public:
-    Date(int year = 0, int month = 1, int day = 1)
-    {
-        _year = year;
-        _month = month;
-        _day = day;
-    }
-
+    explicit A(int a)
+        :_a(a)
+    {}
 
 private:
-    int _year;
-    int _month;
-    int _day;
+    int _a;
 };
-
-// cout << d1;
-ostream& operator<<(ostream& out, const Date& d)
-{
-    out << d._year << "-" << d._month << "-" << d._day << endl;
-    return out;
-}
-
-// cin >> d1
-istream& operator>>(istream& in,  Date& d)
-{
-    in >> d._year >> d._month >> d._day;
-    return in;
-}
-
 
 int main()
 {
-    Date d1;
-    //cin >> d1;
-    cout << d1;
+    A aa1(1); // 拷贝构造
+    // 单参数的构造函数，支持这样的隐式类型转换
+    A aa2 = 2;
+    // 用了explicit就不能用上面那种隐式类型转换了
+
 
     return 0;
 }
