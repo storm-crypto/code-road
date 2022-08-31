@@ -43,6 +43,11 @@ public:
     // d++
     Date operator++(int);
 
+    // --d
+    Date& operator--();
+    // d--
+    Date operator--(int);
+
 private:
     int _year;
     int _month;
