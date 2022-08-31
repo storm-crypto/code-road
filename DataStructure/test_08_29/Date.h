@@ -55,7 +55,8 @@ public:
     bool operator==(const Date& d);
     bool operator!=(const Date& d);
 
-
+    // d1 - d2
+    int operator-(const Date& d);
 
 private:
     int _year;

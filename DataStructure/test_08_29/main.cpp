@@ -422,13 +422,23 @@ void Test5()
     d1.Print();
 }
 
+void Test6()
+{
+    Date d1(2021, 5, 27);
+    Date d2(2021, 12, 31);
+
+    cout << d2 - d1 << endl;
+    cout << d1 - d2 << endl;
+}
+
 int main()
 {
    // Test1();
    // Test2();
    // Test3();
    // Test4();
-   Test5();
+   // Test5();
+   Test6();
 
     return 0;
 }

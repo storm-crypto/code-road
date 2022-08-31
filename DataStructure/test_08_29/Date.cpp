@@ -233,3 +233,28 @@ bool Date::operator!=(const Date& d)
 {
     return !(*this == d);
 }
+
+// d1 - d2
+int Date::operator-(const Date& d)
+{
+    // 假设第一个大
+    Date max = *this;
+    Date min = d;
+    int flag = 1;
+
+    if (*this < d)
+    {
+        max = d;
+        min = *this;
+        flag = -1; // 表示第一个小，第二个大
+    }
+
+    int n = 0;
+    while (min != max)
+    {
+        ++min;
+        ++n;
+    }
+
+    return n * flag;
+}
