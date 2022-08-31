@@ -81,6 +81,9 @@ using namespace std;
 
 class Date
 {
+    // 友元函数的声明
+    friend void operator<<(ostream& out, const Date& d);
+
 public:
     Date(int year = 0, int month = 1, int day = 1)
     {
@@ -89,14 +92,7 @@ public:
         _day = day;
     }
 
-    // 如果这样写的话，调用的时候要d1 << cout才能调用到这个函数
-    // 因为抵押给参数被this占用了
-    // 所以这种不符合我们的想法
-    // 所以写成全局的
-    void operator<<(ostream& out)
-    {
-        out << _year << "-" << _month << "-" << _day << endl;
-    }
+
     operator>>();
 
 private:
@@ -105,11 +101,17 @@ private:
     int _day;
 };
 
+// cout << d1;
+void operator<<(ostream& out, const Date& d)
+{
+    out << d._year << "-" << d._month << "-" << d._day << endl;
+}
+
 
 int main()
 {
     Date d1;
-    cin >> d1;
+    //cin >> d1;
     cout << d1;
 
     return 0;
