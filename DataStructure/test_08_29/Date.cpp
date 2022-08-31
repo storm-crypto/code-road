@@ -180,3 +180,56 @@ Date Date::operator--(int)
     *this -= 1;
     return tmp;
 }
+
+// d1 > d2 ->d1.operator(&d1, d2);
+bool Date::operator>(const Date& d)
+{
+    if (_year > d._year)
+    {
+        return true;
+    }
+    else if (_year == d._year)
+    {
+        if (_month > d._month)
+        {
+            return true;
+        }
+        else if(_month == d._month)
+        {
+            if (_day > d._day)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool Date::operator==(const Date& d)
+{
+    return _year == d._year
+           && _month == d._month
+           && _day == d._day;
+}
+
+// ¸´ÓÃ > ºÍ ==
+bool Date::operator<(const Date& d)
+{
+    return !(*this >= d);
+}
+
+// d1 >= d2
+bool Date::operator>=(const Date& d)
+{
+    return *this > d || *this == d;
+}
+bool Date::operator<=(const Date& d)
+{
+    return !(*this > d);
+}
+
+bool Date::operator!=(const Date& d)
+{
+    return !(*this == d);
+}

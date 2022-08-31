@@ -48,6 +48,15 @@ public:
     // d--
     Date operator--(int);
 
+    bool operator>(const Date& d);
+    bool operator<(const Date& d);
+    bool operator>=(const Date& d);
+    bool operator<=(const Date& d);
+    bool operator==(const Date& d);
+    bool operator!=(const Date& d);
+
+
+
 private:
     int _year;
     int _month;
