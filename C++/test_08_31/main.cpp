@@ -83,6 +83,7 @@ class Date
 {
     // 友元函数的声明
     friend void operator<<(ostream& out, const Date& d);
+    friend void operator>>(istream& in, Date& d);
 
 public:
     Date(int year = 0, int month = 1, int day = 1)
@@ -92,8 +93,6 @@ public:
         _day = day;
     }
 
-
-    operator>>();
 
 private:
     int _year;
@@ -105,6 +104,14 @@ private:
 void operator<<(ostream& out, const Date& d)
 {
     out << d._year << "-" << d._month << "-" << d._day << endl;
+}
+
+// cin >> d1
+void operator>>(istream& in,  Date& d)
+{
+    in >> d._year;
+    in >> d._month;
+    in >> d._day;
 }
 
 
