@@ -156,40 +156,180 @@ using namespace std;
 // 静态成员
 
 // 面试题：计算一个程序中定义了多少个对象出来
-class A
+//class A
+//{
+//public:
+//    A()
+//    {
+//        ++_n;
+//    }
+//
+//    // 拷贝构造
+//    A(const A& a)
+//    {
+//        ++_n;
+//    }
+//
+//    // 跟普通成员的区别：没有this指针，不能访问非静态成员
+//    static int GetN()
+//    {
+//        return _n;
+//    }
+//
+//private:
+//    // 这里是声明，不是在构造函数初始化,要在类外面全局位置初始化
+//    static int _n;  // n存在静态区，属于整个类，也属于类的所有对象
+//};
+//
+//// 静态成员变量的初始化，规定是在类外面这样初始化的
+//int A::_n = 0;
+//
+//int main()
+//{
+//    A a1;
+//    A a2(a1);
+//    //cout << sizeof(A) << endl;
+//
+//    cout << a1.GetN() << endl;
+//
+//    return 0;
+//}
+
+//
+//class Add {
+//    friend class Solution;
+//public:
+//    Add()
+//    {
+//        _ret += _i;
+//        _i++;
+//    }
+//
+//    static void Init()
+//    {
+//        _i = 1;
+//        _ret = 0;
+//    }
+//
+//private:
+//    static int _i;
+//    static int _ret;
+//};
+//
+//int Add::_i = 1;
+//int Add::_ret = 0;
+//
+//class Solution {
+//public:
+//    int Sum_Solution(int n) {
+//        // 初始化
+//        Add::_ret = 0;
+//        Add::_i = 1;
+//
+//        Add arr[n];
+//
+//        return Add::_ret;
+//    }
+//};
+
+//class B
+//{
+//public:
+//    B()
+//        :_x(0)
+//    {
+//        cout << "B()" << endl;
+//    }
+//
+//private:
+//    int _x;
+//
+//};
+//
+//class A {
+//public:
+//    //
+//    A(int a = 1, int* p = nullptr)
+////        : _a(a)
+////    , _p(p)
+//    {
+//
+//    }
+//private:
+//    // 这里是声明 如果没有构造函数那里没有初始化，就用这里的缺省值
+//    int _a = 0;
+//    int* _p = nullptr;
+//
+//    B _b;
+//};
+//
+//int main()
+//{
+//    A aa; // 默认构造函数
+//
+//
+//    return 0;
+//}
+
+// 用C语言定义一个栈
+// 用C++定义一个栈对比感受一下
+
+struct StackC
+{
+    int* a;
+    int _top;
+    int _capacity;
+};
+
+void StackInit(struct StackC* ps, int n);
+void StackDestroy(struct StackC* ps);
+void StackPush(struct StackC* ps, int x);
+
+void TestStackC()
+{
+    struct StackC st;
+    StackInit(&st, 4);
+    StackPush(&st, 1);
+    StackPush(&st, 2);
+    StackPush(&st, 3);
+    StackPush(&st, 4);
+
+    StackDestroy(&st);
+
+}
+
+// C++实现一个栈
+class StackCPP
 {
 public:
-    A()
+    StackCPP(int n = 4)
     {
-        ++_n;
+
     }
 
-    // 拷贝构造
-    A(const A& a)
+    ~StackCPP()
     {
-        ++_n;
+
     }
 
-    int GetN()
+    void Push(int x)
     {
-        return _n;
+
     }
 
 private:
-    // 这里是声明，不是在构造函数初始化,要在类外面全局位置初始化
-    static int _n;  // n存在静态区，属于整个类，也属于类的所有对象
+    int* _a;
+    int _top;
+    int _capacity;
 };
 
-// 静态成员变量的初始化，规定是在类外面这样初始化的
-int A::_n = 0;
-
-int main()
+void TestStackCPP()
 {
-    A a1;
-    A a2(a1);
-    //cout << sizeof(A) << endl;
+    // 自动调用构造函数，用完后自动析构
+    StackCPP st;
 
-    cout << a1.GetN() << endl;
-
-    return 0;
+    st.Push(1);
+    st.Push(2);
+    st.Push(3);
+    st.Push(4);
 }
