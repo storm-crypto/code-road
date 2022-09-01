@@ -333,20 +333,55 @@ using namespace std;
 //    st.Push(3);
 //    st.Push(4);
 //}
+//
+//int main()
+//{
+//    // 申请一个10个int的数组
+//    int* p1 = (int*)malloc(sizeof(int) * 10);
+//    int* p2 = new int[10];
+//
+//    free(p1);
+//    delete[] p2;
+//
+//    // 申请单个int对象
+//    int* p3 = (int*)malloc(sizeof(int) * 10);
+//    int* p4= new int;
+//
+//    free(p3);
+//    delete p4;
+//}
+
+struct ListNode
+{
+    //struct ListNode* _next; // C语言是这样写的，C++可以按照下面这样写
+    ListNode* _next;
+    ListNode* _prev;
+    int _val;
+
+    // 构造函数
+    ListNode(int val = 0)
+        :_next(nullptr)
+        , _prev(nullptr)
+        , _val(val)
+    {}
+};
 
 int main()
 {
-    // 申请一个10个int的数组
-    int* p1 = (int*)malloc(sizeof(int) * 10);
-    int* p2 = new int[10];
+    // C malloc只是开空间
+    struct ListNode* n1 = (struct ListNode*)malloc(sizeof(struct ListNode));
+    free(n1);
 
-    free(p1);
-    delete[] p2;
+    // C++ new 针对自定义类型，开空间+构造函数初始化
+    // delete针对自定义类型，析构函数清理+释放空间
+    ListNode* n2 = new ListNode(5);
+    delete n2;
 
-    // 申请单个int对象
-    int* p3 = (int*)malloc(sizeof(int) * 10);
-    int* p4= new int;
+    struct ListNode* arr3 = (struct ListNode*)malloc(sizeof(struct ListNode) * 4);
+    free(arr3);
 
-    free(p3);
-    delete p4;
+    ListNode* arr4 = new ListNode[4]{1, 2, 3, 4};
+    delete[] arr4;
+
+    return 0;
 }
