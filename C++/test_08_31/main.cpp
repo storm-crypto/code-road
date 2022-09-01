@@ -274,62 +274,79 @@ using namespace std;
 // 用C语言定义一个栈
 // 用C++定义一个栈对比感受一下
 
-struct StackC
+//struct StackC
+//{
+//    int* a;
+//    int _top;
+//    int _capacity;
+//};
+//
+//void StackInit(struct StackC* ps, int n);
+//void StackDestroy(struct StackC* ps);
+//void StackPush(struct StackC* ps, int x);
+//
+//void TestStackC()
+//{
+//    struct StackC st;
+//    StackInit(&st, 4);
+//    StackPush(&st, 1);
+//    StackPush(&st, 2);
+//    StackPush(&st, 3);
+//    StackPush(&st, 4);
+//
+//    StackDestroy(&st);
+//
+//}
+//
+//// C++实现一个栈
+//class StackCPP
+//{
+//public:
+//    StackCPP(int n = 4)
+//    {
+//
+//    }
+//
+//    ~StackCPP()
+//    {
+//
+//    }
+//
+//    void Push(int x)
+//    {
+//
+//    }
+//
+//private:
+//    int* _a;
+//    int _top;
+//    int _capacity;
+//};
+//
+//void TestStackCPP()
+//{
+//    // 自动调用构造函数，用完后自动析构
+//    StackCPP st;
+//
+//    st.Push(1);
+//    st.Push(2);
+//    st.Push(3);
+//    st.Push(4);
+//}
+
+int main()
 {
-    int* a;
-    int _top;
-    int _capacity;
-};
+    // 申请一个10个int的数组
+    int* p1 = (int*)malloc(sizeof(int) * 10);
+    int* p2 = new int[10];
 
-void StackInit(struct StackC* ps, int n);
-void StackDestroy(struct StackC* ps);
-void StackPush(struct StackC* ps, int x);
+    free(p1);
+    delete[] p2;
 
-void TestStackC()
-{
-    struct StackC st;
-    StackInit(&st, 4);
-    StackPush(&st, 1);
-    StackPush(&st, 2);
-    StackPush(&st, 3);
-    StackPush(&st, 4);
+    // 申请单个int对象
+    int* p3 = (int*)malloc(sizeof(int) * 10);
+    int* p4= new int;
 
-    StackDestroy(&st);
-
-}
-
-// C++实现一个栈
-class StackCPP
-{
-public:
-    StackCPP(int n = 4)
-    {
-
-    }
-
-    ~StackCPP()
-    {
-
-    }
-
-    void Push(int x)
-    {
-
-    }
-
-private:
-    int* _a;
-    int _top;
-    int _capacity;
-};
-
-void TestStackCPP()
-{
-    // 自动调用构造函数，用完后自动析构
-    StackCPP st;
-
-    st.Push(1);
-    st.Push(2);
-    st.Push(3);
-    st.Push(4);
+    free(p3);
+    delete p4;
 }
