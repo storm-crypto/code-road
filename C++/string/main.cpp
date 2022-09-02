@@ -18,6 +18,16 @@ int main()
     }
     cout << endl;
 
+    // 2. 迭代器
+    // [begin(), end()) end()返回的不是最后一个数据位置的迭代器，返回是最后一个位置的下一个位置
+    // 也要注意的是：C++凡是给的迭代器，一般是给的左闭右开的区间
+    string::iterator it = s2.begin();
+    while (it != s2.end())
+    {
+        cout << *it << " ";
+        ++it;
+    }
+    cout << endl;
 
     return 0;
 }
