@@ -29,5 +29,15 @@ int main()
     }
     cout << endl;
 
+    // ·´Ïòµü´úÆ÷
+    string s3("123456");
+    string::reverse_iterator rit = s3.rbegin();
+    while (rit != s3.rend())
+    {
+        cout << *rit << " ";
+        ++rit;
+    }
+    cout << endl;
+
     return 0;
 }
