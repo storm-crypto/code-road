@@ -127,40 +127,50 @@ using namespace std;
 //    return 0;
 //}
 
+//int main()
+//{
+//    // resize
+//    string s1;
+//    cout << "size:" << s1.size() << endl;
+//    cout << "capacity" << s1.capacity() << endl;
+//    cout << s1 << endl;
+//
+//    s1.resize(20, 'x');
+//    cout << "size:" << s1.size() << endl;
+//    cout << "capacity:" <<s1.capacity() << endl;
+//    cout << s1 << endl;
+//
+//    string s2("hello world");
+//    s2.resize(20, 'x');
+//    cout << s2 << endl;
+//    cout << "size:" << s1.size() << endl;
+//    cout << "capacity:" << s1.capacity() << endl;
+//
+//    s2.resize(5);
+//    cout << s2 << endl;
+//    cout << "size:" << s2.size() << endl;
+//    cout << "capacity:" << s2.capacity() << endl;
+//    cout << endl;
+//
+//    // reserve
+//    string s3;
+//    cout << "size:" << s3.size() << endl;
+//    cout << "capacity:" << s3.capacity() << endl;
+//
+//    s3.reserve(40);
+//    cout << "size:" << s3.size() << endl;
+//    cout << "capacity:" << s3.capacity() << endl;
+//
+//
+//    return 0;
+//}
+
 int main()
 {
-    // resize
-    string s1;
-    cout << "size:" << s1.size() << endl;
-    cout << "capacity" << s1.capacity() << endl;
-    cout << s1 << endl;
-
-    s1.resize(20, 'x');
-    cout << "size:" << s1.size() << endl;
-    cout << "capacity:" <<s1.capacity() << endl;
-    cout << s1 << endl;
-
-    string s2("hello world");
-    s2.resize(20, 'x');
-    cout << s2 << endl;
-    cout << "size:" << s1.size() << endl;
-    cout << "capacity:" << s1.capacity() << endl;
-
-    s2.resize(5);
-    cout << s2 << endl;
-    cout << "size:" << s2.size() << endl;
-    cout << "capacity:" << s2.capacity() << endl;
-    cout << endl;
-
-    // reserve
-    string s3;
-    cout << "size:" << s3.size() << endl;
-    cout << "capacity:" << s3.capacity() << endl;
-
-    s3.reserve(40);
-    cout << "size:" << s3.size() << endl;
-    cout << "capacity:" << s3.capacity() << endl;
-
+    // c_str
+    string s1("hello world");
+    cout << s1 << endl;         // 调用operator<<(cout, s1)
+    cout << s1.c_str() << endl; // 调用operator<<(cout, const char*)
 
     return 0;
 }
