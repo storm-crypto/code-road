@@ -1,4 +1,5 @@
 #include <iostream>
+#include <assert.h>
 using namespace std;
 
 //class Date
@@ -483,21 +484,100 @@ using namespace std;
 //    Add<int>(1, 2); // 调用编译器特化的Add版本
 //}
 
-// 专门处理int的加法函数
-int Add(int left, int right)
+//// 专门处理int的加法函数
+//int Add(int left, int right)
+//{
+//    return left + right;
+//}
+//// 通用加法函数
+//template<class T1, class T2>
+//T1 Add(T1 left, T2 right)
+//{
+//    return left + right;
+//}
+//void Test()
+//{
+//    Add(1, 2); // 与非函数模板类型完全匹配，不需要函数模板实例化
+//    Add(1, 2.0); // 模板函数可以生成更加匹配的版本，编译器根据实参生成更加匹配的Add函数
+//}
+
+// 类模板
+template<class T>
+class vector
 {
-    return left + right;
-}
-// 通用加法函数
-template<class T1, class T2>
-T1 Add(T1 left, T2 right)
+public:
+    // 构造函数
+    vector()
+        : _a(nullptr)
+        , _size(0)
+        , _capacity(0)
+    {}
+
+    // 析构函数
+    ~vector()
+    {
+        delete[] _a;
+        _size = _capacity = 0;
+    }
+
+    void push_back(const T& x)
+    {
+        if (_size == _capacity)
+        {
+            int newcapacity = _capacity == 0 ? 4 : 2 * _capacity;
+            T* tmp = new T[newcapacity];
+            if (_a)
+            {
+                memcpy(tmp, _a, sizeof(T) * _size);
+                delete[] _a;
+            }
+            _a = tmp;
+            _capacity = newcapacity;
+        }
+
+        _a[_size] = x;
+    }
+
+    T& operator[](size_t pos)
+    {
+        assert(pos < _size);
+        return _a[pos];
+    }
+
+    size_t size()
+    {
+        return _size;
+    }
+
+
+private:
+    T* _a;
+    int _size;
+    int _capacity;
+
+};
+
+int main()
 {
-    return left + right;
-}
-void Test()
-{
-    Add(1, 2); // 与非函数模板类型完全匹配，不需要函数模板实例化
-    Add(1, 2.0); // 模板函数可以生成更加匹配的版本，编译器根据实参生成更加匹配的Add函数
+    vector<int> v1; // int
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(3);
+    v1.push_back(4);
+
+    for (int i = 0; i < v1.size(); i++)
+    {
+        cout << v1[i] << " ";
+    }
+    cout << endl;
+
+    vector<double> v2; // double
+    v2.push_back(1.1);
+    v2.push_back(2.2);
+    v2.push_back(3.3);
+    v2.push_back(4.4);
+
+    return 0;
 }
 
 
