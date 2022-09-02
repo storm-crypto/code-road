@@ -99,26 +99,52 @@ using namespace std;
 //    return 0;
 //}
 
+//int main()
+//{
+//    string s1;
+//    string s2("hello world");
+//    cout << s1.max_size() << endl;
+//    cout << s2.max_size() << endl;
+//
+//    cout << s1.size() << endl;
+//    cout << s2.size() << endl;
+//
+//    cout << s1.capacity() << endl;
+//    cout << s2.capacity() << endl;
+//
+//    cout << s1 << endl;
+//    cout << s2 << endl;
+//
+//    s1.clear();
+//    s2.clear();
+//
+//    return 0;
+//
+//    return 0;
+//}
+
 int main()
 {
     string s1;
-    string s2("hello world");
-    cout << s1.max_size() << endl;
-    cout << s2.max_size() << endl;
-
-    cout << s1.size() << endl;
-    cout << s2.size() << endl;
-
-    cout << s1.capacity() << endl;
-    cout << s2.capacity() << endl;
-
+    cout << "size:" << s1.size() << endl;
+    cout << "capacity" << s1.capacity() << endl;
     cout << s1 << endl;
+
+    s1.resize(20, 'x');
+    cout << "size:" << s1.size() << endl;
+    cout << "capacity:" <<s1.capacity() << endl;
+    cout << s1 << endl;
+
+    string s2("hello world");
+    s2.resize(20, 'x');
     cout << s2 << endl;
+    cout << "size:" << s1.size() << endl;
+    cout << "capacity:" << s1.capacity() << endl;
 
-    s1.clear();
-    s2.clear();
-
-    return 0;
+    s2.resize(5);
+    cout << s2 << endl;
+    cout << "size:" << s2.size() << endl;
+    cout << "capacity:" << s2.capacity() << endl;
 
     return 0;
 }
