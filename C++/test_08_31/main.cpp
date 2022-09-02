@@ -387,28 +387,59 @@ using namespace std;
 //}
 
 
-struct ListNode
-{
-    //struct ListNode* _next; // C语言是这样写的，C++可以按照下面这样写
-    ListNode* _next;
-    ListNode* _prev;
-    int _val;
+//struct ListNode
+//{
+//    //struct ListNode* _next; // C语言是这样写的，C++可以按照下面这样写
+//    ListNode* _next;
+//    ListNode* _prev;
+//    int _val;
+//
+//    // 构造函数
+//    ListNode(int val = 0)
+//        :_next(nullptr)
+//        , _prev(nullptr)
+//        , _val(val)
+//    {}
+//};
+//
+//int main()
+//{
+//    ListNode* p1 = (ListNode*)malloc(sizeof(ListNode));
+//    free(p1);
+//
+//    ListNode* p2 = (ListNode*)operator new(sizeof(ListNode));
+//    operator delete (p2);
+//
+//    return 0;
+//}
 
-    // 构造函数
-    ListNode(int val = 0)
-        :_next(nullptr)
-        , _prev(nullptr)
-        , _val(val)
-    {}
+// 定位new
+class A
+{
+public:
+    A(int a = 0)
+        :_data(a)
+    {
+        cout << "A()"<< this << endl;
+    }
+
+    ~A()
+    {
+        cout << "~A()" << this << endl;
+    }
+
+private:
+    int _data;
 };
 
 int main()
 {
-    ListNode* p1 = (ListNode*)malloc(sizeof(ListNode));
-    free(p1);
+    A* p = (A*)malloc(sizeof(A));
 
-    ListNode* p2 = (ListNode*)operator new(sizeof(ListNode));
-    operator delete (p2);
+    // 定位new对对象进行赋值
+    new(p) A(1);
 
     return 0;
 }
+
+
