@@ -414,30 +414,54 @@ using namespace std;
 //}
 
 // 定位new
-class A
+//class A
+//{
+//public:
+//    A(int a = 0)
+//        :_data(a)
+//    {
+//        cout << "A()"<< this << endl;
+//    }
+//
+//    ~A()
+//    {
+//        cout << "~A()" << this << endl;
+//    }
+//
+//private:
+//    int _data;
+//};
+//
+//int main()
+//{
+//    A* p = (A*)malloc(sizeof(A));
+//
+//    // 定位new对对象进行赋值
+//    new(p) A(1);
+//
+//    return 0;
+//}
+
+// 泛型编程 -- 模板
+
+// 函数模板
+// template<class T>
+template<typename T> // 定义模板参数T可以用typename，也可以用class，都一样，一般用class
+void Swap(T&x1, T&x2)
 {
-public:
-    A(int a = 0)
-        :_data(a)
-    {
-        cout << "A()"<< this << endl;
-    }
-
-    ~A()
-    {
-        cout << "~A()" << this << endl;
-    }
-
-private:
-    int _data;
-};
+    T tmp = x1;
+    x1 = x2;
+    x2 = tmp;
+}
 
 int main()
 {
-    A* p = (A*)malloc(sizeof(A));
+    int a = 1, b = 2;
+    Swap(a, b);
 
-    // 定位new对对象进行赋值
-    new(p) A(1);
+    double c = 1.1, d = 2.2;
+    Swap(c, d);
+
 
     return 0;
 }
