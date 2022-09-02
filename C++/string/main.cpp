@@ -76,6 +76,24 @@ int main()
     s1.insert(3, "yyyy");
     cout << s1 << endl;
 
+    // string的删除：erase
+    s1.erase(0, 1);
+    cout << s1 << endl;
+
+    s1.erase(0, 3);
+    cout << s1 << endl;
+
+    s1.erase(3, 10);
+    cout << s1 << endl;
+
+    // 不写默认，从3位置开始，后面的全部删完
+    s1.erase(3);
+    cout << s1 << endl;
+
+    // 什么参数都不写，默认全部都删完
+    s1.erase();
+    cout << s1 << endl;
+
 
 
     return 0;
