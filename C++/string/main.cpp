@@ -172,5 +172,20 @@ int main()
     cout << s1 << endl;         // 调用operator<<(cout, s1)
     cout << s1.c_str() << endl; // 调用operator<<(cout, const char*)
 
+    // 假设要求取出文件名的后缀
+    // find
+    string filename = "test.cpp";
+    size_t pos = filename.find('.');
+    if (pos != string::npos)
+    {
+        // 方法1：拷贝构造
+//        // string suff(filename, pos, filename.size() - pos);
+//        string suff(filename, pos);
+
+        // 方法2：substr
+        string suff = filename.substr(pos);
+        cout << suff << endl;
+    }
+
     return 0;
 }
