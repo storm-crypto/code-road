@@ -169,33 +169,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_09_04.dir\build.make CMakeFiles/string_09_04.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-string.obj: string.cpp.obj
-
-.PHONY : string.obj
-
-# target to build an object file
-string.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_09_04.dir\build.make CMakeFiles/string_09_04.dir/string.cpp.obj
-.PHONY : string.cpp.obj
-
-string.i: string.cpp.i
-
-.PHONY : string.i
-
-# target to preprocess a source file
-string.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_09_04.dir\build.make CMakeFiles/string_09_04.dir/string.cpp.i
-.PHONY : string.cpp.i
-
-string.s: string.cpp.s
-
-.PHONY : string.s
-
-# target to generate assembly for a file
-string.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\string_09_04.dir\build.make CMakeFiles/string_09_04.dir/string.cpp.s
-.PHONY : string.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -208,9 +181,6 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... string.obj
-	@echo ... string.i
-	@echo ... string.s
 .PHONY : help
 
 

@@ -83,9 +83,6 @@
 		<Unit filename="D:/05code/2022/code-road/C++/string_09_04/main.cpp">
 			<Option target="string_09_04"/>
 		</Unit>
-		<Unit filename="D:/05code/2022/code-road/C++/string_09_04/string.cpp">
-			<Option target="string_09_04"/>
-		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/string_09_04/string.h">
 			<Option target="string_09_04"/>
 		</Unit>

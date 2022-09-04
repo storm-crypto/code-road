@@ -5,7 +5,10 @@
 #ifndef STRING_09_04_STRING_H
 #define STRING_09_04_STRING_H
 
-#include <string.h>
+#include <cstring>
+#include <iostream>
+
+using namespace std;
 
 namespace ljx
 {
@@ -14,20 +17,44 @@ namespace ljx
     class string
     {
     public:
-        string(const char* str = "")
+        string(char* str = "")
             :_str(new char[strlen(str) + 1])
         {
             strcpy(_str, str);
         }
+
+        // øΩ±¥ππ‘Ï
+        string(const string& s)
+            :_str(new char[strlen(s._str) + 1])
+        {
+            strcpy(_str, s._str);
+        }
+
         ~string()
         {
             delete[] _str;
             _str = nullptr;
         }
 
+        // ¥Ú”°
+        const char* c_str()
+        {
+            return _str;
+        }
+
+
     private:
         char* _str;
     };
+
+    void test_string1()
+    {
+        string s1("hello world");
+        string s2(s1);
+
+        cout << s1.c_str() << endl;
+        cout << s2.c_str() << endl;
+    }
 }
 
 
