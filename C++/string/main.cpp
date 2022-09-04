@@ -165,72 +165,73 @@ using namespace std;
 //    return 0;
 //}
 
-// 找协议
-string GetProtocol(const string& url)
-{
-    size_t pos = url.find("://");
-    if (pos != string::npos)
-    {
-        return url.substr(0, pos - 0);
-    }
-    else
-    {
-        // 返回空串
-        return string();
-    }
-}
+//// 找协议
+//string GetProtocol(const string& url)
+//{
+//    size_t pos = url.find("://");
+//    if (pos != string::npos)
+//    {
+//        return url.substr(0, pos - 0);
+//    }
+//    else
+//    {
+//        // 返回空串
+//        return string();
+//    }
+//}
+//
+//// 找域名
+//string GetDomain(const string& url)
+//{
+//    size_t pos = url.find("://");
+//    if (pos != string::npos)
+//    {
+//        size_t start = pos + 3;
+//        size_t end = url.find('/', start);
+//        if (end != string::npos)
+//        {
+//            return url.substr(start, end - start);
+//        }
+//        else
+//        {
+//            return string();
+//        }
+//    }
+//    else
+//    {
+//        // 返回空串
+//        return string();
+//    }
+//}
+//
+//int main()
+//{
+//    // c_str
+//    string s1("hello world");
+//    cout << s1 << endl;         // 调用operator<<(cout, s1)
+//    cout << s1.c_str() << endl; // 调用operator<<(cout, const char*)
+//
+//    // 假设要求取出文件名的后缀
+//    // find
+//    string filename = "test.cpp";
+//    size_t pos = filename.find('.');
+//    if (pos != string::npos)
+//    {
+//        // 方法1：拷贝构造
+////        // string suff(filename, pos, filename.size() - pos);
+////        string suff(filename, pos);
+//
+//        // 方法2：substr
+//        string suff = filename.substr(pos);
+//        cout << suff << endl;
+//    }
+//
+//    // 要求写一个程序，分别取出域名和协议名
+//    string url1 = "https://cplusplus.com/reference/string/string/string/";
+//
+//    cout << GetProtocol(url1) << endl;
+//    cout << GetDomain(url1) << endl;
+//
+//    return 0;
+//}
 
-// 找域名
-string GetDomain(const string& url)
-{
-    size_t pos = url.find("://");
-    if (pos != string::npos)
-    {
-        size_t start = pos + 3;
-        size_t end = url.find('/', start);
-        if (end != string::npos)
-        {
-            return url.substr(start, end - start);
-        }
-        else
-        {
-            return string();
-        }
-    }
-    else
-    {
-        // 返回空串
-        return string();
-    }
-}
-
-int main()
-{
-    // c_str
-    string s1("hello world");
-    cout << s1 << endl;         // 调用operator<<(cout, s1)
-    cout << s1.c_str() << endl; // 调用operator<<(cout, const char*)
-
-    // 假设要求取出文件名的后缀
-    // find
-    string filename = "test.cpp";
-    size_t pos = filename.find('.');
-    if (pos != string::npos)
-    {
-        // 方法1：拷贝构造
-//        // string suff(filename, pos, filename.size() - pos);
-//        string suff(filename, pos);
-
-        // 方法2：substr
-        string suff = filename.substr(pos);
-        cout << suff << endl;
-    }
-
-    // 要求写一个程序，分别取出域名和协议名
-    string url1 = "https://cplusplus.com/reference/string/string/string/";
-
-    cout << GetProtocol(url1) << endl;
-    cout << GetDomain(url1) << endl;
-
-    return 0;
-}
