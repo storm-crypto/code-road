@@ -19,6 +19,11 @@ namespace ljx
         {
             strcpy(_str, str);
         }
+        ~string()
+        {
+            delete[] _str;
+            _str = nullptr;
+        }
 
     private:
         char* _str;
