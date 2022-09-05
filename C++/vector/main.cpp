@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -142,6 +143,27 @@ void test_vector5()
 
     // 头删
     v.erase(v.begin());
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+    // find的使用
+    // 在3的前面插入30
+    auto pos = find(v.begin(), v.end(), 3);
+    if (pos != v.end())
+    {
+        v.insert(pos, 30);
+    }
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+    // 删除3
+    v.erase(pos);
     for (auto e : v)
     {
         cout << e << " ";
