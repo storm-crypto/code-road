@@ -11,19 +11,27 @@
 
 using namespace std;
 
-namespace ljx
-{
+namespace ljx {
     // 管理字符串的数组，可以增删查改
     // 字符串数组的结尾有\0
-    class string
-    {
+    class string {
     public:
-        string(char* str = "")
-            :_str(new char[strlen(str) + 1])
-        {
+        typedef char *iterator;
+
+        iterator begin() {
+            return _str;
+        }
+
+        iterator end() {
+            return _str + _size;
+        }
+
+
+        string(char *str = "")
+            : _str(new char[strlen(str) + 1]) {
             _size = strlen(str);
             _capacity = _size;
-            _str = new char[_capacity + 1]; // 多一个是给\0的
+            _str = new char[_capacity + 1];// 多一个是给\0的
 
             strcpy(_str, str);
         }
@@ -31,29 +39,28 @@ namespace ljx
         // 传统写法：拷贝构造和赋值重载
 
         // 拷贝构造
-//        string(const string& s)
-//            :_str(new char[strlen(s._str) + 1])
-//        {
-//            strcpy(_str, s._str);
-//        }
-//
-//        // 赋值重载
-//        // s1 = s3
-//        // s1 = s1
-//        string& operator=(const string& s)
-//        {
-//            // 防止自己给自己赋值 s1 = s1
-//            if (this != &s)
-//            {
-//                delete[] _str;
-//                _str = new char[strlen(s._str) + 1];
-//                strcpy(_str, s._str);
-//            }
-//            return *this;
-//        }
+        //        string(const string& s)
+        //            :_str(new char[strlen(s._str) + 1])
+        //        {
+        //            strcpy(_str, s._str);
+        //        }
+        //
+        //        // 赋值重载
+        //        // s1 = s3
+        //        // s1 = s1
+        //        string& operator=(const string& s)
+        //        {
+        //            // 防止自己给自己赋值 s1 = s1
+        //            if (this != &s)
+        //            {
+        //                delete[] _str;
+        //                _str = new char[strlen(s._str) + 1];
+        //                strcpy(_str, s._str);
+        //            }
+        //            return *this;
+        //        }
 
-        void swap(string& s)
-        {
+        void swap(string &s) {
             // 如果左边没有给命名空间，说明它修饰的是全局的，用的是全局的swap
             ::swap(_str, s._str);
             ::swap(_size, s._size);
@@ -61,31 +68,26 @@ namespace ljx
         }
 
         // 现代写法
-        string(const string& s)
-            :_str(nullptr)
-            , _size(0)
-            , _capacity(0)
-        {
+        string(const string &s)
+            : _str(nullptr), _size(0), _capacity(0) {
             string tmp(s._str);
-//            swap(_str, tmp._str);
-//            swap(_size, tmp._size);
-//            swap(_capacity, tmp._capacity);
+            //            swap(_str, tmp._str);
+            //            swap(_size, tmp._size);
+            //            swap(_capacity, tmp._capacity);
             //this->swap(tmp);
             swap(tmp);
         }
 
-        string& operator=(string s)
-        {
-//            swap(_str, s._str);
-//            swap(_size, s._size);
-//            swap(_capacity, s._capacity);
+        string &operator=(string s) {
+            //            swap(_str, s._str);
+            //            swap(_size, s._size);
+            //            swap(_capacity, s._capacity);
             swap(s);
 
             return *this;
         }
 
-        ~string()
-        {
+        ~string() {
             delete[] _str;
             _str = nullptr;
             _size = 0;
@@ -94,41 +96,36 @@ namespace ljx
 
         // 遍历
         // const版本 只读
-        const char& operator[](size_t i) const
-        {
+        const char &operator[](size_t i) const {
             assert(i < _size);
 
             return _str[i];
         }
 
         // 非const版本 可读可写
-         char& operator[](size_t i)
-        {
+        char &operator[](size_t i) {
             assert(i < _size);
 
             return _str[i];
         }
 
-        size_t size() const
-        {
+        size_t size() const {
             return _size;
         }
 
         // 打印
-        const char* c_str() const
-        {
+        const char *c_str() const {
             return _str;
         }
 
 
     private:
-        char* _str;
+        char *_str;
         size_t _size;
         size_t _capacity;
     };
 
-    void test_string1()
-    {
+    void test_string1() {
         string s1("hello world");
         string s2(s1);
 
@@ -141,31 +138,28 @@ namespace ljx
         cout << s3.c_str() << endl;
     }
 
-    void test_string2()
-    {
+    void test_string2() {
         string s1("hello world");
         s1[0] = 'x';
         cout << s1[1] << endl;
 
         cout << s1.c_str() << endl;
 
-        for (size_t i = 0; i < s1.size(); i++)
-        {
-            cout << s1[i] << " " ;
+        for (size_t i = 0; i < s1.size(); i++) {
+            cout << s1[i] << " ";
         }
         cout << endl;
     }
 
-    void test_string3()
-    {
+    void test_string3() {
         string s1("hello world");
         string::iterator it = s1.begin();
-        while (it != s1.end())
-        {
+        while (it != s1.end()) {
             cout << *it << " ";
             it++;
+        }
     }
-}
 
 
 #endif//STRING_09_04_STRING_H
+}
