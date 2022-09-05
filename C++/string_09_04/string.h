@@ -149,26 +149,29 @@ namespace ljx {
 
         void push_back(char ch)
         {
-            if (_size == _capacity)
-            {
-                reserve(_capacity == 0 ? 4 : _capacity * 2);
-            }
-            _str[_size] = ch;
-            _str[_size + 1] = '\0';
-            ++_size;
+//            if (_size == _capacity)
+//            {
+//                reserve(_capacity == 0 ? 4 : _capacity * 2);
+//            }
+//            _str[_size] = ch;
+//            _str[_size + 1] = '\0';
+//            ++_size;
+            insert(_size, ch);
         }
 
         void append(const char *str)
         {
-            // 先计算以用需要多少空间
-            size_t len = _size + strlen(str);
-            if (len > _capacity)
-            {
-                reserve(len);
-            }
+//            // 先计算以用需要多少空间
+//            size_t len = _size + strlen(str);
+//            if (len > _capacity)
+//            {
+//                reserve(len);
+//            }
+//
+//            strcpy(_str + _size, str);
+//            _size = len;
 
-            strcpy(_str + _size, str);
-            _size = len;
+            insert(_size, str);
         }
 
         // += 字符
@@ -187,7 +190,7 @@ namespace ljx {
 
 
         // pos位置之前插入字符串
-        string& insert(size_t pos, char* str)
+        string& insert(size_t pos, const char* str)
         {
             assert(pos <= _size);
             size_t len = strlen(str);
