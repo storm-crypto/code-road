@@ -109,6 +109,63 @@ namespace ljx {
             return _str[i];
         }
 
+        // 开capacity
+        void reserve(size_t n)
+        {
+            if (n > _capacity)
+            {
+                char* tmp = new char[n + 1];
+                strcpy(tmp, _str);
+                delete[] _str;
+
+                _str = tmp;
+            }
+        }
+
+        // 开空间 + 初始化， 改变size
+        void resize(size_t n, char val = '\0')
+        {
+
+        }
+
+        void push_back(char ch)
+        {
+            if (_size == _capacity)
+            {
+                reserve(_capacity * 2);
+            }
+            _str[_size] = ch;
+            _str[_size + 1] = '\0';
+            ++_size;
+        }
+
+        void append(const char* str)
+        {
+            // 先计算以用需要多少空间
+            size_t len = _size + strlen(str);
+            if (len > _capacity)
+            {
+                reserve(len);
+            }
+
+            strcpy(_str + _size, str);
+            _size = len;
+        }
+
+        // += 字符
+        string& operator+=(char ch)
+        {
+            push_back(ch);
+            return *this;
+        }
+
+        // +=字符串
+        string& operator+=(const char* str)
+        {
+            append(str);
+            return *this;
+        }
+
         size_t size() const {
             return _size;
         }
