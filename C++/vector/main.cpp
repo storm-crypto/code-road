@@ -209,6 +209,26 @@ void test_vector6()
 
 }
 
+void test_vector7()
+{
+    vector<int> v1;
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(3);
+
+    vector<int> v2;
+    v2.push_back(1);
+    v2.push_back(2);
+
+    // C++98推荐第二个
+    // 因为第一个要进行三次深拷贝，代价很大
+    swap(v1, v2);
+    v1.swap(v2);
+
+    // C++11中都一样
+
+
+}
 
 int main()
 {
