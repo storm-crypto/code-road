@@ -20,6 +20,10 @@ namespace ljx
         string(char* str = "")
             :_str(new char[strlen(str) + 1])
         {
+            _size = strlen(str);
+            _capacity = _size;
+            _str = new char[_capacity + 1]; // 多一个是给\0的
+
             strcpy(_str, str);
         }
 
@@ -76,6 +80,8 @@ namespace ljx
 
     private:
         char* _str;
+        size_t _size;
+        size_t _capacity;
     };
 
     void test_string1()
