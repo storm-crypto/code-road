@@ -98,10 +98,36 @@ void test_vector2()
     cout << endl;
 }
 
+void test_vector3()
+{
+    // 验证vector的增容方式
+    size_t sz;
+    std::vector<int> foo;
+    sz = foo.capacity();
+    cout << "making foo grow:\n";
+    for (int i = 0; i < 100; i++)
+    {
+        foo.push_back(i);
+        if (sz != foo.capacity())
+        {
+            sz = foo.capacity();
+            cout << "capacity changed: " << sz << '\n';
+        }
+    }
+
+    vector<int> v1;
+    v1.reserve(10);
+
+    vector<int> v2;
+    v2.resize(10, 2);
+}
+
+
 int main()
 {
 //    test_vector1();
-    test_vector2();
+//    test_vector2();
+    test_vector3();
 
     return 0;
 }
