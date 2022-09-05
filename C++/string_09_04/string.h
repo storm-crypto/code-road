@@ -26,24 +26,38 @@ namespace ljx
         // 传统写法：拷贝构造和赋值重载
 
         // 拷贝构造
+//        string(const string& s)
+//            :_str(new char[strlen(s._str) + 1])
+//        {
+//            strcpy(_str, s._str);
+//        }
+//
+//        // 赋值重载
+//        // s1 = s3
+//        // s1 = s1
+//        string& operator=(const string& s)
+//        {
+//            // 防止自己给自己赋值 s1 = s1
+//            if (this != &s)
+//            {
+//                delete[] _str;
+//                _str = new char[strlen(s._str) + 1];
+//                strcpy(_str, s._str);
+//            }
+//            return *this;
+//        }
+
+        // 现代写法
         string(const string& s)
-            :_str(new char[strlen(s._str) + 1])
+            :_str(nullptr)
         {
-            strcpy(_str, s._str);
+            string tmp(s._str);
+            swap(_str, tmp._str);
         }
 
-        // 赋值重载
-        // s1 = s3
-        // s1 = s1
-        string& operator=(const string& s)
+        string& operator=(string s)
         {
-            // 防止自己给自己赋值 s1 = s1
-            if (this != &s)
-            {
-                delete[] _str;
-                _str = new char[strlen(s._str) + 1];
-                strcpy(_str, s._str);
-            }
+            swap(_str, s._str);
             return *this;
         }
 
