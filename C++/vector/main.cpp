@@ -1,11 +1,24 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 void PrintVector(const vector<int>& v)
 {
     vector<int>::const_iterator it1 = v.begin();
+    while (it1 != v.end())
+    {
+        cout << *it1 << " ";
+        ++it1;
+    }
+    cout << endl;
+}
+
+template<class T>
+void PrintVector(const vector<T>& v)
+{
+    auto it1 = v.begin();
     while (it1 != v.end())
     {
         cout << *it1 << " ";
@@ -49,9 +62,34 @@ void test_vector1()
     PrintVector(v1);
 }
 
+// 构造函数
+void test_vector2()
+{
+    vector<int> v1;
+    vector<int> v2(10, 0);
+    // 迭代器初始化
+    vector<int> v3(v2.begin(), v2.end());
+
+    string s("hello world");
+    vector<char> v4(s.begin(), s.end());
+
+    vector<string> v5;
+
+    // 推荐写法：
+    v5.push_back("erase");
+    v5.push_back(string("insert"));
+
+    PrintVector(v1);
+    PrintVector(v2);
+    PrintVector(v3);
+    PrintVector(v4);
+    PrintVector(v5);
+}
+
 int main()
 {
-    test_vector1();
+//    test_vector1();
+    test_vector2();
 
     return 0;
 }
