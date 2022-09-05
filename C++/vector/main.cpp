@@ -88,6 +88,14 @@ void test_vector2()
     // øΩ±¥ππ‘Ï
     vector<string> copy(v5);
     PrintVector(copy);
+
+    auto rit = copy.rbegin();
+    while (rit != copy.rend())
+    {
+        cout << *rit << " ";
+        ++rit;
+    }
+    cout << endl;
 }
 
 int main()
