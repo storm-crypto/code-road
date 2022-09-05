@@ -248,6 +248,26 @@ namespace ljx {
             return *this;
         }
 
+        string& erase(size_t pos, size_t len = npos)
+        {
+            assert(pos < _size);
+            size_t leftlen = _size - pos;
+            // 剩余的字符长度小于要删的长度(后面的全部删完)
+            if (len >= leftlen)
+            {
+                _str[pos] = '\0';
+                _size = pos;
+            }
+            // 剩余的字符长度大于要删的长度，就直接拷贝就好了
+            else
+            {
+                strcpy(_str + pos, _str + pos + len);
+                _size -= len;
+            }
+
+            return *this;
+        }
+
         size_t size() const
         {
             return _size;
@@ -262,9 +282,14 @@ namespace ljx {
 
     private:
         char *_str;
+
         size_t _size;
         size_t _capacity;
+
+        static const size_t npos;
     };
+
+    const size_t string::npos = -1;
 
     void test_string1()
     {
@@ -338,6 +363,9 @@ namespace ljx {
         // 修改
         s1.insert(2, "world");
 
+        cout << s1.c_str() << endl;
+
+        s1.erase(2, 5);
         cout << s1.c_str() << endl;
     }
 
