@@ -131,8 +131,17 @@ void test_vector5()
     v.push_back(4);
     v.push_back(5);
 
+    // Í·²å
     v.insert(v.begin(), 0);
 
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+    // Í·É¾
+    v.erase(v.begin());
     for (auto e : v)
     {
         cout << e << " ";
