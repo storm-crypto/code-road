@@ -7,7 +7,9 @@ int main()
 //    ljx::test_string3();
 //    ljx::test_string4();
 
-    ljx::test_string5();
+    // ljx::test_string5();
+
+    ljx::test_string6();
 
     return 0;
 }

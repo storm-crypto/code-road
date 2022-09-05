@@ -268,6 +268,36 @@ namespace ljx {
             return *this;
         }
 
+        size_t find(char ch, size_t pos = 0)
+        {
+            assert(pos < _size);
+
+            for (size_t i = pos; i < _size; i++)
+            {
+                if (_str[i] == ch)
+                {
+                    return i;
+                }
+            }
+
+            return npos;
+        }
+
+        size_t find(const char* str, size_t pos = 0)
+        {
+            assert(pos < _size);
+
+            const char* ret = strstr(_str + pos, str);
+            if (ret)
+            {
+                return ret - _str;
+            }
+            else
+            {
+                return npos;
+            }
+        }
+
         size_t size() const
         {
             return _size;
@@ -367,6 +397,16 @@ namespace ljx {
 
         s1.erase(2, 5);
         cout << s1.c_str() << endl;
+    }
+
+    void test_string6()
+    {
+        string s1("hello world");
+        cout << s1.find('x') << endl;
+        cout << s1.find('o') << endl;
+
+        cout << s1.find("wor") << endl;
+        cout << s1.find("worx") << endl;
     }
 
 
