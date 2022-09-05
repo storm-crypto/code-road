@@ -7,6 +7,7 @@
 
 #include <cstring>
 #include <iostream>
+#include <assert.h>
 
 using namespace std;
 
@@ -91,8 +92,30 @@ namespace ljx
             _capacity = 0;
         }
 
+        // 遍历
+        // const版本 只读
+        const char& operator[](size_t i) const
+        {
+            assert(i < _size);
+
+            return _str[i];
+        }
+
+        // 非const版本 可读可写
+         char& operator[](size_t i)
+        {
+            assert(i < _size);
+
+            return _str[i];
+        }
+
+        size_t size() const
+        {
+            return _size;
+        }
+
         // 打印
-        const char* c_str()
+        const char* c_str() const
         {
             return _str;
         }
@@ -116,6 +139,31 @@ namespace ljx
         s1 = s3;
         cout << s1.c_str() << endl;
         cout << s3.c_str() << endl;
+    }
+
+    void test_string2()
+    {
+        string s1("hello world");
+        s1[0] = 'x';
+        cout << s1[1] << endl;
+
+        cout << s1.c_str() << endl;
+
+        for (size_t i = 0; i < s1.size(); i++)
+        {
+            cout << s1[i] << " " ;
+        }
+        cout << endl;
+    }
+
+    void test_string3()
+    {
+        string s1("hello world");
+        string::iterator it = s1.begin();
+        while (it != s1.end())
+        {
+            cout << *it << " ";
+            it++;
     }
 }
 
