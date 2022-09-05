@@ -110,8 +110,10 @@ namespace ljx {
         }
 
         // 开capacity
-        void reserve(size_t n) {
-            if (n > _capacity) {
+        void reserve(size_t n)
+        {
+            if (n > _capacity)
+            {
                 char *tmp = new char[n + 1];
                 strcpy(tmp, _str);
                 delete[] _str;
@@ -122,16 +124,22 @@ namespace ljx {
         }
 
         // 开空间 + 初始化， 改变size
-        void resize(size_t n, char val = '\0') {
-            if (n < _size) {
+        void resize(size_t n, char val = '\0')
+        {
+            if (n < _size)
+            {
                 _size = 3;
                 _str[_size] = '\0';
-            } else {
-                if (n > _capacity) {
+            }
+            else
+            {
+                if (n > _capacity)
+                {
                     reserve(n);
                 }
 
-                for (size_t i = _size; i < n; i++) {
+                for (size_t i = _size; i < n; i++)
+                {
                     _str[i] = val;
                 }
                 _str[n] = '\0';
@@ -139,8 +147,10 @@ namespace ljx {
             }
         }
 
-        void push_back(char ch) {
-            if (_size == _capacity) {
+        void push_back(char ch)
+        {
+            if (_size == _capacity)
+            {
                 reserve(_capacity * 2);
             }
             _str[_size] = ch;
@@ -148,10 +158,12 @@ namespace ljx {
             ++_size;
         }
 
-        void append(const char *str) {
+        void append(const char *str)
+        {
             // 先计算以用需要多少空间
             size_t len = _size + strlen(str);
-            if (len > _capacity) {
+            if (len > _capacity)
+            {
                 reserve(len);
             }
 
@@ -160,23 +172,56 @@ namespace ljx {
         }
 
         // += 字符
-        string &operator+=(char ch) {
+        string &operator+=(char ch)
+        {
             push_back(ch);
             return *this;
         }
 
         // +=字符串
-        string &operator+=(const char *str) {
+        string &operator+=(const char *str)
+        {
             append(str);
             return *this;
         }
 
-        size_t size() const {
+
+        // pos位置之前插入字符串
+        string& insert(size_t pos, char* str)
+        {
+
+        }
+
+        // pos位置之前插入一个字符
+        string& insert(size_t pos, char ch)
+        {
+            assert(pos <= _size);
+
+            if (_size == _capacity)
+            {
+                reserve(2 * _capacity);
+            }
+
+            size_t end =  _size;
+            while (end >= pos)
+            {
+                _str[end + 1] = _str[end];
+                --end;
+            }
+            _str[pos] = ch;
+            _size++;
+
+            return *this;
+        }
+
+        size_t size() const
+        {
             return _size;
         }
 
         // 打印
-        const char *c_str() const {
+        const char *c_str() const
+        {
             return _str;
         }
 
@@ -187,7 +232,8 @@ namespace ljx {
         size_t _capacity;
     };
 
-    void test_string1() {
+    void test_string1()
+    {
         string s1("hello world");
         string s2(s1);
 
@@ -200,7 +246,8 @@ namespace ljx {
         cout << s3.c_str() << endl;
     }
 
-    void test_string2() {
+    void test_string2()
+    {
         string s1("hello world");
         s1[0] = 'x';
         cout << s1[1] << endl;
@@ -213,7 +260,8 @@ namespace ljx {
         cout << endl;
     }
 
-    void test_string3() {
+    void test_string3()
+    {
         string s1("hello world");
         string::iterator it = s1.begin();
         while (it != s1.end()) {
