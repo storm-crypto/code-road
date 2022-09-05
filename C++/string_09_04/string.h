@@ -158,6 +158,15 @@ namespace ljx {
             cout << *it << " ";
             it++;
         }
+        cout << endl;
+
+        // 看起来很神奇，原理很简单，范围for会被编译器替换成迭代器的形式
+        // 也就是说范围for是由迭代器支持的
+        for (auto ch : s1)
+        {
+            cout << ch << " ";
+        }
+        cout << endl;
     }
 
 
