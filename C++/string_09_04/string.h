@@ -321,6 +321,36 @@ namespace ljx {
 
     const size_t string::npos = -1;
 
+    bool operator<(const string& s1, const string& s2)
+    {
+        return strcmp(s1.c_str(), s2.c_str()) < 0;
+    }
+
+    bool operator==(const string& s1, const string& s2)
+    {
+        return strcmp(s1.c_str(), s2.c_str()) == 0;
+    }
+
+    bool operator<=(const string& s1, const string& s2)
+    {
+        return s1 < s2 || s1 == s2;
+    }
+
+    bool operator>(const string& s1, const string& s2)
+    {
+        return  !(s1 <= s2);
+    }
+
+    bool operator>=(const string& s1, const string& s2)
+    {
+        return !(s1 < s2);
+    }
+
+    bool operator!=(const string& s1, const string& s2)
+    {
+        return !(s1 == s2);
+    }
+
     void test_string1()
     {
         string s1("hello world");
