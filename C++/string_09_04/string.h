@@ -110,28 +110,37 @@ namespace ljx {
         }
 
         // 开capacity
-        void reserve(size_t n)
-        {
-            if (n > _capacity)
-            {
-                char* tmp = new char[n + 1];
+        void reserve(size_t n) {
+            if (n > _capacity) {
+                char *tmp = new char[n + 1];
                 strcpy(tmp, _str);
                 delete[] _str;
 
                 _str = tmp;
+                _capacity = n;
             }
         }
 
         // 开空间 + 初始化， 改变size
-        void resize(size_t n, char val = '\0')
-        {
+        void resize(size_t n, char val = '\0') {
+            if (n < _size) {
+                _size = 3;
+                _str[_size] = '\0';
+            } else {
+                if (n > _capacity) {
+                    reserve(n);
+                }
 
+                for (size_t i = _size; i < n; i++) {
+                    _str[i] = val;
+                }
+                _str[n] = '\0';
+                _size = n;
+            }
         }
 
-        void push_back(char ch)
-        {
-            if (_size == _capacity)
-            {
+        void push_back(char ch) {
+            if (_size == _capacity) {
                 reserve(_capacity * 2);
             }
             _str[_size] = ch;
@@ -139,12 +148,10 @@ namespace ljx {
             ++_size;
         }
 
-        void append(const char* str)
-        {
+        void append(const char *str) {
             // 先计算以用需要多少空间
             size_t len = _size + strlen(str);
-            if (len > _capacity)
-            {
+            if (len > _capacity) {
                 reserve(len);
             }
 
@@ -153,15 +160,13 @@ namespace ljx {
         }
 
         // += 字符
-        string& operator+=(char ch)
-        {
+        string &operator+=(char ch) {
             push_back(ch);
             return *this;
         }
 
         // +=字符串
-        string& operator+=(const char* str)
-        {
+        string &operator+=(const char *str) {
             append(str);
             return *this;
         }
@@ -219,13 +224,29 @@ namespace ljx {
 
         // 看起来很神奇，原理很简单，范围for会被编译器替换成迭代器的形式
         // 也就是说范围for是由迭代器支持的
-        for (auto ch : s1)
-        {
+        for (auto ch : s1) {
             cout << ch << " ";
         }
         cout << endl;
     }
 
+    void test_string4()
+    {
+        string s1("hello");
+        s1 += '!';
 
-#endif//STRING_09_04_STRING_H
+        s1.resize(8, 'x');
+        cout << s1.c_str() << endl;
+
+        s1.resize(15, 'y');
+        cout << s1.c_str() << endl;
+
+        s1.resize(3);
+        cout << s1.c_str() << endl;
+
+
+    }
+
+
 }
+#endif//STRING_09_04_STRING_H
