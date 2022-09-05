@@ -84,6 +84,10 @@ void test_vector2()
     PrintVector(v3);
     PrintVector(v4);
     PrintVector(v5);
+
+    // øΩ±¥ππ‘Ï
+    vector<string> copy(v5);
+    PrintVector(copy);
 }
 
 int main()
