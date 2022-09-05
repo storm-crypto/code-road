@@ -3,6 +3,17 @@
 
 using namespace std;
 
+void PrintVector(const vector<int>& v)
+{
+    vector<int>::const_iterator it1 = v.begin();
+    while (it1 != v.end())
+    {
+        cout << *it1 << " ";
+        ++it1;
+    }
+    cout << endl;
+}
+
 void test_vector1()
 {
     vector<int> v1;
@@ -34,6 +45,8 @@ void test_vector1()
         cout << e << " ";
     }
     cout << endl;
+
+    PrintVector(v1);
 }
 
 int main()
