@@ -163,7 +163,44 @@ void test_vector5()
     cout << endl;
 
     // 删除3
+    // pos在insert之后就失效了，所以我们不要用它
+    pos = find(v.begin(), v.end(), 3);
     v.erase(pos);
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+}
+
+void test_vector6()
+{
+    vector<int> v;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(5);
+    v.push_back(6);
+
+    // 要求删除vector中所有的偶数
+    auto it = v.begin();
+    while (it != v.end())
+    {
+        if (*it % 2 == 0)
+        {
+            // erase(it)以后，it失效，不能++
+            // erase会返回删除位置it的下一个位置
+            v.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+
+    }
+
     for (auto e : v)
     {
         cout << e << " ";
@@ -178,7 +215,8 @@ int main()
 //    test_vector1();
 //    test_vector2();
 //    test_vector3();
-    test_vector5();
+//    test_vector5();
+    test_vector6();
 
     return 0;
 }
