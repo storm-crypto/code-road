@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/05code/2022/code-road/C++/vector/Vector.h">
+			<Option target="vector"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/vector/main.cpp">
 			<Option target="vector"/>
 		</Unit>

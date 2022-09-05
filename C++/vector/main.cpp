@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include "Vector.h"
 
 using namespace std;
 
@@ -236,7 +237,8 @@ int main()
 //    test_vector2();
 //    test_vector3();
 //    test_vector5();
-    test_vector6();
+//    test_vector6();
+    ljx::test_vector1();
 
     return 0;
 }
