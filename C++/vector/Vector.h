@@ -5,6 +5,7 @@
 #ifndef VECTOR_VECTOR_H
 #define VECTOR_VECTOR_H
 
+#include <cassert>
 #include <iostream>
 using namespace std;
 
@@ -106,6 +107,19 @@ namespace ljx
             ++it;
         }
         cout << endl;
+
+        for (size_t i = 0; i < v.size(); ++i)
+        {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+
+        for (auto e : v)
+        {
+            cout << e << " ";
+        }
+        cout << endl;
+
     }
 }
 

@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/C++/vector/Vector.h
+cassert
+-
+iostream
+-
+
 D:/05code/2022/code-road/C++/vector/main.cpp
 iostream
 -
@@ -15,4 +21,6 @@ string
 -
 algorithm
 -
+Vector.h
+D:/05code/2022/code-road/C++/vector/Vector.h
 
