@@ -17,12 +17,23 @@ namespace ljx {
     class string {
     public:
         typedef char *iterator;
+        typedef const char* const_iterator;
 
         iterator begin() {
             return _str;
         }
 
         iterator end() {
+            return _str + _size;
+        }
+
+        const_iterator begin() const
+        {
+            return _str;
+        }
+
+        const_iterator end() const
+        {
             return _str + _size;
         }
 
@@ -115,7 +126,7 @@ namespace ljx {
             if (n > _capacity)
             {
                 char *tmp = new char[n + 1];
-                strcpy(tmp, _str);
+                strncpy(tmp, _str, _size + 1);
                 delete[] _str;
 
                 _str = tmp;
@@ -351,6 +362,16 @@ namespace ljx {
         return !(s1 == s2);
     }
 
+    ostream& operator<<(ostream& out, const string& s)
+    {
+        for (auto ch : s)
+        {
+            out << ch;
+        }
+
+        return out;
+    }
+
     void test_string1()
     {
         string s1("hello world");
@@ -437,6 +458,9 @@ namespace ljx {
 
         cout << s1.find("wor") << endl;
         cout << s1.find("worx") << endl;
+
+        string s2("hello");
+        cout << s2 << endl;
     }
 
 
