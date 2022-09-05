@@ -122,12 +122,32 @@ void test_vector3()
     v2.resize(10, 2);
 }
 
+void test_vector5()
+{
+    vector<int> v;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(5);
+
+    v.insert(v.begin(), 0);
+
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+}
+
 
 int main()
 {
 //    test_vector1();
 //    test_vector2();
-    test_vector3();
+//    test_vector3();
+    test_vector5();
 
     return 0;
 }
