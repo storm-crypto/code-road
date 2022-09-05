@@ -51,17 +51,35 @@ namespace ljx
 //            return *this;
 //        }
 
+        void swap(string& s)
+        {
+            // 如果左边没有给命名空间，说明它修饰的是全局的，用的是全局的swap
+            ::swap(_str, s._str);
+            ::swap(_size, s._size);
+            ::swap(_capacity, s._capacity);
+        }
+
         // 现代写法
         string(const string& s)
             :_str(nullptr)
+            , _size(0)
+            , _capacity(0)
         {
             string tmp(s._str);
-            swap(_str, tmp._str);
+//            swap(_str, tmp._str);
+//            swap(_size, tmp._size);
+//            swap(_capacity, tmp._capacity);
+            //this->swap(tmp);
+            swap(tmp);
         }
 
         string& operator=(string s)
         {
-            swap(_str, s._str);
+//            swap(_str, s._str);
+//            swap(_size, s._size);
+//            swap(_capacity, s._capacity);
+            swap(s);
+
             return *this;
         }
 
@@ -69,6 +87,8 @@ namespace ljx
         {
             delete[] _str;
             _str = nullptr;
+            _size = 0;
+            _capacity = 0;
         }
 
         // 打印
