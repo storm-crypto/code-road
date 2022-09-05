@@ -23,11 +23,28 @@ namespace ljx
             strcpy(_str, str);
         }
 
+        // 传统写法：拷贝构造和赋值重载
+
         // 拷贝构造
         string(const string& s)
             :_str(new char[strlen(s._str) + 1])
         {
             strcpy(_str, s._str);
+        }
+
+        // 赋值重载
+        // s1 = s3
+        // s1 = s1
+        string& operator=(const string& s)
+        {
+            // 防止自己给自己赋值 s1 = s1
+            if (this != &s)
+            {
+                delete[] _str;
+                _str = new char[strlen(s._str) + 1];
+                strcpy(_str, s._str);
+            }
+            return *this;
         }
 
         ~string()
@@ -54,6 +71,11 @@ namespace ljx
 
         cout << s1.c_str() << endl;
         cout << s2.c_str() << endl;
+
+        string s3("hello ljx");
+        s1 = s3;
+        cout << s1.c_str() << endl;
+        cout << s3.c_str() << endl;
     }
 }
 
