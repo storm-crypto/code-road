@@ -320,6 +320,12 @@ namespace ljx {
             return _str;
         }
 
+        void clear()
+        {
+            _size = 0;
+            _str[0] = '\0';
+        }
+
 
     private:
         char *_str;
@@ -370,6 +376,36 @@ namespace ljx {
         }
 
         return out;
+    }
+
+    istream& operator>>(istream& in, string& s)
+    {
+        s.clear();
+
+        char ch;
+        ch = in.get();
+
+        const size_t N = 32;
+        char buff[N];
+        size_t i = 0;
+
+        while (ch != ' ' && ch != '\n')
+        {
+            buff[i++] = ch;
+            if (i == N-1)
+            {
+                buff[i] = '\0';
+                s += buff;
+                i = 0;
+            }
+
+            ch = in.get();
+        }
+
+        buff[i] = '\0';
+        s += buff;
+
+        return in;
     }
 
     void test_string1()
@@ -461,6 +497,10 @@ namespace ljx {
 
         string s2("hello");
         cout << s2 << endl;
+
+        string s3;
+        cin >> s3;
+        cout << s3 << endl;
     }
 
 
