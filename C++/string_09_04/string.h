@@ -189,7 +189,25 @@ namespace ljx {
         // pos位置之前插入字符串
         string& insert(size_t pos, char* str)
         {
+            assert(pos <= _size);
+            size_t len = strlen(str);
+            if (_size + len > _capacity)
+            {
+                reserve(_size + len);
+            }
 
+            // 挪动数据
+            char* end = _str + _size;
+            while (end >= _str + pos)
+            {
+                *(end + len) = *end;
+                --end;
+            }
+
+            strncpy(_str + pos, str, len);
+            _size += len;
+
+            return *this;
         }
 
         // pos位置之前插入一个字符
@@ -306,6 +324,18 @@ namespace ljx {
         cout << s1.c_str() << endl;
 
 
+    }
+
+    void test_string5()
+    {
+
+        string s1("hello");
+        s1 += "!";
+
+        // 修改
+        s1.insert(2, "world");
+
+        cout << s1.c_str() << endl;
     }
 
 
