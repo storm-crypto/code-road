@@ -151,7 +151,7 @@ namespace ljx {
         {
             if (_size == _capacity)
             {
-                reserve(_capacity * 2);
+                reserve(_capacity == 0 ? 4 : _capacity * 2);
             }
             _str[_size] = ch;
             _str[_size + 1] = '\0';
@@ -195,19 +195,32 @@ namespace ljx {
         // pos位置之前插入一个字符
         string& insert(size_t pos, char ch)
         {
+            // 改进1
             assert(pos <= _size);
 
             if (_size == _capacity)
             {
-                reserve(2 * _capacity);
+                reserve(_capacity == 0 ? 4 : _capacity * 2);
             }
 
-            size_t end =  _size;
-            while (end >= pos)
+
+            // 改进2
+            // 避免end 越界的情况，end == -1
+            // 不推荐这种
+//            int end =  _size;
+//            while (end >= (int)pos)
+//            {
+//                _str[end + 1] = _str[end];
+//                --end;
+//            }
+
+            size_t end = _size + 1;
+            while (end > pos)
             {
-                _str[end + 1] = _str[end];
+                _str[end] = _str[end - 1];
                 --end;
             }
+
             _str[pos] = ch;
             _size++;
 
