@@ -56,6 +56,11 @@ namespace ljx
             return _finish - _start;
         }
 
+        bool empty()
+        {
+            return _finish == _start;
+        }
+
         T& operator[] (size_t i)
         {
             assert(i < size());
@@ -100,7 +105,8 @@ namespace ljx
         // 尾删
         void pop_back()
         {
-
+            assert(!empty());
+            --_finish;
         }
 
     private:
@@ -110,6 +116,7 @@ namespace ljx
     };
 
     // 打印，const修饰的那种
+    // 只能读不能写
     template<class T>
     void PrintVector(const vector<T>& v)
     {
@@ -150,6 +157,16 @@ namespace ljx
         }
         cout << endl;
 
+    }
+
+    void test_vector2()
+    {
+        vector<int> v;
+        v.push_back(1);
+        v.push_back(2);
+
+        v.pop_back();
+        v.pop_back();
     }
 }
 
