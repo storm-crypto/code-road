@@ -22,8 +22,16 @@ namespace ljx
             :_start(nullptr)
             , _finish(nullptr)
             , _endofstorage(nullptr)
-        {
+        {}
 
+        ~vector()
+        {
+            if (_start)
+            {
+                delete[] _start;
+            }
+
+            _start = _finish = _endofstorage = nullptr;
         }
 
         iterator begin()
