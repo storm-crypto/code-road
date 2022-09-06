@@ -16,6 +16,7 @@ namespace ljx
     {
     public:
         typedef T* iterator;
+        typedef const T* const_iterator;
 
         vector()
             :_start(nullptr)
@@ -31,6 +32,16 @@ namespace ljx
         }
 
         iterator end()
+        {
+            return _finish;
+        }
+
+        const_iterator begin() const
+        {
+            return _start;
+        }
+
+        const_iterator end() const
         {
             return _finish;
         }
@@ -86,11 +97,30 @@ namespace ljx
             ++_finish;
         }
 
+        // 尾删
+        void pop_back()
+        {
+
+        }
+
     private:
         iterator _start;
         iterator _finish;
         iterator _endofstorage;
     };
+
+    // 打印，const修饰的那种
+    template<class T>
+    void PrintVector(const vector<T>& v)
+    {
+        auto it = v.begin();
+        while (it != v.end())
+        {
+            cout << *it << " ";
+            ++it;
+        }
+        cout << endl;
+    }
 
     void test_vector1()
     {
