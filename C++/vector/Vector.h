@@ -68,6 +68,27 @@ namespace ljx
             return _start[i];
         }
 
+        void resize(size_t n, T val = T())
+        {
+            if (n < size())
+            {
+                _finish = _start + n;
+            }
+            else
+            {
+                if (n > capacity())
+                {
+                    reserve(n);
+                }
+
+                while (_finish < _start + n)
+                {
+                    *_finish = val;
+                    ++_finish;
+                }
+            }
+        }
+
         void reserve(size_t n)
         {
             if (n > capacity())
@@ -78,7 +99,7 @@ namespace ljx
                 if (_start)
                 {
                     // 拷贝旧数据到新空间
-                    memcpy(tmp, _start, sz);
+                    memcpy(tmp, _start, sz * sizeof(T));
                     delete[] _start;
                 }
 
@@ -164,9 +185,20 @@ namespace ljx
         vector<int> v;
         v.push_back(1);
         v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
 
-        v.pop_back();
-        v.pop_back();
+        v.push_back(5);
+        PrintVector(v);
+
+        v.resize(3);
+        PrintVector(v);
+
+        v.resize(6, 1);
+        PrintVector(v);
+
+        v.resize(10, 2);
+        PrintVector(v);
     }
 }
 
