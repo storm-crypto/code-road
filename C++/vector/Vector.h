@@ -34,6 +34,29 @@ namespace ljx
             _start = _finish = _endofstorage = nullptr;
         }
 
+        size_t capacity() const
+        {
+            return _endofstorage - _start;
+        }
+
+        size_t size() const
+        {
+            return _finish - _start;
+        }
+
+        // øΩ±¥ππ‘Ï
+        vector(const vector<T>& v)
+            :_start(nullptr)
+            , _finish(nullptr)
+            , _endofstorage(nullptr)
+        {
+            _start = new T[v.capacity()];
+            memcpy(_start, v._start, sizeof(T) * v.size());
+            _endofstorage = _start + v.capacity();
+            _finish = _start + v.size();
+        }
+
+
         iterator begin()
         {
             return _start;
@@ -54,15 +77,6 @@ namespace ljx
             return _finish;
         }
 
-        size_t capacity()
-        {
-            return _endofstorage - _start;
-        }
-
-        size_t size()
-        {
-            return _finish - _start;
-        }
 
         bool empty()
         {
@@ -313,6 +327,18 @@ namespace ljx
                 ++it;
             }
         }
+    }
+
+    void test_vector5()
+    {
+        vector<int> v1;
+        v1.push_back(1);
+        v1.push_back(2);
+        v1.push_back(3);
+
+        vector<int> v2(v1);
+        PrintVector(v1);
+        PrintVector(v2);
 
     }
 }
