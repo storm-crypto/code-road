@@ -2,9 +2,10 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "Vector.h"
 
 using namespace std;
+
+#include "Vector.h"
 
 void PrintVector(const vector<int>& v)
 {

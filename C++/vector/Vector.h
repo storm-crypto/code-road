@@ -7,6 +7,7 @@
 
 #include <cassert>
 #include <iostream>
+
 using namespace std;
 
 namespace ljx
@@ -23,6 +24,24 @@ namespace ljx
             , _finish(nullptr)
             , _endofstorage(nullptr)
         {}
+
+        // swap函数
+        // v1.swap(v2)
+        void swap(vector<T> v)
+        {
+            ::swap(_start, v._start);
+            ::swap(_finish, v._finish);
+            ::swap(_endofstorage, v._endofstorage);
+        }
+
+        // 现代写法：
+        // v1 = v3;
+        vector<T>& operator=(const vector<T>& v)
+        {
+            swap(v);
+
+            return *this;
+        }
 
         ~vector()
         {
@@ -58,20 +77,21 @@ namespace ljx
 
         // 赋值重载
         // v1 = v3
-        vector<T>& operator=(const vector<T>& v)
-        {
-            // 先判断自己给自己赋值
-            if (this != &v)
-            {
-                delete[] _start; // 释放旧空间
-                _start = new T[v.capacity()];
-                memcpy(_start, v._start, sizeof(T) * v.size());
-                _finish = _start + v.size();
-                _endofstorage = _start + v.capacity();
-            }
-
-            return *this;
-        }
+        // 传统写法
+//        vector<T>& operator=(const vector<T>& v)
+//        {
+//            // 先判断自己给自己赋值
+//            if (this != &v)
+//            {
+//                delete[] _start; // 释放旧空间
+//                _start = new T[v.capacity()];
+//                memcpy(_start, v._start, sizeof(T) * v.size());
+//                _finish = _start + v.size();
+//                _endofstorage = _start + v.capacity();
+//            }
+//
+//            return *this;
+//        }
 
 
         iterator begin()
