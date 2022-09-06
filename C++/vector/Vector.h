@@ -56,6 +56,23 @@ namespace ljx
             _finish = _start + v.size();
         }
 
+        // 赋值重载
+        // v1 = v3
+        vector<T>& operator=(const vector<T>& v)
+        {
+            // 先判断自己给自己赋值
+            if (this != &v)
+            {
+                delete[] _start; // 释放旧空间
+                _start = new T[v.capacity()];
+                memcpy(_start, v._start, sizeof(T) * v.size());
+                _finish = _start + v.size();
+                _endofstorage = _start + v.capacity();
+            }
+
+            return *this;
+        }
+
 
         iterator begin()
         {
@@ -339,6 +356,15 @@ namespace ljx
         vector<int> v2(v1);
         PrintVector(v1);
         PrintVector(v2);
+
+        vector<int> v3;
+        v3.push_back(10);
+        v3.push_back(20);
+
+        v1 = v3;
+
+        PrintVector(v1);
+        PrintVector(v3);
 
     }
 }
