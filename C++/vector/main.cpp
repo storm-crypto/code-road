@@ -239,7 +239,7 @@ int main()
 //    test_vector5();
 //    test_vector6();
 //    ljx::test_vector1();
-    ljx::test_vector2();
+    ljx::test_vector3();
 
     return 0;
 }

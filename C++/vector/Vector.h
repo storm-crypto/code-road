@@ -130,6 +130,34 @@ namespace ljx
             --_finish;
         }
 
+        void insert(iterator pos, const T& x)
+        {
+            if(_finish == _endofstorage)
+            {
+                size_t len = pos - _start;
+
+                size_t newcapacity = capacity() == 0 ? 4 : capacity() * 2;
+                reserve(newcapacity);
+
+                // 更新pos，解决增容后pos失效的问题
+                pos = _start + len;
+            }
+
+            auto end = _finish - 1;
+            while (end >= pos)
+            {
+                *(end + 1) = *(end);
+                --end;
+            }
+            *pos = x;
+            ++_finish;
+        }
+
+        iterator erase(iterator pos)
+        {
+
+        }
+
     private:
         iterator _start;
         iterator _finish;
@@ -199,6 +227,28 @@ namespace ljx
 
         v.resize(10, 2);
         PrintVector(v);
+    }
+
+    void test_vector3()
+    {
+        vector<int> v;
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
+        v.push_back(5);
+        PrintVector(v);
+
+        vector<int>::iterator pos = find(v.begin(), v.end(), 3);
+        // 在pos的前面插入
+        v.insert(pos, 30);
+        // insert以后pos就失效了
+        // 1. pos指向位置的意义变了，pos不是指向3
+        // 2. pos成了野指针
+        PrintVector(v);
+
+        // cout << *pos << endl;
+
     }
 }
 
