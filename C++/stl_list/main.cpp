@@ -1,5 +1,7 @@
 #include <iostream>
 #include <list>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 void test_list1()
@@ -35,6 +37,22 @@ void test_list1()
     }
     cout << endl;
 
+    // < 升序，如果不写默认是<
+    // > 降序
+    vector<int> v(a, a + 4);
+    sort(v.begin(), v.end());
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
+
+    sort(v.begin(), v.end(), greater<int>()); // 原理后面讲，先会用
+    for (auto e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
 }
 
 int main()
