@@ -70,7 +70,14 @@ namespace ljx
             , _endofstorage(nullptr)
         {
             _start = new T[v.capacity()];
-            memcpy(_start, v._start, sizeof(T) * v.size());
+            //memcpy(_start, v._start, sizeof(T) * v.size());
+            // memcpy对于深拷贝的自定义类型会出bug
+            // memcpy(tmp, _start, sz * sizeof(T));
+            // 改进如下：
+            for (size_t i = 0; i < v.size(); i++)
+            {
+                _start[i] = v._start[i];
+            }
             _endofstorage = _start + v.capacity();
             _finish = _start + v.size();
         }
@@ -158,7 +165,13 @@ namespace ljx
                 if (_start)
                 {
                     // 拷贝旧数据到新空间
-                    memcpy(tmp, _start, sz * sizeof(T));
+                    // memcpy对于深拷贝的自定义类型会出bug
+                    // memcpy(tmp, _start, sz * sizeof(T));
+                    // 改进如下：
+                    for (size_t i = 0; i < sz; i++)
+                    {
+                        tmp[i] = _start[i];
+                    }
                     delete[] _start;
                 }
 
@@ -386,6 +399,20 @@ namespace ljx
         PrintVector(v1);
         PrintVector(v3);
 
+    }
+
+    void test_vector6()
+    {
+        vector<string> v;
+        v.push_back("11111");
+        v.push_back("22222");
+        v.push_back("33333");
+
+        for (auto e : v)
+        {
+            cout << e << " ";
+        }
+        cout << endl;
     }
 }
 
