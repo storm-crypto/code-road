@@ -46,7 +46,13 @@ namespace ljx
         // 拷贝构造、operator=、析构我们不写，编译器默认生成的就可以用
 
         // 重载operator*
-        T& operator*()
+
+        // T&operator*() iterator 可读可写
+        // const T& operator*() const_iterator 只可以读
+        // 为什么这里的返回值是Ref的原因
+        // 用了class Ref，方面后面实例化出不同的类，有只读的那种const_itrator
+        // 也有可读可写那种iterator
+       Ref operator*()
         {
             return _pnode->_val;
         }
@@ -91,33 +97,39 @@ namespace ljx
     };
 
     template<class T>
-    class list {
+    class list
+    {
         typedef _list_node<T> node;
 
     public:
-        typedef _list_iterator<T, T &, T *> iterator;
-        typedef _list_iterator<T, const T &, const T *> const_iterator;
+        typedef _list_iterator<T, T&, T*> iterator;
+        typedef _list_iterator<T, const T&, const T*> const_iterator;
 
-        iterator begin() {
+        iterator begin()
+        {
             // 构造一个匿名对象返回
             // 这里的返回值是一个iterator对象
             return iterator(_head->_next);
         }
 
-        const_iterator begin() const {
+        const_iterator begin() const
+        {
             return const_iterator(_head->_next);
         }
 
-        iterator end() {
+        iterator end()
+        {
             return iterator(_head);
         }
 
-        const_iterator end() const {
+        const_iterator end() const
+        {
             return const_iterator(_head);
         }
 
         // 构造函数
-        list() {
+        list()
+        {
             // 构造一个匿名对象传过去
             _head = new node;
             _head->_next = _head;
@@ -125,7 +137,8 @@ namespace ljx
         }
 
         // 尾插
-        void push_back(const T &x) {
+        void push_back(const T &x)
+        {
             node *newnode = new node(x);
             node *tail = _head->_prev;
             // head tail newnode
@@ -144,6 +157,7 @@ namespace ljx
         list<int>::const_iterator it = lt.begin();
         while (it != lt.end())
         {
+            //*it += 1; // 因为只读，所以改变it的值会出错
             cout << *it << " ";
             ++it;
         }
