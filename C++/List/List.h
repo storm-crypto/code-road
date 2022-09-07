@@ -55,6 +55,18 @@ namespace ljx
     public:
         typedef _list_iterator<T> iterator;
 
+        iterator begin()
+        {
+            // 构造一个匿名对象返沪
+            // 这里的返回值是一个iterator对象
+            return iterator(_head->_next);
+        }
+
+        iterator end()
+        {
+            return iterator(_head);
+        }
+
         // 构造函数
         list()
         {
