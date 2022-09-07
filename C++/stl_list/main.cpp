@@ -66,15 +66,29 @@ void PrintContainer(const Con& c)
     auto it = c.begin();
     while (it != c.end())
     {
-        cout << *it << endl;
+        cout << *it << " ";
         ++it;
     }
     cout << endl;
 }
 
+void test_list2()
+{
+    list<int> lt;
+    lt.push_back(10);
+    lt.push_back(2);
+    lt.push_back(3);
+    lt.push_back(4);
+
+    lt.assign(10, 5);
+
+    PrintContainer(lt);
+}
+
 int main()
 {
-    test_list1();
+//    test_list1();
+    test_list2();
 
     return 0;
 }
