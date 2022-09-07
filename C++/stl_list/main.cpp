@@ -80,9 +80,15 @@ void test_list2()
     lt.push_back(3);
     lt.push_back(4);
 
-    lt.assign(10, 5);
+//    lt.assign(10, 5);
 
     PrintContainer(lt);
+
+    // insert + findÅäºÏÊ¹ÓÃ
+    auto pos = find(lt.begin(), lt.end(), 3);
+    lt.insert(pos, 30);
+    PrintContainer(lt);
+
 }
 
 int main()
