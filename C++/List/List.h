@@ -6,6 +6,7 @@
 #define LIST_LIST_H
 
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -160,8 +161,20 @@ namespace ljx
         	insert(begin(), x);
 		}
 
+		void pop_back()
+		{
+        	erase(--end());
+		}
+
+		void pop_front()
+		{
+        	erase(begin());
+		}
+
         void insert(iterator pos, const T& x)
 		{
+        	assert(pos._pnode);
+
 			node* cur = pos._pnode;
 			node* prev = cur->_prev;
 			node* newnode = new node(x);
@@ -174,6 +187,8 @@ namespace ljx
 
 		iterator erase(iterator pos)
 		{
+        	assert(pos._pnode);
+        	assert(pos != end());
 			node* prev = pos->_pnode->_prev;
 			node* next = pos->_pnode->_next;
 
