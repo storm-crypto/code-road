@@ -89,6 +89,13 @@ void test_list2()
     lt.insert(pos, 30);
     PrintContainer(lt);
 
+    // vector中insert会导致pos失效，list会不会呢？ 不会
+    cout << *pos << endl;
+
+    // vector中erase会导致pos失效，list会不会呢？ 会
+    lt.erase(pos);
+    PrintContainer(lt);
+
 }
 
 int main()
