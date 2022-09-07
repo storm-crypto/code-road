@@ -22,13 +22,29 @@ namespace ljx
     struct _list_iterator
     {
         typedef _list_node<T> node;
+        typedef _list_iterator<T> self;
 
-        node* _pnode;
+        node* _pnode; // 成员变量
         // 构造函数
         _list_iterator(node* pnode)
             :_pnode(pnode)
         {}
 
+        // 重载operator*
+        T operator*()
+        {
+            return _pnode->_val;
+        }
+
+        bool operator!=(const self& s)
+        {
+            return _pnode != s._pnode;
+        }
+
+        operator++()
+        {
+            _pnode = _pnode->_next;
+        }
 
     };
 
