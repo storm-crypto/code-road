@@ -82,7 +82,8 @@ namespace ljx
         // 构造函数
         list()
         {
-            _head = new node;
+            // 构造一个匿名对象传过去
+            _head = new node(T());
             _head->_next = _head;
             _head->_prev = _head;
         }
