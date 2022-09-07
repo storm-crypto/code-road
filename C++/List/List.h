@@ -21,10 +21,10 @@ namespace ljx
         _list_node<T>* _prev;
 
         // 构造函数
-        _list_node(const T val)
-            :_val(val)
-            , _prev(nullptr)
-            , _next(nullptr)
+        _list_node(const T val = T())
+                :_val(val)
+                , _prev(nullptr)
+                , _next(nullptr)
         {}
     };
 
@@ -38,7 +38,7 @@ namespace ljx
         node* _pnode; // 成员变量
         // 构造函数
         _list_iterator(node* pnode)
-            :_pnode(pnode)
+                :_pnode(pnode)
         {}
 
         // 重载operator*
@@ -83,7 +83,7 @@ namespace ljx
         list()
         {
             // 构造一个匿名对象传过去
-            _head = new node(T());
+            _head = new node;
             _head->_next = _head;
             _head->_prev = _head;
         }
@@ -119,6 +119,7 @@ namespace ljx
         while (it != lt.end())
         {
             cout << *it << " ";
+            ++it;
         }
         cout << endl;
     }
