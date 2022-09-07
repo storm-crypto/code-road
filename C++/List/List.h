@@ -144,18 +144,25 @@ namespace ljx
         // Î²²å
         void push_back(const T &x)
         {
-            node *newnode = new node(x);
-            node *tail = _head->_prev;
-            // head tail newnode
-            tail->_next = newnode;
-            newnode->_prev = tail;
-            newnode->_next = _head;
-            _head->_prev = newnode;
+//            node *newnode = new node(x);
+//            node *tail = _head->_prev;
+//            // head tail newnode
+//            tail->_next = newnode;
+//            newnode->_prev = tail;
+//            newnode->_next = _head;
+//            _head->_prev = newnode;
+			insert(end(), x);
         }
+
+        // Í·²å
+        void push_front(const T& x)
+		{
+        	insert(begin(), x);
+		}
 
         void insert(iterator pos, const T& x)
 		{
-			node* cur = pos->_pnode;
+			node* cur = pos._pnode;
 			node* prev = cur->_prev;
 			node* newnode = new node(x);
 
