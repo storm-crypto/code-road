@@ -5,6 +5,10 @@
 #ifndef LIST_LIST_H
 #define LIST_LIST_H
 
+#include <iostream>
+
+using namespace std;
+
 namespace ljx
 {
     // 定义头节点
@@ -15,6 +19,13 @@ namespace ljx
         T _val;
         _list_node<T>* _next;
         _list_node<T>* _prev;
+
+        // 构造函数
+        _list_node(const T val)
+            :_val(val)
+            , _prev(nullptr)
+            , _next(nullptr)
+        {}
     };
 
     // 定义迭代器
@@ -41,9 +52,10 @@ namespace ljx
             return _pnode != s._pnode;
         }
 
-        operator++()
+        self& operator++()
         {
             _pnode = _pnode->_next;
+            return *this;
         }
 
     };
@@ -57,7 +69,7 @@ namespace ljx
 
         iterator begin()
         {
-            // 构造一个匿名对象返沪
+            // 构造一个匿名对象返回
             // 这里的返回值是一个iterator对象
             return iterator(_head->_next);
         }
@@ -91,6 +103,24 @@ namespace ljx
     private:
         node* _head;
     };
+
+    // 测试
+    void test_list1()
+    {
+        list<int> lt;
+        lt.push_back(1);
+        lt.push_back(2);
+        lt.push_back(3);
+        lt.push_back(4);
+
+        // 迭代器遍历
+        list<int>::iterator it = lt.begin();
+        while (it != lt.end())
+        {
+            cout << *it << " ";
+        }
+        cout << endl;
+    }
 }
 
 #endif//LIST_LIST_H

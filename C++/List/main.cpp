@@ -1,6 +1,10 @@
 #include <iostream>
+#include "List.h"
+using namespace std;
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+int main()
+{
+    ljx::test_list1();
+
     return 0;
 }
