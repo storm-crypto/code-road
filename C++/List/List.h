@@ -204,8 +204,8 @@ namespace ljx
 		{
         	assert(pos._pnode);
         	assert(pos != end());
-			node* prev = pos->_pnode->_prev;
-			node* next = pos->_pnode->_next;
+			node* prev = pos._pnode->_prev;
+			node* next = pos._pnode->_next;
 
 			delete pos._pnode;
 			prev->_next = next;
@@ -298,6 +298,18 @@ namespace ljx
 		}
 		cout << endl;
 
+	}
+
+	void test_list3()
+	{
+		list<int> lt;
+		lt.push_back(1);
+		lt.push_back(2);
+		lt.push_back(3);
+		lt.push_back(4);
+
+		lt.clear();
+		PrintList(lt);
 	}
 }
 
