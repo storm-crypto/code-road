@@ -2,6 +2,8 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <functional>
+
 using namespace std;
 
 void test_list1()
@@ -47,10 +49,25 @@ void test_list1()
     }
     cout << endl;
 
-    sort(v.begin(), v.end(), greater<int>()); // 原理后面讲，先会用
+    sort(v.begin(), v.end(), greater<int>()); // 原理后面讲，先会用, 这个是降序
     for (auto e : v)
     {
         cout << e << " ";
+    }
+    cout << endl;
+
+
+}
+
+// 通用的打印函数
+template<class Con>
+void PrintContainer(const Con& c)
+{
+    auto it = c.begin();
+    while (it != c.end())
+    {
+        cout << *it << endl;
+        ++it;
     }
     cout << endl;
 }
