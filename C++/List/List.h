@@ -153,6 +153,30 @@ namespace ljx
             _head->_prev = newnode;
         }
 
+        void insert(iterator pos, const T& x)
+		{
+			node* cur = pos->_pnode;
+			node* prev = cur->_prev;
+			node* newnode = new node(x);
+
+			prev->_next = newnode;
+			newnode->_prev = prev;
+			newnode->_next = cur;
+			cur->_prev = newnode;
+		}
+
+		iterator erase(iterator pos)
+		{
+			node* prev = pos->_pnode->_prev;
+			node* next = pos->_pnode->_next;
+
+			delete pos._pnode;
+			prev->_next = next;
+			next->_prev = prev;
+
+			return iterator(next);
+		}
+
     private:
         node* _head;
     };
