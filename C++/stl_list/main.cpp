@@ -119,6 +119,9 @@ void test_list3()
     lt.sort();
     lt.unique();
     PrintContainer(lt);
+
+    lt.reverse();
+    PrintContainer(lt);
 }
 
 int main()
