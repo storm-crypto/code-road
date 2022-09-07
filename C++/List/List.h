@@ -199,6 +199,23 @@ namespace ljx
 			return iterator(next);
 		}
 
+		bool empty()
+		{
+        	return begin() == end();
+		}
+
+		size_t size()
+		{
+        	size_t sz = 0;
+        	iterator it = begin();
+        	while (it != end())
+			{
+        		++sz;
+        		++it;
+			}
+			return sz;
+		}
+
     private:
         node* _head;
     };
