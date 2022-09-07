@@ -57,6 +57,11 @@ namespace ljx
             return _pnode->_val;
         }
 
+        Ptr operator->()
+		{
+          return &_pnode->_val;
+		}
+
         bool operator!=(const self& s) const
         {
             return _pnode != s._pnode;
@@ -164,6 +169,14 @@ namespace ljx
         cout << endl;
     }
 
+    class Date
+	{
+	public:
+		int _year = 0;
+		int _month = 1;
+		int _day = 1;
+	};
+
     // ²âÊÔ
     void test_list1()
     {
@@ -191,6 +204,23 @@ namespace ljx
 
         PrintList(lt);
     }
+
+    void test_list2()
+	{
+    	list<Date> lt;
+    	lt.push_back(Date());
+		lt.push_back(Date());
+		lt.push_back(Date());
+
+		list<Date>::iterator it = lt.begin();
+		while (it != lt.end())
+		{
+			cout << it->_year << " " << it->_month << " " << it->_day << endl;
+			++it;
+		}
+		cout << endl;
+
+	}
 }
 
 #endif//LIST_LIST_H
