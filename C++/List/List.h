@@ -29,16 +29,18 @@ namespace ljx
     };
 
     // 定义迭代器
-    template<class T>
+    // typedef _list_iterartor<T, T&, T*> iterator;
+    // typedef _list_iterartor<T, const T&, const T*> const_iterator;
+    template<class T, class Ref, class Ptr>
     struct _list_iterator
     {
         typedef _list_node<T> node;
-        typedef _list_iterator<T> self;
+        typedef _list_iterator<T, Ref, Ptr> self;
 
         node* _pnode; // 成员变量
         // 构造函数
         _list_iterator(node* pnode)
-                :_pnode(pnode)
+            :_pnode(pnode)
         {}
 
         // 拷贝构造、operator=、析构我们不写，编译器默认生成的就可以用
@@ -89,28 +91,33 @@ namespace ljx
     };
 
     template<class T>
-    class list
-    {
+    class list {
         typedef _list_node<T> node;
-    public:
-        typedef _list_iterator<T> iterator;
-        typedef _list_iterator<T> const_iterator;
 
-        iterator begin()
-        {
+    public:
+        typedef _list_iterator<T, T &, T *> iterator;
+        typedef _list_iterator<T, const T &, const T *> const_iterator;
+
+        iterator begin() {
             // 构造一个匿名对象返回
             // 这里的返回值是一个iterator对象
             return iterator(_head->_next);
         }
 
-        iterator end()
-        {
+        const_iterator begin() const {
+            return const_iterator(_head->_next);
+        }
+
+        iterator end() {
             return iterator(_head);
         }
 
+        const_iterator end() const {
+            return const_iterator(_head);
+        }
+
         // 构造函数
-        list()
-        {
+        list() {
             // 构造一个匿名对象传过去
             _head = new node;
             _head->_next = _head;
@@ -118,10 +125,9 @@ namespace ljx
         }
 
         // 尾插
-        void push_back(const T& x)
-        {
-            node* newnode = new node(x);
-            node* tail = _head->_prev;
+        void push_back(const T &x) {
+            node *newnode = new node(x);
+            node *tail = _head->_prev;
             // head tail newnode
             tail->_next = newnode;
             newnode->_prev = tail;
@@ -129,10 +135,20 @@ namespace ljx
             _head->_prev = newnode;
         }
 
-
     private:
         node* _head;
     };
+
+    void PrintList(const list<int> &lt)
+    {
+        list<int>::const_iterator it = lt.begin();
+        while (it != lt.end())
+        {
+            cout << *it << " ";
+            ++it;
+        }
+        cout << endl;
+    }
 
     // 测试
     void test_list1()
@@ -158,6 +174,8 @@ namespace ljx
             cout << e << " ";
         }
         cout << endl;
+
+        PrintList(lt);
     }
 }
 
