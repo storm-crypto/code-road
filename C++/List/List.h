@@ -22,9 +22,9 @@ namespace ljx
 
         // 构造函数
         _list_node(const T val = T())
-                :_val(val)
-                , _prev(nullptr)
-                , _next(nullptr)
+            :_val(val)
+            , _prev(nullptr)
+            , _next(nullptr)
         {}
     };
 
@@ -42,7 +42,7 @@ namespace ljx
         {}
 
         // 重载operator*
-        T operator*()
+        T& operator*()
         {
             return _pnode->_val;
         }
@@ -120,6 +120,13 @@ namespace ljx
         {
             cout << *it << " ";
             ++it;
+        }
+        cout << endl;
+
+        // 范围for
+        for (auto e : lt)
+        {
+            cout << e << " ";
         }
         cout << endl;
     }
