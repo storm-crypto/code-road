@@ -155,6 +155,21 @@ namespace ljx
 			}
 		}
 
+		// 传统写法
+		list<T>& operator=(const list<T>& lt)
+		{
+        	if (this != lt)
+			{
+        		clear();
+				for (const auto& e : lt)
+				{
+					push_back(e);
+				}
+			}
+
+			return *this;
+		}
+
         // 析构函数
         ~list()
 		{
