@@ -142,6 +142,21 @@ namespace ljx
             _head->_prev = _head;
         }
 
+        // Îö¹¹º¯Êý
+        ~list()
+		{
+
+		}
+
+		void clear()
+		{
+			iterator it = begin();
+			while (it != end())
+			{
+				it = erase(it);
+			}
+		}
+
         // Î²²å
         void push_back(const T &x)
         {
