@@ -145,7 +145,9 @@ namespace ljx
         // Îö¹¹º¯Êý
         ~list()
 		{
-
+			clear();
+			delete _head;
+			_head = nullptr;
 		}
 
 		void clear()
