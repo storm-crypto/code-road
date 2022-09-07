@@ -142,6 +142,19 @@ namespace ljx
             _head->_prev = _head;
         }
 
+        // 拷贝构造
+        // copy(lt)
+        list(const list<T>& lt)
+		{
+        	_head = new node;
+        	_head->_next = _head;
+        	_head->_prev = _head;
+        	for (const auto& e : lt)
+			{
+        		push_back(e);
+			}
+		}
+
         // 析构函数
         ~list()
 		{
@@ -310,8 +323,10 @@ namespace ljx
 		lt.push_back(3);
 		lt.push_back(4);
 
-		lt.clear();
 		PrintList(lt);
+
+		list<int> copy(lt);
+		PrintList(copy);
 	}
 }
 
