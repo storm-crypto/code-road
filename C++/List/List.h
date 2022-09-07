@@ -41,21 +41,49 @@ namespace ljx
                 :_pnode(pnode)
         {}
 
+        // 拷贝构造、operator=、析构我们不写，编译器默认生成的就可以用
+
         // 重载operator*
         T& operator*()
         {
             return _pnode->_val;
         }
 
-        bool operator!=(const self& s)
+        bool operator!=(const self& s) const
         {
             return _pnode != s._pnode;
+        }
+
+        bool operator==(const self& s) const
+        {
+            return _pnode == s._pnode;
         }
 
         self& operator++()
         {
             _pnode = _pnode->_next;
             return *this;
+        }
+
+        // 后置++
+        self operator++(int)
+        {
+            self tmp(*this);
+            _pnode = _pnode->_next;
+            return tmp;
+        }
+
+        self& operator--()
+        {
+            _pnode = _pnode->_prev;
+            return *this;
+        }
+
+        self operator--(int)
+        {
+            self tmp(*this);
+            _pnode = _pnode->_prev;
+            return tmp;
         }
 
     };
@@ -66,6 +94,7 @@ namespace ljx
         typedef _list_node<T> node;
     public:
         typedef _list_iterator<T> iterator;
+        typedef _list_iterator<T> const_iterator;
 
         iterator begin()
         {
