@@ -103,11 +103,21 @@ void test_list3()
     list<int> lt;
     lt.push_back(1);
     lt.push_back(2);
+    lt.push_back(2);
+    lt.push_back(2);
+    lt.push_back(2);
     lt.push_back(3);
     lt.push_back(4);
+    lt.push_back(2);
+    lt.push_back(2);
 
     lt.remove(3);
     lt.remove(30);
+    PrintContainer(lt);
+
+    // ШЅжи
+    lt.sort();
+    lt.unique();
     PrintContainer(lt);
 }
 
