@@ -8,8 +8,8 @@
 namespace ljx
 {
     // 定义头节点
+    // 用struct，因为struct修饰的结构体都默认是public类型的
     template<class T>
-    // struct和class的区别
     struct _list_node
     {
         T _val;
@@ -17,11 +17,28 @@ namespace ljx
         _list_node<T>* _prev;
     };
 
+    // 定义迭代器
+    template<class T>
+    struct _list_iterator
+    {
+        typedef _list_node<T> node;
+
+        node* _pnode;
+        // 构造函数
+        _list_iterator(node* pnode)
+            :_pnode(pnode)
+        {}
+
+
+    };
+
     template<class T>
     class list
     {
         typedef _list_node<T> node;
     public:
+        typedef _list_iterator<T> iterator;
+
         // 构造函数
         list()
         {
