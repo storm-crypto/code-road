@@ -40,10 +40,27 @@ void test_queue()
 	cout << endl;
 }
 
+void test_priority_queue()
+{
+	priority_queue<int> pq;
+	pq.push(3);
+	pq.push(5);
+	pq.push(6);
+	pq.push(1);
+	pq.push(4);
+
+	while (!pq.empty())
+	{
+		cout << pq.top() << " ";
+		pq.pop();
+	}
+};
+
 int main()
 {
 //	test_stack();
 	test_queue();
+	test_priority_queue();
 
 	return 0;
 }
