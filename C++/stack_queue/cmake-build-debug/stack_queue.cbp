@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/05code/2022/code-road/C++/stack_queue/Stack.h">
+			<Option target="stack_queue"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/stack_queue/main.cpp">
 			<Option target="stack_queue"/>
 		</Unit>
