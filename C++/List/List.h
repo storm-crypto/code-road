@@ -156,7 +156,7 @@ namespace ljx
 		}
 
 		// 传统写法
-		list<T>& operator=(const list<T>& lt)
+		/*list<T>& operator=(const list<T>& lt)
 		{
         	if (this != lt)
 			{
@@ -166,6 +166,14 @@ namespace ljx
 					push_back(e);
 				}
 			}
+
+			return *this;
+		}*/
+
+		// 现代写法
+		list<T>& operator=(list<T> lt)
+		{
+			swap(_head, lt._head);
 
 			return *this;
 		}
