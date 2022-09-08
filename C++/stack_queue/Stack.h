@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <list>
+#include <deque>
 
 
 namespace ljx
@@ -26,7 +27,7 @@ namespace ljx
 //	};
 
 	// ÈİÆ÷ÊÊÅäÆ÷
-	template<class T, class Container = std::vector<T>>
+	template<class T, class Container = std::deque<T>>
 	class stack
 	{
 	public:

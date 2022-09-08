@@ -2,6 +2,7 @@
 #include <stack>
 #include <queue>
 #include "Stack.h"
+#include "Queue.h"
 using namespace std;
 
 
@@ -24,7 +25,8 @@ void test_stack()
 
 void test_queue()
 {
-	queue<int> q;
+//	queue<int> q;
+	ljx::queue<int> q;
 	q.push(1);
 	q.push(2);
 	q.push(3);
@@ -40,8 +42,8 @@ void test_queue()
 
 int main()
 {
-	test_stack();
-
+//	test_stack();
+	test_queue();
 
 	return 0;
 }

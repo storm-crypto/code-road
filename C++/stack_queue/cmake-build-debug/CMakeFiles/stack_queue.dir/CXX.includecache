@@ -6,10 +6,16 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/C++/stack_queue/Queue.h
+deque
+-
+
 D:/05code/2022/code-road/C++/stack_queue/Stack.h
 vector
 -
 list
+-
+deque
 -
 
 D:/05code/2022/code-road/C++/stack_queue/main.cpp
@@ -21,4 +27,6 @@ queue
 -
 Stack.h
 D:/05code/2022/code-road/C++/stack_queue/Stack.h
+Queue.h
+D:/05code/2022/code-road/C++/stack_queue/Queue.h
 
