@@ -7,7 +7,7 @@
 
 namespace ljx
 {
-	template<class T, class Container = vector<T>>
+	template<class T, class Container = std::vector<T>>
 	class priority_queue
 	{
 	public:
@@ -37,7 +37,7 @@ namespace ljx
 
 		void AdjustDown(int parent)
 		{
-			child = parent * 2 + 1;
+			int child = parent * 2 + 1;
 			while (child < _con.size())
 			{
 				// 选出左右孩子中小的那个
@@ -69,7 +69,17 @@ namespace ljx
 
 		T top()
 		{
+			return _con[0];
+		}
 
+		size_t size()
+		{
+			return _con.size();
+		}
+
+		bool empty()
+		{
+			return _con.empty();
 		}
 
 	private:

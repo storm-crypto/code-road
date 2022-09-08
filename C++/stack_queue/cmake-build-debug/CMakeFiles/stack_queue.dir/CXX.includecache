@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/C++/stack_queue/PriorityQueue.h
+
 D:/05code/2022/code-road/C++/stack_queue/Queue.h
 deque
 -
@@ -29,4 +31,6 @@ Stack.h
 D:/05code/2022/code-road/C++/stack_queue/Stack.h
 Queue.h
 D:/05code/2022/code-road/C++/stack_queue/Queue.h
+PriorityQueue.h
+D:/05code/2022/code-road/C++/stack_queue/PriorityQueue.h
 
