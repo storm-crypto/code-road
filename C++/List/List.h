@@ -348,7 +348,10 @@ namespace ljx
 
 		PrintList(lt);
 
-		list<int> copy(lt);
+//		list<int> copy(lt);
+//		PrintList(copy);
+		list<int> copy;
+		copy = lt;
 		PrintList(copy);
 	}
 }
