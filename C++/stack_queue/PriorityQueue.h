@@ -35,9 +35,36 @@ namespace ljx
 			AdjustUp(_con.size() - 1);
 		}
 
+		void AdjustDown(int parent)
+		{
+			child = parent * 2 + 1;
+			while (child < _con.size())
+			{
+				// 选出左右孩子中小的那个
+				if (child + 1  < _con.size() && _con[child] > _con[child + 1])
+				{
+					++child;
+				}
+
+				if (_con[parent] > _con[child])
+				{
+					swap(_con[parent], _con[child]);
+					parent = child;
+					child = parent * 2 + 1;
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+
 		void pop()
 		{
+			swap(_con[0], _con[_con.size() - 1]);
+			_con.pop_back();
 
+			AdjustDown(0);
 		}
 
 		T top()
