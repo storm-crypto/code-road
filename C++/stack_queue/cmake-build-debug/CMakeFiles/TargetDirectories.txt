@@ -1,0 +1,3 @@
+D:/05code/2022/code-road/C++/stack_queue/cmake-build-debug/CMakeFiles/stack_queue.dir
+D:/05code/2022/code-road/C++/stack_queue/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/05code/2022/code-road/C++/stack_queue/cmake-build-debug/CMakeFiles/rebuild_cache.dir
