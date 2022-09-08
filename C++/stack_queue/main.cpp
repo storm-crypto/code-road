@@ -72,6 +72,15 @@ struct LessInt
 	}
 };
 
+template<class T>
+struct Less
+{
+	bool operator()(const T& l, const T& r)
+	{
+		return l < r;
+	}
+};
+
 // 函数跟上面实现的东西一样，对比学习一下：
 bool LessFunc1(int l, int r)
 {
@@ -87,6 +96,9 @@ int main()
 
 	LessInt LessFunc2;
 	cout << LessFunc2(1, 2) << endl;
+
+	Less<double> less;
+	cout << less(3.3, 2.3) << endl;
 
 	return 0;
 }
