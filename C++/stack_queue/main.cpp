@@ -60,13 +60,33 @@ void test_priority_queue()
 		cout << pq.top() << " ";
 		pq.pop();
 	}
+	cout << endl;
 };
+
+// 仿函数 -- 函数对象 	类的对象可以像函数一样去使用
+struct LessInt
+{
+	bool operator()(int l, int r)
+	{
+		return l < r;
+	}
+};
+
+// 函数跟上面实现的东西一样，对比学习一下：
+bool LessFunc1(int l, int r)
+{
+	return l < r;
+}
 
 int main()
 {
 //	test_stack();
-	test_queue();
-	test_priority_queue();
+//	test_queue();
+//	test_priority_queue();
+	cout << LessFunc1(1, 2) << endl;
+
+	LessInt LessFunc2;
+	cout << LessFunc2(1, 2) << endl;
 
 	return 0;
 }
