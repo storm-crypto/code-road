@@ -42,7 +42,10 @@ void test_queue()
 
 void test_priority_queue()
 {
-	priority_queue<int> pq;
+	// 默认是大堆，默认大的优先级优先，less
+//	priority_queue<int> pq;
+	// 变成小堆，小的优先级高，怎么处理 greater
+	priority_queue<int, vector<int>, greater<int>> pq;
 	pq.push(3);
 	pq.push(5);
 	pq.push(6);
@@ -64,3 +67,5 @@ int main()
 
 	return 0;
 }
+
+
