@@ -1,11 +1,14 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include "Stack.h"
 using namespace std;
+
+
 
 void test_stack()
 {
-	stack<int> st;
+	ljx::stack<int> st;
 	st.push(1);
 	st.push(2);
 	st.push(3);

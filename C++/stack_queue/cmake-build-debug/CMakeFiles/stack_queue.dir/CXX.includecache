@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/C++/stack_queue/Stack.h
+vector
+-
+list
+-
+
 D:/05code/2022/code-road/C++/stack_queue/main.cpp
 iostream
 -
@@ -13,4 +19,6 @@ stack
 -
 queue
 -
+Stack.h
+D:/05code/2022/code-road/C++/stack_queue/Stack.h
 
