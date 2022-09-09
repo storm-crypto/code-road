@@ -3,6 +3,7 @@
 #include <queue>
 #include "Stack.h"
 #include "Queue.h"
+#include <deque>
 
 using namespace std;
 
@@ -92,18 +93,50 @@ bool LessFunc1(int l, int r)
 	return l < r;
 }
 
+void test_deque()
+{
+	deque<int> dq;
+	// Î²²åÍ·²å
+	dq.push_back(1);
+	dq.push_back(2);
+	dq.push_back(3);
+	dq.push_back(4);
+	dq.push_front(1);
+	dq.push_front(2);
+	dq.push_front(3);
+	dq.push_front(4);
+
+	// ±éÀú
+	for (size_t i = 0; i < dq.size(); i++)
+	{
+		cout << dq[i] << " ";
+	}
+	cout << endl;
+
+	deque<int>::iterator it = dq.begin();
+	while (it != dq.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+
+}
+
 int main()
 {
 //	test_stack();
 //	test_queue();
-	test_priority_queue();
-	cout << LessFunc1(1, 2) << endl;
+//	test_priority_queue();
+//	cout << LessFunc1(1, 2) << endl;
+//
+//	LessInt LessFunc2;
+//	cout << LessFunc2(1, 2) << endl;
+//
+//	Less<double> less;
+//	cout << less(3.3, 2.3) << endl;
 
-	LessInt LessFunc2;
-	cout << LessFunc2(1, 2) << endl;
-
-	Less<double> less;
-	cout << less(3.3, 2.3) << endl;
+	test_deque();
 
 	return 0;
 }
