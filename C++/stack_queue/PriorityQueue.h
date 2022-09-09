@@ -7,6 +7,24 @@
 
 namespace ljx
 {
+	template<class T>
+	struct less
+	{
+		bool operator()(int l, int r)
+		{
+			return l < r;
+		}
+	};
+
+	template<class T>
+	struct greater
+	{
+		bool operator()(int l, int r)
+		{
+			return l > r;
+		}
+	};
+
 	template<class T, class Container = vector<T>, class Compare = less<T>>
 	class priority_queue
 	{
