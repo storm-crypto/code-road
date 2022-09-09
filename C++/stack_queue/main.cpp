@@ -91,7 +91,7 @@ int main()
 {
 //	test_stack();
 //	test_queue();
-//	test_priority_queue();
+	test_priority_queue();
 	cout << LessFunc1(1, 2) << endl;
 
 	LessInt LessFunc2;
