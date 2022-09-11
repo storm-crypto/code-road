@@ -118,12 +118,9 @@ int main()
 //	string buff = ssm.str();  // 获取ssm，类比上面的buff
 //	cout << buff;
 
-	stringstream ssm;
-	ssm.str("127.0.0.1 90");
+	stringstream ssm("127.0.0.1 90");
 	ServerInfo rinfo;
 	ssm >> rinfo._ip >> rinfo._port;
-
-	return 0;
 
 	return 0;
 }
