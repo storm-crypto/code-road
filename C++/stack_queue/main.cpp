@@ -123,22 +123,40 @@ void test_deque()
 
 }
 
+//int main()
+//{
+////	test_stack();
+////	test_queue();
+////	test_priority_queue();
+////	cout << LessFunc1(1, 2) << endl;
+////
+////	LessInt LessFunc2;
+////	cout << LessFunc2(1, 2) << endl;
+////
+////	Less<double> less;
+////	cout << less(3.3, 2.3) << endl;
+//
+//	test_deque();
+//
+//	// 今天摆烂了，没有学习，但是github不能断啊，所以就来个commit吧
+//
+//	return 0;
+//}
+
+//#define N 100
+
+// 定义一个静态的数组
+template<class T, size_t N>
+class Array
+{
+private:
+	T _a[N];
+};
+
 int main()
 {
-//	test_stack();
-//	test_queue();
-//	test_priority_queue();
-//	cout << LessFunc1(1, 2) << endl;
-//
-//	LessInt LessFunc2;
-//	cout << LessFunc2(1, 2) << endl;
-//
-//	Less<double> less;
-//	cout << less(3.3, 2.3) << endl;
-
-	test_deque();
-
-	// 今天摆烂了，没有学习，但是github不能断啊，所以就来个commit吧
+	Array<int, 100> arr1;
+	Array<int, 1000> arr2;
 
 	return 0;
 }
