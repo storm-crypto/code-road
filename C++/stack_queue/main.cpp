@@ -257,14 +257,14 @@ void test_deque()
 //	return 0;
 //}
 
-int main()
-{
-	string line;
-	getline(cin, line);
-
-	cout << line;
-
-	return 0;
-}
+//int main()
+//{
+//	string line;
+//	getline(cin, line);
+//
+//	cout << line;
+//
+//	return 0;
+//}
 
 
