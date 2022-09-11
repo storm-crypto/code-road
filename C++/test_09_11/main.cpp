@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstring>
 
 using namespace std;
@@ -81,22 +82,36 @@ private:
 	string _filename;
 };
 
+//int main()
+//{
+//	ServerInfo rinfo;
+//	ServerInfo winfo = {"192.0.0.1", 80};
+//	// 读写 二进制
+//	//ConfigManger cfbin("config.bin");
+//	//cfbin.WriteBin(winfo);
+//
+//	// 将文件中的数据读到rinfo中
+//	//cfbin.ReadBin(rinfo);
+//
+//	// 读写 文本
+////	ConfigManger cfbin("config.txt");
+////	cfbin.WriteTxt(winfo);
+//
+//	ConfigManger cftxt("config.txt");
+//	cftxt.ReadTxt(rinfo);
+//
+//}
+
 int main()
 {
+	ServerInfo info = {"192.0.0.1", 8000};
+	char buff[128];
+	// 序列化
+	sprintf(buff, "%s %d", info._ip, info._port);
+
+	// 反序列化
 	ServerInfo rinfo;
-	ServerInfo winfo = {"192.0.0.1", 80};
-	// 读写 二进制
-	//ConfigManger cfbin("config.bin");
-	//cfbin.WriteBin(winfo);
+	sscanf(buff, "%s%d", rinfo._ip, &rinfo._port);
 
-	// 将文件中的数据读到rinfo中
-	//cfbin.ReadBin(rinfo);
-
-	// 读写 文本
-//	ConfigManger cfbin("config.txt");
-//	cfbin.WriteTxt(winfo);
-
-	ConfigManger cftxt("config.txt");
-	cftxt.ReadTxt(rinfo);
-
+	return 0;
 }
