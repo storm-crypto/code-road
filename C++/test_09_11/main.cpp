@@ -56,10 +56,14 @@ private:
 
 int main()
 {
+	ServerInfo rinfo;
 	ServerInfo winfo = {"192.0.0.1", 80};
 	ConfigManger cfbin("config.bin");
 	// 读写 二进制
-	cfbin.WriteBin(winfo);
+	//cfbin.WriteBin(winfo);
+
+	// 将文件中的数据读到rinfo中
+	cfbin.ReadBin(rinfo);
 
 	// 读写 文本
 }
