@@ -62,6 +62,15 @@ public:
 		ofs.write(portstr.c_str(), portstr.size());
 	}
 
+	void ReadTxt(ServerInfo& info)
+	{
+		ifstream ifs(_filename);
+		ifs.getline(info._ip, 20);
+
+		char portbuff[20];
+		ifs.getline(portbuff, 20);
+		info._port = stoi(portbuff);
+	}
 
 
 private:
@@ -80,7 +89,10 @@ int main()
 	//cfbin.ReadBin(rinfo);
 
 	// ¶ÁÐ´ ÎÄ±¾
-	ConfigManger cfbin("config.txt");
-	cfbin.WriteTxt(winfo);
+//	ConfigManger cfbin("config.txt");
+//	cfbin.WriteTxt(winfo);
+
+	ConfigManger cftxt("config.txt");
+	cftxt.ReadTxt(rinfo);
 
 }
