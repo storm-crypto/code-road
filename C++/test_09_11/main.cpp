@@ -55,21 +55,25 @@ public:
 
 	void WriteTxt(const ServerInfo& info)
 	{
+//		ofstream ofs(_filename);
+//		ofs.write(info._ip, strlen(info._ip));
+//		ofs.put('\n');
+//		string portstr = to_string(info._port);
+//		ofs.write(portstr.c_str(), portstr.size());
 		ofstream ofs(_filename);
-		ofs.write(info._ip, strlen(info._ip));
-		ofs.put('\n');
-		string portstr = to_string(info._port);
-		ofs.write(portstr.c_str(), portstr.size());
+		ofs << info._ip << "\n" << info._port;
 	}
 
 	void ReadTxt(ServerInfo& info)
 	{
+//		ifstream ifs(_filename);
+//		ifs.getline(info._ip, 20);
+//
+//		char portbuff[20];
+//		ifs.getline(portbuff, 20);
+//		info._port = stoi(portbuff);
 		ifstream ifs(_filename);
-		ifs.getline(info._ip, 20);
-
-		char portbuff[20];
-		ifs.getline(portbuff, 20);
-		info._port = stoi(portbuff);
+		ifs >> info._ip >> info._port;
 	}
 
 
