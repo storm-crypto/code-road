@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -37,6 +38,7 @@ struct ServerInfo
 struct ConfigManger
 {
 public:
+	// 构造函数
 	ConfigManger(const char* filename)
 		:_filename(filename)
 	{}
@@ -50,6 +52,18 @@ public:
 		ofstream ofs(_filename);
 		ofs.write((char*)&info, sizeof(info));
 	}
+
+	void WriteTxt(const ServerInfo& info)
+	{
+		ofstream ofs(_filename);
+		ofs.write(info._ip, strlen(info._ip));
+		ofs.put('\n');
+		string portstr = to_string(info._port);
+		ofs.write(portstr.c_str(), portstr.size());
+	}
+
+
+
 private:
 	string _filename;
 };
@@ -58,12 +72,15 @@ int main()
 {
 	ServerInfo rinfo;
 	ServerInfo winfo = {"192.0.0.1", 80};
-	ConfigManger cfbin("config.bin");
 	// 读写 二进制
+	//ConfigManger cfbin("config.bin");
 	//cfbin.WriteBin(winfo);
 
 	// 将文件中的数据读到rinfo中
-	cfbin.ReadBin(rinfo);
+	//cfbin.ReadBin(rinfo);
 
 	// 读写 文本
+	ConfigManger cfbin("config.txt");
+	cfbin.WriteTxt(winfo);
+
 }
