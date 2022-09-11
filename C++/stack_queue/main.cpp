@@ -216,10 +216,22 @@ public:
 	}
 };
 
+// 偏特化，将第二个参数特化成int
+template<class T1>
+class Data<T1, int>
+{
+public:
+	Data()
+	{
+		cout << "Data<T1, int>" << endl;
+	}
+};
+
 int main()
 {
 	Data<int, int> d1;
 	Data<int, double> d2;
+	Data<double, int> d3;
 
 	return 0;
 }
