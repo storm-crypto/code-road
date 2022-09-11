@@ -162,31 +162,64 @@ void test_deque()
 //	return 0;
 //}
 
-// 模板的特化
-template<class T>
-bool IsEqual(const T& left, const T& right)
-{
-	return left == right;
-}
+//// 模板的特化
+//template<class T>
+//bool IsEqual(const T& left, const T& right)
+//{
+//	return left == right;
+//}
+//
+//// 针对字符串类型要特殊化处理 -- 写一份函数模板的特殊出来
+//bool IsEqual(const char* left, const char* right)
+//{
+//	return strcmp(left, right) == 0;
+//}
+//
+//int main()
+//{
+//	cout << IsEqual(1, 2) << endl;
+//	cout << IsEqual(1.1, 1.1) << endl;
+//
+//	char p1[] = "hello";
+//	char p2[] = "hello";
+//	cout << IsEqual(p1, p2) << endl;
+//
+//	const char* p3 = "hello";
+//	const char* p4 = "hello";
+//	cout << IsEqual(p3, p4) << endl;
+//
+//	return 0;
+//}
 
-// 针对字符串类型要特殊化处理 -- 写一份函数模板的特殊出来
-bool IsEqual(const char* left, const char* right)
+// 类模板的特化：
+template<class T1, class T2>
+class Data
 {
-	return strcmp(left, right) == 0;
-}
+public:
+	Data()
+	{
+		cout << "Data<T1, T2>" << endl;
+	}
+private:
+	T1 _d1;
+	T2 _d2;
+};
+
+// 特化：
+template<>
+class Data<int, int>
+{
+public:
+	Data()
+	{
+		cout << "Data<int, int>" << endl;
+	}
+};
 
 int main()
 {
-	cout << IsEqual(1, 2) << endl;
-	cout << IsEqual(1.1, 1.1) << endl;
-
-	char p1[] = "hello";
-	char p2[] = "hello";
-	cout << IsEqual(p1, p2) << endl;
-
-	const char* p3 = "hello";
-	const char* p4 = "hello";
-	cout << IsEqual(p3, p4) << endl;
+	Data<int, int> d1;
+	Data<int, double> d2;
 
 	return 0;
 }
