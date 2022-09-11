@@ -172,6 +172,17 @@ public:
 		return *this;
 	}
 
+	// 析构函数
+	~Student()
+	{
+//		Person::~Person();
+
+		//清理自己的
+		cout << "~Student()" << endl;
+		// 为了保证析构时，保持先子再父的后进先出的顺序析构
+		// 子类析构函数完成后，会自动调用父类的析构函数
+	}
+
 private:
 	int _id;
 };
