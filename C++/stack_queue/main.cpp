@@ -146,7 +146,7 @@ void test_deque()
 //#define N 100
 
 // 定义一个静态的数组
-template<class T, size_t N>
+template<class T = int, size_t N = 8>
 class Array
 {
 private:
