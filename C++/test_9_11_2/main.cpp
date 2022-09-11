@@ -158,6 +158,20 @@ public:
 		cout << "Student(const Student& s)" << endl;
 	}
 
+	// 赋值拷贝
+	Student& operator=(const Student& s)
+	{
+		if (this != &s)
+		{
+			Person::operator=(s); // 父类的自己切
+			_id = s._id;
+		}
+
+		cout << "Student& operator=(const Student& s)" << endl;
+
+		return *this;
+	}
+
 private:
 	int _id;
 };
