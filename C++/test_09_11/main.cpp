@@ -113,10 +113,17 @@ int main()
 //	ServerInfo rinfo;
 //	sscanf(buff, "%s%d", rinfo._ip, &rinfo._port);
 
+//	stringstream ssm;
+//	ssm << info._ip << " " << info._port;
+//	string buff = ssm.str();  // 获取ssm，类比上面的buff
+//	cout << buff;
+
 	stringstream ssm;
-	ssm << info._ip << " " << info._port;
-	string buff = ssm.str();  // 获取ssm，类比上面的buff
-	cout << buff;
+	ssm.str("127.0.0.1 90");
+	ServerInfo rinfo;
+	ssm >> rinfo._ip >> rinfo._port;
+
+	return 0;
 
 	return 0;
 }
