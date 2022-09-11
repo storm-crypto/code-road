@@ -4,6 +4,7 @@
 #include "Stack.h"
 #include "Queue.h"
 #include <deque>
+#include <cstring>
 
 using namespace std;
 
@@ -146,17 +147,46 @@ void test_deque()
 //#define N 100
 
 // 定义一个静态的数组
-template<class T = int, size_t N = 8>
-class Array
+//template<class T = int, size_t N = 8>
+//class Array
+//{
+//private:
+//	T _a[N];
+//};
+//
+//int main()
+//{
+//	Array<int, 100> arr1;
+//	Array<int, 1000> arr2;
+//
+//	return 0;
+//}
+
+// 模板的特化
+template<class T>
+bool IsEqual(const T& left, const T& right)
 {
-private:
-	T _a[N];
-};
+	return left == right;
+}
+
+// 针对字符串类型要特殊化处理 -- 写一份函数模板的特殊出来
+bool IsEqual(const char* left, const char* right)
+{
+	return strcmp(left, right) == 0;
+}
 
 int main()
 {
-	Array<int, 100> arr1;
-	Array<int, 1000> arr2;
+	cout << IsEqual(1, 2) << endl;
+	cout << IsEqual(1.1, 1.1) << endl;
+
+	char p1[] = "hello";
+	char p2[] = "hello";
+	cout << IsEqual(p1, p2) << endl;
+
+	const char* p3 = "hello";
+	const char* p4 = "hello";
+	cout << IsEqual(p3, p4) << endl;
 
 	return 0;
 }
