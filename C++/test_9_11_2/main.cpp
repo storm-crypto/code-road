@@ -150,13 +150,23 @@ public:
 		cout << "Student()" << endl;
 	}
 
+	// 拷贝构造
+	Student(const Student& s)
+		:Person(s)  // s传递给Person& s是一个切片行为
+		, _id(s._id)
+	{
+		cout << "Student(const Student& s)" << endl;
+	}
+
 private:
 	int _id;
 };
 
 int main()
 {
-	Student s("张三", 11);
+	Student s1("张三", 11);
+
+	Student s2(s1);
 
 	return 0;
 }
