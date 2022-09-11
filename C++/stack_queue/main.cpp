@@ -227,6 +227,17 @@ public:
 	}
 };
 
+// 偏特化 指定如果模板参数是指针，就走我
+template<class T1, class T2>
+class Data<T1*, T2*>
+{
+public:
+	Data()
+	{
+		cout << "Data<T1*, T2*>" << endl;
+	}
+};
+
 int main()
 {
 	Data<int, int> d1;
