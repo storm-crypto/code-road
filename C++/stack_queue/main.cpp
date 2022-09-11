@@ -191,68 +191,78 @@ void test_deque()
 //	return 0;
 //}
 
-// 类模板的特化：
-template<class T1, class T2>
-class Data
-{
-public:
-	Data()
-	{
-		cout << "Data<T1, T2>" << endl;
-	}
-private:
-	T1 _d1;
-	T2 _d2;
-};
-
-// 特化：
-template<>
-class Data<int, int>
-{
-public:
-	Data()
-	{
-		cout << "Data<int, int>" << endl;
-	}
-};
-
-// 偏特化，将第二个参数特化成int
-template<class T1>
-class Data<T1, int>
-{
-public:
-	Data()
-	{
-		cout << "Data<T1, int>" << endl;
-	}
-};
-
-// 偏特化 指定如果模板参数是指针，就走我
-template<class T1, class T2>
-class Data<T1*, T2*>
-{
-public:
-	Data()
-	{
-		cout << "Data<T1*, T2*>" << endl;
-	}
-};
-
-template<class T1, class T2>
-class Data<T1&, T2&>
-{
-public:
-	Data()
-	{
-		cout << "Data<T1&, T2&>" << endl;
-	}
-};
+//// 类模板的特化：
+//template<class T1, class T2>
+//class Data
+//{
+//public:
+//	Data()
+//	{
+//		cout << "Data<T1, T2>" << endl;
+//	}
+//private:
+//	T1 _d1;
+//	T2 _d2;
+//};
+//
+//// 特化：
+//template<>
+//class Data<int, int>
+//{
+//public:
+//	Data()
+//	{
+//		cout << "Data<int, int>" << endl;
+//	}
+//};
+//
+//// 偏特化，将第二个参数特化成int
+//template<class T1>
+//class Data<T1, int>
+//{
+//public:
+//	Data()
+//	{
+//		cout << "Data<T1, int>" << endl;
+//	}
+//};
+//
+//// 偏特化 指定如果模板参数是指针，就走我
+//template<class T1, class T2>
+//class Data<T1*, T2*>
+//{
+//public:
+//	Data()
+//	{
+//		cout << "Data<T1*, T2*>" << endl;
+//	}
+//};
+//
+//template<class T1, class T2>
+//class Data<T1&, T2&>
+//{
+//public:
+//	Data()
+//	{
+//		cout << "Data<T1&, T2&>" << endl;
+//	}
+//};
+//
+//int main()
+//{
+//	Data<int, int> d1;
+//	Data<int, double> d2;
+//	Data<double, int> d3;
+//
+//	return 0;
+//}
 
 int main()
 {
-	Data<int, int> d1;
-	Data<int, double> d2;
-	Data<double, int> d3;
+	string line;
+	getline(cin, line);
+
+	cout << line;
 
 	return 0;
 }
