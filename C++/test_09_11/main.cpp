@@ -105,13 +105,18 @@ private:
 int main()
 {
 	ServerInfo info = {"192.0.0.1", 8000};
-	char buff[128];
-	// 序列化
-	sprintf(buff, "%s %d", info._ip, info._port);
+//	char buff[128];
+//	// 序列化
+//	sprintf(buff, "%s %d", info._ip, info._port);
+//
+//	// 反序列化
+//	ServerInfo rinfo;
+//	sscanf(buff, "%s%d", rinfo._ip, &rinfo._port);
 
-	// 反序列化
-	ServerInfo rinfo;
-	sscanf(buff, "%s%d", rinfo._ip, &rinfo._port);
+	stringstream ssm;
+	ssm << info._ip << " " << info._port;
+	string buff = ssm.str();  // 获取ssm，类比上面的buff
+	cout << buff;
 
 	return 0;
 }
