@@ -180,3 +180,19 @@ public:
 	// ´¿Ðéº¯Êý
 	virtual void Drive() = 0;
 };
+
+class Benz : public Car
+{
+public:
+	virtual void Drive()
+	{
+		cout << "Benz ÊæÊÊ" << endl;
+	}
+};
+
+int main()
+{
+	Benz b;
+
+	return 0;
+}
