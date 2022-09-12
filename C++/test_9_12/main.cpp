@@ -173,26 +173,49 @@ using namespace std;
 //	return 0;
 //}
 
-// 抽象类
-class Car
-{
-public:
-	// 纯虚函数
-	virtual void Drive() = 0;
-};
+//// 抽象类
+//class Car
+//{
+//public:
+//	// 纯虚函数
+//	virtual void Drive() = 0;
+//};
+//
+//class Benz : public Car
+//{
+//public:
+//	virtual void Drive()
+//	{
+//		cout << "Benz 舒适" << endl;
+//	}
+//};
+//
+//int main()
+//{
+//	Benz b;
+//
+//	return 0;
+//}
 
-class Benz : public Car
+// 虚函数表
+class Base
 {
 public:
-	virtual void Drive()
+	virtual void Func1()
 	{
-		cout << "Benz 舒适" << endl;
+		cout << "Func1()" << endl;
 	}
+
+	virtual void Func2()
+	{
+		cout << "Func1()" << endl;
+	}
+
+	void Func3()
+	{
+		cout << "Func1()" << endl;
+	}
+
+private:
+	int _b = 1;
 };
-
-int main()
-{
-	Benz b;
-
-	return 0;
-}
