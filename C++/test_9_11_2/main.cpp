@@ -110,88 +110,125 @@ using namespace std;
 //	b.fun(10);
 //}
 
-class Person
+//class Person
+//{
+//public:
+//	Person(const char *name = "peter")
+//		:_name(name)
+//	{
+//		cout << "Person()" << endl;
+//	}
+//	Person(const Person &p)
+//		: _name(p._name)
+//	{
+//		cout << "Person(const Person& p)" << endl;
+//	}
+//	Person& operator=(const Person &p)
+//	{
+//		cout << "Person operator=(const Person& p)" << endl;
+//		if (this != &p)
+//			_name = p._name;
+//		return *this;
+//	}
+//	~Person()
+//	{
+//		cout << "~Person()" << endl;
+//	}
+//protected :
+//	string _name; // 姓名'
+//};
+//
+//class Student: public Person
+//{
+//public:
+//	Student(const char* name, int id)
+//		: Person(name)
+//		, _id(id)
+//	{
+//		// 调用父类构造函数初始化继承的那部分
+//		// 再初始化自己的成员
+//		cout << "Student()" << endl;
+//	}
+//
+//	// 拷贝构造
+//	Student(const Student& s)
+//		:Person(s)  // s传递给Person& s是一个切片行为
+//		, _id(s._id)
+//	{
+//		cout << "Student(const Student& s)" << endl;
+//	}
+//
+//	// 赋值拷贝
+//	Student& operator=(const Student& s)
+//	{
+//		if (this != &s)
+//		{
+//			Person::operator=(s); // 父类的自己切
+//			_id = s._id;
+//		}
+//
+//		cout << "Student& operator=(const Student& s)" << endl;
+//
+//		return *this;
+//	}
+//
+//	// 析构函数
+//	~Student()
+//	{
+////		Person::~Person();
+//
+//		//清理自己的
+//		cout << "~Student()" << endl;
+//		// 为了保证析构时，保持先子再父的后进先出的顺序析构
+//		// 子类析构函数完成后，会自动调用父类的析构函数
+//	}
+//
+//private:
+//	int _id;
+//};
+//
+//int main()
+//{
+//	Student s1("张三", 11);
+//
+//	Student s2(s1);
+//
+//	return 0;
+//}
+
+// 虚继承的原理
+class A
 {
 public:
-	Person(const char *name = "peter")
-		:_name(name)
-	{
-		cout << "Person()" << endl;
-	}
-	Person(const Person &p)
-		: _name(p._name)
-	{
-		cout << "Person(const Person& p)" << endl;
-	}
-	Person& operator=(const Person &p)
-	{
-		cout << "Person operator=(const Person& p)" << endl;
-		if (this != &p)
-			_name = p._name;
-		return *this;
-	}
-	~Person()
-	{
-		cout << "~Person()" << endl;
-	}
-protected :
-	string _name; // 姓名'
+	int _a;
 };
 
-class Student: public Person
+class B : public A
 {
 public:
-	Student(const char* name, int id)
-		: Person(name)
-		, _id(id)
-	{
-		// 调用父类构造函数初始化继承的那部分
-		// 再初始化自己的成员
-		cout << "Student()" << endl;
-	}
+	int _b;
+};
 
-	// 拷贝构造
-	Student(const Student& s)
-		:Person(s)  // s传递给Person& s是一个切片行为
-		, _id(s._id)
-	{
-		cout << "Student(const Student& s)" << endl;
-	}
+class C : public A
+{
+public:
+	int _c;
+};
 
-	// 赋值拷贝
-	Student& operator=(const Student& s)
-	{
-		if (this != &s)
-		{
-			Person::operator=(s); // 父类的自己切
-			_id = s._id;
-		}
-
-		cout << "Student& operator=(const Student& s)" << endl;
-
-		return *this;
-	}
-
-	// 析构函数
-	~Student()
-	{
-//		Person::~Person();
-
-		//清理自己的
-		cout << "~Student()" << endl;
-		// 为了保证析构时，保持先子再父的后进先出的顺序析构
-		// 子类析构函数完成后，会自动调用父类的析构函数
-	}
-
-private:
-	int _id;
+class D : public B, public C
+{
+public:
+	int _d;
 };
 
 int main()
 {
-	Student s1("张三", 11);
-
-	Student s2(s1);
+	D d;
+	d.B::_a = 1;
+	d.C::_a = 2;
+	d._b = 3;
+	d._c = 4;
+	d._d = 5;
 
 	return 0;
 }
