@@ -44,9 +44,20 @@ public:
 	}
 };
 
+void f(Person& p)
+{
+	p.BuyTicket();
+}
+
 int main()
 {
+	Person p; // 普通人
+	Student st; // 学生
+	Soldier so; // 军人
 
+	f(p);
+	f(st);
+	f(so);
 
 	return 0;
 }
