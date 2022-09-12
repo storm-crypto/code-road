@@ -302,27 +302,77 @@ using namespace std;
 // }
 
 // 单继承：
-class Base
-{
+//class Base
+//{
+//public:
+//	virtual void func1() {cout << "Base::func1()" << endl; }
+//	virtual void func2() {cout << "Base::func1()" << endl; }
+//private:
+//	int a;
+//};
+//
+//class Derive : public Base
+//{
+//public:
+//	virtual void func1() {cout << "Derive::func1()" << endl; }
+//	virtual void func3() {cout << "Derive::func3()" << endl; }
+//	virtual void func4() {cout << "Derive::func4()" << endl; }
+//private:
+//	int b;
+//};
+//
+//// 写一个程序打印一下虚表，确认虚表中调用的函数
+//typedef void (*VFunc)();
+//void PrintVFT(VFunc* ptr)
+//{
+//	printf("虚表地址：%p\n", ptr);
+//	for (int i = 0; ptr[i] != nullptr; i++)
+//	{
+//		printf("VFT[%d]:%p->", i, ptr[i]);
+//		ptr[i]();
+//	}
+//	printf("\n");
+//}
+//
+//int main()
+//{
+//	Base b;
+//	PrintVFT((VFunc*)(*(int*)&b));
+//
+//	Derive d;
+//	PrintVFT((VFunc*)(*(int*)&d));
+//
+//	return 0;
+//}
+
+// 多继承中的虚函数
+// 多继承
+
+class Base1 {
 public:
-	virtual void func1() {cout << "Base::func1()" << endl; }
-	virtual void func2() {cout << "Base::func1()" << endl; }
+	virtual void func1() {cout << "Base1::func1" << endl;}
+	virtual void func2() {cout << "Base1::func2" << endl;}
 private:
-	int a;
+	int b1;
+};
+class Base2 {
+public:
+	virtual void func1() {cout << "Base2::func1" << endl;}
+	virtual void func2() {cout << "Base2::func2" << endl;}
+private:
+	int b2;
 };
 
-class Derive : public Base
-{
+class Derive : public Base1, public Base2 {
 public:
-	virtual void func1() {cout << "Derive::func1()" << endl; }
-	virtual void func3() {cout << "Derive::func3()" << endl; }
-	virtual void func4() {cout << "Derive::func4()" << endl; }
+	virtual void func1() {cout << "Derive::func1" << endl;}
+	virtual void func3() {cout << "Derive::func3" << endl;}
 private:
-	int b;
+	int d1;
 };
 
-// 写一个程序打印一下虚表，确认虚表中调用的函数
 typedef void (*VFunc)();
+
 void PrintVFT(VFunc* ptr)
 {
 	printf("虚表地址：%p\n", ptr);
@@ -336,13 +386,16 @@ void PrintVFT(VFunc* ptr)
 
 int main()
 {
-	Base b;
-	PrintVFT((VFunc*)(*(int*)&b));
+	Base1 b1;
+	Base2 b2;
+//
+//	PrintVFT((VFunc*)(*(int*)&b1));
+//	PrintVFT((VFunc*)(*(int*)&b2));
 
 	Derive d;
 	PrintVFT((VFunc*)(*(int*)&d));
+	PrintVFT((VFunc*)(*(int*)((char*)&d + sizeof(Base1))));
 
 	return 0;
 }
-
 
