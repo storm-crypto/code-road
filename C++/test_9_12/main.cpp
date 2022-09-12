@@ -101,34 +101,53 @@ using namespace std;
 //	return 0;
 //}
 
-class Person
+//class Person
+//{
+//public:
+//	// 建议把父类的析构函数定义为虚函数
+//	// 这样子类的虚函数方便重写父类的虚函数
+//	virtual ~Person()
+//	{
+//		cout << "~Person()" << endl;
+//	}
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	// Student和person析构函数的函数名，看起来不相同，但是他们构成虚函数重写
+//	virtual ~Student()
+//	{
+//		cout << "~Student" << endl;
+//	}
+//};
+//
+//int main()
+//{
+//	// 在普通场景下，父子类的析构函数是否构成重写，不重要，不影响
+//	Person p;
+//	Student s;
+//
+//	return 0;
+//}
+
+class Car
 {
 public:
-	// 建议把父类的析构函数定义为虚函数
-	// 这样子类的虚函数方便重写父类的虚函数
-	virtual ~Person()
-	{
-		cout << "~Person()" << endl;
-	}
+	virtual void Drive() final {}
 };
 
-class Student : public Person
+class Benz : public Car
 {
 public:
-	// Student和person析构函数的函数名，看起来不相同，但是他们构成虚函数重写
-	virtual ~Student()
+	virtual void Drive()
 	{
-		cout << "~Student" << endl;
+		cout << "Benz" << endl;
 	}
 };
 
 int main()
 {
-	// 在普通场景下，父子类的析构函数是否构成重写，不重要，不影响
-	Person p;
-	Student s;
-
-
 
 	return 0;
 }
