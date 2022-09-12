@@ -260,43 +260,89 @@ using namespace std;
 // 1.我们增加一个派生类Derive去继承Base
 // 2.Derive中重写Func1
 // 3.Base再增加一个虚函数Func2和一个普通函数Func3
+//class Base
+//{
+//public:
+//	Base()
+//	{
+//		cout << "Base()" << endl;
+//	}
+//	virtual void Func1()
+//	{
+//		cout << "Base::Func1()" << endl;
+//	}
+//	virtual void Func2()
+//	{
+//		cout << "Base::Func2()" << endl;
+//	}
+//	void Func3()
+//	{
+//		cout << "Base::Func3()" << endl;
+//	}
+//private:
+//	int _b = 1;
+//};
+//
+//class Derive : public Base
+//{
+//public:
+//	virtual void Func1()
+//	{
+//		cout << "Derive::Func1()" << endl;
+//	}
+//private:
+//	int _d = 2;
+//};
+//
+//int main()
+//{
+//	Base b;
+//	Derive d;
+//	return 0;
+// }
+
+// 单继承：
 class Base
 {
 public:
-	Base()
-	{
-		cout << "Base()" << endl;
-	}
-	virtual void Func1()
-	{
-		cout << "Base::Func1()" << endl;
-	}
-	virtual void Func2()
-	{
-		cout << "Base::Func2()" << endl;
-	}
-	void Func3()
-	{
-		cout << "Base::Func3()" << endl;
-	}
+	virtual void func1() {cout << "Base::func1()" << endl; }
+	virtual void func2() {cout << "Base::func1()" << endl; }
 private:
-	int _b = 1;
+	int a;
 };
 
 class Derive : public Base
 {
 public:
-	virtual void Func1()
-	{
-		cout << "Derive::Func1()" << endl;
-	}
+	virtual void func1() {cout << "Derive::func1()" << endl; }
+	virtual void func3() {cout << "Derive::func3()" << endl; }
+	virtual void func4() {cout << "Derive::func4()" << endl; }
 private:
-	int _d = 2;
+	int b;
 };
+
+// 写一个程序打印一下虚表，确认虚表中调用的函数
+typedef void (*VFunc)();
+void PrintVFT(VFunc* ptr)
+{
+	printf("虚表地址：%p\n", ptr);
+	for (int i = 0; ptr[i] != nullptr; i++)
+	{
+		printf("VFT[%d]:%p->", i, ptr[i]);
+		ptr[i]();
+	}
+	printf("\n");
+}
 
 int main()
 {
 	Base b;
+	PrintVFT((VFunc*)(*(int*)&b));
+
 	Derive d;
+	PrintVFT((VFunc*)(*(int*)&d));
+
 	return 0;
- }
+}
+
+
