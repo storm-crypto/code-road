@@ -220,38 +220,83 @@ using namespace std;
 //	int _b = 1;
 //};
 
-class Person
+//class Person
+//{
+//public:
+//	virtual void BuyTicket()
+//	{
+//		cout << "买票-全价" << endl;
+//	}
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	// 子类重写父类的虚函数：
+//	virtual void BuyTicket()
+//	{
+//		cout << "买票-半价" << endl;
+//	}
+//};
+//
+//void Func(Person& p)
+//{
+//	p.BuyTicket();
+//}
+//
+//int main()
+//{
+//	Person Mike;
+//	Func(Mike);
+//
+//	Student Johnson;
+//	Func(Johnson);
+//
+//
+//	return 0;
+//}
+
+// 针对上面的代码我们做出以下改造
+// 1.我们增加一个派生类Derive去继承Base
+// 2.Derive中重写Func1
+// 3.Base再增加一个虚函数Func2和一个普通函数Func3
+class Base
 {
 public:
-	virtual void BuyTicket()
+	Base()
 	{
-		cout << "买票-全价" << endl;
+		cout << "Base()" << endl;
 	}
+	virtual void Func1()
+	{
+		cout << "Base::Func1()" << endl;
+	}
+	virtual void Func2()
+	{
+		cout << "Base::Func2()" << endl;
+	}
+	void Func3()
+	{
+		cout << "Base::Func3()" << endl;
+	}
+private:
+	int _b = 1;
 };
 
-class Student : public Person
+class Derive : public Base
 {
 public:
-	// 子类重写父类的虚函数：
-	virtual void BuyTicket()
+	virtual void Func1()
 	{
-		cout << "买票-半价" << endl;
+		cout << "Derive::Func1()" << endl;
 	}
+private:
+	int _d = 2;
 };
-
-void Func(Person& p)
-{
-	p.BuyTicket();
-}
 
 int main()
 {
-	Person Mike;
-	Func(Mike);
-
-	Student Johnson;
-	Func(Johnson);
-
-
+	Base b;
+	Derive d;
 	return 0;
-}
+ }
