@@ -152,23 +152,31 @@ using namespace std;
 //	return 0;
 //}
 
+//class Car
+//{
+//public:
+//	virtual void Drive() {}
+//};
+//
+//class Benz : public Car
+//{
+//public:
+//	virtual void Drive() override
+//	{
+//		cout << "Benz" << endl;
+//	}
+//};
+//
+//int main()
+//{
+//
+//	return 0;
+//}
+
+// ³éÏóÀà
 class Car
 {
 public:
-	virtual void Drive() {}
+	// ´¿Ðéº¯Êý
+	virtual void Drive() = 0;
 };
-
-class Benz : public Car
-{
-public:
-	virtual void Drive() override
-	{
-		cout << "Benz" << endl;
-	}
-};
-
-int main()
-{
-
-	return 0;
-}
