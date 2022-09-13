@@ -167,6 +167,13 @@ public:
 		_root = _Copy(t._root);
 	}
 
+	// t1 = t2
+	BSTree<K>& operator=(BSTree<K> t)
+	{
+		swap(_root, t._root);
+		return *this;
+	}
+
 	~BSTree()
 	{
 		_Destroy(_root);
