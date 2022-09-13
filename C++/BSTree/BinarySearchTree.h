@@ -34,7 +34,7 @@ public:
 		// 如果树为空，那么key就是第一个节点
 		if (_root == nullptr)
 		{
-			_root = new(key);
+			_root = new Node(key);
 			return true;
 		}
 
@@ -73,9 +73,21 @@ public:
 		return true;
 	}
 
+	// 中序遍历
+	void _InOrder(Node* root)
+	{
+		if (_root == nullptr)
+			return;
 
+		_InOrder(root->_left);
+		cout << root->_key << endl;
+		_InOrder(root->_right);
+	}
 
-
+	void InOrder()
+	{
+		_InOrder(_root);
+	}
 
 private:
 	Node * _root;
