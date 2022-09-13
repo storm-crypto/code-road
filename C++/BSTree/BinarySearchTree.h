@@ -132,12 +132,29 @@ private:
 		return true;
 	}
 
+	void _Destroy(Node* root)
+	{
+		if (root == NULL)
+			return;
+
+		_Destroy(root->_left);
+		_Destroy(root->_right);
+		delete root;
+	}
 
 public:
 	// 构造函数
 	BSTree()
 		:_root(nullptr)
 	{}
+
+	~BSTree()
+	{
+		_Destroy(_root);
+		_root = nullptr;
+	}
+
+
 
 	// 涉及深浅拷贝，需要实现拷贝构造 operator=等
 
