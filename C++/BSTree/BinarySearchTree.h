@@ -27,6 +27,27 @@ template<class K>
 class BSTree
 {
 	typedef BSTreeNode<K> Node;
+private:
+	Node* _FindR(Node* root, const K& key)
+	{
+		if (root == nullptr)
+		{
+			return nullptr;
+		}
+		if (root->_key < key)
+		{
+			return _FindR(root->_right, key);
+		}
+		else if (root->_key > key)
+		{
+			return _FindR(root->_left, key);
+		}
+		else
+		{
+			return root;
+		}
+	}
+
 public:
 	// 构造函数
 	BSTree()
@@ -34,6 +55,17 @@ public:
 	{}
 
 	// 涉及深浅拷贝，需要实现拷贝构造 operator=等
+
+	// 插入的递归版本呢
+	bool InsertR(const K& key);
+
+
+	Node* findR(const K& key)
+	{
+		return _FindR(_root, key);
+	}
+
+	bool EraseR(const K& key);
 
 	bool Insert(const K& key)
 	{
