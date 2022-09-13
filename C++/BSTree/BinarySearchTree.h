@@ -15,6 +15,12 @@ struct BSTreeNode
 	BSTreeNode<K> *_right;
 
 	K _key;
+	// 构造函数
+	BSTreeNode(const K& key)
+		:_left(nullptr)
+		, _right(nullptr)
+		, _key(key)
+	{}
 };
 
 template<class K>
@@ -76,17 +82,18 @@ public:
 	// 中序遍历
 	void _InOrder(Node* root)
 	{
-		if (_root == nullptr)
+		if (root == nullptr)
 			return;
 
 		_InOrder(root->_left);
-		cout << root->_key << endl;
+		cout << root->_key << " ";
 		_InOrder(root->_right);
 	}
 
 	void InOrder()
 	{
 		_InOrder(_root);
+		cout << endl;
 	}
 
 private:
