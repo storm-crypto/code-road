@@ -48,6 +48,29 @@ private:
 		}
 	}
 
+	bool _InsertR(Node*& root, const K& key)
+	{
+		if (root == NULL) // 插入
+		{
+			root = new Node(key);
+			return true;
+		}
+
+		if (root->_key < key)
+		{
+			return _InsertR(root->_right, key);
+		}
+		else if (root->_key > key)
+		{
+			return _InsertR(root->_left, key);
+		}
+		else  // 说明已经有了
+		{
+			return false;
+		}
+	}
+
+
 public:
 	// 构造函数
 	BSTree()
@@ -57,7 +80,10 @@ public:
 	// 涉及深浅拷贝，需要实现拷贝构造 operator=等
 
 	// 插入的递归版本呢
-	bool InsertR(const K& key);
+	bool InsertR(const K& key)
+	{
+		return _InsertR(_root, key);
+	}
 
 
 	Node* findR(const K& key)
