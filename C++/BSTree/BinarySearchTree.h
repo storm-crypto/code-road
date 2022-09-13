@@ -48,6 +48,7 @@ private:
 		}
 	}
 
+	// 如果树中已经存在key，返回false
 	bool _InsertR(Node*& root, const K& key)
 	{
 		if (root == NULL) // 插入
@@ -68,6 +69,67 @@ private:
 		{
 			return false;
 		}
+	}
+
+	// 如果树中不存在key，返回false
+	// 存在，删除后，返回true
+	bool _EraseR(Node*& root, const K& key)
+	{
+		if (root == NULL)
+			return false;
+		if (root->_key < key)
+		{
+			_EraseR(root->_right, key);
+		}
+		else if (root->_key > key)
+		{
+			_EraseR(root->_left, key);
+		}
+		else
+		{
+			// 找到了，root就是要删除的节点
+			// 分情况讨论：
+			if (root->_left == nullptr)
+			{
+				Node* del = root;
+				root = root->_right;
+				delete del;
+			}
+			else if (root->_right == nullptr)
+			{
+				Node* del = root;
+				root = root->_left;
+				delete del;
+			}
+			else
+			{
+				// 左右都不为nullptr
+				Node* minRightParent = root;
+				// 找到右子树的最小节点(也就是右子树的最左边的节点)去替换
+				Node* minRight = root->_right;
+				while (minRight->_left)
+				{
+					minRightParent = minRight;
+					minRight = minRight->_left;
+				}
+
+				// 保存替换节点的值
+				root->_key = minRight->_key;
+
+				// 删除替换节点
+				if (minRightParent->_left == minRight)
+				{
+					minRightParent->_left = minRight->_right;
+				}
+				else
+				{
+					minRightParent->_right = minRight->_right;
+				}
+
+				delete minRight;
+			}
+		}
+		return true;
 	}
 
 
@@ -91,7 +153,10 @@ public:
 		return _FindR(_root, key);
 	}
 
-	bool EraseR(const K& key);
+	bool EraseR(const K& key)
+	{
+		return _EraseR(_root, key);
+	}
 
 	bool Insert(const K& key)
 	{

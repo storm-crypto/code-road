@@ -11,10 +11,16 @@ int main()
 
 	t.InOrder();
 
+	t.EraseR(8);
+	t.InOrder();
+
+	t.EraseR(5);
+	t.InOrder();
+
 	// 测试删除时，把所有节点都删一遍
 	for (auto e : a)
 	{
-		t.Erase(e);
+		t.EraseR(e);
 		t.InOrder();
 	}
 
