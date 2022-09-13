@@ -142,11 +142,30 @@ private:
 		delete root;
 	}
 
+	Node* _Copy(Node* root)
+	{
+		if (root == nullptr)
+		{
+			return nullptr;
+		}
+
+		Node* copyNode = new Node(root->_key);
+		copyNode->_left = _Copy(root->_left);
+		copyNode->_right = _Copy(root->_right);
+
+		return copyNode;
+	}
+
 public:
 	// ¹¹Ôìº¯Êý
 	BSTree()
 		:_root(nullptr)
 	{}
+
+	BSTree(const BSTree<K>& t)
+	{
+		_root = _Copy(t._root);
+	}
 
 	~BSTree()
 	{
