@@ -79,6 +79,29 @@ public:
 		return true;
 	}
 
+	// ²éÕÒ
+	Node* find(const K& key)
+	{
+		Node* cur = _root;
+		while (cur)
+		{
+			if (cur->_key < key)
+			{
+				cur = cur->_right;
+			}
+			else if (cur->_key > key)
+			{
+				cur = cur->_left;
+			}
+			else
+			{
+				return cur;
+			}
+		}
+
+		return NULL;
+	}
+
 	// ÖĞĞò±éÀú
 	void _InOrder(Node* root)
 	{
