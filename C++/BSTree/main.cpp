@@ -11,5 +11,11 @@ int main()
 
 	t.InOrder();
 
+	t.Erase(7);
+	t.InOrder();
+
+	t.Erase(5);
+	t.InOrder();
+
 	return 0;
 }
