@@ -126,13 +126,20 @@ public:
 				// 1. 	如果左孩子或者右孩子为空，把另一个还是交给父亲管理，删除自己
 				if (cur->_left == nullptr)
 				{
-					if (parent->_left == cur)
+					if (cur == _root)
 					{
-						parent->_left = cur->_right;
+						_root = cur->_right;
 					}
 					else
 					{
-						parent->_right = cur->_right;
+						if (parent->_left == cur)
+						{
+							parent->_left = cur->_right;
+						}
+						else
+						{
+							parent->_right = cur->_right;
+						}
 					}
 
 					delete cur;
@@ -140,14 +147,22 @@ public:
 
 				else if (cur->_right == nullptr)
 				{
-					if (parent->_left == cur)
+					if (cur == _root)
 					{
-						parent->_left = cur->_left;
+						_root = cur->_left;
 					}
 					else
 					{
-						parent->_right = cur->_left;
+						if (parent->_left == cur)
+						{
+							parent->_left = cur->_left;
+						}
+						else
+						{
+							parent->_right = cur->_left;
+						}
 					}
+
 
 					delete cur;
 				}
@@ -178,6 +193,7 @@ public:
 					}
 
 					delete minRight;
+
 
 				}
 
