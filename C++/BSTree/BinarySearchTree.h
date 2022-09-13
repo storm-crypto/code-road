@@ -21,6 +21,61 @@ template<class K>
 class BSTree
 {
 	typedef BSTreeNode<K> Node;
+public:
+	// 构造函数
+	BSTree()
+		:_root(nullptr)
+	{}
+
+	// 涉及深浅拷贝，需要实现拷贝构造 operator=等
+
+	bool Insert(const K& key)
+	{
+		// 如果树为空，那么key就是第一个节点
+		if (_root == nullptr)
+		{
+			_root = new(key);
+			return true;
+		}
+
+		// 不为空就开始找
+		Node* cur = _root;
+		Node* parent = nullptr;
+
+		while (cur)
+		{
+			if (cur->_key > key)
+			{
+				parent = cur;
+				cur = cur->_left;
+			}
+			else if (cur->_key < key)
+			{
+				parent = cur;
+				cur = cur->_right;
+			}
+			else
+			{
+				// 说明相等，相等就说明key已经存在了，return false
+				return false;
+			}
+		}
+
+		cur = new Node(key);
+		if (parent->_key > key)
+		{
+			parent->_left = cur;
+		}
+		else
+		{
+			parent->_right = cur;
+		}
+		return true;
+	}
+
+
+
+
 
 private:
 	Node * _root;
