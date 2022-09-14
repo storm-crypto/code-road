@@ -66,9 +66,31 @@ void TestBSTree3()
 	}
 }
 
+void TestBSTree4()
+{
+	// 统计水果出现的次数
+	string arr[] = {"苹果", "苹果", "西瓜", "西瓜"};
+	KV::BSTree<string, int> countTree;
+	for (const auto& str : arr)
+	{
+		// 先查找这个水果在不在搜索树中
+		auto ret = countTree.FindR(str);
+		if (ret == NULL)
+		{
+			countTree.InsertR(str, 1);
+		}
+		else
+		{
+			ret->_value++;
+		}
+	}
+
+	countTree.InOrder();
+}
+
 int main()
 {
-	TestBSTree3();
+	TestBSTree4();
 
 	return 0;
 }
