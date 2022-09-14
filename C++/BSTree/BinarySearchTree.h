@@ -450,11 +450,11 @@ namespace KV
 
 			if (root->_key < key)
 			{
-				return _InsertR(root->_right, key);
+				return _InsertR(root->_right, key, value);
 			}
 			else if (root->_key > key)
 			{
-				return _InsertR(root->_left, key);
+				return _InsertR(root->_left, key, value);
 			}
 			else  // 说明已经有了
 			{
