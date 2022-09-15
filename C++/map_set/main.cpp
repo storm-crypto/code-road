@@ -51,9 +51,37 @@ void test_set()
 
 }
 
+// 删除
+void test_set2()
+{
+	set<int> s;
+	// 插入
+	s.insert(1);
+	s.insert(3);
+	s.insert(25);
+	s.insert(49);
+	s.insert(10);
+	s.insert(10);
+	// 删除方式1：先查找，找到了再删，没找到就会报错
+	auto pos = s.find(3);
+	s.erase(pos);
+
+	// 删除方式2：传数字，不在就不处理也不报错
+	s.erase(25);
+
+
+	for (auto e : s)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+
+
+}
+
 int main()
 {
-	test_set();
+	test_set2();
 
 	return 0;
 }
