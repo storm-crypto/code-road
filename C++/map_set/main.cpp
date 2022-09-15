@@ -31,6 +31,24 @@ void test_set()
 	}
 	cout << endl;
 
+	// 练习：检查单词是否拼写正确
+	// 思路：词库中单词都放进set对象中，把每个写出来的单词
+	// 去set里面查一下，看在不在，在就是正确的，不在就是错误的拼写
+	set<string> strSet;
+	strSet.insert("abc");
+	strSet.insert("ljx");
+
+	auto ret = strSet.find("abc");
+	if (ret != strSet.end())
+	{
+		cout << "找到了" << endl;
+	}
+	else
+	{
+		cout <<  "没有找到" << endl;
+	}
+
+
 }
 
 int main()
