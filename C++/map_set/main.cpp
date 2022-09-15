@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -94,6 +95,20 @@ void test_set3()
 		cout << e << " ";
 	}
 	cout << endl;
+}
+
+void test_map1()
+{
+	map<int, double> m;
+	// 插入,调用pair的构造函数，构造一个匿名对象插入
+	m.insert(pair<int, double>(1, 1.1));
+	m.insert(pair<int, double>(5, 5.5));
+	m.insert(pair<int, double>(2, 2.2));
+
+	// 调用函数模板，构造对象,好处是不需要去声明pair的参数，让函数模板自己推演，用起来方便些
+	m.insert(make_pair(2, 2.2));
+
+
 }
 
 int main()
