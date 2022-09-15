@@ -119,14 +119,52 @@ void test_map1()
 
 void test_map3()
 {
-	// 统计次数
+	// 1、统计次数 2、找出大家最喜欢的三种水果
+	string arr[] = {"香蕉", "苹果", "香蕉", "草莓"};
+//	// 统计次数的方式1
+//	map<string, int> countMap;
+//	for (const auto& str : arr)
+//	{
+//		// 思路：第一次出现，插入<str, 1>，后续再出现++次数ret->second
+//		auto ret = countMap.find(str);
+//		if (ret != countMap.end())
+//		{
+//			ret->second++;
+//		}
+//		else
+//		{
+//			countMap.insert(make_pair(str, 1));
+//		}
+//	}
+//
+//	for (const auto& e : countMap)
+//	{
+//		cout << e.first << ":" << e.second << endl;
+//	}
 
+	// 统计次数的方式2
+	map<string, int> countMap;
+	for (const auto& str : arr)
+	{
+		// 先插入，如果str已经在map中，insert会返回str所在节点的迭代器，我们++次数即可
+		auto ret = countMap.insert(make_pair(str, 1));
+		if (ret.second == false)
+		{
+			// 插入失败
+			ret.first->second++;
+		}
+	}
+
+	for (const auto& e : countMap)
+	{
+		cout << e.first << ":" << e.second << endl;
+	}
 }
 int main()
 {
 //	test_set2();
 //	test_set3();
-	test_map1();
+	test_map3();
 
 	return 0;
 }
