@@ -1,6 +1,8 @@
 #include <iostream>
 #include <set>
 #include <map>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -172,6 +174,40 @@ void test_map3()
 		cout << e.first << ":" << e.second << endl;
 	}
 }
+
+struct MapItCompare
+{
+	bool operator()(map<string, int>::iterator x, map<string, int>::iterator y)
+	{
+		return x->second > y->second;
+	}
+};
+
+void test_map4()
+{
+	// 1、统计次数 2、找出大家最喜欢的三种水果
+	string arr[] = {"香蕉", "苹果", "香蕉", "草莓"};
+	map<string, int> countMap;
+	for (const auto& str : arr)
+	{
+		countMap[str]++;
+	}
+
+	// 对所有水果次数排序
+
+	// 思路一：用vector，而且vector里面存map的迭代器
+	vector<map<string, int>::iterator> v;
+	auto coutMapIt = countMap.begin();
+	while (coutMapIt != countMap.end())
+	{
+		v.push_back(coutMapIt);
+		coutMapIt++;
+	}
+	// 对vector里面的元素进行排序
+	sort(v.begin(), v.end(), MapItCompare());
+
+}
+
 int main()
 {
 //	test_set2();
