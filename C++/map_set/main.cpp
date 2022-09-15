@@ -108,13 +108,25 @@ void test_map1()
 	// 调用函数模板，构造对象,好处是不需要去声明pair的参数，让函数模板自己推演，用起来方便些
 	m.insert(make_pair(2, 2.2));
 
-
+	auto it = m.begin();
+	while (it != m.end())
+	{
+		cout << (*it).first << ":" << (*it).second << " ";
+		it++;
+	}
+	cout << endl;
 }
 
+void test_map3()
+{
+	// 统计次数
+
+}
 int main()
 {
 //	test_set2();
-	test_set3();
+//	test_set3();
+	test_map1();
 
 	return 0;
 }
