@@ -75,13 +75,31 @@ void test_set2()
 		cout << e << " ";
 	}
 	cout << endl;
+}
 
+void test_set3()
+{
+	multiset<int> s;
+	// ²åÈë
+	s.insert(1);
+	s.insert(3);
+	s.insert(25);
+	s.insert(49);
+	s.insert(10);
+	s.insert(10);
 
+	// ÅÅĞò
+	for (auto e : s)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
 }
 
 int main()
 {
-	test_set2();
+//	test_set2();
+	test_set3();
 
 	return 0;
 }
