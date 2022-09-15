@@ -142,17 +142,29 @@ void test_map3()
 //		cout << e.first << ":" << e.second << endl;
 //	}
 
-	// 统计次数的方式2
+//	// 统计次数的方式2
+//	map<string, int> countMap;
+//	for (const auto& str : arr)
+//	{
+//		// 先插入，如果str已经在map中，insert会返回str所在节点的迭代器，我们++次数即可
+//		auto ret = countMap.insert(make_pair(str, 1));
+//		if (ret.second == false)
+//		{
+//			// 插入失败
+//			ret.first->second++;
+//		}
+//	}
+//
+//	for (const auto& e : countMap)
+//	{
+//		cout << e.first << ":" << e.second << endl;
+//	}
+
+	// 统计次数的方式3
 	map<string, int> countMap;
 	for (const auto& str : arr)
 	{
-		// 先插入，如果str已经在map中，insert会返回str所在节点的迭代器，我们++次数即可
-		auto ret = countMap.insert(make_pair(str, 1));
-		if (ret.second == false)
-		{
-			// 插入失败
-			ret.first->second++;
-		}
+		countMap[str]++;
 	}
 
 	for (const auto& e : countMap)
