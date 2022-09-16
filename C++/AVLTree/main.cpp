@@ -1,8 +1,14 @@
-#include <iostream>
+#include "AVLTree.h"
 
-int
-main()
+void TestAVLTree()
 {
-	std::cout << "Hello, World!" << std::endl;
+
+}
+
+int main()
+{
+	TestAVLTree();
+
+
 	return 0;
 }
