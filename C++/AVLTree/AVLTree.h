@@ -23,7 +23,37 @@ class AVLTreeNode
 template<class K, class V>
 class AVLTree
 {
+	typedef AVLTreeNode<K, V> Node;
+	// 构造函数
+	AVLTree()
+		:_root(nullptr)
+	{}
 
+	// 拷贝构造和赋值需要实现深拷贝，后面再说
+	~AVLTree()
+	{
+		//
+	}
+
+	// 实现插入
+	bool Insert(const pair<K, V>& kv)
+	{
+
+	}
+
+	// 实现Find
+	Node* Find(const K& key)
+	{
+		return nullptr;
+	}
+
+	// 删除key所在的节点
+	bool Erase(const K& key)
+	{
+		return false;
+	}
+private:
+	Node* _root;
 };
 
 #endif //AVLTREE__AVLTREE_H
