@@ -65,7 +65,7 @@ void test_set2()
 	s.insert(49);
 	s.insert(10);
 	s.insert(10);
-	// 删除方式1：先查找，找到了再删，没找到就会报错
+	// 删除方式1：先查找，找到了再删，没找到就删除就会报错
 	auto pos = s.find(3);
 	s.erase(pos);
 
