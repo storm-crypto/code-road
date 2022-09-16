@@ -206,6 +206,13 @@ void test_map4()
 	// 对vector里面的元素进行排序
 	sort(v.begin(), v.end(), MapItCompare());
 
+	// 利用map排序
+	map<int, string> sortMap;
+	for (auto e : countMap)
+	{
+		sortMap.insert(make_pair(e.second, e.first));
+	}
+
 }
 
 int main()
