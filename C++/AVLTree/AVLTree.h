@@ -116,6 +116,14 @@ public:
 			else if (parent->_bf == 2 || parent->_bf == -2)
 			{
 				// 旋转处理：
+				if (parent->_bf == -2)
+				{
+					if (cur->_bf == -1)
+					{
+						// 右单旋
+						RotateR(parent);
+					}
+				}
 			}
 			else
 			{
@@ -125,6 +133,48 @@ public:
 		}
 
 		return true;
+	}
+
+	void RotateL(Node* parent);
+	// 右单旋
+	void RotateR(Node* parent)
+	{
+		Node* subL = parent->_left;
+		Node* subLR = subL->_right;
+
+		parent->_left = subLR;
+		// 注意为空的情况
+		if (subLR)
+		{
+			subLR->_parent = parent;
+		}
+
+		subL->_right = parent;
+		// 记录一下parent的parent的位置
+		Node* parentParent = parent->_parent;
+		parent->_parent = subL;
+
+		// 如果是独立的树进行旋转：
+		if (parent == _root)
+		{
+			_root = subL;
+			_root->_parent = nullptr;
+		}
+		else // 旋转的部分是子树的情况
+		{
+			if (parentParent->_left == parent)
+			{
+				parentParent->_left = subL;
+			}
+			else
+			{
+				parentParent->_right = subL;
+			}
+
+			subL->_parent = parentParent;
+		}
+
+		subL->_bf = parent->_bf = 0;
 	}
 
 	// 实现Find
