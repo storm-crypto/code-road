@@ -40,10 +40,23 @@ public:
 		:_root(nullptr)
 	{}
 
+	void _Destroy(Node* root)
+	{
+		if (root == nullptr)
+		{
+			return;
+		}
+
+		_Destroy(root->_left);
+		_Destroy(root->_right);
+		delete root;
+	}
+
 	// 拷贝构造和赋值需要实现深拷贝，后面再说
 	~AVLTree()
 	{
-		//
+		_Destroy(_root);
+		_root = nullptr;
 	}
 
 	// 实现插入
