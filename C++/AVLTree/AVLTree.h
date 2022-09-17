@@ -311,6 +311,21 @@ public:
 	{
 		return false;
 	}
+
+	void _InOrder(Node* root)
+	{
+		if (root == nullptr)
+			return;
+		_InOrder(root->_left);
+		cout << root->_kv.first << ":" << root->_kv.second << endl;
+		_InOrder(root->_right);
+	}
+
+	// ÖÐÐò±éÀú£º
+	void InOrder()
+	{
+		_InOrder(_root);
+	}
 private:
 	Node* _root;
 };

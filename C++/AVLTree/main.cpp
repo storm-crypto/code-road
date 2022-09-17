@@ -8,6 +8,8 @@ void TestAVLTree()
 	{
 		t.Insert(make_pair(e, e));
 	}
+
+	t.InOrder();
 }
 
 int main()
