@@ -155,7 +155,40 @@ public:
 		return true;
 	}
 	void RotateLR(Node* parent);
-	void RotateRL(Node* parent);
+	// 右左双旋
+	void RotateRL(Node* parent)
+	{
+		Node* subR = parent->_right;
+		Node* subRL = subR->_left;
+		int bf = subRL->_bf;
+
+		RotateR(parent->_right);
+		RotateL(parent);
+
+		// 根据不同的情况，对平衡因子进行修改
+		if (bf == 1)
+		{
+			subR->_bf = 0;
+			parent->_bf = -1;
+			subRL->_bf = 0; // 这个无论哪种情况下都是0
+		}
+		else if (bf == -1)
+		{
+			parent->_bf = 0;
+			subR->_bf = 1;
+			subRL->_bf = 0;
+		}
+		else if (bf == 0)
+		{
+			parent->_bf = 0;
+			subR->_bf = 0;
+			subRL->_bf = 0;
+		}
+		else
+		{
+			assert(false);
+		}
+	}
 	// 左单旋
 	void RotateL(Node* parent)
 	{
