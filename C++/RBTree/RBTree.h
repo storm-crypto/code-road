@@ -40,6 +40,21 @@ public:
 		:_root(nullptr)
 	{}
 
+	void Destroy(Node* root)
+	{
+		if (root == nullptr)
+			return;
+		Destroy(root->_left);
+		Destroy(root->_right);
+		delete root;
+	}
+
+	~RBTree()
+	{
+		Destroy(_root);
+		_root = nullptr;
+	}
+
 	Node* Find(const K& key)
 	{
 		Node* cur = _root;
