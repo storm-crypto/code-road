@@ -6,16 +6,17 @@
 #define AVLTREE__AVLTREE_H
 
 #include <iostream>
+#include <cassert>
 using namespace std;
 
 template<class K, class V>
-class AVLTreeNode
+struct AVLTreeNode
 {
 	AVLTreeNode<K, V>* _left;
 	AVLTreeNode<K, V>* _right;
 	AVLTreeNode<K, V>* _parent;
 
-	int _bf; // 平衡因子
+	int _bf; // 平衡因子 balanced factor
 
 	pair<K, V> _kv;
 
@@ -34,6 +35,7 @@ class AVLTree
 {
 	typedef AVLTreeNode<K, V> Node;
 	// 构造函数
+public:
 	AVLTree()
 		:_root(nullptr)
 	{}
@@ -86,6 +88,40 @@ class AVLTree
 		{
 			parent->_left = cur;
 			cur->_parent = parent;
+		}
+
+		// 控制平衡
+		// 1. 控制平衡因子
+		while(parent)
+		{
+			if (parent->_left == cur)
+			{
+				parent->_bf--;
+			}
+			else
+			{
+				parent->_bf++;
+			}
+
+			if (parent->_bf == 0)
+			{
+				break;
+			}
+			else if (parent->_bf == 1 || parent->_bf == -1)
+			{
+				// 继续往上更新
+				cur = parent;
+				parent = parent->_parent;
+			}
+			else if (parent->_bf == 2 || parent->_bf == -2)
+			{
+				// 旋转处理：
+			}
+			else
+			{
+				// 说明插入节点之前，树已经不平衡了
+				assert(false);
+			}
 		}
 
 		return true;
