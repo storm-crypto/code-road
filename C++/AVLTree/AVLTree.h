@@ -123,7 +123,27 @@ public:
 						// 右单旋
 						RotateR(parent);
 					}
+					else // cur->_bf == 1
+					{
+						// 左右双旋
+						RotateLR(parent);
+					}
 				}
+				else // parent->_bf == 2
+				{
+					if (cur->_bf == 1)
+					{
+						//左单旋
+						RotateL(parent);
+					}
+					else
+					{
+						// 右左双旋
+						RotateRL(parent);
+					}
+				}
+
+				break;
 			}
 			else
 			{
@@ -134,8 +154,44 @@ public:
 
 		return true;
 	}
+	void RotateLR(Node* parent);
+	void RotateRL(Node* parent);
+	// 左单旋
+	void RotateL(Node* parent)
+	{
+		Node* subR = parent->_right;
+		Node* subRL = subR->_left;
 
-	void RotateL(Node* parent);
+		parent->_right = subRL;
+		if (subRL)
+		{
+			subRL->_parent = parent;
+		}
+		subR->_left = parent;
+		Node* parentParent = parent->_parent;
+		parent->_parent = subR;
+
+		if (parent == _root)
+		{
+			_root = subR;
+			subR->_parent = nullptr;
+		}
+		else
+		{
+			if (parentParent->_left == parent)
+			{
+				parentParent->_left = subR;
+			}
+			else
+			{
+				parentParent->_right = subR;
+			}
+			subR->_parent = parentParent;
+		}
+
+		// 更新平衡因子：
+		parent->_bf = subR->_bf = 0;
+	}
 	// 右单旋
 	void RotateR(Node* parent)
 	{
