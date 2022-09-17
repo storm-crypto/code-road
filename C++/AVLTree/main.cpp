@@ -10,6 +10,7 @@ void TestAVLTree()
 	}
 
 	t.InOrder();
+	cout << t.IsAVLTree() << endl;
 }
 
 int main()

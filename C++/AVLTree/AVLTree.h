@@ -326,6 +326,47 @@ public:
 	{
 		_InOrder(_root);
 	}
+
+	// 计算树的高度
+	int _Height(Node* root)
+	{
+		if (root == nullptr)
+		{
+			return 0;
+		}
+
+		int leftHeight = _Height(root->_left);
+		int rightHeight = _Height(root->_right);
+		return rightHeight > leftHeight ? rightHeight + 1 : leftHeight + 1;
+	}
+
+	// 检查是否是AVL树
+	bool _IsBalance(Node* root)
+	{
+		if (root == nullptr)
+		{
+			return true;
+		}
+
+		int leftHeight = _Height(root->_left);
+		int rightHeight = _Height(root->_right);
+
+		// 检查一下平衡因子是否正确
+		if (rightHeight - leftHeight != root->_bf)
+		{
+			cout << "平衡因子异常:" << root->_kv.first << endl;
+			return false;
+		}
+
+		return abs(rightHeight - leftHeight) < 2
+			&& _IsBalance(root->_left)
+			&& _IsBalance(root->_right);
+	}
+
+	bool IsAVLTree()
+	{
+		return _IsBalance(_root);
+	}
 private:
 	Node* _root;
 };
