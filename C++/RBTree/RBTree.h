@@ -40,6 +40,28 @@ public:
 		:_root(nullptr)
 	{}
 
+	Node* Find(const K& key)
+	{
+		Node* cur = _root;
+		while (cur)
+		{
+			if (cur->_kv.first < key)
+			{
+				cur = cur->_right;
+			}
+			else if (cur->_kv.first > key)
+			{
+				cur = cur->_left;
+			}
+			else // 找到了
+			{
+				return cur;
+			}
+		}
+
+		return nullptr; // 没找到
+	}
+
 	pair<Node*, bool> Insert(const pair<K, V>& kv)
 	{
 		if (_root == nullptr)
