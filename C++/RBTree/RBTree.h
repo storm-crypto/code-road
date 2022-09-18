@@ -40,6 +40,8 @@ public:
 		:_root(nullptr)
 	{}
 
+	// 拷贝构造和operator赋值
+
 	void Destroy(Node* root)
 	{
 		if (root == nullptr)
@@ -163,6 +165,37 @@ public:
 			else // parent == grandfather->_right 跟上面的是反方向的
 			{
 				// ...
+				Node* uncle = grandfather->_left;
+				if (uncle && uncle->_col == Red) // 情况一
+				{
+					uncle->_col = parent->_col = Black;
+					grandfather->_col = Red;
+
+					// 继续往上调整
+					cur = grandfather;
+					parent = cur->_parent;
+				}
+				else  // 情况2 + 3:uncle不存在，或者uncle存在且为黑
+				{
+					// 情况2：祖孙三代是直线
+					if (cur == parent->_right)
+					{
+						RotateL(grandfather);
+						parent->_col = Black;
+						grandfather->_col = Red;
+					}
+					else // cur == parent->_left
+					{
+						// 情况3：
+						RotateR(parent);
+						RotateL(grandfather);
+						cur->_col = Black;
+						grandfather->_col = Red;
+
+					}
+
+					break;
+				}
 			}
 		}
 
