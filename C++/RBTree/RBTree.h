@@ -278,6 +278,67 @@ public:
 		}
 
 	}
+
+	bool _CheckBalance(Node* root, int blackNum, int count)
+	{
+		if (root == nullptr)
+		{
+			if (count != blackNum)
+			{
+				cout << "黑色节点的数量不相等" << endl;
+				return false;
+			}
+			return true;
+		}
+
+		// 检查父亲，不检查孩子，检查孩子比较麻烦
+		if (root->_col == Red && root->_parent->_col == Red)
+		{
+			cout << "存在连续的红色节点" << endl;
+			return false;
+		}
+
+		if (root->_col == Black)
+		{
+			count++;
+		}
+
+		return _CheckBalance(root->_left, blackNum, count)
+			&& _CheckBalance(root->_right, blackNum, count);
+	}
+
+	// 红黑树的检验
+	bool CheckBlance()
+	{
+		if (_root == nullptr)
+		{
+			return true;
+		}
+
+		// 1. 根节点必须是黑色的
+		if (_root->_col == Red)
+		{
+			cout << "根节点是红色的" << endl;
+			return false;
+		}
+
+		// 找最左路径做黑色节点数量的参考值
+		int blackNum = 0;
+		Node* left = _root;
+		while (left)
+		{
+			if (left->_col == Black)
+			{
+				blackNum++;
+			}
+
+			left = left->_left;
+		}
+
+		int num = 0;
+		return _CheckBalance(_root, blackNum, num);
+	}
+
 private:
 	Node* _root;
 };
