@@ -9,11 +9,15 @@ void TestRBTree()
 		t.Insert(make_pair(e, e));
 	}
 
+	t.InOrder();
+	cout << t.CheckBalance() << endl;
+
 
 }
 
 int main()
 {
+	TestRBTree();
 
 	return 0;
 }

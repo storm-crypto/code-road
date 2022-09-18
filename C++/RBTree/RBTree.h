@@ -4,6 +4,7 @@
 
 #ifndef RBTREE__RBTREE_H
 #define RBTREE__RBTREE_H
+
 #include <iostream>
 using namespace std;
 
@@ -127,8 +128,8 @@ public:
 		// 需要处理时候的情况：父亲存在，且颜色为红色需要持续处理
 		while (parent && parent->_col == Red)
 		{
-			// 关键看叔叔
 			Node* grandfather = parent->_parent;
+			// 关键看叔叔
 			if (parent == grandfather->_left)
 			{
 				Node* uncle = grandfather->_right;
@@ -155,7 +156,7 @@ public:
 					else // cur是父亲的右边：情况3：双旋
 					{
 						RotateL(parent);
-						RotateL(grandfather);
+						RotateR(grandfather);
 						cur->_col = Black;
 						grandfather->_col = Red;
 					}
@@ -308,7 +309,7 @@ public:
 	}
 
 	// 红黑树的检验
-	bool CheckBlance()
+	bool CheckBalance()
 	{
 		if (_root == nullptr)
 		{
