@@ -339,6 +339,22 @@ public:
 		return _CheckBalance(_root, blackNum, num);
 	}
 
+	void _InOrder(Node* root)
+	{
+		if (root == nullptr)
+			return;
+
+		_InOrder(root->_left);
+		cout << root->_kv.first << ":" << root->_kv.second << endl;
+		_InOrder(root->_right);
+	}
+
+	void InOrder()
+	{
+		_InOrder(_root);
+		cout << endl;
+	}
+
 private:
 	Node* _root;
 };
