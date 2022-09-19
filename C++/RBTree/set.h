@@ -21,6 +21,17 @@ namespace ljx
 	public:
 		// 这里使用了typename，让他延后去找这个类，防止因为没有实例化，找不到这个类
 		typedef typename RBTree<K, K, SetKeyOfT>::iterator iterator;
+		typedef typename RBTree<K, K, SetKeyOfT>::reverse_iterator reverse_iterator;
+
+		reverse_iterator rbegin()
+		{
+			return _t.rbegin();
+		}
+
+		reverse_iterator rend()
+		{
+			return _t.rend();
+		}
 
 		// 最左结点
 		iterator begin()
