@@ -30,6 +30,17 @@ namespace std
 			cout << e << " ";
 		}
 		cout << endl;
+
+		// find
+		auto pos = us.find(2);
+		if (pos != us.end())
+		{
+			cout << "找到了" << endl;
+		}
+		else
+		{
+			cout << "没找到" << endl;
+		}
 	}
 }
 
