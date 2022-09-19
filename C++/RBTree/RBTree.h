@@ -32,12 +32,89 @@ struct RBTreeNode
 	{}
 };
 
+template<class T, class Ref, class Ptr>
+struct _TreeIterator
+{
+	typedef RBTreeNode<T> Node;
+	typedef _TreeIterator<T, Ref, Ptr> Self;
+
+	Node* _node;
+
+	_TreeIterator(Node* node)
+		:_node(node)
+	{}
+
+
+	Ref operator*()
+	{
+		return _node->_data;
+	}
+
+	Ptr operator->()
+	{
+		return &_node->_data;
+	}
+
+	bool operator != (const Self& s) const
+	{
+		return _node != s._node;
+	}
+
+	// 难点
+	Self operator++()
+	{
+		if (_node->_right)
+		{
+			// 下一个访问的就是右树中，中序遍历的第一个结点
+			Node* left = _node->_right;
+			while (left->_left)
+			{
+				left = left->_left;
+			}
+
+			_node = left; // 找到最左结点，并把最左结点放到node里面
+		}
+		else // 说明
+		{
+			Node* cur = _node;
+			Node* parent = cur->_parent;
+			while (parent && cur == parent->_right)
+			{
+				cur = cur->_parent;
+				parent = parent->_parent;
+			}
+
+			_node = parent;
+		}
+
+		return *this;
+	}
+};
+
 template<class K, class T, class KeyOfT>
 class RBTree
 {
 	// T决定了红黑树的结点存什么
 	typedef RBTreeNode<T> Node;
 public:
+	typedef _TreeIterator<T, T&, T*> iterator;
+
+	// 最左结点
+	iterator begin()
+	{
+		Node* left = _root;
+		while (left && left->_left)
+		{
+			left = left->_left;
+		}
+		return iterator(left);
+	}
+
+	iterator end()
+	{
+		return iterator(nullptr);
+	}
+
 	RBTree()
 		:_root(nullptr)
 	{}

@@ -19,6 +19,20 @@ namespace ljx
 		};
 
 	public:
+		// 这里使用了typename，让他延后去找这个类，防止因为没有实例化，找不到这个类
+		typedef typename RBTree<K, K, SetKeyOfT>::iterator iterator;
+
+		// 最左结点
+		iterator begin()
+		{
+			return _t.begin();
+		}
+
+		iterator end()
+		{
+			return _t.end();
+		}
+
 		bool insert(const K& k)
 		{
 			_t.Insert(k);

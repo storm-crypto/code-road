@@ -20,6 +20,8 @@ namespace ljx
 		};
 
 	public:
+
+
 		bool insert(const pair<const K, V>& kv)
 		{
 			_t.Insert(kv);
