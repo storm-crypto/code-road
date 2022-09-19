@@ -10,6 +10,14 @@ namespace ljx
 	template<class K, class V>
 	class set
 	{
+		struct SetKeyOfT
+		{
+			const K& operator()(const K& key)
+			{
+				return key;
+			}
+		};
+
 	public:
 		bool insert(const K& k)
 		{
@@ -18,7 +26,7 @@ namespace ljx
 			return true;
 		}
 	private:
-		RBTree<K, K> _t;
+		RBTree<K, K, SetKeyOfT> _t;
 	};
 }
 

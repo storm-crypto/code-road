@@ -11,6 +11,14 @@ namespace ljx
 	template<class K, class V>
 	class map
 	{
+		struct MapKeyOfT
+		{
+			const K& operator()(const pair<const K, V>& kv)
+			{
+				return kv.first;
+			}
+		};
+
 	public:
 		bool insert(const pair<const K, V>& kv)
 		{
@@ -20,7 +28,7 @@ namespace ljx
 		}
 
 	private:
-		RBTree<K, pair<const K, V>> _t;
+		RBTree<K, pair<const K, V>, MapKeyOfT> _t;
 	};
 }
 
