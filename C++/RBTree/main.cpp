@@ -32,6 +32,13 @@ int main()
 	m.insert(make_pair(9, 9));
 	m.insert(make_pair(0, 0));
 
+	ljx::map<int, int>::iterator it = m.begin();
+	while (it != m.end())
+	{
+		cout << (*it).first << ":" << (*it).second << endl;
+		++it;
+	}
+
 	ljx::set<int, int> s;
 	s.insert(1);
 	s.insert(5);

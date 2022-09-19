@@ -60,6 +60,11 @@ struct _TreeIterator
 		return _node != s._node;
 	}
 
+	bool operator == (const Self& s) const
+	{
+		return _node == s._node;
+	}
+
 	// 难点
 	Self operator++()
 	{
@@ -74,8 +79,9 @@ struct _TreeIterator
 
 			_node = left; // 找到最左结点，并把最左结点放到node里面
 		}
-		else // 说明
+		else // 说明右为空
 		{
+			// 找祖先里面孩子不是父亲的右的那个
 			Node* cur = _node;
 			Node* parent = cur->_parent;
 			while (parent && cur == parent->_right)

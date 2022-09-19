@@ -20,7 +20,17 @@ namespace ljx
 		};
 
 	public:
+		typedef typename RBTree<K, pair<const K, V>, MapKeyOfT>::iterator iterator;
 
+		iterator begin()
+		{
+			return _t.begin();
+		}
+
+		iterator end()
+		{
+			return _t.end();
+		}
 
 		bool insert(const pair<const K, V>& kv)
 		{
