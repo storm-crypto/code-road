@@ -221,13 +221,13 @@ public:
 		return nullptr; // 没找到
 	}
 
-	pair<Node*, bool> Insert(const T& data)
+	pair<iterator, bool> Insert(const T& data)
 	{
 		if (_root == nullptr)
 		{
 			_root = new Node(data);
 			_root->_col = Black;
-			return make_pair(_root, true);
+			return make_pair(iterator(_root), true);
 		}
 
 		KeyOfT kot;
@@ -249,7 +249,7 @@ public:
 			}
 			else
 			{
-				return make_pair(cur, false);
+				return make_pair(iterator(cur), false);
 			}
 		}
 		// 如果走到这里，说明找到了要进行插入的位置了
@@ -346,7 +346,7 @@ public:
 		// 最后这里做一个处理：把根的颜色变成黑
 		_root->_col = Black;
 
-		return make_pair(newnode, true);
+		return make_pair(iterator(newnode), true);
 	}
 
 	// 左单旋

@@ -44,11 +44,9 @@ namespace ljx
 			return _t.end();
 		}
 
-		bool insert(const K& k)
+		pair<iterator, bool> insert(const K& k)
 		{
-			_t.Insert(k);
-
-			return true;
+			return _t.Insert(k);
 		}
 	private:
 		RBTree<K, K, SetKeyOfT> _t;

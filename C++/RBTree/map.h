@@ -43,12 +43,12 @@ namespace ljx
 			return _t.end();
 		}
 
-		bool insert(const pair<const K, V>& kv)
+		pair<iterator, bool> insert(const pair<const K, V>& kv)
 		{
-			_t.Insert(kv);
+			return _t.Insert(kv);
 
-			return true;
 		}
+
 
 	private:
 		RBTree<K, pair<const K, V>, MapKeyOfT> _t;
