@@ -35,6 +35,9 @@ struct RBTreeNode
 template<class T, class Ref, class Ptr>
 struct _TreeIterator
 {
+	typedef Ref reference;
+	typedef Ptr pointer;
+
 	typedef RBTreeNode<T> Node;
 	typedef _TreeIterator<T, Ref, Ptr> Self;
 
@@ -127,6 +130,59 @@ struct _TreeIterator
 	}
 };
 
+// 实现一个反向迭代器
+template<class Iterator>
+struct ReverseIterator
+{
+	// Iterator::reference需要到模板中去取，所以要typename一下
+	typedef typename Iterator::reference Ref;
+	typedef typename Iterator::pointer Ptr;
+	typedef ReverseIterator<Iterator> Self;
+
+	// 用正向迭代器来构造反向迭代器
+	ReverseIterator(Iterator it)
+		:_it(it)
+	{
+
+	}
+
+	Ref operator*()
+	{
+		return *_it;
+	}
+
+	Ptr operator->()
+	{
+		return _it.operator->();
+	}
+
+	Self& operator++()
+	{
+		--_it;
+		return *this;
+	}
+
+	Self& operator--()
+	{
+		++_it;
+		return *this;
+	}
+
+	bool operator!=(const Self& s) const
+	{
+		// 拿他的正向迭代器去比较
+		return _it != s._it;
+	}
+
+	bool operator==(const Self& s) const
+	{
+		// 拿他的正向迭代器去比较
+		return _it == s._it;
+	}
+
+	Iterator _it;
+};
+
 template<class K, class T, class KeyOfT>
 class RBTree
 {
@@ -134,6 +190,26 @@ class RBTree
 	typedef RBTreeNode<T> Node;
 public:
 	typedef _TreeIterator<T, T&, T*> iterator;
+	typedef _TreeIterator<T, const T&, const T*> const_iterator;
+	typedef ReverseIterator<iterator> reverse_iterator; // 反向迭代器
+
+	reverse_iterator rbegin()
+	{
+		// 最右结点就是反向迭代器的begin
+		Node* right = _root;
+		while (right && right->_right)
+		{
+			right = right->_right;
+		}
+		// 用正向迭代器来构造反向迭代器
+		return reverse_iterator(iterator(right));
+	}
+
+	reverse_iterator rend()
+	{
+		// end指向的是空
+		return reverse_iterator(iterator(nullptr));
+	}
 
 	// 最左结点
 	iterator begin()
