@@ -32,7 +32,7 @@ struct RBTreeNode
 	{}
 };
 
-template<class K, class T>
+template<class K, class T, class KeyOfT>
 class RBTree
 {
 	// T决定了红黑树的结点存什么
@@ -61,14 +61,15 @@ public:
 
 	Node* Find(const K& key)
 	{
+		KeyOfT kot; // 仿函数
 		Node* cur = _root;
 		while (cur)
 		{
-			if (cur->_data < key)
+			if (kot(cur->_data) < key)
 			{
 				cur = cur->_right;
 			}
-			else if (cur->_data > key)
+			else if (kot(cur->_data) > key)
 			{
 				cur = cur->_left;
 			}
@@ -90,17 +91,19 @@ public:
 			return make_pair(_root, true);
 		}
 
+		KeyOfT kot;
+
 		// 插入操作：
 		Node* parent = nullptr;
 		Node* cur = _root;
 		while (cur)
 		{
-			if (cur->_data < data)
+			if (kot(cur->_data) < kot(data))
 			{
 				parent = cur;
 				cur = cur->_right;
 			}
-			else if (cur->_data > data)
+			else if (kot(cur->_data) > kot(data))
 			{
 				parent = cur;
 				cur = cur->_left;
@@ -113,7 +116,7 @@ public:
 		// 如果走到这里，说明找到了要进行插入的位置了
 		Node* newnode = new Node(data);
 		newnode->_col = Red;
-		if (parent->_data < data)
+		if (kot(parent->_data) < kot(data))
 		{
 			parent->_right = newnode;
 			newnode->_parent = parent;
