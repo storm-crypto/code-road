@@ -1,6 +1,9 @@
 #include <iostream>
+#include <unordered_map>
+#include <map>
 #include <unordered_set>
 #include <set>
+#include <string>
 
 using namespace std;
 
@@ -42,11 +45,28 @@ namespace std
 			cout << "Ã»ÕÒµ½" << endl;
 		}
 	}
+
+	void test_unordered_map1()
+	{
+		unordered_map<string, string> dict;
+		dict.insert(make_pair("sort", "ÅÅÐò"));
+		dict["left"] = "×ó±ß";
+		dict["left"] = "Ê£Óà";
+
+		unordered_map<string, string>::iterator it = dict.begin();
+		while (it != dict.end())
+		{
+			cout << it->first << ":" << it->second << endl;
+			it++;
+		}
+		cout << endl;
+	}
 }
 
 int main()
 {
 	std::test_unordered_set1();
+	std::test_unordered_map1();
 
 	return 0;
 }
