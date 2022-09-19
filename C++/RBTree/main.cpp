@@ -53,6 +53,14 @@ int main()
 	}
 	cout << endl;
 
+	ljx::set<int, int>::reverse_iterator rsit = s.rbegin();
+	while (rsit != s.rend())
+	{
+		cout << *rsit << " ";
+		++rsit;
+	}
+	cout << endl;
+
 	return 0;
 }
 
