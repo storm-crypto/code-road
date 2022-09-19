@@ -21,6 +21,17 @@ namespace ljx
 
 	public:
 		typedef typename RBTree<K, pair<const K, V>, MapKeyOfT>::iterator iterator;
+		typedef typename RBTree<K, pair<const K, V>, MapKeyOfT>::reverse_iterator reverse_iterator;
+
+		reverse_iterator rbegin()
+		{
+			return _t.rbegin();
+		}
+
+		reverse_iterator rend()
+		{
+			return _t.rend();
+		}
 
 		iterator begin()
 		{
