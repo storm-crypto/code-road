@@ -95,6 +95,36 @@ struct _TreeIterator
 
 		return *this;
 	}
+
+	// 难点
+	Self& operator--()
+	{
+		if (_node->_left) // 左子树不为空
+		{
+			// 找左子树的最右结点
+			Node* right = _node->_left;
+			while (right->_right)
+			{
+				right = right->_right;
+			}
+
+			_node = right;
+		}
+		else // 说明左子树为空
+		{
+			Node* cur = _node;
+			Node* parent = cur->_parent;
+			while (parent && cur == parent->_left)
+			{
+				cur = parent;
+				parent = parent->_parent;
+			}
+
+			_node = parent;
+		}
+
+		return *this;
+	}
 };
 
 template<class K, class T, class KeyOfT>
