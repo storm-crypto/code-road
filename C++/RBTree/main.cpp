@@ -1,6 +1,7 @@
 #include "RBTree.h"
 #include "map.h"
 #include "set.h"
+#include <string>
 
 //void TestRBTree()
 //{
@@ -60,6 +61,16 @@ int main()
 		++rsit;
 	}
 	cout << endl;
+
+	ljx::map<string, string> dict;
+	dict["sort"];
+	dict["left"] = "ื๓ฑ฿";
+	dict["left"] = "สฃำเ";
+
+	for (auto e : dict)
+	{
+		cout << e.first << ":" << e.second << endl;
+	}
 
 	return 0;
 }
