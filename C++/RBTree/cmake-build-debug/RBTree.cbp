@@ -86,6 +86,12 @@
 		<Unit filename="D:/05code/2022/code-road/C++/RBTree/main.cpp">
 			<Option target="RBTree"/>
 		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C++/RBTree/map.h">
+			<Option target="RBTree"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C++/RBTree/set.h">
+			<Option target="RBTree"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/RBTree/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

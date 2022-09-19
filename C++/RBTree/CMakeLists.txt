@@ -3,4 +3,4 @@ project(RBTree)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(RBTree main.cpp RBTree.h)
+add_executable(RBTree main.cpp RBTree.h map.h set.h)

@@ -1,5 +1,5 @@
 //
-// Created by æ—­å“¥ on 2022-09-17.
+// Created by Ðñ¸ç on 2022-09-17.
 //
 
 #ifndef RBTREE__RBTREE_H
@@ -14,34 +14,35 @@ enum Colour
 	Black,
 };
 
-template<class K, class V>
+template<class T>
 struct RBTreeNode
 {
-	RBTreeNode<K, V>* _left;
-	RBTreeNode<K, V>* _right;
-	RBTreeNode<K, V>* _parent;
-	pair<K, V> _kv;
-	Colour _col; // é¢œè‰²
+	RBTreeNode<T>* _left;
+	RBTreeNode<T>* _right;
+	RBTreeNode<T>* _parent;
+	T _data;
+	Colour _col; // ÑÕÉ«
 
-	RBTreeNode(const pair<K, V>& kv)
+	RBTreeNode(const T& x)
 		:_left(nullptr)
 		,_right(nullptr)
 		,_parent(nullptr)
-		,_kv(kv)
+		,_data(x)
 		,_col(Red)
 	{}
 };
 
-template<class K, class V>
+template<class K, class T>
 class RBTree
 {
-	typedef RBTreeNode<K, V> Node;
+	// T¾ö¶¨ÁËºìºÚÊ÷µÄ½áµã´æÊ²Ã´
+	typedef RBTreeNode<T> Node;
 public:
 	RBTree()
 		:_root(nullptr)
 	{}
 
-	// æ‹·è´æž„é€ å’Œoperatorèµ‹å€¼
+	// ¿½±´¹¹ÔìºÍoperator¸³Öµ
 
 	void Destroy(Node* root)
 	{
@@ -63,43 +64,43 @@ public:
 		Node* cur = _root;
 		while (cur)
 		{
-			if (cur->_kv.first < key)
+			if (cur->_data < key)
 			{
 				cur = cur->_right;
 			}
-			else if (cur->_kv.first > key)
+			else if (cur->_data > key)
 			{
 				cur = cur->_left;
 			}
-			else // æ‰¾åˆ°äº†
+			else // ÕÒµ½ÁË
 			{
 				return cur;
 			}
 		}
 
-		return nullptr; // æ²¡æ‰¾åˆ°
+		return nullptr; // Ã»ÕÒµ½
 	}
 
-	pair<Node*, bool> Insert(const pair<K, V>& kv)
+	pair<Node*, bool> Insert(const T& data)
 	{
 		if (_root == nullptr)
 		{
-			_root = new Node(kv);
+			_root = new Node(data);
 			_root->_col = Black;
 			return make_pair(_root, true);
 		}
 
-		// æ’å…¥æ“ä½œï¼š
+		// ²åÈë²Ù×÷£º
 		Node* parent = nullptr;
 		Node* cur = _root;
 		while (cur)
 		{
-			if (cur->_kv.first < kv.first)
+			if (cur->_data < data)
 			{
 				parent = cur;
 				cur = cur->_right;
 			}
-			else if (cur->_kv.first > kv.first)
+			else if (cur->_data > data)
 			{
 				parent = cur;
 				cur = cur->_left;
@@ -109,10 +110,10 @@ public:
 				return make_pair(cur, false);
 			}
 		}
-		// å¦‚æžœèµ°åˆ°è¿™é‡Œï¼Œè¯´æ˜Žæ‰¾åˆ°äº†è¦è¿›è¡Œæ’å…¥çš„ä½ç½®äº†
-		Node* newnode = new Node(kv);
+		// Èç¹û×ßµ½ÕâÀï£¬ËµÃ÷ÕÒµ½ÁËÒª½øÐÐ²åÈëµÄÎ»ÖÃÁË
+		Node* newnode = new Node(data);
 		newnode->_col = Red;
-		if (parent->_kv.first < kv.first)
+		if (parent->_data < data)
 		{
 			parent->_right = newnode;
 			newnode->_parent = parent;
@@ -124,36 +125,36 @@ public:
 		}
 		cur = newnode;
 
-		// çº¢é»‘æ ‘çš„æŽ§åˆ¶é€»è¾‘
-		// éœ€è¦å¤„ç†æ—¶å€™çš„æƒ…å†µï¼šçˆ¶äº²å­˜åœ¨ï¼Œä¸”é¢œè‰²ä¸ºçº¢è‰²éœ€è¦æŒç»­å¤„ç†
+		// ºìºÚÊ÷µÄ¿ØÖÆÂß¼­
+		// ÐèÒª´¦ÀíÊ±ºòµÄÇé¿ö£º¸¸Ç×´æÔÚ£¬ÇÒÑÕÉ«ÎªºìÉ«ÐèÒª³ÖÐø´¦Àí
 		while (parent && parent->_col == Red)
 		{
 			Node* grandfather = parent->_parent;
-			// å…³é”®çœ‹å”å”
+			// ¹Ø¼ü¿´ÊåÊå
 			if (parent == grandfather->_left)
 			{
 				Node* uncle = grandfather->_right;
-				// æƒ…å†µ1ï¼šuncleå­˜åœ¨ä¸”ä¸ºçº¢
+				// Çé¿ö1£ºuncle´æÔÚÇÒÎªºì
 				if (uncle && uncle->_col == Red)
 				{
-					// æŠŠparentå’Œuncleå˜é»‘ï¼Œç¥–çˆ¶å˜çº¢
+					// °ÑparentºÍuncle±äºÚ£¬×æ¸¸±äºì
 					parent->_col = uncle->_col = Black;
 					grandfather->_col = Red;
 
-					// ç»§ç»­å¾€ä¸Šå¤„ç†
+					// ¼ÌÐøÍùÉÏ´¦Àí
 					cur = grandfather;
 					parent = cur->_parent;
 				}
-				else // æƒ…å†µ2 + 3:uncleä¸å­˜åœ¨ï¼Œæˆ–è€…uncleå­˜åœ¨ä¸”ä¸ºé»‘
+				else // Çé¿ö2 + 3:uncle²»´æÔÚ£¬»òÕßuncle´æÔÚÇÒÎªºÚ
 				{
-					// curæ˜¯çˆ¶äº²çš„å·¦è¾¹ï¼šæƒ…å†µ2ï¼šå•æ—‹
+					// curÊÇ¸¸Ç×µÄ×ó±ß£ºÇé¿ö2£ºµ¥Ðý
 					if (cur == parent->_left)
 					{
 						RotateR(grandfather);
 						grandfather->_col = Red;
 						parent->_col = Black;
 					}
-					else // curæ˜¯çˆ¶äº²çš„å³è¾¹ï¼šæƒ…å†µ3ï¼šåŒæ—‹
+					else // curÊÇ¸¸Ç×µÄÓÒ±ß£ºÇé¿ö3£ºË«Ðý
 					{
 						RotateL(parent);
 						RotateR(grandfather);
@@ -163,22 +164,22 @@ public:
 					break;
 				}
 			}
-			else // parent == grandfather->_right è·Ÿä¸Šé¢çš„æ˜¯åæ–¹å‘çš„
+			else // parent == grandfather->_right ¸úÉÏÃæµÄÊÇ·´·½ÏòµÄ
 			{
 				// ...
 				Node* uncle = grandfather->_left;
-				if (uncle && uncle->_col == Red) // æƒ…å†µä¸€
+				if (uncle && uncle->_col == Red) // Çé¿öÒ»
 				{
 					uncle->_col = parent->_col = Black;
 					grandfather->_col = Red;
 
-					// ç»§ç»­å¾€ä¸Šè°ƒæ•´
+					// ¼ÌÐøÍùÉÏµ÷Õû
 					cur = grandfather;
 					parent = cur->_parent;
 				}
-				else  // æƒ…å†µ2 + 3:uncleä¸å­˜åœ¨ï¼Œæˆ–è€…uncleå­˜åœ¨ä¸”ä¸ºé»‘
+				else  // Çé¿ö2 + 3:uncle²»´æÔÚ£¬»òÕßuncle´æÔÚÇÒÎªºÚ
 				{
-					// æƒ…å†µ2ï¼šç¥–å­™ä¸‰ä»£æ˜¯ç›´çº¿
+					// Çé¿ö2£º×æËïÈý´úÊÇÖ±Ïß
 					if (cur == parent->_right)
 					{
 						RotateL(grandfather);
@@ -187,7 +188,7 @@ public:
 					}
 					else // cur == parent->_left
 					{
-						// æƒ…å†µ3ï¼š
+						// Çé¿ö3£º
 						RotateR(parent);
 						RotateL(grandfather);
 						cur->_col = Black;
@@ -200,13 +201,13 @@ public:
 			}
 		}
 
-		// æœ€åŽè¿™é‡Œåšä¸€ä¸ªå¤„ç†ï¼šæŠŠæ ¹çš„é¢œè‰²å˜æˆé»‘
+		// ×îºóÕâÀï×öÒ»¸ö´¦Àí£º°Ñ¸ùµÄÑÕÉ«±ä³ÉºÚ
 		_root->_col = Black;
 
 		return make_pair(newnode, true);
 	}
 
-	// å·¦å•æ—‹
+	// ×óµ¥Ðý
 	void RotateL(Node* parent)
 	{
 		Node* subR = parent->_right;
@@ -240,31 +241,31 @@ public:
 		}
 
 	}
-	// å³å•æ—‹
+	// ÓÒµ¥Ðý
 	void RotateR(Node* parent)
 	{
 		Node* subL = parent->_left;
 		Node* subLR = subL->_right;
 
 		parent->_left = subLR;
-		// æ³¨æ„ä¸ºç©ºçš„æƒ…å†µ
+		// ×¢ÒâÎª¿ÕµÄÇé¿ö
 		if (subLR)
 		{
 			subLR->_parent = parent;
 		}
 
 		subL->_right = parent;
-		// è®°å½•ä¸€ä¸‹parentçš„parentçš„ä½ç½®
+		// ¼ÇÂ¼Ò»ÏÂparentµÄparentµÄÎ»ÖÃ
 		Node* parentParent = parent->_parent;
 		parent->_parent = subL;
 
-		// å¦‚æžœæ˜¯ç‹¬ç«‹çš„æ ‘è¿›è¡Œæ—‹è½¬ï¼š
+		// Èç¹ûÊÇ¶ÀÁ¢µÄÊ÷½øÐÐÐý×ª£º
 		if (parent == _root)
 		{
 			_root = subL;
 			_root->_parent = nullptr;
 		}
-		else // æ—‹è½¬çš„éƒ¨åˆ†æ˜¯å­æ ‘çš„æƒ…å†µ
+		else // Ðý×ªµÄ²¿·ÖÊÇ×ÓÊ÷µÄÇé¿ö
 		{
 			if (parentParent->_left == parent)
 			{
@@ -286,16 +287,16 @@ public:
 		{
 			if (count != blackNum)
 			{
-				cout << "é»‘è‰²èŠ‚ç‚¹çš„æ•°é‡ä¸ç›¸ç­‰" << endl;
+				cout << "ºÚÉ«½ÚµãµÄÊýÁ¿²»ÏàµÈ" << endl;
 				return false;
 			}
 			return true;
 		}
 
-		// æ£€æŸ¥çˆ¶äº²ï¼Œä¸æ£€æŸ¥å­©å­ï¼Œæ£€æŸ¥å­©å­æ¯”è¾ƒéº»çƒ¦
+		// ¼ì²é¸¸Ç×£¬²»¼ì²éº¢×Ó£¬¼ì²éº¢×Ó±È½ÏÂé·³
 		if (root->_col == Red && root->_parent->_col == Red)
 		{
-			cout << "å­˜åœ¨è¿žç»­çš„çº¢è‰²èŠ‚ç‚¹" << endl;
+			cout << "´æÔÚÁ¬ÐøµÄºìÉ«½Úµã" << endl;
 			return false;
 		}
 
@@ -308,7 +309,7 @@ public:
 			&& _CheckBalance(root->_right, blackNum, count);
 	}
 
-	// çº¢é»‘æ ‘çš„æ£€éªŒ
+	// ºìºÚÊ÷µÄ¼ìÑé
 	bool CheckBalance()
 	{
 		if (_root == nullptr)
@@ -316,14 +317,14 @@ public:
 			return true;
 		}
 
-		// 1. æ ¹èŠ‚ç‚¹å¿…é¡»æ˜¯é»‘è‰²çš„
+		// 1. ¸ù½Úµã±ØÐëÊÇºÚÉ«µÄ
 		if (_root->_col == Red)
 		{
-			cout << "æ ¹èŠ‚ç‚¹æ˜¯çº¢è‰²çš„" << endl;
+			cout << "¸ù½ÚµãÊÇºìÉ«µÄ" << endl;
 			return false;
 		}
 
-		// æ‰¾æœ€å·¦è·¯å¾„åšé»‘è‰²èŠ‚ç‚¹æ•°é‡çš„å‚è€ƒå€¼
+		// ÕÒ×î×óÂ·¾¶×öºÚÉ«½ÚµãÊýÁ¿µÄ²Î¿¼Öµ
 		int blackNum = 0;
 		Node* left = _root;
 		while (left)

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/05code/2022/code-road/C++/RBTree/RBTree.h
+iostream
+-
+
+D:/05code/2022/code-road/C++/RBTree/main.cpp
+RBTree.h
+D:/05code/2022/code-road/C++/RBTree/RBTree.h
+map.h
+D:/05code/2022/code-road/C++/RBTree/map.h
+set.h
+D:/05code/2022/code-road/C++/RBTree/set.h
+
+D:/05code/2022/code-road/C++/RBTree/map.h
+RBTree.h
+D:/05code/2022/code-road/C++/RBTree/RBTree.h
+
+D:/05code/2022/code-road/C++/RBTree/set.h
+
