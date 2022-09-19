@@ -49,6 +49,11 @@ namespace ljx
 
 		}
 
+		V& operator[](const K& key)
+		{
+			pair<iterator, bool> ret = insert(make_pair(key, V()));
+			return ret.first->second;
+		}
 
 	private:
 		RBTree<K, pair<const K, V>, MapKeyOfT> _t;
