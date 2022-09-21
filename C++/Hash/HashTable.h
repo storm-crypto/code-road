@@ -31,6 +31,12 @@ namespace CloseHash
 	public:
 		bool Insert(const pair<K, V>& kv)
 		{
+			HashData<K, V>* ret = Find(kv.first);
+			if (ret)
+			{
+				return false;
+			}
+
 			// 负载因子大于0.7就增容
 			// 插入之前要计算他的负载因子
 			if (_table.size() == 0)
@@ -53,13 +59,15 @@ namespace CloseHash
 				_table.swap(newHT._table);
 			}
 
-			size_t index = kv.first % _table.size();
+			size_t start = kv.first % _table.size();
+		    size_t index = start;
 			// 如果当前坑位存在就需要继续探测后面的位置 -- 线性探测 or 二次探测
 			size_t i = 1;
 			while (_table[index]._state == EXITS)
 			{
-				index += i;
+				index = start + i;
 				index %= _table.size(); // 过头了要回来
+				i++;
 			}
 
 			_table[index]._kv = kv;
@@ -67,6 +75,25 @@ namespace CloseHash
 			++_n;
 
 			return true;
+		}
+
+		HashData<K, V>* Find(const K& key)
+		{
+			size_t start = key % _table.size();
+			size_t index = start;
+			size_t i = 1;
+			// 不等于空就继续找
+			while(_table[index]._state != EMPTY)
+			{
+				if (_table[index]._kv.first == key)
+				{
+					return &_table[index];
+				}
+
+				index = start + i;
+				index %= _table.size();
+				i++;
+			}
 		}
 
 	private:
