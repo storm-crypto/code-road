@@ -210,4 +210,24 @@ namespace CloseHash
 	}
 }
 
+namespace OpenHash
+{
+	template<class K, class V>
+	struct HashNode
+	{
+		HashNode<K, V>* _next;
+		pair<K, V> _kv;
+	};
+
+	template<class K, class V>
+	class HashTable
+	{
+		typedef HashNode<K, V> Node;
+	private:
+		vector<Node*> _table;
+		size_t _n = 0; // 有效数据的个数
+	};
+
+}
+
 #endif //HASH__HASHTABLE_H
