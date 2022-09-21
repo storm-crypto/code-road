@@ -277,6 +277,8 @@ namespace OpenHash
 					{
 						prev->_next = cur->_next;
 					}
+
+					--_n;
 					delete cur;
 					return true;
 				}
