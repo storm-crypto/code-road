@@ -142,6 +142,7 @@ namespace CloseHash
 			else
 			{
 				ret->_state = DELETE;
+				--_n;
 				return true;
 			}
 		}
