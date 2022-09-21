@@ -79,6 +79,11 @@ namespace CloseHash
 
 		HashData<K, V>* Find(const K& key)
 		{
+			if (_table.size() == 0)
+			{
+				return nullptr;
+			}
+
 			size_t start = key % _table.size();
 			size_t index = start;
 			size_t i = 1;
@@ -94,6 +99,8 @@ namespace CloseHash
 				index %= _table.size();
 				i++;
 			}
+
+			return nullptr;
 		}
 
 	private:
