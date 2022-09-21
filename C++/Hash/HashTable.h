@@ -259,12 +259,14 @@ namespace OpenHash
 	public:
 		bool Insert(const pair<K, V>& kv)
 		{
+			HashFunc hf;
 			if (Find(kv.first))
 				return false;
 
 			// 负载因子到1时，进行增容
 			if (_n == _table.size())
 			{
+
 				vector<Node*> newTable;
 				size_t newSize = _table.size() == 0 ? 10 : _table.size() * 2;
 				newTable.resize(newSize);
@@ -278,7 +280,7 @@ namespace OpenHash
 						while (cur)
 						{
 							Node* next = cur->_next;
-							size_t index = cur->_kv.first % newTable.size();
+							size_t index = hf(cur->_kv.first) % newTable.size();
 							// 将cur结点头插到newTable中
 							cur->_next = newTable[index];
 							newTable[index] = cur;
@@ -294,7 +296,7 @@ namespace OpenHash
 				_table.swap(newTable);
 			}
 
-			HashFunc hf;
+
 			size_t index = hf(kv.first) % _table.size();
 			Node* newnode = new Node(kv);
 
