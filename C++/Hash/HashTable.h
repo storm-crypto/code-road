@@ -259,6 +259,35 @@ namespace OpenHash
 			return nullptr;
 		}
 
+		bool Erase(const K& key)
+		{
+			size_t index = key % _table.size();
+			Node* cur = _table[index];
+			Node* prev = nullptr;
+			while (cur)
+			{
+				if (cur->_kv.first == key)
+				{
+					// cur是第一个结点的情况
+					if (cur == _table[index])
+					{
+						_table[index] = cur->_next;
+					}
+					else
+					{
+						prev->_next = cur->_next;
+					}
+					delete cur;
+					return true;
+				}
+
+				prev = cur;
+				cur = cur->_next;
+			}
+
+			return false;
+		}
+
 	private:
 		vector<Node*> _table;
 		size_t _n = 0; // 有效数据的个数
