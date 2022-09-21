@@ -68,8 +68,8 @@ int main()
 {
 //	std::test_unordered_set1();
 //	std::test_unordered_map1();
-
-	CloseHash::TestHashTable();
+	CloseHash::TestHashTable1();
+	CloseHash::TestHashTable2();
 
 	return 0;
 }

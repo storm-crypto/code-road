@@ -25,7 +25,11 @@ namespace CloseHash
 		State _state = EMPTY; // 状态
 	};
 
-	template<class K, class V>
+	template<class K>
+	struct HashFunc
+	{};
+
+	template<class K, class V, class HashFunc>
 	class HashTable
 	{
 	public:
@@ -46,7 +50,7 @@ namespace CloseHash
 		    else if ((double )_n / (double)_table.size() > 0.7)
 			{
 				// 增容
-				HashTable<K, V> newHT;
+				HashTable<K, V, HashFunc> newHT;
 				newHT._table.resize(_table.size() * 2);
 				for (auto& e : _table)
 				{
@@ -58,8 +62,8 @@ namespace CloseHash
 
 				_table.swap(newHT._table);
 			}
-
-			size_t start = kv.first % _table.size();
+			HashFunc hf;
+			size_t start = hf(kv.first) % _table.size();
 		    size_t index = start;
 			// 如果当前坑位存在就需要继续探测后面的位置 -- 线性探测 or 二次探测
 			size_t i = 1;
@@ -83,8 +87,8 @@ namespace CloseHash
 			{
 				return nullptr;
 			}
-
-			size_t start = key % _table.size();
+			HashFunc hf;
+			size_t start = hf(key) % _table.size();
 			size_t index = start;
 			size_t i = 1;
 			// 不等于空就继续找
@@ -127,13 +131,47 @@ namespace CloseHash
 		size_t _n = 0; // 存储的有效数据个数
 	};
 
-	void TestHashTable()
+	struct IntHashFunc
+	{
+		int operator()(int i)
+		{
+			return i;
+		}
+	};
+
+	void TestHashTable1()
 	{
 		int a[] = {1, 5, 10, 100000, 100, 18, 15, 7, 40};
-		HashTable<int, int> ht;
+		HashTable<int, int, IntHashFunc> ht;
 		for (auto e : a)
 		{
 			ht.Insert(make_pair(e, e));
+		}
+	}
+
+	struct stringHashFunc
+	{
+		size_t operator()(const string& s)
+		{
+			return s[0];
+		}
+	};
+
+	void TestHashTable2()
+	{
+		string a[] = {"苹果", "西瓜", "苹果"};
+		HashTable<string, int, stringHashFunc> ht;
+		for (auto str : a)
+		{
+			auto ret = ht.Find(str);
+			if (ret)
+			{
+				ret->_kv.second++;
+			}
+			else
+			{
+				ht.Insert(make_pair(str, 1));
+			}
 		}
 	}
 }
