@@ -151,9 +151,16 @@ namespace CloseHash
 
 	struct stringHashFunc
 	{
+		// 这个仿函数的基本功能是将字符串转成对应的整型值，因为整型才能取模算映射位置
+		// 期望，字符串不同，转出的整型值不同
 		size_t operator()(const string& s)
 		{
-			return s[0];
+			size_t value = 0;
+			for (auto ch : s)
+			{
+				value += ch;
+			}
+			return value;
 		}
 	};
 
