@@ -17,4 +17,8 @@ unordered_set
 -
 set
 -
+string
+-
+vector
+-
 
