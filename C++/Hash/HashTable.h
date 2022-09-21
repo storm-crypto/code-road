@@ -294,7 +294,8 @@ namespace OpenHash
 				_table.swap(newTable);
 			}
 
-			size_t index = kv.first % _table.size();
+			HashFunc hf;
+			size_t index = hf(kv.first) % _table.size();
 			Node* newnode = new Node(kv);
 
 			// Í·²å
@@ -310,7 +311,8 @@ namespace OpenHash
 			if (_table.size() == 0)
 				return nullptr;
 
-			size_t index = key % _table.size();
+			HashFunc hf;
+			size_t index = hf(key) % _table.size();
 			Node* cur = _table[index];
 			while (cur)
 			{
@@ -323,7 +325,8 @@ namespace OpenHash
 
 		bool Erase(const K& key)
 		{
-			size_t index = key % _table.size();
+			HashFunc hf;
+			size_t index = hf(key) % _table.size();
 			Node* cur = _table[index];
 			Node* prev = nullptr;
 			while (cur)
