@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <set>
 #include <string>
+#include "HashTable.h"
 
 using namespace std;
 
@@ -65,8 +66,10 @@ namespace std
 
 int main()
 {
-	std::test_unordered_set1();
-	std::test_unordered_map1();
+//	std::test_unordered_set1();
+//	std::test_unordered_map1();
+
+	CloseHash::TestHashTable();
 
 	return 0;
 }

@@ -41,7 +41,7 @@ namespace CloseHash
 			{
 				// 增容
 				HashTable<K, V> newHT;
-				newHT.resize(_table.size() * 2);
+				newHT._table.resize(_table.size() * 2);
 				for (auto& e : _table)
 				{
 					if (e._state == EXITS)
@@ -65,6 +65,8 @@ namespace CloseHash
 			_table[index]._kv = kv;
 			_table[index]._state = EXITS;
 			++_n;
+
+			return true;
 		}
 
 	private:
@@ -72,9 +74,19 @@ namespace CloseHash
 		size_t _size;	  // 记录存了多少个数据了
 		size_t _capacity; // 增容*/
 		// 用vector来代替上面定义的三个变量
-		vector<HashData> _table;
+		vector<HashData<K, V>> _table;
 		size_t _n = 0; // 存储的有效数据个数
 	};
+
+	void TestHashTable()
+	{
+		int a[] = {1, 5, 10, 100000, 100, 18, 15, 7, 40};
+		HashTable<int, int> ht;
+		for (auto e : a)
+		{
+			ht.Insert(make_pair(e, e));
+		}
+	}
 }
 
 #endif //HASH__HASHTABLE_H
