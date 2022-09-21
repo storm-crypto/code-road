@@ -235,6 +235,38 @@ namespace OpenHash
 			if (Find(kv.first))
 				return false;
 
+			// 负载因子到1时，进行增容
+			if (_n == _table.size())
+			{
+				vector<Node*> newTable;
+				size_t newSize = _table.size() == 0 ? 10 : _table.size() * 2;
+				newTable.resize(newSize);
+
+				// 遍历旧表，取旧表的结点，重新算映射位置，挂到新表中
+				for (size_t i = 0; i < _table.size(); i++)
+				{
+					if (_table[i])
+					{
+						Node* cur = _table[i];
+						while (cur)
+						{
+							Node* next = cur->_next;
+							size_t index = cur->_kv.first % newTable.size();
+							// 将cur结点头插到newTable中
+							cur->_next = newTable[index];
+							newTable[index] = cur;
+
+							cur = next;
+						}
+
+						// 全部处理完之后，这个坑的链表可以置为空了
+						_table[i] = nullptr;
+					}
+				}
+				// newTable跟_table交换
+				_table.swap(newTable);
+			}
+
 			size_t index = kv.first % _table.size();
 			Node* newnode = new Node(kv);
 
@@ -248,6 +280,9 @@ namespace OpenHash
 
 		Node* Find(const K& key)
 		{
+			if (_table.size() == 0)
+				return nullptr;
+
 			size_t index = key % _table.size();
 			Node* cur = _table[index];
 			while (cur)
@@ -294,6 +329,16 @@ namespace OpenHash
 		vector<Node*> _table;
 		size_t _n = 0; // 有效数据的个数
 	};
+
+	void TestHashTable1()
+	{
+		int a[] = {1, 5, 10, 100000, 100, 18, 15, 7, 40};
+		HashTable<int, int> ht;
+		for (auto e : a)
+		{
+			ht.Insert(make_pair(e, e));
+		}
+	}
 
 }
 
