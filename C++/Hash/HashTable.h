@@ -225,7 +225,34 @@ namespace OpenHash
 		{}
 	};
 
-	template<class K, class V>
+	template<class K>
+	struct Hash
+	{
+		size_t operator()(const K& key)
+		{
+			return key;
+		}
+	};
+
+	// 因为如果key是string类型的，就走这个特化的例子
+	// 特化：
+	template<>
+	struct Hash<string>
+	{
+		size_t operator()(const string& key)
+		{
+			// 用BKDR哈希算法
+			size_t value = 0;
+			for (auto ch : key)
+			{
+				value += ch;
+				value *= 131;
+			}
+			return value;
+		}
+	};
+
+	template<class K, class V, class HashFunc = Hash<K>>
 	class HashTable
 	{
 		typedef HashNode<K, V> Node;
