@@ -7,18 +7,32 @@
 #include <vector>
 #include <iostream>
 using namespace std;
+
 // 闭散列
 namespace CloseHash
 {
+	enum State
+	{
+		EMPTY,
+		EXITS,
+		DELETE,
+	};
+
 	template<class K, class V>
 	struct HashData
 	{
 		pair<K, V> _kv;
+		State _state = EMPTY; // 状态
 	};
 
 	template<class K, class V>
 	class HashTable
 	{
+	public:
+		bool Insert(const pair<K, V>& kv)
+		{
+
+		}
 
 	private:
 		/*HashData* _table;
@@ -26,7 +40,7 @@ namespace CloseHash
 		size_t _capacity; // 增容*/
 		// 用vector来代替上面定义的三个变量
 		vector<HashData> _table;
-		size_t _n; // 存储的有效数据个数
+		size_t _n = 0; // 存储的有效数据个数
 	};
 }
 
