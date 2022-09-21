@@ -103,6 +103,20 @@ namespace CloseHash
 			return nullptr;
 		}
 
+		bool Erase(const K& key)
+		{
+			HashData<K, V>* ret = Find(key);
+			if (ret == nullptr)
+			{
+				return false;
+			}
+			else
+			{
+				ret->_state = DELETE;
+				return true;
+			}
+		}
+
 	private:
 		/*HashData* _table;
 		size_t _size;	  // 记录存了多少个数据了
