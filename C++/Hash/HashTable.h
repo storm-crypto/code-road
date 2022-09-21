@@ -217,12 +217,48 @@ namespace OpenHash
 	{
 		HashNode<K, V>* _next;
 		pair<K, V> _kv;
+
+		// 构造函数
+		HashNode(const pair<K, V>& kv)
+			:_next(nullptr)
+			, _kv(kv)
+		{}
 	};
 
 	template<class K, class V>
 	class HashTable
 	{
 		typedef HashNode<K, V> Node;
+	public:
+		bool Insert(const pair<K, V>& kv)
+		{
+			if (Find(kv.first))
+				return false;
+
+			size_t index = kv.first % _table.size();
+			Node* newnode = new Node(kv);
+
+			// 头插
+			newnode->_next = _table[index];
+			_table[index] = newnode;
+			++_n;
+
+			return true;
+		}
+
+		Node* Find(const K& key)
+		{
+			size_t index = key % _table.size();
+			Node* cur = _table[index];
+			while (cur)
+			{
+				if (cur->_kv.first == key) return cur;
+				else cur = cur->_next;
+			}
+
+			return nullptr;
+		}
+
 	private:
 		vector<Node*> _table;
 		size_t _n = 0; // 有效数据的个数
