@@ -90,7 +90,8 @@ namespace CloseHash
 			// 不等于空就继续找
 			while(_table[index]._state != EMPTY)
 			{
-				if (_table[index]._kv.first == key)
+				if (_table[index]._state == EXITS
+				&& _table[index]._kv.first == key)
 				{
 					return &_table[index];
 				}
