@@ -155,10 +155,12 @@ namespace CloseHash
 		// 期望，字符串不同，转出的整型值不同
 		size_t operator()(const string& s)
 		{
+			// 用BKDR哈希算法
 			size_t value = 0;
 			for (auto ch : s)
 			{
 				value += ch;
+				value *= 131;
 			}
 			return value;
 		}
