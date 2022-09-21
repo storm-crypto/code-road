@@ -31,7 +31,40 @@ namespace CloseHash
 	public:
 		bool Insert(const pair<K, V>& kv)
 		{
+			// 负载因子大于0.7就增容
+			// 插入之前要计算他的负载因子
+			if (_table.size() == 0)
+			{
+				_table.resize(10);
+			}
+		    else if ((double )_n / (double)_table.size() > 0.7)
+			{
+				// 增容
+				HashTable<K, V> newHT;
+				newHT.resize(_table.size() * 2);
+				for (auto& e : _table)
+				{
+					if (e._state == EXITS)
+					{
+						newHT.Insert(e._kv);
+					}
+				}
 
+				_table.swap(newHT._table);
+			}
+
+			size_t index = kv.first % _table.size();
+			// 如果当前坑位存在就需要继续探测后面的位置 -- 线性探测 or 二次探测
+			size_t i = 1;
+			while (_table[index]._state == EXITS)
+			{
+				index += i;
+				index %= _table.size(); // 过头了要回来
+			}
+
+			_table[index]._kv = kv;
+			_table[index]._state = EXITS;
+			++_n;
 		}
 
 	private:
