@@ -257,6 +257,30 @@ namespace OpenHash
 	{
 		typedef HashNode<K, V> Node;
 	public:
+
+		size_t GetNextPrime(size_t prime)
+		{
+			const int PRIMECOUNT = 28;
+			static const size_t primeList[PRIMECOUNT] =
+			{
+				53ul, 97ul, 193ul, 389ul, 769ul,
+				1543ul, 3079ul, 6151ul, 12289ul, 24593ul,
+				49157ul, 98317ul, 196613ul, 393241ul, 786433ul,
+				1572869ul, 3145739ul, 6291469ul, 12582917ul, 25165843ul,
+				50331653ul, 100663319ul, 201326611ul, 402653189ul, 805306457ul,
+				1610612741ul, 3221225473ul, 4294967291ul
+			};
+
+			size_t i = 0;
+			for(; i < PRIMECOUNT; ++i)
+			{
+				if(primeList[i] > prime)
+					return primeList[i];
+			}
+			return primeList[i];
+		}
+
+
 		bool Insert(const pair<K, V>& kv)
 		{
 			HashFunc hf;
@@ -268,8 +292,10 @@ namespace OpenHash
 			{
 
 				vector<Node*> newTable;
-				size_t newSize = _table.size() == 0 ? 10 : _table.size() * 2;
-				newTable.resize(newSize);
+				size_t newSize = _table.size() == 0 ? 8 : _table.size() * 2;
+				// newTable.resize(newSize, nullptr);
+				newTable.resize(GetNextPrime(_table.size()));
+
 
 				// 遍历旧表，取旧表的结点，重新算映射位置，挂到新表中
 				for (size_t i = 0; i < _table.size(); i++)
@@ -371,6 +397,26 @@ namespace OpenHash
 			ht.Insert(make_pair(e, e));
 		}
 	}
+
+void TestHashTable2()
+{
+	string a[] = { "苹果", "西瓜", "苹果", "西瓜", "苹果", "橘子", "苹果" };
+	HashTable<string, int> ht;
+	for (auto str : a)
+	{
+		auto ret = ht.Find(str);
+		if (ret)
+		{
+			ret->_kv.second++;
+		}
+		else
+		{
+			ht.Insert(make_pair(str, 1));
+		}
+	}
+
+
+}
 
 }
 
