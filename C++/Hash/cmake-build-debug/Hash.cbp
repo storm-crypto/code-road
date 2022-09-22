@@ -83,6 +83,12 @@
 		<Unit filename="D:/05code/2022/code-road/C++/Hash/HashTable.h">
 			<Option target="Hash"/>
 		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C++/Hash/UnorderedMap.h">
+			<Option target="Hash"/>
+		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C++/Hash/UnorderedSet.h">
+			<Option target="Hash"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/Hash/main.cpp">
 			<Option target="Hash"/>
 		</Unit>

@@ -398,25 +398,23 @@ namespace OpenHash
 		}
 	}
 
-void TestHashTable2()
-{
-	string a[] = { "苹果", "西瓜", "苹果", "西瓜", "苹果", "橘子", "苹果" };
-	HashTable<string, int> ht;
-	for (auto str : a)
+	void TestHashTable2()
 	{
-		auto ret = ht.Find(str);
-		if (ret)
+		string a[] = { "苹果", "西瓜", "苹果", "西瓜", "苹果", "橘子", "苹果" };
+		HashTable<string, int> ht;
+		for (auto str : a)
 		{
-			ret->_kv.second++;
-		}
-		else
-		{
-			ht.Insert(make_pair(str, 1));
+			auto ret = ht.Find(str);
+			if (ret)
+			{
+				ret->_kv.second++;
+			}
+			else
+			{
+				ht.Insert(make_pair(str, 1));
+			}
 		}
 	}
-
-
-}
 
 }
 
