@@ -71,7 +71,7 @@ int main()
 //	CloseHash::TestHashTable1();
 //	CloseHash::TestHashTable2();
 
-	OpenHash::TestHashTable2();
+//	OpenHash::TestHashTable2();
 
 	return 0;
 }

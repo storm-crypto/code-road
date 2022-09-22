@@ -210,18 +210,226 @@ namespace CloseHash
 	}
 }
 
+//namespace OpenHash
+//{
+//	template<class K, class V>
+//	struct HashNode
+//	{
+//		HashNode<K, V>* _next;
+//		pair<K, V> _kv;
+//
+//		// 构造函数
+//		HashNode(const pair<K, V>& kv)
+//			:_next(nullptr)
+//			, _kv(kv)
+//		{}
+//	};
+//
+//	template<class K>
+//	struct Hash
+//	{
+//		size_t operator()(const K& key)
+//		{
+//			return key;
+//		}
+//	};
+//
+//	// 因为如果key是string类型的，就走这个特化的例子
+//	// 特化：
+//	template<>
+//	struct Hash<string>
+//	{
+//		size_t operator()(const string& key)
+//		{
+//			// 用BKDR哈希算法
+//			size_t value = 0;
+//			for (auto ch : key)
+//			{
+//				value += ch;
+//				value *= 131;
+//			}
+//			return value;
+//		}
+//	};
+//
+//	template<class K, class V, class HashFunc = Hash<K>>
+//	class HashTable
+//	{
+//		typedef HashNode<K, V> Node;
+//	public:
+//
+//		size_t GetNextPrime(size_t prime)
+//		{
+//			const int PRIMECOUNT = 28;
+//			static const size_t primeList[PRIMECOUNT] =
+//			{
+//				53ul, 97ul, 193ul, 389ul, 769ul,
+//				1543ul, 3079ul, 6151ul, 12289ul, 24593ul,
+//				49157ul, 98317ul, 196613ul, 393241ul, 786433ul,
+//				1572869ul, 3145739ul, 6291469ul, 12582917ul, 25165843ul,
+//				50331653ul, 100663319ul, 201326611ul, 402653189ul, 805306457ul,
+//				1610612741ul, 3221225473ul, 4294967291ul
+//			};
+//
+//			size_t i = 0;
+//			for(; i < PRIMECOUNT; ++i)
+//			{
+//				if(primeList[i] > prime)
+//					return primeList[i];
+//			}
+//			return primeList[i];
+//		}
+//
+//
+//		bool Insert(const pair<K, V>& kv)
+//		{
+//			HashFunc hf;
+//			if (Find(kv.first))
+//				return false;
+//
+//			// 负载因子到1时，进行增容
+//			if (_n == _table.size())
+//			{
+//
+//				vector<Node*> newTable;
+//				size_t newSize = _table.size() == 0 ? 8 : _table.size() * 2;
+//				// newTable.resize(newSize, nullptr);
+//				newTable.resize(GetNextPrime(_table.size()));
+//
+//
+//				// 遍历旧表，取旧表的结点，重新算映射位置，挂到新表中
+//				for (size_t i = 0; i < _table.size(); i++)
+//				{
+//					if (_table[i])
+//					{
+//						Node* cur = _table[i];
+//						while (cur)
+//						{
+//							Node* next = cur->_next;
+//							size_t index = hf(cur->_kv.first) % newTable.size();
+//							// 将cur结点头插到newTable中
+//							cur->_next = newTable[index];
+//							newTable[index] = cur;
+//
+//							cur = next;
+//						}
+//
+//						// 全部处理完之后，这个坑的链表可以置为空了
+//						_table[i] = nullptr;
+//					}
+//				}
+//				// newTable跟_table交换
+//				_table.swap(newTable);
+//			}
+//
+//
+//			size_t index = hf(kv.first) % _table.size();
+//			Node* newnode = new Node(kv);
+//
+//			// 头插
+//			newnode->_next = _table[index];
+//			_table[index] = newnode;
+//			++_n;
+//
+//			return true;
+//		}
+//
+//		Node* Find(const K& key)
+//		{
+//			if (_table.size() == 0)
+//				return nullptr;
+//
+//			HashFunc hf;
+//			size_t index = hf(key) % _table.size();
+//			Node* cur = _table[index];
+//			while (cur)
+//			{
+//				if (cur->_kv.first == key) return cur;
+//				else cur = cur->_next;
+//			}
+//
+//			return nullptr;
+//		}
+//
+//		bool Erase(const K& key)
+//		{
+//			HashFunc hf;
+//			size_t index = hf(key) % _table.size();
+//			Node* cur = _table[index];
+//			Node* prev = nullptr;
+//			while (cur)
+//			{
+//				if (cur->_kv.first == key)
+//				{
+//					// cur是第一个结点的情况
+//					if (cur == _table[index])
+//					{
+//						_table[index] = cur->_next;
+//					}
+//					else
+//					{
+//						prev->_next = cur->_next;
+//					}
+//
+//					--_n;
+//					delete cur;
+//					return true;
+//				}
+//
+//				prev = cur;
+//				cur = cur->_next;
+//			}
+//
+//			return false;
+//		}
+//
+//	private:
+//		vector<Node*> _table;
+//		size_t _n = 0; // 有效数据的个数
+//	};
+//
+//	void TestHashTable1()
+//	{
+//		int a[] = {1, 5, 10, 100000, 100, 18, 15, 7, 40};
+//		HashTable<int, int> ht;
+//		for (auto e : a)
+//		{
+//			ht.Insert(make_pair(e, e));
+//		}
+//	}
+//
+//	void TestHashTable2()
+//	{
+//		string a[] = { "苹果", "西瓜", "苹果", "西瓜", "苹果", "橘子", "苹果" };
+//		HashTable<string, int> ht;
+//		for (auto str : a)
+//		{
+//			auto ret = ht.Find(str);
+//			if (ret)
+//			{
+//				ret->_kv.second++;
+//			}
+//			else
+//			{
+//				ht.Insert(make_pair(str, 1));
+//			}
+//		}
+//	}
+//
+//}
+
 namespace OpenHash
 {
-	template<class K, class V>
+	template<class T>
 	struct HashNode
 	{
-		HashNode<K, V>* _next;
-		pair<K, V> _kv;
+		HashNode<T>* _next;
+		T _data;
 
 		// 构造函数
-		HashNode(const pair<K, V>& kv)
+		HashNode(const T& data)
 			:_next(nullptr)
-			, _kv(kv)
+			, _data(data)
 		{}
 	};
 
@@ -252,24 +460,24 @@ namespace OpenHash
 		}
 	};
 
-	template<class K, class V, class HashFunc = Hash<K>>
+	template<class K, class T, class KeyOfT, class HashFunc = Hash<K>>
 	class HashTable
 	{
-		typedef HashNode<K, V> Node;
+		typedef HashNode<T> Node;
 	public:
 
 		size_t GetNextPrime(size_t prime)
 		{
 			const int PRIMECOUNT = 28;
 			static const size_t primeList[PRIMECOUNT] =
-			{
-				53ul, 97ul, 193ul, 389ul, 769ul,
-				1543ul, 3079ul, 6151ul, 12289ul, 24593ul,
-				49157ul, 98317ul, 196613ul, 393241ul, 786433ul,
-				1572869ul, 3145739ul, 6291469ul, 12582917ul, 25165843ul,
-				50331653ul, 100663319ul, 201326611ul, 402653189ul, 805306457ul,
-				1610612741ul, 3221225473ul, 4294967291ul
-			};
+				{
+					53ul, 97ul, 193ul, 389ul, 769ul,
+					1543ul, 3079ul, 6151ul, 12289ul, 24593ul,
+					49157ul, 98317ul, 196613ul, 393241ul, 786433ul,
+					1572869ul, 3145739ul, 6291469ul, 12582917ul, 25165843ul,
+					50331653ul, 100663319ul, 201326611ul, 402653189ul, 805306457ul,
+					1610612741ul, 3221225473ul, 4294967291ul
+				};
 
 			size_t i = 0;
 			for(; i < PRIMECOUNT; ++i)
@@ -281,10 +489,11 @@ namespace OpenHash
 		}
 
 
-		bool Insert(const pair<K, V>& kv)
+		bool Insert(const T& data)
 		{
 			HashFunc hf;
-			if (Find(kv.first))
+			KeyOfT kot;
+			if (Find(kot(data)))
 				return false;
 
 			// 负载因子到1时，进行增容
@@ -306,7 +515,7 @@ namespace OpenHash
 						while (cur)
 						{
 							Node* next = cur->_next;
-							size_t index = hf(cur->_kv.first) % newTable.size();
+							size_t index = hf(kot(cur->_data)) % newTable.size();
 							// 将cur结点头插到newTable中
 							cur->_next = newTable[index];
 							newTable[index] = cur;
@@ -323,8 +532,8 @@ namespace OpenHash
 			}
 
 
-			size_t index = hf(kv.first) % _table.size();
-			Node* newnode = new Node(kv);
+			size_t index = hf(kot(data)) % _table.size();
+			Node* newnode = new Node(data);
 
 			// 头插
 			newnode->_next = _table[index];
@@ -344,7 +553,7 @@ namespace OpenHash
 			Node* cur = _table[index];
 			while (cur)
 			{
-				if (cur->_kv.first == key) return cur;
+				if (kot(cur->_data) == key) return cur;
 				else cur = cur->_next;
 			}
 
@@ -359,7 +568,7 @@ namespace OpenHash
 			Node* prev = nullptr;
 			while (cur)
 			{
-				if (cur->_kv.first == key)
+				if (kot(cur->_data) == key)
 				{
 					// cur是第一个结点的情况
 					if (cur == _table[index])
@@ -388,33 +597,6 @@ namespace OpenHash
 		size_t _n = 0; // 有效数据的个数
 	};
 
-	void TestHashTable1()
-	{
-		int a[] = {1, 5, 10, 100000, 100, 18, 15, 7, 40};
-		HashTable<int, int> ht;
-		for (auto e : a)
-		{
-			ht.Insert(make_pair(e, e));
-		}
-	}
-
-	void TestHashTable2()
-	{
-		string a[] = { "苹果", "西瓜", "苹果", "西瓜", "苹果", "橘子", "苹果" };
-		HashTable<string, int> ht;
-		for (auto str : a)
-		{
-			auto ret = ht.Find(str);
-			if (ret)
-			{
-				ret->_kv.second++;
-			}
-			else
-			{
-				ht.Insert(make_pair(str, 1));
-			}
-		}
-	}
 
 }
 
