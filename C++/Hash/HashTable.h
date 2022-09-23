@@ -460,6 +460,10 @@ namespace OpenHash
 		}
 	};
 
+	// Ç°ÖÃÉùÃ÷
+	template<class K, class T, class KeyOfT, class HashFunc>
+	class HashTable;
+
 	// µü´úÆ÷
 	template<class K, class T, class KeyOfT, class HashFunc = Hash<K>>
 	struct __HTIterator
@@ -505,7 +509,6 @@ namespace OpenHash
 					}
 
 				}
-
 				_node = nullptr;
 				return *this;
 			}
