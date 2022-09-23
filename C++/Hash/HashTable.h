@@ -460,11 +460,107 @@ namespace OpenHash
 		}
 	};
 
+	// 迭代器
+	template<class K, class T, class KeyOfT, class HashFunc = Hash<K>>
+	struct __HTIterator
+	{
+		typedef HashNode<T> Node;
+		typedef __HTIterator<K, T, KeyOfT, HashFunc> Self;
+		typedef HashTable<K, T, KeyOfT, HashFunc> HT;
+		Node* _node;
+		HT* _pht;
+
+		// 构造函数
+		__HTIterator(Node* node, HT* pht)
+			:_node(node)
+			, _pht(pht)
+		{}
+
+
+		// 重难点
+		Self& operator++()
+		{
+			// 1、当前桶中还有数据，那么就在当前桶往后走
+			// 2、当前桶走完了，需要往下一个桶去走
+			if (_node->_next)
+			{
+				_node = _node->_next;
+			}
+			else
+			{
+				// 获取当前桶所在的位置
+				size_t index = KeyOfT(_node->_data) % _pht->_table.size();
+				++index;
+				// 如果下一个桶的位置不为空，那么就找到下一个桶了
+				while (index < _pht->_table.size())
+				{
+					if (_pht->_table[index]) // 找到下一个桶的位置了
+					{
+						_node = _pht->_table[index];
+						return *this;
+					}
+					else
+					{
+						++index;
+					}
+
+				}
+
+				_node = nullptr;
+				return *this;
+			}
+		}
+
+		T& operator*()
+		{
+			return _node->_data;
+		}
+
+		T* operator->()
+		{
+			return &_node->_data;
+		}
+
+		bool operator != (const Self& s) const
+		{
+			return _node != s._node;
+		}
+
+		bool operator == (const Self& s) const
+		{
+			return _node == s._node;
+		}
+
+	};
+
 	template<class K, class T, class KeyOfT, class HashFunc = Hash<K>>
 	class HashTable
 	{
 		typedef HashNode<T> Node;
 	public:
+		typedef __HTIterator<K, T, KeyOfT, HashFunc> iterator;
+		//
+
+		iterator begin()
+		{
+			size_t i = 0;
+			while (i < _table.size())
+			{
+				if (_table[i])
+				{
+					// 找到第一个桶的位置了,返回迭代器
+					return iterator(_table[i], this);
+				}
+			}
+
+			// 如果没找到，说明哈希桶是空的，返回end()
+			return end();
+		}
+
+		iterator end()
+		{
+			return iterator(nullptr, this);
+		}
 
 		size_t GetNextPrime(size_t prime)
 		{
