@@ -614,7 +614,7 @@ namespace OpenHash
 						while (cur)
 						{
 							Node* next = cur->_next;
-							size_t index = hf(kot(cur->_data)) % newTable.size();
+							size_t index = hf(kot(data)) % newTable.size();
 							// 将cur结点头插到newTable中
 							cur->_next = newTable[index];
 							newTable[index] = cur;

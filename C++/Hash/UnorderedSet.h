@@ -19,7 +19,19 @@ namespace ljx
 				return k;
 			}
 		};
-		bool Insert(const K& k)
+		typedef typename OpenHash::HashTable<K, K, SetKeyOfT>::iterator iterator;
+		iterator begin()
+		{
+			return _ht.begin();
+		}
+
+		iterator end()
+		{
+			return _ht.end();
+		}
+
+
+		bool insert(const K& k)
 		{
 			_ht.Insert(k);
 
@@ -27,8 +39,13 @@ namespace ljx
 		}
 
 	private:
-		OpenHash::HashTable<K, K, SetKeyOfT> _hs;
+		OpenHash::HashTable<K, K, SetKeyOfT> _ht;
 	};
+
+	void test_unordered_set()
+	{
+
+	}
 }
 
 #endif //HASH__UNORDEREDSET_H

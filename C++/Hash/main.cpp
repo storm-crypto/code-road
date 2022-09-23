@@ -5,6 +5,8 @@
 #include <set>
 #include <string>
 #include "HashTable.h"
+#include "UnorderedSet.h"
+#include "UnorderedMap.h"
 
 using namespace std;
 
