@@ -38,6 +38,16 @@ namespace ljx
 			// _bits[i]的第j位标记成0，并且不影响其他位
 			_bits[i] &= (~(1 << j));
 		}
+
+		bool Test(size_t x)
+		{
+			size_t i = x / 32;
+			size_t j = x % 32;
+
+			// 如果第j位是1，结果是非0，true
+			// 如果第j位是0，结果是0，false
+			return _bits[i] & (1 << j);
+		}
 	private:
 		vector<int> _bits;
 	};
