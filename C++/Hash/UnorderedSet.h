@@ -31,10 +31,9 @@ namespace ljx
 			return _ht.end();
 		}
 
-		bool insert(const K k)
+		pair<iterator, bool> insert(const K k)
 		{
-			_ht.Insert(k);
-			return true;
+			return _ht.Insert(k);
 		}
 
 	private:

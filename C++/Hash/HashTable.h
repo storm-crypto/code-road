@@ -594,12 +594,14 @@ namespace OpenHash
 		}
 
 
-		bool Insert(const T& data)
+		pair<iterator, bool> Insert(const T& data)
 		{
 			HashFunc hf;
 			KeyOfT kot;
-			if (Find(kot(data)))
-				return false;
+			// 找到了
+			auto ret = Find(kot(data));
+			if (ret != end())
+				return make_pair(ret, false); // 插入失败
 
 			// 负载因子到1时，进行增容
 			if (_n == _table.size())
@@ -645,13 +647,13 @@ namespace OpenHash
 			_table[index] = newnode;
 			++_n;
 
-			return true;
+			return make_pair(iterator(newnode, this), true);
 		}
 
-		Node* Find(const K& key)
+		iterator Find(const K& key)
 		{
 			if (_table.size() == 0)
-				return nullptr;
+				return end();
 
 			KeyOfT kot;
 			HashFunc hf;
@@ -659,11 +661,11 @@ namespace OpenHash
 			Node* cur = _table[index];
 			while (cur)
 			{
-				if (kot(cur->_data) == key) return cur;
+				if (kot(cur->_data) == key) return iterator(cur, this);
 				else cur = cur->_next;
 			}
 
-			return nullptr;
+			return end();
 		}
 
 		bool Erase(const K& key)
