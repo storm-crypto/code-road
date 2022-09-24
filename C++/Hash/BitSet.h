@@ -28,6 +28,16 @@ namespace ljx
 			// _bits[i]的第j位标记为1
 			_bits[i] |= (1 << j);
 		}
+
+		// 把第x映射的位为搞成0，并且不影响它的其他位
+		void ReSet(size_t x)
+		{
+			size_t i = x / 32;
+			size_t j = x % 32;
+
+			// _bits[i]的第j位标记成0，并且不影响其他位
+			_bits[i] &= (~(1 << j));
+		}
 	private:
 		vector<int> _bits;
 	};
