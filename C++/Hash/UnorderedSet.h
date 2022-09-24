@@ -11,7 +11,6 @@ namespace ljx
 	template<class K>
 	class unordered_set
 	{
-	public:
 		struct SetKeyOfT
 		{
 			const K& operator()(const K& k)
@@ -19,7 +18,9 @@ namespace ljx
 				return k;
 			}
 		};
-		typedef typename OpenHash::HashTable<K, K, SetKeyOfT>::iterator iterator;
+
+	public:
+		typedef typename OpenHash::HashTable<K, K, SetKeyOfT >::iterator iterator;
 		iterator begin()
 		{
 			return _ht.begin();
@@ -30,11 +31,9 @@ namespace ljx
 			return _ht.end();
 		}
 
-
-		bool insert(const K& k)
+		bool insert(const K k)
 		{
 			_ht.Insert(k);
-
 			return true;
 		}
 
@@ -42,9 +41,24 @@ namespace ljx
 		OpenHash::HashTable<K, K, SetKeyOfT> _ht;
 	};
 
-	void test_unordered_set()
+	void test_unordered_set1()
 	{
+		unordered_set<int> us;
+		us.insert(200);
+		us.insert(1);
+		us.insert(2);
+		us.insert(33);
+		us.insert(50);
+		us.insert(60);
+		us.insert(243);
+		us.insert(6);
 
+		unordered_set<int>::iterator it = us.begin();
+		while (it != us.end())
+		{
+			cout << *it << " ";
+			++it;
+		}
 	}
 }
 

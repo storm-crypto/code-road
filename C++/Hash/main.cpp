@@ -4,11 +4,13 @@
 #include <unordered_set>
 #include <set>
 #include <string>
+
+
+using namespace std;
+
 #include "HashTable.h"
 #include "UnorderedSet.h"
 #include "UnorderedMap.h"
-
-using namespace std;
 
 namespace std
 {
@@ -74,6 +76,8 @@ int main()
 //	CloseHash::TestHashTable2();
 
 //	OpenHash::TestHashTable2();
+
+	ljx::test_unordered_set1();
 
 	return 0;
 }

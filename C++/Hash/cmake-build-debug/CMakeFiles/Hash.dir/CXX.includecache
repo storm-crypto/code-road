@@ -12,6 +12,14 @@ vector
 iostream
 -
 
+D:/05code/2022/code-road/C++/Hash/UnorderedMap.h
+HashTable.h
+D:/05code/2022/code-road/C++/Hash/HashTable.h
+
+D:/05code/2022/code-road/C++/Hash/UnorderedSet.h
+HashTable.h
+D:/05code/2022/code-road/C++/Hash/HashTable.h
+
 D:/05code/2022/code-road/C++/Hash/main.cpp
 iostream
 -
@@ -27,4 +35,8 @@ string
 -
 HashTable.h
 D:/05code/2022/code-road/C++/Hash/HashTable.h
+UnorderedSet.h
+D:/05code/2022/code-road/C++/Hash/UnorderedSet.h
+UnorderedMap.h
+D:/05code/2022/code-road/C++/Hash/UnorderedMap.h
 

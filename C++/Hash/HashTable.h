@@ -493,7 +493,9 @@ namespace OpenHash
 			else
 			{
 				// 获取当前桶所在的位置
-				size_t index = KeyOfT(_node->_data) % _pht->_table.size();
+				KeyOfT kot;
+				HashFunc hf;
+				size_t index = hf(kot(_node->_data)) % _pht->_table.size();
 				++index;
 				// 如果下一个桶的位置不为空，那么就找到下一个桶了
 				while (index < _pht->_table.size())
@@ -510,8 +512,8 @@ namespace OpenHash
 
 				}
 				_node = nullptr;
-				return *this;
 			}
+			return *this;
 		}
 
 		T& operator*()
@@ -540,6 +542,9 @@ namespace OpenHash
 	class HashTable
 	{
 		typedef HashNode<T> Node;
+
+		template<class K1, class T1, class KeyOfT1, class HashFunc1>
+		friend struct __HTIterator;
 	public:
 		typedef __HTIterator<K, T, KeyOfT, HashFunc> iterator;
 		//
@@ -554,6 +559,7 @@ namespace OpenHash
 					// 找到第一个桶的位置了,返回迭代器
 					return iterator(_table[i], this);
 				}
+				i++;
 			}
 
 			// 如果没找到，说明哈希桶是空的，返回end()
@@ -600,7 +606,7 @@ namespace OpenHash
 			{
 
 				vector<Node*> newTable;
-				size_t newSize = _table.size() == 0 ? 8 : _table.size() * 2;
+				//size_t newSize = _table.size() == 0 ? 8 : _table.size() * 2;
 				// newTable.resize(newSize, nullptr);
 				newTable.resize(GetNextPrime(_table.size()));
 
@@ -647,6 +653,7 @@ namespace OpenHash
 			if (_table.size() == 0)
 				return nullptr;
 
+			KeyOfT kot;
 			HashFunc hf;
 			size_t index = hf(key) % _table.size();
 			Node* cur = _table[index];
@@ -698,5 +705,7 @@ namespace OpenHash
 
 
 }
+
+
 
 #endif //HASH__HASHTABLE_H
