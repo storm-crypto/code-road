@@ -549,6 +549,31 @@ namespace OpenHash
 		typedef __HTIterator<K, T, KeyOfT, HashFunc> iterator;
 		//
 
+		// 构造函数
+		HashTable() = default; // 显示指定生成默认构造函数
+
+		// 拷贝构造
+		HashTable(const HashTable& ht)
+		{
+			_n = ht._n;
+			_table.resize(ht._table.size());
+
+			// 遍历ht的每个桶
+			for (size_t i = 0; i < ht._table.size(); i++)
+			{
+				Node* cur = ht._table[i];
+				while (cur)
+				{
+					Node* copy = new Node(cur->_data);
+					// 头插到新表
+					copy->_next = _table[i];
+					_table[i] = copy;
+
+					cur = cur->_next;
+				}
+			}
+		}
+
 		iterator begin()
 		{
 			size_t i = 0;
