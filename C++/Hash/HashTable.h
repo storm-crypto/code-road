@@ -574,6 +574,29 @@ namespace OpenHash
 			}
 		}
 
+		HashTable& operator=(HashTable ht)
+		{
+			_table.swap(ht._table);
+			swap(_n, ht._n);
+
+			return *this;
+		}
+
+		~HashTable()
+		{
+			for (size_t i = 0; i < _table.size(); i++)
+			{
+				Node* cur = _table[i];
+				while (cur)
+				{
+					Node* next = cur->_next;
+					delete cur;
+					cur = next;
+				}
+				_table[i] = nullptr;
+			}
+		}
+
 		iterator begin()
 		{
 			size_t i = 0;
