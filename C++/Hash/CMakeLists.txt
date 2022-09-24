@@ -3,4 +3,4 @@ project(Hash)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Hash main.cpp HashTable.h UnorderedSet.h UnorderedMap.h)
+add_executable(Hash main.cpp HashTable.h UnorderedSet.h UnorderedMap.h BitSet.h)
