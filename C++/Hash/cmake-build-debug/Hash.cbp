@@ -83,6 +83,9 @@
 		<Unit filename="D:/05code/2022/code-road/C++/Hash/BitSet.h">
 			<Option target="Hash"/>
 		</Unit>
+		<Unit filename="D:/05code/2022/code-road/C++/Hash/BloomFilter.h">
+			<Option target="Hash"/>
+		</Unit>
 		<Unit filename="D:/05code/2022/code-road/C++/Hash/HashTable.h">
 			<Option target="Hash"/>
 		</Unit>

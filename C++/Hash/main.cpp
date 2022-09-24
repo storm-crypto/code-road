@@ -11,6 +11,7 @@ using namespace std;
 #include "HashTable.h"
 #include "UnorderedSet.h"
 #include "UnorderedMap.h"
+#include "BloomFilter.h"
 
 namespace std
 {
@@ -78,7 +79,8 @@ int main()
 //	OpenHash::TestHashTable2();
 
 //	ljx::test_unordered_set1();
-	ljx::test_unordered_map1();
+//	ljx::test_unordered_map1();
+	TestBloomFilter();
 
 	return 0;
 }
