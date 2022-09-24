@@ -4,6 +4,7 @@
 
 #ifndef BITSET_H
 #define BITSET_H
+#include <assert.h>
 
 namespace ljx
 {
@@ -20,6 +21,7 @@ namespace ljx
 		// 把x映射的位标记为1
 		void Set(size_t x)
 		{
+			assert(x < N);
 			// 算出x映射的位在第几个整数
 			// 算出x映射的位在这个整数的第几个位
 			size_t i = x / 32;
@@ -32,6 +34,7 @@ namespace ljx
 		// 把第x映射的位为搞成0，并且不影响它的其他位
 		void ReSet(size_t x)
 		{
+			assert(x < N);
 			size_t i = x / 32;
 			size_t j = x % 32;
 
@@ -41,6 +44,7 @@ namespace ljx
 
 		bool Test(size_t x)
 		{
+			assert(x < N);
 			size_t i = x / 32;
 			size_t j = x % 32;
 
@@ -51,6 +55,12 @@ namespace ljx
 	private:
 		vector<int> _bits;
 	};
+
+	void TestBitSet()
+	{
+		BitSet<-1> bs;
+
+	}
 }
 
 #endif //BITSET_H
