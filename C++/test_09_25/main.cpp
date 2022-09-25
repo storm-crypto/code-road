@@ -47,11 +47,45 @@ private:
 //	void operator delete(void* p);
 };
 
+//int main()
+//{
+//
+//	// 调用
+//	HeapOnly* p = HeapOnly::CreateObj();
+//
+//	return 0;
+//}
+
+// 单例模式：
+// 1. 构造函数私有定义。将拷贝构造和赋值防拷贝禁掉
+
+// 饿汉模式
+class Singleton
+{
+public:
+	static Singleton* GetInstance()
+	{
+		return _inst;
+	}
+
+private:
+	// 构造函数私有化
+	Singleton()
+	{}
+
+	Singleton(const Singleton&) = delete;
+	Singleton& operator=(const Singleton&) = delete;
+
+	static Singleton* _inst;
+};
+
+Singleton* Singleton::_inst = new Singleton;
+
 int main()
 {
-
-	// 调用
-	HeapOnly* p = HeapOnly::CreateObj();
+	cout << Singleton::GetInstance() << endl;
+	cout << Singleton::GetInstance() << endl;
+	cout << Singleton::GetInstance() << endl;
 
 	return 0;
 }
