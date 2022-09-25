@@ -20,6 +20,18 @@ private:
 	HeapOnly(const HeapOnly&);
 };
 
+class StackOnly
+{
+public:
+	static StackOnly CreateObj()
+	{
+		return StackOnly();
+	}
+private:
+	StackOnly()
+	{}
+};
+
 int main()
 {
 
