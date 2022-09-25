@@ -38,9 +38,13 @@ class StackOnly
 {
 public:
 	StackOnly() {}
+
+	// C++11
+	void* operator new(size_t size) = delete;
+	void operator delete(void* p) = delete;
 private:
-	void* operator new(size_t size);
-	void operator delete(void* p);
+//	void* operator new(size_t size);
+//	void operator delete(void* p);
 };
 
 int main()
