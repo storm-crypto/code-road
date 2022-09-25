@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+D:/05code/2022/code-road/C++/Hash/BitSet.h
+assert.h
+-
+
+D:/05code/2022/code-road/C++/Hash/BloomFilter.h
+BitSet.h
+D:/05code/2022/code-road/C++/Hash/BitSet.h
+
 D:/05code/2022/code-road/C++/Hash/HashTable.h
 vector
 -
@@ -39,4 +47,6 @@ UnorderedSet.h
 D:/05code/2022/code-road/C++/Hash/UnorderedSet.h
 UnorderedMap.h
 D:/05code/2022/code-road/C++/Hash/UnorderedMap.h
+BloomFilter.h
+D:/05code/2022/code-road/C++/Hash/BloomFilter.h
 
