@@ -20,16 +20,27 @@ private:
 	HeapOnly(const HeapOnly&);
 };
 
+// 方法一：
+//class StackOnly
+//{
+//public:
+//	static StackOnly CreateObj()
+//	{
+//		return StackOnly();
+//	}
+//private:
+//	StackOnly()
+//	{}
+//};
+
+// 方法二：
 class StackOnly
 {
 public:
-	static StackOnly CreateObj()
-	{
-		return StackOnly();
-	}
+	StackOnly() {}
 private:
-	StackOnly()
-	{}
+	void* operator new(size_t size);
+	void operator delete(void* p);
 };
 
 int main()
