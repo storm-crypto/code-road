@@ -68,12 +68,29 @@ private:
 //	return 0;
 //}
 
+//int main()
+//{
+//	int i = 10;
+//	auto p = &i;
+//
+//	decltype(p) px;
+//
+//	return 0;
+//}
+
+#include <array>
+
 int main()
 {
-	int i = 10;
-	auto p = &i;
 
-	decltype(p) px;
+	// 越界检查更严格
+	array<int, 10> a1;
+	array<int, 20> a2;
+
+	a1[11];
+
+	int a[10];
+	a[11];
 
 	return 0;
 }
