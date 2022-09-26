@@ -13,6 +13,21 @@ struct Point
 	int _y;
 };
 
+class Date
+{
+public:
+	Date(int year = 0, int month = 1, int day = 1)
+		:_year(year)
+		,_month(month)
+		,_day(day)
+	{
+		cout << "Date(int year, int month, int day)" << endl;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
 
 int main()
 {
@@ -26,6 +41,13 @@ int main()
 
 	int* p3 = new int[4]{0};
 	int* p4 = new int[4]{1, 2, 3, 4};
+
+	Date d1;
+	Date d2(2022, 9, 27);
+	// 这里虽然可以这样用，但是不建议这样使用，这种做法是为其他地方做准备的
+	Date d3{2022, 9, 27};
+	Date d4 = {2022, 9, 27};
+
 
 	return 0;
 }
