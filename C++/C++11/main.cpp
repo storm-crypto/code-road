@@ -1,9 +1,10 @@
-#include <iostream>
+#include <cmath>
 #include <initializer_list>
-#include <vector>
+#include <iostream>
+#include <list>
 #include <map>
 #include <string>
-#include <list>
+#include <vector>
 
 using namespace std;
 
@@ -78,19 +79,39 @@ private:
 //	return 0;
 //}
 
-#include <array>
+//#include <array>
+//
+//int main()
+//{
+//
+//	// 越界检查更严格
+//	array<int, 10> a1;
+//	array<int, 20> a2;
+//
+//	a1[11];
+//
+//	int a[10];
+//	a[11];
+//
+//	return 0;
+//}
 
 int main()
 {
-
-	// 越界检查更严格
-	array<int, 10> a1;
-	array<int, 20> a2;
-
-	a1[11];
-
-	int a[10];
-	a[11];
+	// 右值引用
+	double x = 1.1, y = 2.2;
+// 以下几个都是常见的右值
+	10;
+	x + y;
+	fmin(x, y);
+// 以下几个都是对右值的右值引用
+	int&& rr1 = 10;
+	double&& rr2 = x + y;
+	double&& rr3 = fmin(x, y);
+// 这里编译会报错：error C2106: “=”: 左操作数必须为左值
+//	10 = 1;
+//	x + y = 1;
+//	fmin(x, y) = 1;
 
 	return 0;
 }
