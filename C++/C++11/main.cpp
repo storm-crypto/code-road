@@ -96,22 +96,32 @@ private:
 //	return 0;
 //}
 
+//int main()
+//{
+//	// 右值引用
+//	double x = 1.1, y = 2.2;
+//// 以下几个都是常见的右值
+//	10;
+//	x + y;
+//	fmin(x, y);
+//// 以下几个都是对右值的右值引用
+//	int&& rr1 = 10;
+//	double&& rr2 = x + y;
+//	double&& rr3 = fmin(x, y);
+//// 这里编译会报错：error C2106: “=”: 左操作数必须为左值
+////	10 = 1;
+////	x + y = 1;
+////	fmin(x, y) = 1;
+//
+//	return 0;
+//}
+
 int main()
 {
-	// 右值引用
-	double x = 1.1, y = 2.2;
-// 以下几个都是常见的右值
-	10;
-	x + y;
-	fmin(x, y);
-// 以下几个都是对右值的右值引用
-	int&& rr1 = 10;
-	double&& rr2 = x + y;
-	double&& rr3 = fmin(x, y);
-// 这里编译会报错：error C2106: “=”: 左操作数必须为左值
-//	10 = 1;
-//	x + y = 1;
-//	fmin(x, y) = 1;
+	int a = 10;
+	int& ra1 = a;
 
-	return 0;
+	// int& ra2 = 10; // 编译失败：左值引用不能引用右值
+
+	const int& ra3 = 10; // 加了const的左值引用可以引用右值
 }
