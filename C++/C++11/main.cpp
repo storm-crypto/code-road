@@ -52,18 +52,28 @@ private:
 //	return 0;
 //}
 
+//int main()
+//{
+//	// the type of il is an initializer_list
+//	auto il = {10, 20, 30};
+//	std::initializer_list<int> il2 = {1, 2, 3, 4};
+//	cout << typeid(il).name() << endl;
+//
+//	vector<int> v = {1, 2, 3, 4, 5};
+//	list<int> lt {10, 20, 30};
+//
+//	vector<Date> vd = {Date(2022, 9, 27), Date{2022, 9, 27}, {2022, 9, 27}};
+//	map<string, int> dict = {make_pair("sort", 2), {"insert", 2}};
+//
+//	return 0;
+//}
+
 int main()
 {
-	// the type of il is an initializer_list
-	auto il = {10, 20, 30};
-	std::initializer_list<int> il2 = {1, 2, 3, 4};
-	cout << typeid(il).name() << endl;
+	int i = 10;
+	auto p = &i;
 
-	vector<int> v = {1, 2, 3, 4, 5};
-	list<int> lt {10, 20, 30};
-
-	vector<Date> vd = {Date(2022, 9, 27), Date{2022, 9, 27}, {2022, 9, 27}};
-	map<string, int> dict = {make_pair("sort", 2), {"insert", 2}};
+	decltype(p) px;
 
 	return 0;
 }
