@@ -346,19 +346,41 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 // 模板的万能引用只是提供了能够接收同时接收左值引用和右值引用的能力，
 // 但是引用类型的唯一作用就是限制了接收的类型，后续使用中都退化成了左值，
 // 我们希望能够在传递过程中保持它的左值或者右值的属性, 就需要用我们下面学习的完美转发
-template<typename T>
-void PerfectForward(T&& t)
-{
-	Fun(t);
-}
+//template<typename T>
+//void PerfectForward(T&& t)
+//{
+//	Fun(t);
+//}
+
+//// 完美转发
+//template<typename T>
+//void PerfectForward(T&& t)
+//{
+//	Fun(std::forward<T>(t));
+//}
+//int main()
+//{
+//	PerfectForward(10); // 右值
+//	int a;
+//	PerfectForward(a); // 左值
+//	PerfectForward(std::move(a)); // 右值
+//	const int b = 8;
+//	PerfectForward(b); // const 左值
+//	PerfectForward(std::move(b)); // const 右值
+//	return 0;
+//}
+
+// lambda表达式
+
 int main()
 {
-	PerfectForward(10); // 右值
-	int a;
-	PerfectForward(a); // 左值
-	PerfectForward(std::move(a)); // 右值
-	const int b = 8;
-	PerfectForward(b); // const 左值
-	PerfectForward(std::move(b)); // const 右值
+	// 最简单的lambda表达式
+	[]{};
+
+	int a = 1, b = 2;
+	// 实现add的lambder
+	auto add = [](int x, int y)->int{return x + y;};
+	cout << add(a, b) << endl;
+
 	return 0;
 }
