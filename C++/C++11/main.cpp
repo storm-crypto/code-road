@@ -5,6 +5,8 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <assert.h>
+#include <string.h>
 
 using namespace std;
 
@@ -116,12 +118,175 @@ private:
 //	return 0;
 //}
 
+//int main()
+//{
+//	int a = 10;
+//	int& ra1 = a;
+//
+//	// int& ra2 = 10; // 编译失败：左值引用不能引用右值
+//
+//	const int& ra3 = 10; // 加了const的左值引用可以引用右值
+//}
+
+//int main()
+//{
+//	// 右值引用只能右值，不能引用左值。
+//	int&& r1 = 10;
+//	// error C2440: “初始化”: 无法从“int”转换为“int &&”
+//	// message : 无法将左值绑定到右值引用
+//	int a = 10;
+//	int&& r2 = a;
+//
+//	// 右值引用可以引用move以后的左值
+//	int&& r3 = std::move(a);
+//
+//	return 0;
+//}
+
+namespace ljx
+{
+	class string
+	{
+	public:
+		typedef char* iterator;
+		iterator begin()
+		{
+			return _str;
+		}
+
+		iterator end()
+		{
+			return _str + _size;
+		}
+
+		string(const char* str = "")
+			:_size(strlen(str))
+			, _capacity(_size)
+		{
+			//cout << "string(char* str)" << endl;
+			_str = new char[_capacity + 1];
+			strcpy(_str, str);
+		}
+
+		// s1.swap(s2)
+		void swap(string& s)
+		{
+			::swap(_str, s._str);
+			::swap(_size, s._size);
+			::swap(_capacity, s._capacity);
+		}
+
+		// 拷贝构造
+		string(const string& s)
+			:_str(nullptr)
+		{
+			cout << "string(const string& s) -- 深拷贝" << endl;
+			string tmp(s._str);
+			swap(tmp);
+		}
+
+		// 赋值重载
+		string& operator=(const string& s)
+		{
+			cout << "string& operator=(string s) -- 深拷贝" << endl;
+			string tmp(s);
+			swap(tmp);
+			return *this;
+		}
+
+		// 移动构造
+		string(string&& s)
+			:_str(nullptr)
+			,_size(0)
+			,_capacity(0)
+		{
+			cout << "string(string&& s) -- 移动语义" << endl;
+			swap(s);
+		}
+
+		// 移动赋值
+		string& operator=(string&& s)
+		{
+			cout << "string& operator=(string&& s) -- 移动语义" << endl;
+			swap(s);
+			return *this;
+		}
+
+		~string()
+		{
+			delete[] _str;
+			_str = nullptr;
+		}
+
+		char& operator[](size_t pos)
+		{
+			assert(pos < _size);
+			return _str[pos];
+		}
+
+		void reserve(size_t n)
+		{
+			if (n > _capacity)
+			{
+				char* tmp = new char[n + 1];
+				strcpy(tmp, _str);
+				delete[] _str;
+				_str = tmp;
+				_capacity = n;
+			}
+		}
+
+		void push_back(char ch)
+		{
+			if (_size >= _capacity)
+			{
+				size_t newcapacity = _capacity == 0 ? 4 : _capacity * 2;
+				reserve(newcapacity);
+			}
+
+			_str[_size] = ch;
+			++_size;
+			_str[_size] = '\0';
+		}
+
+		//string operator+=(char ch)
+		string& operator+=(char ch)
+		{
+			push_back(ch);
+			return *this;
+		}
+
+		const char* c_str() const
+		{
+			return _str;
+		}
+	private:
+		char* _str;
+		size_t _size;
+		size_t _capacity; // 不包含最后做标识的\0
+	};
+}
+
+// 左值引用的使用场景：
+// 1. 做参数
+// 2. 做返回值
+
+void func1(ljx::string s)
+{}
+
+void func2(const ljx::string& s)
+{}
+
 int main()
 {
-	int a = 10;
-	int& ra1 = a;
+	ljx::string s1("hello world");
+	// func1和func2的调用我们可以看到左值引用做参数减少了拷贝，
+	// 提高效率的使用场景和价值
+	func1(s1);
+	func2(s1);
+	// string operator+=(char ch) 传值返回存在深拷贝
+	// string& operator+=(char ch) 传左值引用没有拷贝提高了效率
+	s1 += '!';
 
-	// int& ra2 = 10; // 编译失败：左值引用不能引用右值
-
-	const int& ra3 = 10; // 加了const的左值引用可以引用右值
+	return 0;
 }
