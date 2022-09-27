@@ -322,16 +322,43 @@ void func2(const ljx::string& s)
 //	return 0;
 //}
 
+//int main()
+//{
+//	list<ljx::string> v;
+//	ljx::string s1("1111");
+//	// 这里调用的是拷贝构造
+//	v.push_back(s1);
+//
+//	// 下面调用的是移动构造
+//	v.push_back("2222");
+//	v.push_back(std::move(s1));
+//
+//	return 0;
+//}
+
+// 万能引用
+void Fun(int &x){ cout << "左值引用" << endl; }
+void Fun(const int &x){ cout << "const 左值引用" << endl; }
+void Fun(int &&x){ cout << "右值引用" << endl; }
+void Fun(const int &&x){ cout << "const 右值引用" << endl; }
+
+// 模板中的&&不代表右值引用，而是万能引用，其既能接收左值又能接收右值。
+// 模板的万能引用只是提供了能够接收同时接收左值引用和右值引用的能力，
+// 但是引用类型的唯一作用就是限制了接收的类型，后续使用中都退化成了左值，
+// 我们希望能够在传递过程中保持它的左值或者右值的属性, 就需要用我们下面学习的完美转发
+template<typename T>
+void PerfectForward(T&& t)
+{
+	Fun(t);
+}
 int main()
 {
-	list<ljx::string> v;
-	ljx::string s1("1111");
-	// 这里调用的是拷贝构造
-	v.push_back(s1);
-
-	// 下面调用的是移动构造
-	v.push_back("2222");
-	v.push_back(std::move(s1));
-
+	PerfectForward(10); // 右值
+	int a;
+	PerfectForward(a); // 左值
+	PerfectForward(std::move(a)); // 右值
+	const int b = 8;
+	PerfectForward(b); // const 左值
+	PerfectForward(std::move(b)); // const 右值
 	return 0;
 }
