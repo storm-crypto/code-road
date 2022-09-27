@@ -7,6 +7,7 @@
 #include <vector>
 #include <assert.h>
 #include <string.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -260,11 +261,41 @@ namespace ljx
 		{
 			return _str;
 		}
+
 	private:
 		char* _str;
 		size_t _size;
 		size_t _capacity; // 不包含最后做标识的\0
 	};
+}
+
+namespace ljx
+{
+ljx::string to_string(int value)
+{
+	bool flag = true;
+	if (value < 0)
+	{
+		flag = false;
+		value = 0 - value;
+	}
+
+	ljx::string str;
+	while (value > 0)
+	{
+		int x = value % 10;
+		value /= 10;
+		str += ('0' + x);
+	}
+
+	if (flag == false)
+	{
+		str += '-';
+	}
+
+	std::reverse(str.begin(), str.end());
+	return str;
+}
 }
 
 // 左值引用的使用场景：
@@ -277,16 +308,30 @@ void func1(ljx::string s)
 void func2(const ljx::string& s)
 {}
 
+//int main()
+//{
+//	ljx::string s1("hello world");
+//	// func1和func2的调用我们可以看到左值引用做参数减少了拷贝，
+//	// 提高效率的使用场景和价值
+//	func1(s1);
+//	func2(s1);
+//	// string operator+=(char ch) 传值返回存在深拷贝
+//	// string& operator+=(char ch) 传左值引用没有拷贝提高了效率
+//	s1 += '!';
+//
+//	return 0;
+//}
+
 int main()
 {
-	ljx::string s1("hello world");
-	// func1和func2的调用我们可以看到左值引用做参数减少了拷贝，
-	// 提高效率的使用场景和价值
-	func1(s1);
-	func2(s1);
-	// string operator+=(char ch) 传值返回存在深拷贝
-	// string& operator+=(char ch) 传左值引用没有拷贝提高了效率
-	s1 += '!';
+	list<ljx::string> v;
+	ljx::string s1("1111");
+	// 这里调用的是拷贝构造
+	v.push_back(s1);
+
+	// 下面调用的是移动构造
+	v.push_back("2222");
+	v.push_back(std::move(s1));
 
 	return 0;
 }
