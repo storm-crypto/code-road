@@ -379,8 +379,14 @@ int main()
 
 	int a = 1, b = 2;
 	// 实现add的lambder
-	auto add = [](int x, int y)->int{return x + y;};
-	cout << add(a, b) << endl;
+	auto add1 = [](int x, int y)->int{return x + y;};
+	cout << add1(a, b) << endl;
 
+	// 在捕捉列表捕捉a、b，没有参数，可以省略参数列表，返回值可以用推的方式
+	// auto add2 = [a, b]{return a + b + 10;};
+	auto add2 = [a, b]()->int{return a + b + 10;};
+	cout << add2() << endl;
+
+	// 今天没有刷了数据库的课，没有做笔记那种，算了，摆烂一天
 	return 0;
 }
