@@ -419,31 +419,49 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 //	ShowListArg(args...);
 //}
 
-template <class T>
-void PrintArg(T t)
-{
-	cout << t << " ";
-}
+//template <class T>
+//void PrintArg(T t)
+//{
+//	cout << t << " ";
+//}
+//
+//// 0个的时候匹配到这个
+//void ShowList()
+//{
+//	cout << endl;
+//}
+//
+//// 展开函数
+//template<class... Args>
+//void ShowList(Args... args)
+//{
+//	// 列表初始化
+//	int arr[] = { (PrintArg(args), 0)... };
+//	cout << endl;
+//}
+//
+//int main()
+//{
+//	ShowList();
+//	ShowList(1, 2, 'A');
+//
+//	return 0;
+//}
 
-// 0个的时候匹配到这个
-void ShowList()
-{
-	cout << endl;
-}
-
-// 展开函数
-template<class... Args>
-void ShowList(Args... args)
-{
-	// 列表初始化
-	int arr[] = { (PrintArg(args), 0)... };
-	cout << endl;
-}
+// lambda表达式
 
 int main()
 {
-	ShowList();
-	ShowList(1, 2, 'A');
+	int a = 0, b = 1;
+	auto swap1 = [](int& x, int& y)->void
+	{
+		int tmp = x;
+		x= y;
+		y = tmp;
+	};
+
+	swap1(a, b);
+
 
 	return 0;
 }
