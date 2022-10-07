@@ -453,6 +453,7 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 int main()
 {
 	int a = 0, b = 1;
+	//标准写法1：
 	auto swap1 = [](int& x, int& y)->void
 	{
 		int tmp = x;
@@ -461,6 +462,26 @@ int main()
 	};
 
 	swap1(a, b);
+
+	// 尝试利用捕捉列表，捕捉当前局部域的变量
+	// 这样就不用传参或者减少传参，省略参数和返回值
+	auto swap2 = [&a, &b]
+	{
+		int tmp = a;
+		a = b;
+		b = tmp;
+	};
+
+	swap2();
+
+	auto swap3 = [&]
+	{
+	  int tmp = a;
+	  a = b;
+	  b = tmp;
+	};
+
+	swap3();
 
 
 	return 0;
