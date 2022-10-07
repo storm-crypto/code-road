@@ -401,22 +401,43 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 //}
 
 
-// 终止函数
-void ShowListArg()
-{}
+//// 终止函数
+//void ShowListArg()
+//{}
+//
+//// 展开函数
+//template <class T, class ...Args>
+//void ShowListArg(T value, Args... args)
+//{
+//	cout << value << " ";
+//	ShowListArg(args...);
+//}
+//
+//template<class ...Args>
+//void ShowList(Args... args)
+//{
+//	ShowListArg(args...);
+//}
 
-// 展开函数
-template <class T, class ...Args>
-void ShowListArg(T value, Args... args)
+template <class T>
+void PrintArg(T t)
 {
-	cout << value << " ";
-	ShowListArg(args...);
+	cout << t << " ";
 }
 
-template<class ...Args>
+// 0个的时候匹配到这个
+void ShowList()
+{
+	cout << endl;
+}
+
+// 展开函数
+template<class... Args>
 void ShowList(Args... args)
 {
-	ShowListArg(args...);
+	// 列表初始化
+	int arr[] = { (PrintArg(args), 0)... };
+	cout << endl;
 }
 
 int main()
