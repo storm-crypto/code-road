@@ -393,7 +393,23 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 //	return 0;
 //}
 
-template <class ...Args>
+// 递归终止函数
+//template<class T>
+//void ShowList(const T& t)
+//{
+//	cout << t << endl;
+//}
+
+
+
+//template <class T, class ...Args>
+//void ShowList(T value, Args... args)
+//{
+//	cout << value << " ";
+//	ShowList(args...);
+//}
+
+template<class ...Args>
 void ShowList(Args... args)
 {
 	cout << sizeof...(args) << endl;
