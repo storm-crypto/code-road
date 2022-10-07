@@ -450,39 +450,101 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 
 // lambda表达式
 
+//int main()
+//{
+//	int a = 0, b = 1;
+//	//标准写法1：
+//	auto swap1 = [](int& x, int& y)->void
+//	{
+//		int tmp = x;
+//		x= y;
+//		y = tmp;
+//	};
+//
+//	swap1(a, b);
+//
+//	// 尝试利用捕捉列表，捕捉当前局部域的变量
+//	// 这样就不用传参或者减少传参，省略参数和返回值
+//	auto swap2 = [&a, &b]
+//	{
+//		int tmp = a;
+//		a = b;
+//		b = tmp;
+//	};
+//
+//	swap2();
+//
+//	auto swap3 = [&]
+//	{
+//	  int tmp = a;
+//	  a = b;
+//	  b = tmp;
+//	};
+//
+//	swap3();
+//
+//
+//	return 0;
+//}
+
+//class Rate
+//{
+//public:
+//	Rate(double rate): _rate(rate)
+//	{}
+//	double operator()(double money, int year)
+//	{
+//		return money * _rate * year;
+//	}
+//private:
+//	double _rate;
+//};
+//int main()
+//{
+//	// 函数对象
+//	double rate = 0.49;
+//	Rate r1(rate);
+//	r1(10000, 2);
+//	// lambda
+//	auto r2 = [=](double monty, int year)->double
+//	{
+//		return monty*rate*year;
+//	};
+//	r2(10000, 2);
+//	return 0;
+//}
+
+// 包装器
+//ret = func(x);
+// 上面func可能是什么呢？那么func可能是函数名？函数指针？函数对象(仿函数对象)？也有可能
+// 是lamber表达式对象？所以这些都是可调用的类型！如此丰富的类型，可能会导致模板的效率低下！
+// 为什么呢？我们继续往下看
+template<class F, class T>
+T useF(F f, T x)
+{
+	static int count = 0;
+	cout << "count:" << ++count << endl;
+	cout << "count:" << &count << endl;
+	return f(x);
+}
+double f(double i)
+{
+	return i / 2;
+}
+struct Functor
+{
+	double operator()(double d)
+	{
+		return d / 3;
+	}
+};
 int main()
 {
-	int a = 0, b = 1;
-	//标准写法1：
-	auto swap1 = [](int& x, int& y)->void
-	{
-		int tmp = x;
-		x= y;
-		y = tmp;
-	};
-
-	swap1(a, b);
-
-	// 尝试利用捕捉列表，捕捉当前局部域的变量
-	// 这样就不用传参或者减少传参，省略参数和返回值
-	auto swap2 = [&a, &b]
-	{
-		int tmp = a;
-		a = b;
-		b = tmp;
-	};
-
-	swap2();
-
-	auto swap3 = [&]
-	{
-	  int tmp = a;
-	  a = b;
-	  b = tmp;
-	};
-
-	swap3();
-
-
+	// 函数名
+	cout << useF(f, 11.11) << endl;
+	// 函数对象
+	cout << useF(Functor(), 11.11) << endl;
+	// lamber表达式
+	cout << useF([](double d)->double{ return d/4; }, 11.11) << endl;
 	return 0;
 }
