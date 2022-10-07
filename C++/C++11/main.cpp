@@ -401,18 +401,22 @@ void Fun(const int &&x){ cout << "const 右值引用" << endl; }
 //}
 
 
+// 终止函数
+void ShowListArg()
+{}
 
-//template <class T, class ...Args>
-//void ShowList(T value, Args... args)
-//{
-//	cout << value << " ";
-//	ShowList(args...);
-//}
+// 展开函数
+template <class T, class ...Args>
+void ShowListArg(T value, Args... args)
+{
+	cout << value << " ";
+	ShowListArg(args...);
+}
 
 template<class ...Args>
 void ShowList(Args... args)
 {
-	cout << sizeof...(args) << endl;
+	ShowListArg(args...);
 }
 
 int main()
