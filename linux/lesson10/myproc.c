@@ -3,11 +3,58 @@
 #include <string.h>
 #include <stdlib.h>
 
+int g_unval; // 未初始化全局变量
+int g_val = 100; // 初始化全局变量
+
 //int main(int argc, char *argv[], char* env[])
 int main()
 {
-  printf("%s\n", getenv("my_env_string"));
-//  printf("PATH:%s\n", getenv("PATH"));
+  const char* s = "hello world";
+  printf("code addr: %p\n", main); // 代码区
+  printf("string rdonly addr: %p\n", s); // 字符常量区
+  printf("uninit addr:%p\n", &g_unval); // 未初始化全局变量区
+  printf("init addr:%p\n", &g_val); // 已初始化全局变量区
+  char *heap = (char*)malloc(10);
+
+  printf("heap addr: %p\n", heap); // 堆区
+  
+  printf("stack addr: %p\n", &s); // 栈区
+  printf("stack addr: %p\n", &heap); // 栈区
+  
+  int a = 10;
+  int b = 30;
+  printf("stack addr: %p\n", &a); // 栈区
+  printf("stack addr: %p\n", &b); // 栈区
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //printf("%s\n", getenv("my_env_string"));
+////  printf("PATH:%s\n", getenv("PATH"));
 //  printf("HOME:%s\n", getenv("HOME"));
 //  printf("SHELL:%s\n", getenv("SHELL"));
 ////  extern char **environ;
