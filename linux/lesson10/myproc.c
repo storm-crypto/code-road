@@ -1,16 +1,20 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 //int main(int argc, char *argv[], char* env[])
 int main()
 {
-  extern char **environ;
-  
-  for(int i = 0; environ[i]; i++){
-    printf("%d->%s\n", i, environ[i]);
-  }
-  //for (int i = 0; env[i]; i++)
+  printf("PATH:%s\n", getenv("PATH"));
+  printf("HOME:%s\n", getenv("HOME"));
+  printf("SHELL:%s\n", getenv("SHELL"));
+//  extern char **environ;
+//  
+//  for(int i = 0; environ[i]; i++){
+//    printf("%d->%s\n", i, environ[i]);
+//  }
+//  //for (int i = 0; env[i]; i++)
  // {
  //   printf("%d->%s\n", i, env[i]);
  // }
