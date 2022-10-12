@@ -6,10 +6,11 @@
 //int main(int argc, char *argv[], char* env[])
 int main()
 {
-  printf("PATH:%s\n", getenv("PATH"));
-  printf("HOME:%s\n", getenv("HOME"));
-  printf("SHELL:%s\n", getenv("SHELL"));
-//  extern char **environ;
+  printf("%s\n", getenv("my_env_string"));
+//  printf("PATH:%s\n", getenv("PATH"));
+//  printf("HOME:%s\n", getenv("HOME"));
+//  printf("SHELL:%s\n", getenv("SHELL"));
+////  extern char **environ;
 //  
 //  for(int i = 0; environ[i]; i++){
 //    printf("%d->%s\n", i, environ[i]);
