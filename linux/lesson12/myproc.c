@@ -21,11 +21,14 @@ int main()
   }
 
   // parent
-  sleep(10);
+  //sleep(10);
   printf("father wait begin\n");
-  pid_t ret = wait(NULL);
+ // pid_t ret = wait(NULL);
+ 
+  int status = 0;
+  pid_t ret = waitpid(id, &status, 0); 
   if (ret > 0){
-    printf("father wait: %d, success\n", ret);
+    printf("father wait: %d, success\n, status exit code: %d, status exit signal: %d\n", ret, (status>>8)&0xFF, status&0x7F);
   }
   else{
     printf("father wait failed!\n");
@@ -35,7 +38,6 @@ int main()
 
   // 另一个状态，父进程把子进程回收完后，自己还活上10s
   sleep(10);
-
 }
 
 
