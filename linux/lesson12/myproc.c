@@ -10,7 +10,7 @@ int main()
   pid_t id = fork();
   if (id == 0){
     // child
-    int cnt = 5;
+    int cnt = 10;
     while (cnt)
     {
       printf("child[%d] is running: cnt is %d\n", getpid(), cnt);
@@ -21,26 +21,73 @@ int main()
   }
 
   // parent
-  //sleep(10);
-  printf("father wait begin\n");
- // pid_t ret = wait(NULL);
- 
   int status = 0;
- 
-  pid_t ret = waitpid(id, &status, 0); 
-  if (ret > 0)
+  while (1)
   {
-    if (WIFEXITED(status))
+    pid_t ret = waitpid(id, &status, WNOHANG); // 阻塞等待
+    if (ret == 0)
     {
-      // 正常退出，获取对应的退出码
-      printf("exit code: %d\n", WEXITSTATUS(status));
+      // 子进程没有退出，需要父进程重复进行检测
+      printf("Do father things;\n");
+    }
+    else if (ret > 0)
+    {
+      // 子进程退出了，获取到了对应的结果
+      printf("father wait: %d, success, status exit code: %d, status exit signal: %d\n", ret, (status>>8)&0xFF, status&0x7F);
+      break;    
     }
     else
     {
-      printf("error, get a signal!\n");
+      // 等待失败
+      perror("waitpid\n");
+      break;
     }
+    sleep(1);
   }
-//  if (ret > 0){
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  // parent
+//  //sleep(10);
+//  printf("father wait begin\n");
+// // pid_t ret = wait(NULL);
+// 
+//  int status = 0;
+// 
+//  pid_t ret = waitpid(id, &status, 0); 
+//  if (ret > 0)
+//  {
+//    if (WIFEXITED(status))
+//    {
+//      // 正常退出，获取对应的退出码
+//      printf("exit code: %d\n", WEXITSTATUS(status));
+//    }
+//    else
+//    {
+//      printf("error, get a signal!\n");
+//    }
+//  }
+////  if (ret > 0){
 //    printf("father wait: %d, success\n, status exit code: %d, status exit signal: %d\n", ret, (status>>8)&0xFF, status&0x7F);
 //  }
 //  else{
