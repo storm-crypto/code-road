@@ -19,14 +19,25 @@ int main()
     //execv("/usr/bin/ls", argv);
     
    // execlp("ls", "ls", "-a", "-l", "-d", NULL);
-    char *argv[] = {
-      "ls",
-      "-a",
-      "-l",
-      "-i",
-      NULL
+  //  char *argv[] = {
+  //    "ls",
+  //    "-a",
+  //    "-l",
+  //    "-i",
+  //    NULL
+  //  };
+  //  execvp("ls", argv);
+    
+    // execl("./myexe", "myexe", NULL);
+    
+    char *env[] = {
+      "MYENV=hahahahahahaha",
+      "MYENV1=hahahahahahaha",
+      "MYENV2=hahahahahahaha",
+      "MYENV3=hahahahahahaha",
+      NULL 
     };
-    execvp("ls", argv);
+    execle("./myexe", "myexe", NULL, env);
     printf("command end...\n");
     exit(1);
   }
