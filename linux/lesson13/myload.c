@@ -37,7 +37,12 @@ int main()
       "MYENV3=hahahahahahaha",
       NULL 
     };
-    execle("./myexe", "myexe", NULL, env);
+    char *argv[] = {
+      "myexe",
+      NULL 
+    };
+    execve("./myexe", argv, env);
+    // execle("./myexe", "myexe", NULL, env);
     printf("command end...\n");
     exit(1);
   }
