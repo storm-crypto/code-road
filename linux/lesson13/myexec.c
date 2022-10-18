@@ -9,6 +9,16 @@ int main()
     printf("command begin...\n");
    //execl("/usr/bin/ls", "ls", "-a", "-l", "-i", NULL); 
    
+    //char *argv[] = {
+    //  "ls",
+    //  "-a",
+    //  "-l",
+    //  "-i",
+    //  NULL
+    //};
+    //execv("/usr/bin/ls", argv);
+    
+   // execlp("ls", "ls", "-a", "-l", "-d", NULL);
     char *argv[] = {
       "ls",
       "-a",
@@ -16,7 +26,7 @@ int main()
       "-i",
       NULL
     };
-    execv("/usr/bin/ls", argv);
+    execvp("ls", argv);
     printf("command end...\n");
     exit(1);
   }
