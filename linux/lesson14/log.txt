@@ -1,5 +1,3 @@
-hello bit
-hello bit
-hello bit
-hello bit
-hello bit
+hello printf
+hello fprintf
+hello fputs
