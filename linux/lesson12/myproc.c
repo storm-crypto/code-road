@@ -5,39 +5,57 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-
 int main()
 {
-
-  pid_t id = fork();
-  if (id == 0)
+  if (fork() == 0)
   {
-    printf("I am a process! pid: %d\n", getpid());
-    execl("/usr/bin/ls", "ls", "-a", "-l", NULL); // execl执行程序替换
-  
-    printf("hahahaha\n");
-    printf("hahahaha\n");
-    printf("hahahaha\n");
-    printf("hahahaha\n");
-    printf("hahahaha\n");
-    printf("hahahaha\n");
-    exit(0);
-  }
+    // child 
+    // exec*
+    
+    execl("/usr/bin/ls", "ls", "-a", "-l", "-n", "-i", NULL);
 
-  while(1)
-  {
-    printf("I am a father\n");
-    sleep(1);
+    exit(1);
   }
 
   // parent
-  waitpid(id, NULL, 0);
-
+  waitpid(-1, NULL, 0);
   printf("wait success!\n");
 
-  return 0;
+
 }
 
+//int main()
+//{
+//
+//  pid_t id = fork();
+//  if (id == 0)
+//  {
+//    printf("I am a process! pid: %d\n", getpid());
+//    execl("/usr/bin/ls", "ls", "-a", "-l", NULL); // execl执行程序替换
+//  
+//    printf("hahahaha\n");
+//    printf("hahahaha\n");
+//    printf("hahahaha\n");
+//    printf("hahahaha\n");
+//    printf("hahahaha\n");
+//    printf("hahahaha\n");
+//    exit(0);
+//  }
+//
+//  while(1)
+//  {
+//    printf("I am a father\n");
+//    sleep(1);
+//  }
+//
+//  // parent
+//  waitpid(id, NULL, 0);
+//
+//  printf("wait success!\n");
+//
+//  return 0;
+//}
+//
 
 
 
