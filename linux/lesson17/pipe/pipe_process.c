@@ -21,10 +21,14 @@ int main()
         close(pipefd[0]);
 
         const char* msg = "hello 比特";
+        int count = 0;
         while (1)
         {
-            write(pipefd[1], msg, strlen(msg));
+            //write(pipefd[1], msg, strlen(msg));
             // sleep(1);
+            write(pipefd[1], "a", 1);
+            count ++;
+            printf("count: %d\n", count);
         }
 
         exit(0);
@@ -37,19 +41,19 @@ int main()
         char buffer[64];
         // 如果read的返回值是0，意味着子进程关闭文件描述符了
         // read的返回值是表示读取了多少个字节
-        ssize_t s = read(pipefd[0], buffer, sizeof (buffer) - 1);
-        if (s == 0){
-            break;
-        }
-        else if (s > 0)
-        {
-            buffer[s] = 0;
-            printf("child say:%s\n", buffer);
-        }
-        else 
-        {
-            break;
-        }
+        // ssize_t s = read(pipefd[0], buffer, sizeof (buffer) - 1);
+        // if (s == 0){
+        //     break;
+        // }
+        // else if (s > 0)
+        // {
+        //     buffer[s] = 0;
+        //     printf("child say:%s\n", buffer);
+        // }
+        // else 
+        // {
+        //     break;
+        // }
     }
 
     return 0;
