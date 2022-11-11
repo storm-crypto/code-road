@@ -38,9 +38,11 @@ int main()
     while (1)
     {
         sleep(3);
-        char c = 0;
-        read(pipefd[0], &c, 1);
-        printf("father take :%c\n", c);
+        char c[1024*4 + 1] = {0};
+        ssize_t s = read(pipefd[0], c, sizeof(c));
+        c[s] = 0; // 字符串的结束表示是\0
+
+        printf("father take :%s\n", c);
         // 如果read的返回值是0，意味着子进程关闭文件描述符了
         // read的返回值是表示读取了多少个字节
         // ssize_t s = read(pipefd[0], buffer, sizeof (buffer) - 1);
