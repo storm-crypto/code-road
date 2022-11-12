@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
-
-#define MY_FIFO "./fifo"
+#include "comm.h"
 
 int main()
 {
@@ -38,6 +32,7 @@ int main()
         {
             // peer close 
             printf("client quit...\n");
+            break;
         }
         else{
             // error
