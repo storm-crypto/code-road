@@ -1,4 +1,8 @@
 #include "comm.h"
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 
 int main()
 {
@@ -26,7 +30,27 @@ int main()
         {
             // success
             buffer[s] = 0;
-            printf("client# %s\n", buffer);
+            if (strcmp(buffer, "show") == 0)
+            {
+                if (fork() == 0) 
+                {
+                    execl("/usr/bin/ls", "ls", "-l", NULL);
+                    exit(1);
+                }
+                waitpid(-1, NULL, 0);
+            }
+            else if (strcmp(buffer, "run") == 0)
+            {
+                if (fork() == 0)
+                {
+                    execl("/usr/bin/sl", "sl", NULL);
+                }
+                waitpid(-1, NULL, 0);
+            }
+            else 
+            {
+                printf("client# %s\n", buffer);
+            } 
         }
         else if (s == 0)
         {
