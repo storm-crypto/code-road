@@ -14,19 +14,13 @@ static void Usage(const char *proc)
 // .mytest signo who
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    while (1)
     {
-        Usage(argv[0]);
-        return 1;
+        printf("I am a process\n");
+        sleep(3);
+
+        raise(8);
     }
-
-    int signo = atoi(argv[1]);
-    int who = atoi(argv[2]);
-
-    kill(who, signo);
-
-    printf(":signo: %d, who: %d\n", signo, who);
-
     return 0;
 }
 
