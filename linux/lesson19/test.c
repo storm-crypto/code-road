@@ -34,9 +34,8 @@ int main()
 
     while (1)
     {
-        int *p = NULL;
-        p = (int*)100; // 会出现段错误，导致进程奔溃
-        *p = 100;
+        int p = 10;
+        p /= 0;
         printf("hello bit\n");
         sleep(1);
     }
