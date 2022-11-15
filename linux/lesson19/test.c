@@ -40,13 +40,16 @@ int main(int argc, char *argv[])
     {
         signal(sig, handler);
     }
+
+    int res = alarm(30);
     
     while (1)
     {
         printf("I am a process\n");
-        sleep(3);
+        sleep(1);
 
-        abort();
+        int res = alarm(0); // 取消闹钟
+        printf("res:%d\n", res);
     }
     return 0;
 }
