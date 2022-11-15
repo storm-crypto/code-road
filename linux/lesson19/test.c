@@ -7,13 +7,22 @@
 
 int count = 0;
 
+void HandlerAlarm(int signo)
+{
+    printf("hello: %d\n", count);
+
+    exit(1);
+}
+
 int main()
 {
+    signal(SIGALRM, HandlerAlarm);
     alarm(1);
 
     while (1)
     {
-        printf("hello : %d\n", count++);
+        count++;
+        // printf("hello : %d\n", count++);
     }
 }
 
