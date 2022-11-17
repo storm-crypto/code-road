@@ -1,5 +1,5 @@
 mysig:mysig.c
-	gcc -o $@ $^
+	gcc -o $@ $^ 
 .PHONY:clean
 clean:
 	rm -f mysig
