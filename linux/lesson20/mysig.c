@@ -21,6 +21,11 @@ void show_pending(sigset_t *set)
     printf("\n");
 }
 
+void handler(int signo)
+{
+    printf("%d号信号被递达了, 处理已完成\n", signo);
+}
+
 int main()
 {
     // 虽然sigset_t是一个位图结构，但是不同的OS实现是不一样的，不能让用户直接修改该变量
@@ -30,6 +35,8 @@ int main()
     // sigset_t是不能直接进行|那些操作的
 
     sigset_t iset, oset;
+
+    signal(2, handler);
 
     sigemptyset(&iset);
     sigemptyset(&oset);
@@ -41,6 +48,8 @@ int main()
     sigprocmask(SIG_SETMASK, &iset, & oset);
     
     sigset_t pending;
+
+    int count = 0;
     while (1)
     {
         sigemptyset(&pending); // 初始化为全0
@@ -50,6 +59,13 @@ int main()
         show_pending(&pending);
 
         sleep(1);
+        count ++;
+        
+        if (count == 10)
+        {
+            sigprocmask(SIG_SETMASK, &oset, NULL);
+            printf("2号信号恢复, 可以被递达了\n");
+        }
     }
 
     return 0;
