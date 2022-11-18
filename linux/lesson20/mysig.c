@@ -5,7 +5,12 @@
 
 void handler(int signo)
 {
-    printf("get a signo: %d\n", signo);
+    while (1)
+    {
+        printf("get a signo: %d\n", signo);
+        sleep(1);
+    }
+    
 }
 
 int main()
@@ -14,6 +19,10 @@ int main()
     memset(&act, 0, sizeof act);
 
     act.sa_handler = handler;
+    sigemptyset(&act.sa_mask);
+    
+    // 将三号信号加入到act.sa_mask的信号集里面
+    sigaddset(&act.sa_mask, 3);
 
     sigaction(2, &act, NULL);
 
