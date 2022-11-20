@@ -8,7 +8,7 @@ void *thread_run(void *args)
     while (1)
     {
         printf("我是新线程[%d], 我的线程id是%lu\n", num, pthread_self());
-        sleep(10);
+        sleep(1);
         break;
         // 野指针问题，会出现segmentaion fault
         // if (num == 3) 
@@ -17,9 +17,11 @@ void *thread_run(void *args)
         //     int* p = NULL;
         //     *p = 1000;
         // }
+
+
     }
 
-    return (void*)111;
+    pthread_exit(123);
 }
 
 #define NUM 1
