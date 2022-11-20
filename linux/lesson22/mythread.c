@@ -2,13 +2,16 @@
 #include <unistd.h>
 #include <pthread.h>
 
+pthread_t g_id;
+
 void *thread_run(void *args)
 {
     int num = *(int*)args;
     while (1)
     {
         printf("我是新线程[%d], 我的线程id是%lu\n", num, pthread_self());
-        sleep(1);
+        sleep(2);
+        pthread_cancel(g_id);
         // break;
         // 野指针问题，会出现segmentaion fault
         // if (num == 3) 
@@ -17,9 +20,9 @@ void *thread_run(void *args)
         //     int* p = NULL;
         //     *p = 1000;
         // }
-
-
     }
+
+    
 
     // pthread_exit(123);
 }
@@ -28,6 +31,7 @@ void *thread_run(void *args)
 
 int main()
 {
+    g_id = pthread_self();
     pthread_t tid[NUM];
     int i;
     for (i = 0; i < NUM; i++)
@@ -36,8 +40,10 @@ int main()
         sleep(1);
     }
 
+    //sleep(20);
+
     printf("wait sub thread...\n");
-    sleep(5);
+    sleep(50);
 
     printf("cancel sub thread...\n");
     pthread_cancel(tid[0]);
