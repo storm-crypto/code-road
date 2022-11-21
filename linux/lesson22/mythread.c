@@ -6,12 +6,14 @@ pthread_t g_id;
 
 void *thread_run(void *args)
 {
+    pthread_detach(pthread_self()); // 线程分离
     int num = *(int*)args;
     while (1)
     {
         printf("我是新线程[%d], 我的线程id是%lu\n", num, pthread_self());
         sleep(2);
-        pthread_cancel(g_id);
+        break;
+        // pthread_cancel(g_id);
         // break;
         // 野指针问题，会出现segmentaion fault
         // if (num == 3) 
@@ -22,7 +24,7 @@ void *thread_run(void *args)
         // }
     }
 
-    
+    return (void *)111;
 
     // pthread_exit(123);
 }
@@ -43,17 +45,23 @@ int main()
     //sleep(20);
 
     printf("wait sub thread...\n");
-    sleep(50);
+    sleep(1);
 
     printf("cancel sub thread...\n");
-    pthread_cancel(tid[0]);
+    //pthread_cancel(tid[0]);
 
 
     void *status = NULL;
     
-    pthread_join(tid[0], &status);
 
-    printf("ret : %d\n", (int)status);
+    int ret = 0;
+    for (i = 0; i < NUM; i++)
+    {
+        ret = pthread_join(tid[0], &status);
+    }
+    
+
+    printf("ret : %d, status: %d\n", ret, (int)status);
 
     // while (1)
     // {
