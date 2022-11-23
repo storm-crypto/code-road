@@ -2,6 +2,7 @@
 #include <string>
 #include <unistd.h>
 #include <pthread.h>
+#include <mutex>
 
 // 抢票逻辑，1000张票，5个线程同时抢
 
@@ -10,7 +11,8 @@ class Ticket
 {
 private:
     int tickets;
-    pthread_mutex_t mtx;
+    pthread_mutex_t mtx; // 原生线程库，系统界别
+    std::mutex mymtx;    // C++，语言级别
 
 public:
     Ticket()
@@ -22,7 +24,8 @@ public:
     bool GetTicket()
     {
         bool res = true;
-        pthread_mutex_lock(&mtx);
+        // pthread_mutex_lock(&mtx);
+        mymtx.lock();
         if (tickets > 0)
         {
             usleep(1000);
@@ -35,7 +38,8 @@ public:
             printf("票已经被抢空了\n");
             res = false;
         }
-        pthread_mutex_unlock(&mtx);
+        // pthread_mutex_unlock(&mtx);
+        mymtx.unlock();
 
         return res;
     }
