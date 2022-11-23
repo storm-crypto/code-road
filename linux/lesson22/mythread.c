@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-void *thread_run(void * args)
+void *thread_run(void *args)
 {
     while (1)
     {
@@ -36,7 +36,7 @@ int main()
 //         // pthread_cancel(g_id);
 //         // break;
 //         // 野指针问题，会出现segmentaion fault
-//         // if (num == 3) 
+//         // if (num == 3)
 //         // {
 //         //     printf("thread number : %d quit\n", num);
 //         //     int* p = NULL;
@@ -70,16 +70,13 @@ int main()
 //     printf("cancel sub thread...\n");
 //     //pthread_cancel(tid[0]);
 
-
 //     void *status = NULL;
-    
 
 //     int ret = 0;
 //     for (i = 0; i < NUM; i++)
 //     {
 //         ret = pthread_join(tid[0], &status);
 //     }
-    
 
 //     printf("ret : %d, status: %d\n", ret, (int)status);
 
@@ -92,7 +89,7 @@ int main()
 //     //         printf("我创建的线程[%d]是: %lu\n", i, tid[i]);
 //     //     }
 //     //     printf("###################### end ###########################\n");
-        
+
 //     //     sleep(1);
 //     // }
 
