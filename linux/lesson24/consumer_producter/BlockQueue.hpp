@@ -54,7 +54,7 @@ namespace ns_blockqueue
             pthread_cond_wait(&_is_full, &_mtx);
         }
 
-        void WakeupComsumer()
+        void WakeupConsumer()
         {
             pthread_cond_signal(&_is_full);
         }
