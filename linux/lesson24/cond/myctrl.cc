@@ -14,7 +14,10 @@ void *ctrl(void *args)
     {
         std::cout << "master say: begin work" << std::endl;
         // 唤醒条件变量下等待的一个线程，是哪一个线程呢？
-        pthread_cond_signal(&cond);
+        // 在cond等待队列里等待的第一个线程
+        // pthread_cond_signal(&cond);
+        // 唤醒所有线程
+        pthread_cond_broadcast(&cond);
         sleep(1);
     }
 }
