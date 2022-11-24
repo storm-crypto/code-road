@@ -25,6 +25,11 @@ namespace ns_blockqueue
             return _bq.size() == _cap;
         }
 
+        bool IsEmpty()
+        {
+            return _bq.size() == 0;
+        }
+
         void LockQueue()
         {
             pthread_mutex_lock(&_mtx);
@@ -40,6 +45,23 @@ namespace ns_blockqueue
             // 1. 调用的时候，会首先自动释放_mtx，然后再挂起自己
             // 2. 返回的时候，会首先自动竞争锁，获取到锁之后，才能返回
             pthread_cond_wait(&_is_empty, &_mtx);
+        }
+
+        void ConsumerWait()
+        {
+            // 1. 调用的时候，会首先自动释放_mtx，然后再挂起自己
+            // 2. 返回的时候，会首先自动竞争锁，获取到锁之后，才能返回
+            pthread_cond_wait(&_is_full, &_mtx);
+        }
+
+        void WakeupComsumer()
+        {
+            pthread_cond_signal(&_is_full);
+        }
+
+        void WakeupProducter()
+        {
+            pthread_cond_signal(&_is_empty);
         }
 
     public:
@@ -71,13 +93,27 @@ namespace ns_blockqueue
             }
             // 向队列中放数据，生产函数
             _bq.push(in);
+
+            // 唤醒consumer
+            WakeupConsumer();
             UnlockQueue();
         }
         void Pop(T *out)
         {
+            LockQueue();
             // 从队列中拿数据，消费函数
+            if (IsEmpty())
+            {
+                // 无法消费
+                ConsumerWait();
+            }
             *out = _bq.front();
             _bq.pop();
+
+            // 唤醒生产者
+            WakeupProducter();
+
+            UnlockQueue();
         }
     };
 }
