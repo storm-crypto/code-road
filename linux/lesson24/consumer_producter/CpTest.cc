@@ -11,8 +11,15 @@ void *consumer(void *args)
 {
     // 获取到阻塞队列这个公共资源(交易场所)
     BlockQueue<Task> *bq = (BlockQueue<Task> *)args;
+    std::string ops = "+-*/%";
     while (true)
     {
+        // 1. 制造数据，生产者的数据(task)从哪里来？
+        int x = rand() % 20 + 1;
+        int y = rand() % 10 + 1;
+        char op = ops[rand() % 5];
+        Task t(x, y, op);
+        bq->Push(t);
         // sleep(2);
         // int data = 0;
         // bq->Pop(&data);
