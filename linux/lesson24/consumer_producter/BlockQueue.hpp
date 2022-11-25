@@ -86,7 +86,9 @@ namespace ns_blockqueue
         void Push(const T &in)
         {
             LockQueue();
-            if (IsFull())
+            // 我们需要进行条件检测的时候，这里需要使用循环的方式
+            // 来保证退出循环一定是因为条件不满足导致的
+            while (IsFull())
             {
                 // 等待，把线程挂起的时候，自己是有锁的
                 ProducterWait();
@@ -102,7 +104,7 @@ namespace ns_blockqueue
         {
             LockQueue();
             // 从队列中拿数据，消费函数
-            if (IsEmpty())
+            while (IsEmpty())
             {
                 // 无法消费
                 ConsumerWait();
