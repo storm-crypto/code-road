@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <pthread.h>
 
 namespace ns_task
 {
@@ -18,5 +19,34 @@ namespace ns_task
         {
         }
         ~Task() {}
+
+        int Run()
+        {
+            int res = 0;
+            switch (_op)
+            {
+            case '+':
+                res = _x + _y;
+                break;
+            case '-':
+                res = _x - _y;
+                break;
+            case '*':
+                res = _x * _y;
+                break;
+            case '/':
+                res = _x / _y;
+                break;
+            case '%':
+                res = _x % _y;
+                break;
+            default:
+                std::cout << "bug??" << std::endl;
+                break;
+            }
+            std::cout << "当前任务正在被：" <<
+
+                return res;
+        }
     };
 }
