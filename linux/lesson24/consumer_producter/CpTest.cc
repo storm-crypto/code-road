@@ -35,6 +35,7 @@ void *producter(void *args)
         int y = rand() % 10 + 1;
         char op = ops[rand() % 5];
         Task t(x, y, op);
+        std::cout << "生产者派发了一个任务：" << x << op << y << "=?" << std::endl;
         bq->Push(t);
         sleep(1);
         // sleep(2);
@@ -51,10 +52,19 @@ int main()
     BlockQueue<Task> *bq = new BlockQueue<Task>();
 
     pthread_t c, p; // 创建消费者、生产者线程
+    pthread_t c1, c2, c3, c4;
     pthread_create(&c, nullptr, consumer, (void *)bq);
+    pthread_create(&c1, nullptr, consumer, (void *)bq);
+    pthread_create(&c2, nullptr, consumer, (void *)bq);
+    pthread_create(&c3, nullptr, consumer, (void *)bq);
+    pthread_create(&c4, nullptr, consumer, (void *)bq);
     pthread_create(&p, nullptr, producter, (void *)bq);
 
     pthread_join(c, nullptr);
+    pthread_join(c1, nullptr);
+    pthread_join(c2, nullptr);
+    pthread_join(c3, nullptr);
+    pthread_join(c4, nullptr);
     pthread_join(p, nullptr);
 
     return 0;

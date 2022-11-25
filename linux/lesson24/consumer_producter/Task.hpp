@@ -44,9 +44,10 @@ namespace ns_task
                 std::cout << "bug??" << std::endl;
                 break;
             }
-            std::cout << "当前任务正在被：" <<
+            std::cout << "当前任务正在被：" << pthread_self() << " 处理："
+                      << _x << _op << _y << "=" << res << std::endl;
 
-                return res;
+            return res;
         }
     };
 }
