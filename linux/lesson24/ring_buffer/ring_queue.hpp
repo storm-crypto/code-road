@@ -24,7 +24,7 @@ namespace ns_ring_queue
 
     public:
         RingQueue(int cap = g_cap_default)
-            : _cap = cap,
+            : _cap(cap),
               _ring_queue(cap)
         {
             sem_init(&_blank_sem, 0, cap);
