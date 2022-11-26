@@ -36,12 +36,18 @@ namespace ns_threadpool
     public:
         static ThreadPool<T> *GetInstance()
         {
+            static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
             // 当前单例对象还没有被创建
             if (ins == nullptr)
             {
-                ins = new ThreadPool<T>();
-                ins->InitThreadPool();
-                std::cout << "首次加载对象" << std::endl;
+                pthread_mutex_lock(&lock); // 双判定，减少锁的争用，提高获取单例的效率
+                if (ins == nullptr)
+                {
+                    ins = new ThreadPool<T>();
+                    ins->InitThreadPool();
+                    std::cout << "首次加载对象" << std::endl;
+                }
+                pthread_mutex_unlock(&lock);
             }
 
             return ins;
