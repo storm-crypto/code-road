@@ -19,7 +19,10 @@ namespace ns_threadpool
         pthread_mutex_t _mtx;
         pthread_cond_t _cond;
 
+        static ThreadPool<T> *ins;
+
     private:
+        // 构造函数必须得实现，但是要私有化
         ThreadPool(int num = g_num)
             : _num(num)
         {
@@ -27,8 +30,22 @@ namespace ns_threadpool
             pthread_cond_init(&_cond, nullptr);
         }
         ThreadPool(const ThreadPool<T> &tp) = delete;
+        // 赋值语句
+        ThreadPool<T> &operator=(ThreadPool<T> &tp) = delete;
 
     public:
+        static ThreadPool<T> *GetInstance()
+        {
+            // 当前单例对象还没有被创建
+            if (ins == nullptr)
+            {
+                ins = new ThreadPool<T>();
+                ins->InitThreadPool();
+                std::cout << "首次加载对象" << std::endl;
+            }
+
+            return ins;
+        }
         void Lock()
         {
             pthread_mutex_lock(&_mtx);
@@ -105,4 +122,7 @@ namespace ns_threadpool
             pthread_cond_destroy(&_cond);
         }
     };
+
+    template <class T>
+    ThreadPool<T> *ThreadPool<T>::ins = nullptr;
 }
