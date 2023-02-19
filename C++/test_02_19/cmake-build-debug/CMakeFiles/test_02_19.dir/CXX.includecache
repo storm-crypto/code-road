@@ -6,19 +6,13 @@
 
 #IncludeRegexTransform: 
 
-D:/05code/2022/code-road/C++/test_10_07/main.cpp
+D:/05code/2022/code-road/C++/test_02_19/main.cpp
 iostream
 -
-thread
+functional
 -
-vector
+thread
 -
 mutex
--
-atomic
--
-iostream
--
-thread
 -
 
